@@ -1,14 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
+        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>NotAdam</Authors>
         <PackageProjectUrl>https://github.com/NotAdam/Lumina.Excel</PackageProjectUrl>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <RepositoryUrl>https://github.com/NotAdam/Lumina.Excel</RepositoryUrl>
-        <PackageVersion>6.2.2</PackageVersion>
-        <FileVersion>6.2.2</FileVersion>
         <Description>Typed definitions to access excel sheet data in FINAL FANTASY XIV.</Description>
     </PropertyGroup>
     

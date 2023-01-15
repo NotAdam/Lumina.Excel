@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Excel", "Lumina.Excel\Lumina.Excel.csproj", "{EFE30CC6-A28B-46E7-AD93-8FA9503D2C2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.SpaghettiGenerator", "Lumina.SpaghettiGenerator\Lumina.SpaghettiGenerator.csproj", "{7750A0E5-9DEF-45B0-91E5-5EE40BDC5CBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.SpaghettiUpdater", "Lumina.SpaghettiUpdater\Lumina.SpaghettiUpdater.csproj", "{AF6AACEE-AE22-43A1-906F-E79D050DCDB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFE30CC6-A28B-46E7-AD93-8FA9503D2C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE30CC6-A28B-46E7-AD93-8FA9503D2C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE30CC6-A28B-46E7-AD93-8FA9503D2C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE30CC6-A28B-46E7-AD93-8FA9503D2C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7750A0E5-9DEF-45B0-91E5-5EE40BDC5CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7750A0E5-9DEF-45B0-91E5-5EE40BDC5CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7750A0E5-9DEF-45B0-91E5-5EE40BDC5CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7750A0E5-9DEF-45B0-91E5-5EE40BDC5CBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF6AACEE-AE22-43A1-906F-E79D050DCDB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF6AACEE-AE22-43A1-906F-E79D050DCDB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF6AACEE-AE22-43A1-906F-E79D050DCDB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF6AACEE-AE22-43A1-906F-E79D050DCDB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

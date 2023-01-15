@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>NotAdam</Authors>
+        <PackageProjectUrl>https://github.com/NotAdam/Lumina.Excel</PackageProjectUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <RepositoryUrl>https://github.com/NotAdam/Lumina.Excel</RepositoryUrl>
+        <PackageVersion>6.2.2</PackageVersion>
+        <FileVersion>6.2.2</FileVersion>
+        <Description>Typed definitions to access excel sheet data in FINAL FANTASY XIV.</Description>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <!-- disable the missign xmldoc warnings because there's zero chance that all of this will ever get documented and its basically just noise -->
+        <NoWarn>1591</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="../../LICENSE" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Lumina" Version="3.10.0" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+        <PackageReference Include="MinVer" Version="2.3.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="RSV\**\*.rsv" />
+        <EmbeddedResource Include="RSV\**\*.rsv" />
+    </ItemGroup>
+
+</Project>

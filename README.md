@@ -6,7 +6,7 @@ WIP shit for a new schema format, typed sheet generator and introspection toolin
 
 * `docs` - documentation for tooling and schema format
 * `schema` - game excel sheet schema definition files, e.g., Item.yml
-* `src` - generator & tooling documentation
+* `src` - generator, generated code & tooling documentation
 
 ## WIP Schema Example
 

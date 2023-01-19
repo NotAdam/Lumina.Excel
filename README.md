@@ -1,50 +1,9 @@
 # Lumina.Excel
 
-WIP shit for a new schema format, typed sheet generator and introspection tooling.
+Contains generated definitions for relational Excel data used in FINAL FANTASY XIV. Git tags match game versions, tracking the global client. While these may work for regional variants, no support is provided.
 
-## Overview
+## Repo Overview
 
 * `docs` - documentation for tooling and schema format
 * `schema` - game excel sheet schema definition files, e.g., Item.yml
 * `src` - generator, generated code & tooling documentation
-
-## WIP Schema Example
-
-	sheet: Item
-	type: column
-
-	definition:
-	  - Singular
-	  - Adjective
-	  - Plural
-	  - PossessivePronoun
-	  - StartsWithVowel
-	  - unknown:
-	  - Pronoun
-	  - Article
-	  - Description
-	  - Name
-	  - Icon
-	  - sheet: ItemLevel
-	  - Rarity
-	  - FilterGroup
-	  - AdditionalData
-	  - sheet: ItemUICategory
-	  - sheet: ItemSearchCategory
-	  - sheet: EquipSlotCategory
-	  - sheet: ItemSortCategory
-	  - unknown:
-	  - StackSize
-	  - IsUnique
-	  - IsUntradable
-	  - unknown: 35
-	  - struct: BaseParam[6]
-	    definition:
-	      - sheet: BaseParam
-	      - Value
-	  - sheet: ItemSpecialBonus
-	  - ItemSpecialBonusParam
-	  - struct: SpecialParam[6]
-	    definition:
-	      - sheet: BaseParam
-	      - Value

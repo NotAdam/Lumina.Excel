@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIGatheringObject", columnHash: 0xa8f1a0a0 )]
+    [Sheet( "MJIGatheringObject", columnHash: 0xa0ca50af )]
     public partial class MJIGatheringObject : ExcelRow
     {
         
@@ -14,6 +14,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint MapIcon { get; set; }
         public uint Unknown2 { get; set; }
         public LazyRow< EObjName > Name { get; set; }
+        public ushort Unknown4 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -23,6 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
             MapIcon = parser.ReadColumn< uint >( 1 );
             Unknown2 = parser.ReadColumn< uint >( 2 );
             Name = new LazyRow< EObjName >( gameData, parser.ReadColumn< uint >( 3 ), language );
+            Unknown4 = parser.ReadColumn< ushort >( 4 );
         }
     }
 }

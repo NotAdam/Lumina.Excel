@@ -16,7 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown3 { get; set; }
         public byte Unknown4 { get; set; }
         public byte Unknown5 { get; set; }
-        public ushort Unknown6 { get; set; }
+        public LazyRow< BannerCondition > UnlockCondition { get; set; }
         public byte SortKey { get; set; }
         public SeString Name { get; set; }
         
@@ -30,7 +30,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown3 = parser.ReadColumn< byte >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Unknown5 = parser.ReadColumn< byte >( 5 );
-            Unknown6 = parser.ReadColumn< ushort >( 6 );
+            UnlockCondition = new LazyRow< BannerCondition >( gameData, parser.ReadColumn< ushort >( 6 ), language );
             SortKey = parser.ReadColumn< byte >( 7 );
             Name = parser.ReadColumn< SeString >( 8 );
         }

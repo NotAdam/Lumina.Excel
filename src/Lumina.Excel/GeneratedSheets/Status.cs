@@ -6,13 +6,13 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Status", columnHash: 0xab58433f )]
+    [Sheet( "Status", columnHash: 0x0dab68bb )]
     public partial class Status : ExcelRow
     {
         
         public SeString Name { get; set; }
         public SeString Description { get; set; }
-        public ushort Icon { get; set; }
+        public uint Icon { get; set; }
         public byte Unknown3 { get; set; }
         public byte MaxStacks { get; set; }
         public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
@@ -50,7 +50,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Name = parser.ReadColumn< SeString >( 0 );
             Description = parser.ReadColumn< SeString >( 1 );
-            Icon = parser.ReadColumn< ushort >( 2 );
+            Icon = parser.ReadColumn< uint >( 2 );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             MaxStacks = parser.ReadColumn< byte >( 4 );
             ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 5 ), language );

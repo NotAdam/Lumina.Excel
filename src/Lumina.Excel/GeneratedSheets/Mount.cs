@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Mount", columnHash: 0x8885ae41 )]
+    [Sheet( "Mount", columnHash: 0x33b2e4b2 )]
     public partial class Mount : ExcelRow
     {
         
@@ -41,7 +41,7 @@ namespace Lumina.Excel.GeneratedSheets
         public int EquipFoot { get; set; }
         public short Order { get; set; }
         public ushort Icon { get; set; }
-        public byte UIPriority { get; set; }
+        public ushort UIPriority { get; set; }
         public byte RadiusRate { get; set; }
         public byte BaseMotionSpeed_Run { get; set; }
         public byte BaseMotionSpeed_Walk { get; set; }
@@ -93,7 +93,7 @@ namespace Lumina.Excel.GeneratedSheets
             EquipFoot = parser.ReadColumn< int >( 28 );
             Order = parser.ReadColumn< short >( 29 );
             Icon = parser.ReadColumn< ushort >( 30 );
-            UIPriority = parser.ReadColumn< byte >( 31 );
+            UIPriority = parser.ReadColumn< ushort >( 31 );
             RadiusRate = parser.ReadColumn< byte >( 32 );
             BaseMotionSpeed_Run = parser.ReadColumn< byte >( 33 );
             BaseMotionSpeed_Walk = parser.ReadColumn< byte >( 34 );

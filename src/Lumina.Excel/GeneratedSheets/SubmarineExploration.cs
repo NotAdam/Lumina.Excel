@@ -16,7 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
         public short Y { get; set; }
         public short Z { get; set; }
         public LazyRow< SubmarineMap > Map { get; set; }
-        public bool Passengers { get; set; }
+        public bool StartingPoint { get; set; }
         public byte Stars { get; set; }
         public byte RankReq { get; set; }
         public byte CeruleumTankReq { get; set; }
@@ -34,7 +34,7 @@ namespace Lumina.Excel.GeneratedSheets
             Y = parser.ReadColumn< short >( 3 );
             Z = parser.ReadColumn< short >( 4 );
             Map = new LazyRow< SubmarineMap >( gameData, parser.ReadColumn< byte >( 5 ), language );
-            Passengers = parser.ReadColumn< bool >( 6 );
+            StartingPoint = parser.ReadColumn< bool >( 6 );
             Stars = parser.ReadColumn< byte >( 7 );
             RankReq = parser.ReadColumn< byte >( 8 );
             CeruleumTankReq = parser.ReadColumn< byte >( 9 );

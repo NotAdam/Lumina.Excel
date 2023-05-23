@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIMinionPopAreas", columnHash: 0xca8d8231 )]
+    [Sheet( "MJIMinionPopAreas", columnHash: 0x3591bdd9 )]
     public partial class MJIMinionPopAreas : ExcelRow
     {
         
@@ -14,6 +14,7 @@ namespace Lumina.Excel.GeneratedSheets
         public short Unknown1 { get; set; }
         public short Unknown2 { get; set; }
         public int Unknown3 { get; set; }
+        public bool Unknown4 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -23,6 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1 = parser.ReadColumn< short >( 1 );
             Unknown2 = parser.ReadColumn< short >( 2 );
             Unknown3 = parser.ReadColumn< int >( 3 );
+            Unknown4 = parser.ReadColumn< bool >( 4 );
         }
     }
 }

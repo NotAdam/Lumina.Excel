@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJICraftworksPopularity", columnHash: 0xd6b37dbc )]
+    [Sheet( "MJICraftworksPopularity", columnHash: 0x820f1482 )]
     public partial class MJICraftworksPopularity : ExcelRow
     {
         
@@ -16,8 +16,8 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            Popularity = new LazyRow< MJICraftworksPopularityType >[ 71 ];
-            for( var i = 0; i < 71; i++ )
+            Popularity = new LazyRow< MJICraftworksPopularityType >[ 81 ];
+            for( var i = 0; i < 81; i++ )
                 Popularity[ i ] = new LazyRow< MJICraftworksPopularityType >( gameData, parser.ReadColumn< byte >( 0 + i ), language );
         }
     }

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIVillageDevelopment", columnHash: 0x22c914e4 )]
+    [Sheet( "MJIVillageDevelopment", columnHash: 0x038243ca )]
     public partial class MJIVillageDevelopment : ExcelRow
     {
         
@@ -23,6 +23,8 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown10 { get; set; }
         public LazyRow< Behavior > Behavior1 { get; set; }
         public uint Unknown12 { get; set; }
+        public byte Unknown13 { get; set; }
+        public byte Unknown14 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -41,6 +43,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown10 = parser.ReadColumn< uint >( 10 );
             Behavior1 = new LazyRow< Behavior >( gameData, parser.ReadColumn< ushort >( 11 ), language );
             Unknown12 = parser.ReadColumn< uint >( 12 );
+            Unknown13 = parser.ReadColumn< byte >( 13 );
+            Unknown14 = parser.ReadColumn< byte >( 14 );
         }
     }
 }

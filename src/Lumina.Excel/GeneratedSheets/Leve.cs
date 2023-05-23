@@ -13,8 +13,8 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name { get; set; }
         public SeString Description { get; set; }
         public LazyRow< LeveClient > LeveClient { get; set; }
+        public byte Unknown3 { get; set; }
         public LazyRow< LeveAssignmentType > LeveAssignmentType { get; set; }
-        public int Unknown4 { get; set; }
         public LazyRow< Town > Town { get; set; }
         public ushort ClassJobLevel { get; set; }
         public byte TimeLimit { get; set; }
@@ -22,7 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
         public int Evaluation { get; set; }
         public LazyRow< PlaceName > PlaceNameStart { get; set; }
         public LazyRow< PlaceName > PlaceNameIssued { get; set; }
-        public ushort Unknown12 { get; set; }
+        public LazyRow< FishingSpot > FishingSpot { get; set; }
         public byte Unknown13 { get; set; }
         public bool Unknown14 { get; set; }
         public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
@@ -52,8 +52,8 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadColumn< SeString >( 0 );
             Description = parser.ReadColumn< SeString >( 1 );
             LeveClient = new LazyRow< LeveClient >( gameData, parser.ReadColumn< int >( 2 ), language );
-            LeveAssignmentType = new LazyRow< LeveAssignmentType >( gameData, parser.ReadColumn< byte >( 3 ), language );
-            Unknown4 = parser.ReadColumn< int >( 4 );
+            Unknown3 = parser.ReadColumn< byte >( 3 );
+            LeveAssignmentType = new LazyRow< LeveAssignmentType >( gameData, parser.ReadColumn< int >( 4 ), language );
             Town = new LazyRow< Town >( gameData, parser.ReadColumn< int >( 5 ), language );
             ClassJobLevel = parser.ReadColumn< ushort >( 6 );
             TimeLimit = parser.ReadColumn< byte >( 7 );
@@ -61,7 +61,7 @@ namespace Lumina.Excel.GeneratedSheets
             Evaluation = parser.ReadColumn< int >( 9 );
             PlaceNameStart = new LazyRow< PlaceName >( gameData, parser.ReadColumn< int >( 10 ), language );
             PlaceNameIssued = new LazyRow< PlaceName >( gameData, parser.ReadColumn< int >( 11 ), language );
-            Unknown12 = parser.ReadColumn< ushort >( 12 );
+            FishingSpot = new LazyRow< FishingSpot >( gameData, parser.ReadColumn< ushort >( 12 ), language );
             Unknown13 = parser.ReadColumn< byte >( 13 );
             Unknown14 = parser.ReadColumn< bool >( 14 );
             ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 15 ), language );

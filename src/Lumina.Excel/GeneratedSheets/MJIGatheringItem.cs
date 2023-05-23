@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIGatheringItem", columnHash: 0x1188e467 )]
+    [Sheet( "MJIGatheringItem", columnHash: 0x0dd2ae8d )]
     public partial class MJIGatheringItem : ExcelRow
     {
         
@@ -16,6 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
         public short X { get; set; }
         public short Y { get; set; }
         public ushort Radius { get; set; }
+        public byte Unknown6 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -27,6 +28,7 @@ namespace Lumina.Excel.GeneratedSheets
             X = parser.ReadColumn< short >( 3 );
             Y = parser.ReadColumn< short >( 4 );
             Radius = parser.ReadColumn< ushort >( 5 );
+            Unknown6 = parser.ReadColumn< byte >( 6 );
         }
     }
 }

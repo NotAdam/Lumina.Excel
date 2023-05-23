@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Stain", columnHash: 0xa2420e68 )]
+    [Sheet( "Stain", columnHash: 0x97c471bd )]
     public partial class Stain : ExcelRow
     {
         
@@ -14,8 +14,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Shade { get; set; }
         public byte SubOrder { get; set; }
         public SeString Name { get; set; }
-        public bool Unknown4 { get; set; }
+        public SeString Unknown4 { get; set; }
         public bool Unknown5 { get; set; }
+        public bool Unknown6 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -25,8 +26,9 @@ namespace Lumina.Excel.GeneratedSheets
             Shade = parser.ReadColumn< byte >( 1 );
             SubOrder = parser.ReadColumn< byte >( 2 );
             Name = parser.ReadColumn< SeString >( 3 );
-            Unknown4 = parser.ReadColumn< bool >( 4 );
+            Unknown4 = parser.ReadColumn< SeString >( 4 );
             Unknown5 = parser.ReadColumn< bool >( 5 );
+            Unknown6 = parser.ReadColumn< bool >( 6 );
         }
     }
 }

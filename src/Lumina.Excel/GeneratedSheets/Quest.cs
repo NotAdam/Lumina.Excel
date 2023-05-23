@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Quest", columnHash: 0xc4157593 )]
+    [Sheet( "Quest", columnHash: 0x73334779 )]
     public partial class Quest : ExcelRow
     {
         
@@ -308,6 +308,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown1520 { get; set; }
         public ushort SortKey { get; set; }
         public bool Unknown1522 { get; set; }
+        public bool Unknown1523 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -658,7 +659,7 @@ namespace Lumina.Excel.GeneratedSheets
             OptionalItemStainReward = new LazyRow< Stain >[ 5 ];
             for( var i = 0; i < 5; i++ )
                 OptionalItemStainReward[ i ] = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 1494 + i ), language );
-            EmoteReward = new LazyRow< Emote >( gameData, parser.ReadColumn< byte >( 1499 ), language );
+            EmoteReward = new LazyRow< Emote >( gameData, parser.ReadColumn< ushort >( 1499 ), language );
             ActionReward = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 1500 ), language );
             GeneralActionReward = new LazyRow< GeneralAction >[ 2 ];
             for( var i = 0; i < 2; i++ )
@@ -683,6 +684,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1520 = parser.ReadColumn< byte >( 1520 );
             SortKey = parser.ReadColumn< ushort >( 1521 );
             Unknown1522 = parser.ReadColumn< bool >( 1522 );
+            Unknown1523 = parser.ReadColumn< bool >( 1523 );
         }
     }
 }

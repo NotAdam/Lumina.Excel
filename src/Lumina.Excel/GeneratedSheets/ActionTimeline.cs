@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ActionTimeline", columnHash: 0x3ae4a5a0 )]
+    [Sheet( "ActionTimeline", columnHash: 0x55e1a16f )]
     public partial class ActionTimeline : ExcelRow
     {
         
@@ -31,6 +31,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown18 { get; set; }
         public bool Unknown19 { get; set; }
         public byte Unknown20 { get; set; }
+        public byte Unknown21 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -57,6 +58,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown18 = parser.ReadColumn< bool >( 18 );
             Unknown19 = parser.ReadColumn< bool >( 19 );
             Unknown20 = parser.ReadColumn< byte >( 20 );
+            Unknown21 = parser.ReadColumn< byte >( 21 );
         }
     }
 }

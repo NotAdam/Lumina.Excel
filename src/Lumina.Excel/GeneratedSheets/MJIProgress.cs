@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIProgress", columnHash: 0xe08efa43 )]
+    [Sheet( "MJIProgress", columnHash: 0xe3dea9d5 )]
     public partial class MJIProgress : ExcelRow
     {
         
@@ -32,6 +32,7 @@ namespace Lumina.Excel.GeneratedSheets
         public short Unknown19 { get; set; }
         public short Unknown20 { get; set; }
         public ushort Unknown21 { get; set; }
+        public byte Unknown22 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -59,6 +60,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown19 = parser.ReadColumn< short >( 19 );
             Unknown20 = parser.ReadColumn< short >( 20 );
             Unknown21 = parser.ReadColumn< ushort >( 21 );
+            Unknown22 = parser.ReadColumn< byte >( 22 );
         }
     }
 }

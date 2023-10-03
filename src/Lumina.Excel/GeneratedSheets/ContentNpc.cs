@@ -6,17 +6,17 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EventIconPriorityPair", columnHash: 0xdbf43666 )]
-    public partial class EventIconPriorityPair : ExcelRow
+    [Sheet( "ContentNpc", columnHash: 0xcd4cb81c )]
+    public partial class ContentNpc : ExcelRow
     {
         
-        public uint Icon { get; set; }
+        public bool Unknown0 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Icon = parser.ReadColumn< uint >( 0 );
+            Unknown0 = parser.ReadColumn< bool >( 0 );
         }
     }
 }

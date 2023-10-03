@@ -19,7 +19,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< CustomTalk > CustomTalk { get; set; }
         public LazyRow< Item > Item { get; set; }
         public bool DestroyOnRemoval { get; set; }
-        public LazyRow< HousingPlacement > Tooltip { get; set; }
+        public bool Unknown9 { get; set; }
         public byte Unknown10 { get; set; }
         public byte Unknown11 { get; set; }
         public byte Unknown12 { get; set; }
@@ -39,7 +39,7 @@ namespace Lumina.Excel.GeneratedSheets
             CustomTalk = new LazyRow< CustomTalk >( gameData, parser.ReadColumn< uint >( 6 ), language );
             Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 7 ), language );
             DestroyOnRemoval = parser.ReadColumn< bool >( 8 );
-            #warning generator warning: the definition for this field (Tooltip) has an invalid type for a LazyRow - is a bool when should be numeric!
+            Unknown9 = parser.ReadColumn< bool >( 9 );
             Unknown10 = parser.ReadColumn< byte >( 10 );
             Unknown11 = parser.ReadColumn< byte >( 11 );
             Unknown12 = parser.ReadColumn< byte >( 12 );

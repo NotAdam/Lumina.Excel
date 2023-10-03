@@ -10,13 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public partial class MJIGatheringTool : ExcelRow
     {
         
-        public byte Unknown0 { get; set; }
+        public LazyRow< MJIKeyItem > Item { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< byte >( 0 );
+            Item = new LazyRow< MJIKeyItem >( gameData, parser.ReadColumn< byte >( 0 ), language );
         }
     }
 }

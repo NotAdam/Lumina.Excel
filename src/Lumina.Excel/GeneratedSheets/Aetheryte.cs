@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Aetheryte", columnHash: 0xcd1e31a4 )]
+    [Sheet( "Aetheryte", columnHash: 0xb41a2b3c )]
     public partial class Aetheryte : ExcelRow
     {
         
@@ -23,7 +23,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< TerritoryType > Territory { get; set; }
         public LazyRow< Level >[] Level { get; set; }
         public bool IsAetheryte { get; set; }
-        public SeString Unknown16 { get; set; }
+        public byte Unknown16 { get; set; }
+        public SeString Unknown17 { get; set; }
         public byte AethernetGroup { get; set; }
         public bool Invisible { get; set; }
         public LazyRow< Quest > RequiredQuest { get; set; }
@@ -51,14 +52,15 @@ namespace Lumina.Excel.GeneratedSheets
             for( var i = 0; i < 4; i++ )
                 Level[ i ] = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 11 + i ), language );
             IsAetheryte = parser.ReadColumn< bool >( 15 );
-            Unknown16 = parser.ReadColumn< SeString >( 16 );
-            AethernetGroup = parser.ReadColumn< byte >( 17 );
-            Invisible = parser.ReadColumn< bool >( 18 );
-            RequiredQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 19 ), language );
-            Map = new LazyRow< Map >( gameData, parser.ReadColumn< ushort >( 20 ), language );
-            AetherstreamX = parser.ReadColumn< short >( 21 );
-            AetherstreamY = parser.ReadColumn< short >( 22 );
-            Order = parser.ReadColumn< byte >( 23 );
+            Unknown16 = parser.ReadColumn< byte >( 16 );
+            Unknown17 = parser.ReadColumn< SeString >( 17 );
+            AethernetGroup = parser.ReadColumn< byte >( 18 );
+            Invisible = parser.ReadColumn< bool >( 19 );
+            RequiredQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 20 ), language );
+            Map = new LazyRow< Map >( gameData, parser.ReadColumn< ushort >( 21 ), language );
+            AetherstreamX = parser.ReadColumn< short >( 22 );
+            AetherstreamY = parser.ReadColumn< short >( 23 );
+            Order = parser.ReadColumn< byte >( 24 );
         }
     }
 }

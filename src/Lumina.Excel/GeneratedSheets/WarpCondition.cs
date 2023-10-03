@@ -14,7 +14,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte CompleteParam { get; set; }
         public LazyRow< Quest > RequiredQuest1 { get; set; }
         public LazyRow< Quest > RequiredQuest2 { get; set; }
-        public LazyRow< Quest > DRequiredQuest3 { get; set; }
+        public LazyRow< Quest > RequiredQuest3 { get; set; }
         public LazyRow< Quest > RequiredQuest4 { get; set; }
         public ushort QuestReward { get; set; }
         public ushort ClassLevel { get; set; }
@@ -27,7 +27,7 @@ namespace Lumina.Excel.GeneratedSheets
             CompleteParam = parser.ReadColumn< byte >( 1 );
             RequiredQuest1 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 2 ), language );
             RequiredQuest2 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 3 ), language );
-            DRequiredQuest3 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 4 ), language );
+            RequiredQuest3 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 4 ), language );
             RequiredQuest4 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 5 ), language );
             QuestReward = parser.ReadColumn< ushort >( 6 );
             ClassLevel = parser.ReadColumn< ushort >( 7 );

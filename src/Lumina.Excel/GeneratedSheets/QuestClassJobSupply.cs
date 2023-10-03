@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "QuestClassJobSupply", columnHash: 0xdd620f3e )]
+    [Sheet( "QuestClassJobSupply", columnHash: 0xe5f06bbc )]
     public partial class QuestClassJobSupply : ExcelRow
     {
         
@@ -16,6 +16,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Item > Item { get; set; }
         public byte AmountRequired { get; set; }
         public bool ItemHQ { get; set; }
+        public uint Unknown6 { get; set; }
+        public ushort Unknown7 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -27,6 +29,8 @@ namespace Lumina.Excel.GeneratedSheets
             Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 3 ), language );
             AmountRequired = parser.ReadColumn< byte >( 4 );
             ItemHQ = parser.ReadColumn< bool >( 5 );
+            Unknown6 = parser.ReadColumn< uint >( 6 );
+            Unknown7 = parser.ReadColumn< ushort >( 7 );
         }
     }
 }

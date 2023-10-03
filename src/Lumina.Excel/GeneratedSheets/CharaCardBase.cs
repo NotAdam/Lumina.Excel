@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CharaCardBase", columnHash: 0x2e632858 )]
+    [Sheet( "CharaCardBase", columnHash: 0xa54aa43b )]
     public partial class CharaCardBase : ExcelRow
     {
         
@@ -16,6 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown3 { get; set; }
         public byte Unknown4 { get; set; }
         public LazyRow< BannerCondition > UnlockCondition { get; set; }
+        public byte Unknown6 { get; set; }
         public ushort SortKey { get; set; }
         public SeString Name { get; set; }
         
@@ -29,8 +30,9 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown3 = parser.ReadColumn< bool >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             UnlockCondition = new LazyRow< BannerCondition >( gameData, parser.ReadColumn< ushort >( 5 ), language );
-            SortKey = parser.ReadColumn< ushort >( 6 );
-            Name = parser.ReadColumn< SeString >( 7 );
+            Unknown6 = parser.ReadColumn< byte >( 6 );
+            SortKey = parser.ReadColumn< ushort >( 7 );
+            Name = parser.ReadColumn< SeString >( 8 );
         }
     }
 }

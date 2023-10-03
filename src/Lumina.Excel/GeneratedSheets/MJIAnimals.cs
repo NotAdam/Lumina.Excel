@@ -12,8 +12,8 @@ namespace Lumina.Excel.GeneratedSheets
         
         public LazyRow< BNpcBase > BNpcBase { get; set; }
         public byte Size { get; set; }
-        public byte Unknown2 { get; set; }
-        public byte Unknown3 { get; set; }
+        public byte Rarity { get; set; }
+        public byte Sort { get; set; }
         public LazyRow< Item >[] Reward { get; set; }
         public int Icon { get; set; }
         
@@ -23,8 +23,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             BNpcBase = new LazyRow< BNpcBase >( gameData, parser.ReadColumn< uint >( 0 ), language );
             Size = parser.ReadColumn< byte >( 1 );
-            Unknown2 = parser.ReadColumn< byte >( 2 );
-            Unknown3 = parser.ReadColumn< byte >( 3 );
+            Rarity = parser.ReadColumn< byte >( 2 );
+            Sort = parser.ReadColumn< byte >( 3 );
             Reward = new LazyRow< Item >[ 2 ];
             for( var i = 0; i < 2; i++ )
                 Reward[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 4 + i ), language );

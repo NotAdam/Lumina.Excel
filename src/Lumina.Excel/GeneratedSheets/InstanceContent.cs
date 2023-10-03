@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "InstanceContent", columnHash: 0x0442e809 )]
+    [Sheet( "InstanceContent", columnHash: 0xa1adecb4 )]
     public partial class InstanceContent : ExcelRow
     {
         
@@ -43,7 +43,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint InstanceClearExp { get; set; }
         public uint InstanceClearGil { get; set; }
         public uint InstanceContentRewardItem { get; set; }
-        public byte Unknown49 { get; set; }
+        public ushort Unknown49 { get; set; }
         public uint Unknown50 { get; set; }
         public LazyRow< InstanceContentBuff > InstanceContentBuff { get; set; }
         public bool Unknown52 { get; set; }
@@ -53,15 +53,16 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown56 { get; set; }
         public byte Unknown57 { get; set; }
         public byte Unknown58 { get; set; }
-        public bool Unknown59 { get; set; }
-        public ushort Unknown60 { get; set; }
+        public byte Unknown59 { get; set; }
+        public bool Unknown60 { get; set; }
         public ushort Unknown61 { get; set; }
         public ushort Unknown62 { get; set; }
-        public byte Unknown63 { get; set; }
-        public ushort Unknown64 { get; set; }
+        public ushort Unknown63 { get; set; }
+        public byte Unknown64 { get; set; }
         public ushort Unknown65 { get; set; }
-        public bool Unknown66 { get; set; }
-        public ushort Unknown67 { get; set; }
+        public ushort Unknown66 { get; set; }
+        public bool Unknown67 { get; set; }
+        public ushort Unknown68 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -108,7 +109,7 @@ namespace Lumina.Excel.GeneratedSheets
             InstanceClearExp = parser.ReadColumn< uint >( 46 );
             InstanceClearGil = parser.ReadColumn< uint >( 47 );
             InstanceContentRewardItem = parser.ReadColumn< uint >( 48 );
-            Unknown49 = parser.ReadColumn< byte >( 49 );
+            Unknown49 = parser.ReadColumn< ushort >( 49 );
             Unknown50 = parser.ReadColumn< uint >( 50 );
             InstanceContentBuff = new LazyRow< InstanceContentBuff >( gameData, parser.ReadColumn< int >( 51 ), language );
             Unknown52 = parser.ReadColumn< bool >( 52 );
@@ -118,15 +119,16 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown56 = parser.ReadColumn< byte >( 56 );
             Unknown57 = parser.ReadColumn< byte >( 57 );
             Unknown58 = parser.ReadColumn< byte >( 58 );
-            Unknown59 = parser.ReadColumn< bool >( 59 );
-            Unknown60 = parser.ReadColumn< ushort >( 60 );
+            Unknown59 = parser.ReadColumn< byte >( 59 );
+            Unknown60 = parser.ReadColumn< bool >( 60 );
             Unknown61 = parser.ReadColumn< ushort >( 61 );
             Unknown62 = parser.ReadColumn< ushort >( 62 );
-            Unknown63 = parser.ReadColumn< byte >( 63 );
-            Unknown64 = parser.ReadColumn< ushort >( 64 );
+            Unknown63 = parser.ReadColumn< ushort >( 63 );
+            Unknown64 = parser.ReadColumn< byte >( 64 );
             Unknown65 = parser.ReadColumn< ushort >( 65 );
-            Unknown66 = parser.ReadColumn< bool >( 66 );
-            Unknown67 = parser.ReadColumn< ushort >( 67 );
+            Unknown66 = parser.ReadColumn< ushort >( 66 );
+            Unknown67 = parser.ReadColumn< bool >( 67 );
+            Unknown68 = parser.ReadColumn< ushort >( 68 );
         }
     }
 }

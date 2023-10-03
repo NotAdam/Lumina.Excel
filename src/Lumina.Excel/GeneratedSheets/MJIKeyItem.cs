@@ -11,14 +11,14 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public LazyRow< Item > Item { get; set; }
-        public byte Unknown1 { get; set; }
+        public byte Sort { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
             Item = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 0 ), language );
-            Unknown1 = parser.ReadColumn< byte >( 1 );
+            Sort = parser.ReadColumn< byte >( 1 );
         }
     }
 }

@@ -6,17 +6,17 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EventIconPriorityPair", columnHash: 0xdbf43666 )]
-    public partial class EventIconPriorityPair : ExcelRow
+    [Sheet( "EurekaDungeonPortal", columnHash: 0xdbf43666 )]
+    public partial class EurekaDungeonPortal : ExcelRow
     {
         
-        public uint Icon { get; set; }
+        public LazyRow< Level > LevelId { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Icon = parser.ReadColumn< uint >( 0 );
+            LevelId = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 0 ), language );
         }
     }
 }

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "QuestLinkMarkerSet", columnHash: 0x0e91734c )]
+    [Sheet( "QuestLinkMarkerSet", columnHash: 0x202b96b0 )]
     public partial class QuestLinkMarkerSet : ExcelRow
     {
         
@@ -14,8 +14,9 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown1 { get; set; }
         public byte Unknown2 { get; set; }
         public byte Unknown3 { get; set; }
-        public bool Unknown4 { get; set; }
+        public byte Unknown4 { get; set; }
         public bool Unknown5 { get; set; }
+        public bool Unknown6 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -25,8 +26,9 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1 = parser.ReadColumn< uint >( 1 );
             Unknown2 = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< byte >( 3 );
-            Unknown4 = parser.ReadColumn< bool >( 4 );
+            Unknown4 = parser.ReadColumn< byte >( 4 );
             Unknown5 = parser.ReadColumn< bool >( 5 );
+            Unknown6 = parser.ReadColumn< bool >( 6 );
         }
     }
 }

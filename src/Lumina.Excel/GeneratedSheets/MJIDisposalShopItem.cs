@@ -10,21 +10,21 @@ namespace Lumina.Excel.GeneratedSheets
     public partial class MJIDisposalShopItem : ExcelRow
     {
         
-        public byte Unknown0 { get; set; }
-        public byte Unknown1 { get; set; }
-        public ushort Unknown2 { get; set; }
+        public LazyRow< MJIItemPouch > Item { get; set; }
+        public byte Currency { get; set; }
+        public ushort Count { get; set; }
         public LazyRow< MJIDisposalShopUICategory > Category { get; set; }
-        public byte Unknown4 { get; set; }
+        public byte Sort { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< byte >( 0 );
-            Unknown1 = parser.ReadColumn< byte >( 1 );
-            Unknown2 = parser.ReadColumn< ushort >( 2 );
+            Item = new LazyRow< MJIItemPouch >( gameData, parser.ReadColumn< byte >( 0 ), language );
+            Currency = parser.ReadColumn< byte >( 1 );
+            Count = parser.ReadColumn< ushort >( 2 );
             Category = new LazyRow< MJIDisposalShopUICategory >( gameData, parser.ReadColumn< byte >( 3 ), language );
-            Unknown4 = parser.ReadColumn< byte >( 4 );
+            Sort = parser.ReadColumn< byte >( 4 );
         }
     }
 }

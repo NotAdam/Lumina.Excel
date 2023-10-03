@@ -6,33 +6,37 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIVillageAppearanceSG", columnHash: 0xf8caa5cf )]
-    public partial class MJIVillageAppearanceSG : ExcelRow
+    [Sheet( "MirageStoreSetItem", columnHash: 0x5196d053 )]
+    public partial class MirageStoreSetItem : ExcelRow
     {
         
-        public LazyRow< ExportedSG >[] SGB { get; set; }
-        public ushort Unknown3 { get; set; }
-        public ushort Unknown4 { get; set; }
+        public uint Unknown0 { get; set; }
+        public uint Unknown1 { get; set; }
+        public uint Unknown2 { get; set; }
+        public uint Unknown3 { get; set; }
+        public uint Unknown4 { get; set; }
         public uint Unknown5 { get; set; }
         public uint Unknown6 { get; set; }
         public uint Unknown7 { get; set; }
         public uint Unknown8 { get; set; }
         public uint Unknown9 { get; set; }
+        public uint Unknown10 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            SGB = new LazyRow< ExportedSG >[ 3 ];
-            for( var i = 0; i < 3; i++ )
-                SGB[ i ] = new LazyRow< ExportedSG >( gameData, parser.ReadColumn< ushort >( 0 + i ), language );
-            Unknown3 = parser.ReadColumn< ushort >( 3 );
-            Unknown4 = parser.ReadColumn< ushort >( 4 );
+            Unknown0 = parser.ReadColumn< uint >( 0 );
+            Unknown1 = parser.ReadColumn< uint >( 1 );
+            Unknown2 = parser.ReadColumn< uint >( 2 );
+            Unknown3 = parser.ReadColumn< uint >( 3 );
+            Unknown4 = parser.ReadColumn< uint >( 4 );
             Unknown5 = parser.ReadColumn< uint >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );
             Unknown7 = parser.ReadColumn< uint >( 7 );
             Unknown8 = parser.ReadColumn< uint >( 8 );
             Unknown9 = parser.ReadColumn< uint >( 9 );
+            Unknown10 = parser.ReadColumn< uint >( 10 );
         }
     }
 }

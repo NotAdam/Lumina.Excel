@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BeastTribe", columnHash: 0x336849f0 )]
+    [Sheet( "BeastTribe", columnHash: 0x2faf7b33 )]
     public partial class BeastTribe : ExcelRow
     {
         
@@ -17,6 +17,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Icon { get; set; }
         public byte MaxRank { get; set; }
         public LazyRow< ExVersion > Expansion { get; set; }
+        public uint Unknown7 { get; set; }
         public LazyRow< Item > CurrencyItem { get; set; }
         public byte DisplayOrder { get; set; }
         public SeString Name { get; set; }
@@ -40,17 +41,18 @@ namespace Lumina.Excel.GeneratedSheets
             Icon = parser.ReadColumn< uint >( 4 );
             MaxRank = parser.ReadColumn< byte >( 5 );
             Expansion = new LazyRow< ExVersion >( gameData, parser.ReadColumn< byte >( 6 ), language );
-            CurrencyItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 7 ), language );
-            DisplayOrder = parser.ReadColumn< byte >( 8 );
-            Name = parser.ReadColumn< SeString >( 9 );
-            Adjective = parser.ReadColumn< sbyte >( 10 );
-            Plural = parser.ReadColumn< SeString >( 11 );
-            PossessivePronoun = parser.ReadColumn< sbyte >( 12 );
-            StartsWithVowel = parser.ReadColumn< sbyte >( 13 );
-            Pronoun = parser.ReadColumn< sbyte >( 14 );
-            Article = parser.ReadColumn< sbyte >( 15 );
-            DEF = parser.ReadColumn< sbyte >( 16 );
-            NameRelation = parser.ReadColumn< SeString >( 17 );
+            Unknown7 = parser.ReadColumn< uint >( 7 );
+            CurrencyItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 8 ), language );
+            DisplayOrder = parser.ReadColumn< byte >( 9 );
+            Name = parser.ReadColumn< SeString >( 10 );
+            Adjective = parser.ReadColumn< sbyte >( 11 );
+            Plural = parser.ReadColumn< SeString >( 12 );
+            PossessivePronoun = parser.ReadColumn< sbyte >( 13 );
+            StartsWithVowel = parser.ReadColumn< sbyte >( 14 );
+            Pronoun = parser.ReadColumn< sbyte >( 15 );
+            Article = parser.ReadColumn< sbyte >( 16 );
+            DEF = parser.ReadColumn< sbyte >( 17 );
+            NameRelation = parser.ReadColumn< SeString >( 18 );
         }
     }
 }

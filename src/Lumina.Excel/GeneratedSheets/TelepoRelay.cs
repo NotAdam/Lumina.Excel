@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "TelepoRelay", columnHash: 0x85030c6e )]
+    [Sheet( "TelepoRelay", columnHash: 0x0df60fef )]
     public partial class TelepoRelay : ExcelRow
     {
         
@@ -28,6 +28,9 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown15 { get; set; }
         public ushort Unknown16 { get; set; }
         public ushort Unknown17 { get; set; }
+        public ushort Unknown18 { get; set; }
+        public ushort Unknown19 { get; set; }
+        public ushort Unknown20 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -51,6 +54,9 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown15 = parser.ReadColumn< ushort >( 15 );
             Unknown16 = parser.ReadColumn< ushort >( 16 );
             Unknown17 = parser.ReadColumn< ushort >( 17 );
+            Unknown18 = parser.ReadColumn< ushort >( 18 );
+            Unknown19 = parser.ReadColumn< ushort >( 19 );
+            Unknown20 = parser.ReadColumn< ushort >( 20 );
         }
     }
 }

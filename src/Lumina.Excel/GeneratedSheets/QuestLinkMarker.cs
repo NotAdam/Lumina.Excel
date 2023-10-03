@@ -10,9 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public partial class QuestLinkMarker : ExcelRow
     {
         
-        public uint Unknown0 { get; set; }
-        public uint Unknown1 { get; set; }
-        public uint Unknown2 { get; set; }
+        public LazyRow< Map > SourceMap { get; set; }
+        public LazyRow< Level > Level { get; set; }
+        public LazyRow< Map > TargetMap { get; set; }
         public byte Unknown3 { get; set; }
         public bool Unknown4 { get; set; }
         
@@ -20,9 +20,9 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< uint >( 0 );
-            Unknown1 = parser.ReadColumn< uint >( 1 );
-            Unknown2 = parser.ReadColumn< uint >( 2 );
+            SourceMap = new LazyRow< Map >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            Level = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 1 ), language );
+            TargetMap = new LazyRow< Map >( gameData, parser.ReadColumn< uint >( 2 ), language );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             Unknown4 = parser.ReadColumn< bool >( 4 );
         }

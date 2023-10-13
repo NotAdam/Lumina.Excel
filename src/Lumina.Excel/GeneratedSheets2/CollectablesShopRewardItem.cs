@@ -1,0 +1,43 @@
+// ReSharper disable All
+
+using UIntSpan = System.Span<uint>;
+using Lumina.Text;
+using Lumina.Data;
+using Lumina.Data.Structs.Excel;
+using Lumina.Excel;
+
+namespace Lumina.Excel.GeneratedSheets2;
+
+[Sheet( "CollectablesShopRewardItem", columnHash: 0xf7e08b71 )]
+public partial class CollectablesShopRewardItem : ExcelRow
+{
+    
+    public LazyRow< Item > Item { get; private set; }
+    public uint Unknown5 { get; private set; }
+    public byte RewardLow { get; private set; }
+    public byte RewardMid { get; private set; }
+    public byte RewardHigh { get; private set; }
+    public byte Unknown7 { get; private set; }
+    public byte Unknown8 { get; private set; }
+    public byte Unknown9 { get; private set; }
+    public bool Unknown1 { get; private set; }
+    public bool Unknown6 { get; private set; }
+    
+    public override void PopulateData( RowParser parser, GameData gameData, Language language )
+    {
+        base.PopulateData( parser, gameData, language );
+
+        Item = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( 0 ), language );
+        Unknown5 = parser.ReadOffset< uint >( 4 );
+        RewardLow = parser.ReadOffset< byte >( 8 );
+        RewardMid = parser.ReadOffset< byte >( 9 );
+        RewardHigh = parser.ReadOffset< byte >( 10 );
+        Unknown7 = parser.ReadOffset< byte >( 11 );
+        Unknown8 = parser.ReadOffset< byte >( 12 );
+        Unknown9 = parser.ReadOffset< byte >( 13 );
+        Unknown1 = parser.ReadOffset< bool >( 14 );
+        Unknown6 = parser.ReadOffset< bool >( 14, 2 );
+        
+
+    }
+}

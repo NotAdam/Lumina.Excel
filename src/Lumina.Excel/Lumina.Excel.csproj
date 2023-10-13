@@ -40,4 +40,14 @@
         <EmbeddedResource Include="RSV\**\*.rsv" />
     </ItemGroup>
 
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Lumina\src\Lumina\Lumina.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Folder Include="CustomSheets\" />
+    </ItemGroup>
+
 </Project>

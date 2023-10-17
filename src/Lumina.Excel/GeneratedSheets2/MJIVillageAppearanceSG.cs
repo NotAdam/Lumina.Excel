@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "MJIVillageAppearanceSG", columnHash: 0x98ef9486 )]
+[Sheet( "MJIVillageAppearanceSG", columnHash: 0xf8caa5cf )]
 public partial class MJIVillageAppearanceSG : ExcelRow
 {
     public struct VillageAppearanceDataStruct
@@ -23,8 +23,8 @@ public partial class MJIVillageAppearanceSG : ExcelRow
     {
         base.PopulateData( parser, gameData, language );
 
-        VillageAppearanceData = new VillageAppearanceDataStruct[4];
-        for (int i = 0; i < 4; i++)
+        VillageAppearanceData = new VillageAppearanceDataStruct[5];
+        for (int i = 0; i < 5; i++)
         {
         	VillageAppearanceData[i].UnknownParam = parser.ReadOffset< uint >( (ushort) (i * 8 + 0));
         	VillageAppearanceData[i].SGB = new LazyRow< ExportedSG >( gameData, parser.ReadOffset< ushort >( (ushort) (i * 8 + 4) ), language );

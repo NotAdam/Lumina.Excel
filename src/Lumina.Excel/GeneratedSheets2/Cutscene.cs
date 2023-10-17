@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "Cutscene", columnHash: 0xc7384dde )]
+[Sheet( "Cutscene", columnHash: 0xae8b8521 )]
 public partial class Cutscene : ExcelRow
 {
     
@@ -21,6 +21,7 @@ public partial class Cutscene : ExcelRow
     public byte Unknown1 { get; private set; }
     public byte Unknown2 { get; private set; }
     public bool Unknown3 { get; private set; }
+    public bool Unknown9 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -35,6 +36,7 @@ public partial class Cutscene : ExcelRow
         Unknown1 = parser.ReadOffset< byte >( 22 );
         Unknown2 = parser.ReadOffset< byte >( 23 );
         Unknown3 = parser.ReadOffset< bool >( 24 );
+        Unknown9 = parser.ReadOffset< bool >( 24, 2 );
         
 
     }

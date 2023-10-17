@@ -8,23 +8,17 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "LFGExtensionContent", columnHash: 0x3f77b2e9 )]
-public partial class LFGExtensionContent : ExcelRow
+[Sheet( "UILevelLookup", columnHash: 0xdbf43666 )]
+public partial class UILevelLookup : ExcelRow
 {
     
     public uint Unknown0 { get; private set; }
-    public byte Unknown1 { get; private set; }
-    public byte Unknown2 { get; private set; }
-    public byte Unknown3 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         Unknown0 = parser.ReadOffset< uint >( 0 );
-        Unknown1 = parser.ReadOffset< byte >( 4 );
-        Unknown2 = parser.ReadOffset< byte >( 5 );
-        Unknown3 = parser.ReadOffset< byte >( 6 );
         
 
     }

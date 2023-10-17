@@ -8,12 +8,13 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "WorldDCGroupType", columnHash: 0x9ff65ad6 )]
+[Sheet( "WorldDCGroupType", columnHash: 0x23dfe9bd )]
 public partial class WorldDCGroupType : ExcelRow
 {
     
     public SeString Name { get; private set; }
     public byte Region { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -21,6 +22,7 @@ public partial class WorldDCGroupType : ExcelRow
 
         Name = parser.ReadOffset< SeString >( 0 );
         Region = parser.ReadOffset< byte >( 4 );
+        Unknown1 = parser.ReadOffset< bool >( 5 );
         
 
     }

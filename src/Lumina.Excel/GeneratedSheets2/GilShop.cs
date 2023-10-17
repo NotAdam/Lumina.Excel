@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "GilShop", columnHash: 0x4a239844 )]
+[Sheet( "GilShop", columnHash: 0xf50b55e5 )]
 public partial class GilShop : ExcelRow
 {
     
@@ -18,7 +18,8 @@ public partial class GilShop : ExcelRow
     public LazyRow< DefaultTalk > AcceptTalk { get; private set; }
     public LazyRow< DefaultTalk > FailTalk { get; private set; }
     public ushort Unknown6 { get; private set; }
-    public bool Unknown5 { get; private set; }
+    public ushort Unknown5 { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -30,7 +31,8 @@ public partial class GilShop : ExcelRow
         AcceptTalk = new LazyRow< DefaultTalk >( gameData, parser.ReadOffset< int >( 12 ), language );
         FailTalk = new LazyRow< DefaultTalk >( gameData, parser.ReadOffset< int >( 16 ), language );
         Unknown6 = parser.ReadOffset< ushort >( 20 );
-        Unknown5 = parser.ReadOffset< bool >( 22 );
+        Unknown5 = parser.ReadOffset< ushort >( 22 );
+        Unknown1 = parser.ReadOffset< bool >( 24 );
         
 
     }

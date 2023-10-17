@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "Cabinet", columnHash: 0x200261d8 )]
+[Sheet( "Cabinet", columnHash: 0xe18cbe18 )]
 public partial class Cabinet : ExcelRow
 {
     
@@ -20,7 +20,7 @@ public partial class Cabinet : ExcelRow
     {
         base.PopulateData( parser, gameData, language );
 
-        Item = new LazyRow< Item >( gameData, parser.ReadOffset< int >( 0 ), language );
+        Item = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( 0 ), language );
         Order = parser.ReadOffset< ushort >( 4 );
         Category = new LazyRow< CabinetCategory >( gameData, parser.ReadOffset< byte >( 6 ), language );
         

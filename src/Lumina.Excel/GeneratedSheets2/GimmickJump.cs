@@ -8,14 +8,16 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "GimmickJump", columnHash: 0x4858f2f1 )]
+[Sheet( "GimmickJump", columnHash: 0x914b082f )]
 public partial class GimmickJump : ExcelRow
 {
     
     public LazyRow< ActionTimeline > LoopMotion { get; private set; }
     public LazyRow< ActionTimeline > EndMotion { get; private set; }
     public ushort FallDamage { get; private set; }
-    public sbyte Height { get; private set; }
+    public ushort Height { get; private set; }
+    public ushort Unknown1 { get; private set; }
+    public ushort Unknown2 { get; private set; }
     public bool StartClient { get; private set; }
     public bool Unknown5 { get; private set; }
     
@@ -26,9 +28,11 @@ public partial class GimmickJump : ExcelRow
         LoopMotion = new LazyRow< ActionTimeline >( gameData, parser.ReadOffset< uint >( 0 ), language );
         EndMotion = new LazyRow< ActionTimeline >( gameData, parser.ReadOffset< uint >( 4 ), language );
         FallDamage = parser.ReadOffset< ushort >( 8 );
-        Height = parser.ReadOffset< sbyte >( 10 );
-        StartClient = parser.ReadOffset< bool >( 11 );
-        Unknown5 = parser.ReadOffset< bool >( 11, 2 );
+        Height = parser.ReadOffset< ushort >( 10 );
+        Unknown1 = parser.ReadOffset< ushort >( 12 );
+        Unknown2 = parser.ReadOffset< ushort >( 14 );
+        StartClient = parser.ReadOffset< bool >( 16 );
+        Unknown5 = parser.ReadOffset< bool >( 16, 2 );
         
 
     }

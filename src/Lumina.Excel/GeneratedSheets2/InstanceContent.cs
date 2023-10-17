@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "InstanceContent", columnHash: 0x0442e809 )]
+[Sheet( "InstanceContent", columnHash: 0xa1adecb4 )]
 public partial class InstanceContent : ExcelRow
 {
     
@@ -28,7 +28,7 @@ public partial class InstanceContent : ExcelRow
     public ushort[] BossCurrencyA { get; private set; }
     public ushort[] BossCurrencyB { get; private set; }
     public ushort[] BossCurrencyC { get; private set; }
-    public byte Unknown49 { get; private set; }
+    public ushort Unknown49 { get; private set; }
     public LazyRow< Cutscene > Cutscene { get; private set; }
     public uint LGBEventRange { get; private set; }
     public LazyRow< InstanceContentTextData > InstanceContentTextDataBossStart { get; private set; }
@@ -58,6 +58,7 @@ public partial class InstanceContent : ExcelRow
     public byte Unknown56 { get; private set; }
     public byte Unknown57 { get; private set; }
     public byte Unknown58 { get; private set; }
+    public byte Unknown69 { get; private set; }
     public byte Unknown63 { get; private set; }
     public bool Unknown3 { get; private set; }
     public bool Unknown10 { get; private set; }
@@ -93,7 +94,7 @@ public partial class InstanceContent : ExcelRow
         BossCurrencyC = new ushort[5];
         for (int i = 0; i < 5; i++)
         	BossCurrencyC[i] = parser.ReadOffset< ushort >( 78 + i * 2 );
-        Unknown49 = parser.ReadOffset< byte >( 88 );
+        Unknown49 = parser.ReadOffset< ushort >( 88 );
         Cutscene = new LazyRow< Cutscene >( gameData, parser.ReadOffset< uint >( 92 ), language );
         LGBEventRange = parser.ReadOffset< uint >( 96 );
         InstanceContentTextDataBossStart = new LazyRow< InstanceContentTextData >( gameData, parser.ReadOffset< uint >( 100 ), language );
@@ -123,12 +124,13 @@ public partial class InstanceContent : ExcelRow
         Unknown56 = parser.ReadOffset< byte >( 160 );
         Unknown57 = parser.ReadOffset< byte >( 161 );
         Unknown58 = parser.ReadOffset< byte >( 162 );
-        Unknown63 = parser.ReadOffset< byte >( 163 );
-        Unknown3 = parser.ReadOffset< bool >( 164 );
-        Unknown10 = parser.ReadOffset< bool >( 164, 2 );
-        Unknown52 = parser.ReadOffset< bool >( 164, 4 );
-        Unknown59 = parser.ReadOffset< bool >( 164, 8 );
-        Unknown66 = parser.ReadOffset< bool >( 164, 16 );
+        Unknown69 = parser.ReadOffset< byte >( 163 );
+        Unknown63 = parser.ReadOffset< byte >( 164 );
+        Unknown3 = parser.ReadOffset< bool >( 165 );
+        Unknown10 = parser.ReadOffset< bool >( 165, 2 );
+        Unknown52 = parser.ReadOffset< bool >( 165, 4 );
+        Unknown59 = parser.ReadOffset< bool >( 165, 8 );
+        Unknown66 = parser.ReadOffset< bool >( 165, 16 );
         
 
     }

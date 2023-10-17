@@ -8,13 +8,13 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "MJILandmarkPlace", columnHash: 0x369fb53b )]
+[Sheet( "MJILandmarkPlace", columnHash: 0x6c5e3fc8 )]
 public partial class MJILandmarkPlace : ExcelRow
 {
     
     public uint Unknown0 { get; private set; }
     public LazyRow< EObjName > Name { get; private set; }
-    public LazyRow< ExportedSG > SGB { get; private set; }
+    public LazyRow< ExportedSG >[] SGB { get; private set; }
     public short Unknown4 { get; private set; }
     public short Unknown5 { get; private set; }
     public byte Unknown3 { get; private set; }
@@ -25,10 +25,12 @@ public partial class MJILandmarkPlace : ExcelRow
 
         Unknown0 = parser.ReadOffset< uint >( 0 );
         Name = new LazyRow< EObjName >( gameData, parser.ReadOffset< uint >( 4 ), language );
-        SGB = new LazyRow< ExportedSG >( gameData, parser.ReadOffset< uint >( 8 ), language );
-        Unknown4 = parser.ReadOffset< short >( 12 );
-        Unknown5 = parser.ReadOffset< short >( 14 );
-        Unknown3 = parser.ReadOffset< byte >( 16 );
+        SGB = new LazyRow< ExportedSG >[2];
+        for (int i = 0; i < 2; i++)
+        	SGB[i] = new LazyRow< ExportedSG >( gameData, parser.ReadOffset< uint >( (ushort) ( 8 + i * 4 ) ), language );
+        Unknown4 = parser.ReadOffset< short >( 16 );
+        Unknown5 = parser.ReadOffset< short >( 18 );
+        Unknown3 = parser.ReadOffset< byte >( 20 );
         
 
     }

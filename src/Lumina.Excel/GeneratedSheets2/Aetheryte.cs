@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "Aetheryte", columnHash: 0xcd1e31a4 )]
+[Sheet( "Aetheryte", columnHash: 0xb41a2b3c )]
 public partial class Aetheryte : ExcelRow
 {
     
@@ -31,6 +31,7 @@ public partial class Aetheryte : ExcelRow
     public short AetherstreamY { get; private set; }
     public byte AethernetGroup { get; private set; }
     public byte Order { get; private set; }
+    public byte Unknown1 { get; private set; }
     public bool IsAetheryte { get; private set; }
     public bool Invisible { get; private set; }
     
@@ -59,8 +60,9 @@ public partial class Aetheryte : ExcelRow
         AetherstreamY = parser.ReadOffset< short >( 50 );
         AethernetGroup = parser.ReadOffset< byte >( 52 );
         Order = parser.ReadOffset< byte >( 53 );
-        IsAetheryte = parser.ReadOffset< bool >( 54 );
-        Invisible = parser.ReadOffset< bool >( 54, 2 );
+        Unknown1 = parser.ReadOffset< byte >( 54 );
+        IsAetheryte = parser.ReadOffset< bool >( 55 );
+        Invisible = parser.ReadOffset< bool >( 55, 2 );
         
 
     }

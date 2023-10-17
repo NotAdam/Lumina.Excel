@@ -8,29 +8,14 @@ public class Program
 
         Directory.CreateDirectory( "output" );
 
-        // foreach( var file in Directory.EnumerateFiles( "./Schemas/", "*.yml" ) )
-        foreach( var file in Directory.EnumerateFiles( "./Schemas_test/", "*.yml" ) )
+        foreach( var file in Directory.EnumerateFiles( "./Schemas/", "*.yml" ) )
         {
             var name = Path.GetFileNameWithoutExtension( file );
             Console.WriteLine( $"doing sheet: {name}" );
-
-            string code = sg.ProcessDefinition( name );
             
-            // string code = "";
-            // try
-            // {
-            //     code = sg.ProcessDefinition( name );
-            //     if( code == null )
-            //     {
-            //         continue;
-            //     }
-            // }
-            // catch( Exception e )
-            // {
-            //     Console.WriteLine($"failed sheet: {name}");
-            // }
-            
+            var code = sg.ProcessDefinition( name );
             var path = $"./output/{name}.cs";
+            
             File.WriteAllText( path, code );
         }
     }

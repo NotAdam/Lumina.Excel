@@ -8,13 +8,11 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "StatusLoopVFX", columnHash: 0x69d57da3 )]
+[Sheet( "StatusLoopVFX", columnHash: 0xd5619c7c )]
 public partial class StatusLoopVFX : ExcelRow
 {
     
-    public LazyRow< VFX > VFX { get; private set; }
-    public LazyRow< VFX > VFX2 { get; private set; }
-    public LazyRow< VFX > VFX3 { get; private set; }
+    public LazyRow< VFX >[] VFX { get; private set; }
     public byte Unknown1 { get; private set; }
     public byte Unknown3 { get; private set; }
     public byte Unknown5 { get; private set; }
@@ -27,16 +25,16 @@ public partial class StatusLoopVFX : ExcelRow
     {
         base.PopulateData( parser, gameData, language );
 
-        VFX = new LazyRow< VFX >( gameData, parser.ReadOffset< ushort >( 0 ), language );
-        VFX2 = new LazyRow< VFX >( gameData, parser.ReadOffset< ushort >( 2 ), language );
-        VFX3 = new LazyRow< VFX >( gameData, parser.ReadOffset< ushort >( 4 ), language );
-        Unknown1 = parser.ReadOffset< byte >( 6 );
-        Unknown3 = parser.ReadOffset< byte >( 7 );
-        Unknown5 = parser.ReadOffset< byte >( 8 );
-        Unknown6 = parser.ReadOffset< byte >( 9 );
-        Unknown7 = parser.ReadOffset< bool >( 10 );
-        Unknown8 = parser.ReadOffset< bool >( 10, 2 );
-        Unknown9 = parser.ReadOffset< bool >( 10, 4 );
+        VFX = new LazyRow< VFX >[4];
+        for (int i = 0; i < 4; i++)
+        	VFX[i] = new LazyRow< VFX >( gameData, parser.ReadOffset< ushort >( (ushort) ( 0 + i * 2 ) ), language );
+        Unknown1 = parser.ReadOffset< byte >( 8 );
+        Unknown3 = parser.ReadOffset< byte >( 9 );
+        Unknown5 = parser.ReadOffset< byte >( 10 );
+        Unknown6 = parser.ReadOffset< byte >( 11 );
+        Unknown7 = parser.ReadOffset< bool >( 12 );
+        Unknown8 = parser.ReadOffset< bool >( 12, 2 );
+        Unknown9 = parser.ReadOffset< bool >( 12, 4 );
         
 
     }

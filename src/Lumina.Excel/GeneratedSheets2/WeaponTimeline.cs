@@ -11,6 +11,7 @@ namespace Lumina.Excel.GeneratedSheets2;
 [Sheet( "WeaponTimeline", columnHash: 0x7f718689 )]
 public partial class WeaponTimeline : ExcelRow
 {
+    
     public SeString File { get; private set; }
     public short NextWeaponTimeline { get; private set; }
     public bool Unknown2 { get; private set; }

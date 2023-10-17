@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "MJIProgress", columnHash: 0xe08efa43 )]
+[Sheet( "MJIProgress", columnHash: 0xe3dea9d5 )]
 public partial class MJIProgress : ExcelRow
 {
     
@@ -34,6 +34,7 @@ public partial class MJIProgress : ExcelRow
     public byte Unknown14 { get; private set; }
     public byte Unknown17 { get; private set; }
     public byte Unknown18 { get; private set; }
+    public byte Unknown22 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -61,6 +62,7 @@ public partial class MJIProgress : ExcelRow
         Unknown14 = parser.ReadOffset< byte >( 31 );
         Unknown17 = parser.ReadOffset< byte >( 32 );
         Unknown18 = parser.ReadOffset< byte >( 33 );
+        Unknown22 = parser.ReadOffset< byte >( 34 );
         
 
     }

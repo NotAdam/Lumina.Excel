@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "MJICraftworksPopularity", columnHash: 0x820f1482 )]
+[Sheet( "MJICraftworksPopularity", columnHash: 0x92a82168 )]
 public partial class MJICraftworksPopularity : ExcelRow
 {
     
@@ -18,8 +18,8 @@ public partial class MJICraftworksPopularity : ExcelRow
     {
         base.PopulateData( parser, gameData, language );
 
-        Popularity = new LazyRow< MJICraftworksPopularityType >[81];
-        for (int i = 0; i < 81; i++)
+        Popularity = new LazyRow< MJICraftworksPopularityType >[91];
+        for (int i = 0; i < 91; i++)
         	Popularity[i] = new LazyRow< MJICraftworksPopularityType >( gameData, parser.ReadOffset< byte >( (ushort) ( 0 + i * 1 ) ), language );
         
 

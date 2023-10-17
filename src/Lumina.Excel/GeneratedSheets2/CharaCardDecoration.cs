@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "CharaCardDecoration", columnHash: 0x12d1b8be )]
+[Sheet( "CharaCardDecoration", columnHash: 0xe7d0ab1d )]
 public partial class CharaCardDecoration : ExcelRow
 {
     
@@ -19,6 +19,7 @@ public partial class CharaCardDecoration : ExcelRow
     public byte Category { get; private set; }
     public byte Unknown1 { get; private set; }
     public byte Unknown3 { get; private set; }
+    public byte Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -31,6 +32,7 @@ public partial class CharaCardDecoration : ExcelRow
         Category = parser.ReadOffset< byte >( 12 );
         Unknown1 = parser.ReadOffset< byte >( 13 );
         Unknown3 = parser.ReadOffset< byte >( 14 );
+        Unknown2 = parser.ReadOffset< byte >( 15 );
         
 
     }

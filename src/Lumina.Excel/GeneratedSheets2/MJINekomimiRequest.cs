@@ -8,11 +8,11 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "LFGExtensionContent", columnHash: 0x3f77b2e9 )]
-public partial class LFGExtensionContent : ExcelRow
+[Sheet( "MJINekomimiRequest", columnHash: 0x5cc70a8f )]
+public partial class MJINekomimiRequest : ExcelRow
 {
     
-    public uint Unknown0 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public byte Unknown1 { get; private set; }
     public byte Unknown2 { get; private set; }
     public byte Unknown3 { get; private set; }
@@ -21,10 +21,10 @@ public partial class LFGExtensionContent : ExcelRow
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown0 = parser.ReadOffset< uint >( 0 );
-        Unknown1 = parser.ReadOffset< byte >( 4 );
-        Unknown2 = parser.ReadOffset< byte >( 5 );
-        Unknown3 = parser.ReadOffset< byte >( 6 );
+        Unknown0 = parser.ReadOffset< byte >( 0 );
+        Unknown1 = parser.ReadOffset< byte >( 1 );
+        Unknown2 = parser.ReadOffset< byte >( 2 );
+        Unknown3 = parser.ReadOffset< byte >( 3 );
         
 
     }

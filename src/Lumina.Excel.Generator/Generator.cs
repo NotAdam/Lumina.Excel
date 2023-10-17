@@ -39,7 +39,7 @@ public class Generator
     
     public string ProcessDefinition( string name )
     {
-        var path = $"./Schemas_test/{name}.yml";
+        var path = $"./Schemas/{name}.yml";
         var def = File.ReadAllText( path );
         var tmpl = _sheetTemplate;
 
@@ -77,36 +77,6 @@ public class Generator
             colIndex += fieldGenerator.ConsumedColumnCount();
         }
         
-        // for( int i = 0; i < cols.Count; i++ )
-        // {
-        //     var column = cols[ i ];
-        //     var schemaDef = schema.Fields[ schemaIndex ];
-        //
-        //     var excelType = column.Type;
-        //     var clrType = Util.ExcelTypeToManaged( excelType );
-        //     // var fieldName = Util.Clean( schemaDef.Name );
-        //     var fieldName = schemaDef.Name;
-        //
-        //     if( schemaDef.Type == FieldType.Scalar )
-        //     {
-        //         generators.Add(new ScalarGenerator( clrType, fieldName, column.Offset ));
-        //     } 
-        //     else if( schemaDef.Type == FieldType.Link && schemaDef.Targets!.Count == 1 )
-        //     {
-        //         generators.Add( new SingleLinkGenerator( clrType, fieldName, column.Offset, schemaDef.Targets[ 0 ] ) );
-        //     }
-        //     else if( schemaDef.Type == FieldType.Link && schemaDef.Targets!.Count > 1 )
-        //     {
-        //         // return new MultiLinkGenerator( clrType, fieldName, column.Offset, schemaDef.Targets );
-        //         // TODO: grab all targets. we only grab the first target for now
-        //         generators.Add( new SingleLinkGenerator( clrType, fieldName, column.Offset, schemaDef.Targets[ 0 ] ) );
-        //     }
-        //     else if( schemaDef.Type == FieldType.Array )
-        //     {
-        //         generators.Add( new ArrayGenerator( schemaDef, column.Offset, cols, i, schemaIndex ) );
-        //     }
-        // }
-            
         var fieldsSb = new StringBuilder();
         var readsSb = new StringBuilder();
         var structsSb = new StringBuilder();

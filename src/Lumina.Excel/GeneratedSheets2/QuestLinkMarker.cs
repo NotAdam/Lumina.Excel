@@ -15,8 +15,8 @@ public partial class QuestLinkMarker : ExcelRow
     public LazyRow< Map > SourceMap { get; private set; }
     public LazyRow< Level > Level { get; private set; }
     public LazyRow< Map > TargetMap { get; private set; }
-    public byte Unknown3 { get; private set; }
-    public bool Unknown4 { get; private set; }
+    public byte Unknown0 { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -25,8 +25,8 @@ public partial class QuestLinkMarker : ExcelRow
         SourceMap = new LazyRow< Map >( gameData, parser.ReadOffset< uint >( 0 ), language );
         Level = new LazyRow< Level >( gameData, parser.ReadOffset< uint >( 4 ), language );
         TargetMap = new LazyRow< Map >( gameData, parser.ReadOffset< uint >( 8 ), language );
-        Unknown3 = parser.ReadOffset< byte >( 12 );
-        Unknown4 = parser.ReadOffset< bool >( 13 );
+        Unknown0 = parser.ReadOffset< byte >( 12 );
+        Unknown1 = parser.ReadOffset< bool >( 13 );
         
 
     }

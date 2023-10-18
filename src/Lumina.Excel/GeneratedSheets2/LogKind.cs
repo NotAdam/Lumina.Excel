@@ -14,7 +14,7 @@ public partial class LogKind : ExcelRow
     
     public SeString Format { get; private set; }
     public byte Unknown0 { get; private set; }
-    public bool Unknown2 { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -22,7 +22,7 @@ public partial class LogKind : ExcelRow
 
         Format = parser.ReadOffset< SeString >( 0 );
         Unknown0 = parser.ReadOffset< byte >( 4 );
-        Unknown2 = parser.ReadOffset< bool >( 5 );
+        Unknown1 = parser.ReadOffset< bool >( 5 );
         
 
     }

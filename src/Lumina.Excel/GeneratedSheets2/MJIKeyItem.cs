@@ -13,14 +13,14 @@ public partial class MJIKeyItem : ExcelRow
 {
     
     public LazyRow< Item > Item { get; private set; }
-    public byte Unknown1 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         Item = new LazyRow< Item >( gameData, parser.ReadOffset< int >( 0 ), language );
-        Unknown1 = parser.ReadOffset< byte >( 4 );
+        Unknown0 = parser.ReadOffset< byte >( 4 );
         
 
     }

@@ -19,7 +19,7 @@ public partial class Item : ExcelRow
     public sbyte Adjective { get; private set; }
     public sbyte PossessivePronoun { get; private set; }
     public sbyte StartsWithVowel { get; private set; }
-    public sbyte Unknown5 { get; private set; }
+    public sbyte Unknown0 { get; private set; }
     public sbyte Pronoun { get; private set; }
     public sbyte Article { get; private set; }
     public ulong ModelMain { get; private set; }
@@ -34,15 +34,15 @@ public partial class Item : ExcelRow
     public short[] BaseParamValue { get; private set; }
     public short[] BaseParamValueSpecial { get; private set; }
     public byte LevelEquip { get; private set; }
-    public byte Unknown41 { get; private set; }
+    public byte Unknown1 { get; private set; }
     public byte EquipRestriction { get; private set; }
     public LazyRow< ClassJobCategory > ClassJobCategory { get; private set; }
     public LazyRow< GrandCompany > GrandCompany { get; private set; }
     public LazyRow< ItemSeries > ItemSeries { get; private set; }
     public byte BaseParamModifier { get; private set; }
     public LazyRow< ClassJob > ClassJobUse { get; private set; }
-    public byte Unknown50 { get; private set; }
-    public byte Unknown54 { get; private set; }
+    public byte Unknown2 { get; private set; }
+    public byte Unknown3 { get; private set; }
     public LazyRow< BaseParam >[] BaseParam { get; private set; }
     public LazyRow< ItemSpecialBonus > ItemSpecialBonus { get; private set; }
     public byte ItemSpecialBonusParam { get; private set; }
@@ -61,7 +61,7 @@ public partial class Item : ExcelRow
     public LazyRow< Item > ItemGlamour { get; private set; }
     public ushort Icon { get; private set; }
     public LazyRow< ItemLevel > LevelItem { get; private set; }
-    public ushort Unknown19 { get; private set; }
+    public ushort Unknown4 { get; private set; }
     public LazyRow< ItemAction > ItemAction { get; private set; }
     public ushort Cooldowns { get; private set; }
     public ushort Desynth { get; private set; }
@@ -95,7 +95,7 @@ public partial class Item : ExcelRow
         Adjective = parser.ReadOffset< sbyte >( 16 );
         PossessivePronoun = parser.ReadOffset< sbyte >( 17 );
         StartsWithVowel = parser.ReadOffset< sbyte >( 18 );
-        Unknown5 = parser.ReadOffset< sbyte >( 19 );
+        Unknown0 = parser.ReadOffset< sbyte >( 19 );
         Pronoun = parser.ReadOffset< sbyte >( 20 );
         Article = parser.ReadOffset< sbyte >( 21 );
         ModelMain = parser.ReadOffset< ulong >( 24 );
@@ -114,15 +114,15 @@ public partial class Item : ExcelRow
         for (int i = 0; i < 6; i++)
         	BaseParamValueSpecial[i] = parser.ReadOffset< short >( 66 + i * 2 );
         LevelEquip = parser.ReadOffset< byte >( 78 );
-        Unknown41 = parser.ReadOffset< byte >( 79 );
+        Unknown1 = parser.ReadOffset< byte >( 79 );
         EquipRestriction = parser.ReadOffset< byte >( 80 );
         ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 81 ), language );
         GrandCompany = new LazyRow< GrandCompany >( gameData, parser.ReadOffset< byte >( 82 ), language );
         ItemSeries = new LazyRow< ItemSeries >( gameData, parser.ReadOffset< byte >( 83 ), language );
         BaseParamModifier = parser.ReadOffset< byte >( 84 );
         ClassJobUse = new LazyRow< ClassJob >( gameData, parser.ReadOffset< byte >( 85 ), language );
-        Unknown50 = parser.ReadOffset< byte >( 86 );
-        Unknown54 = parser.ReadOffset< byte >( 87 );
+        Unknown2 = parser.ReadOffset< byte >( 86 );
+        Unknown3 = parser.ReadOffset< byte >( 87 );
         BaseParam = new LazyRow< BaseParam >[6];
         for (int i = 0; i < 6; i++)
         	BaseParam[i] = new LazyRow< BaseParam >( gameData, parser.ReadOffset< byte >( (ushort) ( 88 + i * 1 ) ), language );
@@ -145,7 +145,7 @@ public partial class Item : ExcelRow
         ItemGlamour = new LazyRow< Item >( gameData, parser.ReadOffset< int >( 132 ), language );
         Icon = parser.ReadOffset< ushort >( 136 );
         LevelItem = new LazyRow< ItemLevel >( gameData, parser.ReadOffset< ushort >( 138 ), language );
-        Unknown19 = parser.ReadOffset< ushort >( 140 );
+        Unknown4 = parser.ReadOffset< ushort >( 140 );
         ItemAction = new LazyRow< ItemAction >( gameData, parser.ReadOffset< ushort >( 142 ), language );
         Cooldowns = parser.ReadOffset< ushort >( 144 );
         Desynth = parser.ReadOffset< ushort >( 146 );

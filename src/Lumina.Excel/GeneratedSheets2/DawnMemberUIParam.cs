@@ -12,7 +12,7 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class DawnMemberUIParam : ExcelRow
 {
     
-    public SeString Unknown1 { get; private set; }
+    public SeString Unknown0 { get; private set; }
     public SeString ClassPlural { get; private set; }
     public uint VoiceLine { get; private set; }
     public SeString ClassSingular { get; private set; }
@@ -21,7 +21,7 @@ public partial class DawnMemberUIParam : ExcelRow
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown1 = parser.ReadOffset< SeString >( 0 );
+        Unknown0 = parser.ReadOffset< SeString >( 0 );
         ClassPlural = parser.ReadOffset< SeString >( 4 );
         VoiceLine = parser.ReadOffset< uint >( 8 );
         ClassSingular = parser.ReadOffset< SeString >( 12 );

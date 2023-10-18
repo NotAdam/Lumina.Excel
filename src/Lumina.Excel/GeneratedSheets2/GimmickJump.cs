@@ -19,7 +19,7 @@ public partial class GimmickJump : ExcelRow
     public ushort Unknown1 { get; private set; }
     public ushort Unknown2 { get; private set; }
     public bool StartClient { get; private set; }
-    public bool Unknown5 { get; private set; }
+    public bool Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -32,7 +32,7 @@ public partial class GimmickJump : ExcelRow
         Unknown1 = parser.ReadOffset< ushort >( 12 );
         Unknown2 = parser.ReadOffset< ushort >( 14 );
         StartClient = parser.ReadOffset< bool >( 16 );
-        Unknown5 = parser.ReadOffset< bool >( 16, 2 );
+        Unknown0 = parser.ReadOffset< bool >( 16, 2 );
         
 
     }

@@ -21,7 +21,7 @@ public partial class EventCustomIconType : ExcelRow
     }
     
     public IconsStruct[] Icons { get; private set; }
-    public byte Unknown50 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -36,7 +36,7 @@ public partial class EventCustomIconType : ExcelRow
         	Icons[i].MapAnnounceQuestLocked = parser.ReadOffset< uint >( (ushort) (i * 20 + 12));
         	Icons[i].MapAnnounceQuest2 = parser.ReadOffset< uint >( (ushort) (i * 20 + 16));
         }
-        Unknown50 = parser.ReadOffset< byte >( 200 );
+        Unknown0 = parser.ReadOffset< byte >( 200 );
         
 
     }

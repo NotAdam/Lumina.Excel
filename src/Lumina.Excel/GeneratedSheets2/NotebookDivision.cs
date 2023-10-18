@@ -17,7 +17,7 @@ public partial class NotebookDivision : ExcelRow
     public LazyRow< NotebookDivisionCategory > NotebookDivisionCategory { get; private set; }
     public byte CraftOpeningLevel { get; private set; }
     public byte GatheringOpeningLevel { get; private set; }
-    public byte Unknown5 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public bool CRPCraft { get; private set; }
     public bool BSMCraft { get; private set; }
     public bool ARMCraft { get; private set; }
@@ -26,7 +26,7 @@ public partial class NotebookDivision : ExcelRow
     public bool WVRCraft { get; private set; }
     public bool ALCCraft { get; private set; }
     public bool CULCraft { get; private set; }
-    public bool Unknown6 { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -37,7 +37,7 @@ public partial class NotebookDivision : ExcelRow
         NotebookDivisionCategory = new LazyRow< NotebookDivisionCategory >( gameData, parser.ReadOffset< byte >( 8 ), language );
         CraftOpeningLevel = parser.ReadOffset< byte >( 9 );
         GatheringOpeningLevel = parser.ReadOffset< byte >( 10 );
-        Unknown5 = parser.ReadOffset< byte >( 11 );
+        Unknown0 = parser.ReadOffset< byte >( 11 );
         CRPCraft = parser.ReadOffset< bool >( 12 );
         BSMCraft = parser.ReadOffset< bool >( 13 );
         ARMCraft = parser.ReadOffset< bool >( 14 );
@@ -46,7 +46,7 @@ public partial class NotebookDivision : ExcelRow
         WVRCraft = parser.ReadOffset< bool >( 17 );
         ALCCraft = parser.ReadOffset< bool >( 18 );
         CULCraft = parser.ReadOffset< bool >( 19 );
-        Unknown6 = parser.ReadOffset< bool >( 20 );
+        Unknown1 = parser.ReadOffset< bool >( 20 );
         
 
     }

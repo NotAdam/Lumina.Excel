@@ -14,7 +14,7 @@ public partial class TomestonesItem : ExcelRow
     
     public LazyRow< Item > Item { get; private set; }
     public LazyRow< Tomestones > Tomestones { get; private set; }
-    public sbyte Unknown1 { get; private set; }
+    public sbyte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -22,7 +22,7 @@ public partial class TomestonesItem : ExcelRow
 
         Item = new LazyRow< Item >( gameData, parser.ReadOffset< int >( 0 ), language );
         Tomestones = new LazyRow< Tomestones >( gameData, parser.ReadOffset< int >( 4 ), language );
-        Unknown1 = parser.ReadOffset< sbyte >( 8 );
+        Unknown0 = parser.ReadOffset< sbyte >( 8 );
         
 
     }

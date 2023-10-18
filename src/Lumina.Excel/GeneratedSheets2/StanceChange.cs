@@ -12,21 +12,21 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class StanceChange : ExcelRow
 {
     
-    public float Unknown4 { get; private set; }
-    public ushort Unknown0 { get; private set; }
+    public float Unknown0 { get; private set; }
+    public ushort Unknown1 { get; private set; }
     public LazyRow< Action >[] Action { get; private set; }
-    public ushort Unknown3 { get; private set; }
+    public ushort Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown4 = parser.ReadOffset< float >( 0 );
-        Unknown0 = parser.ReadOffset< ushort >( 4 );
+        Unknown0 = parser.ReadOffset< float >( 0 );
+        Unknown1 = parser.ReadOffset< ushort >( 4 );
         Action = new LazyRow< Action >[2];
         for (int i = 0; i < 2; i++)
         	Action[i] = new LazyRow< Action >( gameData, parser.ReadOffset< ushort >( (ushort) ( 6 + i * 2 ) ), language );
-        Unknown3 = parser.ReadOffset< ushort >( 10 );
+        Unknown2 = parser.ReadOffset< ushort >( 10 );
         
 
     }

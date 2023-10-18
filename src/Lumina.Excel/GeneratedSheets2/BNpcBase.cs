@@ -23,17 +23,17 @@ public partial class BNpcBase : ExcelRow
     public LazyRow< LinkRace > LinkRace { get; private set; }
     public byte Rank { get; private set; }
     public byte SEPack { get; private set; }
-    public byte Unknown12 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public LazyRow< BNpcParts > BNpcParts { get; private set; }
-    public byte Unknown14 { get; private set; }
-    public byte Unknown19 { get; private set; }
-    public byte Unknown20 { get; private set; }
-    public byte Unknown21 { get; private set; }
-    public bool Unknown10 { get; private set; }
-    public bool Unknown15 { get; private set; }
+    public byte Unknown1 { get; private set; }
+    public byte Unknown2 { get; private set; }
+    public byte Unknown3 { get; private set; }
+    public byte Unknown4 { get; private set; }
+    public bool Unknown5 { get; private set; }
+    public bool Unknown6 { get; private set; }
     public bool IsTargetLine { get; private set; }
     public bool IsDisplayLevel { get; private set; }
-    public bool Unknown18 { get; private set; }
+    public bool Unknown7 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -50,17 +50,17 @@ public partial class BNpcBase : ExcelRow
         LinkRace = new LazyRow< LinkRace >( gameData, parser.ReadOffset< byte >( 19 ), language );
         Rank = parser.ReadOffset< byte >( 20 );
         SEPack = parser.ReadOffset< byte >( 21 );
-        Unknown12 = parser.ReadOffset< byte >( 22 );
+        Unknown0 = parser.ReadOffset< byte >( 22 );
         BNpcParts = new LazyRow< BNpcParts >( gameData, parser.ReadOffset< byte >( 23 ), language );
-        Unknown14 = parser.ReadOffset< byte >( 24 );
-        Unknown19 = parser.ReadOffset< byte >( 25 );
-        Unknown20 = parser.ReadOffset< byte >( 26 );
-        Unknown21 = parser.ReadOffset< byte >( 27 );
-        Unknown10 = parser.ReadOffset< bool >( 28 );
-        Unknown15 = parser.ReadOffset< bool >( 28, 2 );
+        Unknown1 = parser.ReadOffset< byte >( 24 );
+        Unknown2 = parser.ReadOffset< byte >( 25 );
+        Unknown3 = parser.ReadOffset< byte >( 26 );
+        Unknown4 = parser.ReadOffset< byte >( 27 );
+        Unknown5 = parser.ReadOffset< bool >( 28 );
+        Unknown6 = parser.ReadOffset< bool >( 28, 2 );
         IsTargetLine = parser.ReadOffset< bool >( 28, 4 );
         IsDisplayLevel = parser.ReadOffset< bool >( 28, 8 );
-        Unknown18 = parser.ReadOffset< bool >( 28, 16 );
+        Unknown7 = parser.ReadOffset< bool >( 28, 16 );
         
 
     }

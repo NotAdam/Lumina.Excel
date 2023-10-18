@@ -17,7 +17,7 @@ public partial class Companion : ExcelRow
     public sbyte Adjective { get; private set; }
     public sbyte PossessivePronoun { get; private set; }
     public sbyte StartsWithVowel { get; private set; }
-    public sbyte Unknown5 { get; private set; }
+    public sbyte Unknown0 { get; private set; }
     public sbyte Pronoun { get; private set; }
     public sbyte Article { get; private set; }
     public LazyRow< ModelChara > Model { get; private set; }
@@ -27,7 +27,7 @@ public partial class Companion : ExcelRow
     public ushort Order { get; private set; }
     public ushort HP { get; private set; }
     public ushort SkillAngle { get; private set; }
-    public ushort Unknown36 { get; private set; }
+    public ushort Unknown1 { get; private set; }
     public byte Scale { get; private set; }
     public byte InactiveIdle0 { get; private set; }
     public byte InactiveIdle1 { get; private set; }
@@ -36,17 +36,17 @@ public partial class Companion : ExcelRow
     public LazyRow< CompanionMove > Behavior { get; private set; }
     public byte Special { get; private set; }
     public byte WanderingWait { get; private set; }
-    public byte Unknown29 { get; private set; }
+    public byte Unknown2 { get; private set; }
     public byte Cost { get; private set; }
-    public byte Unknown32 { get; private set; }
+    public byte Unknown3 { get; private set; }
     public byte SkillCost { get; private set; }
-    public byte Unknown35 { get; private set; }
+    public byte Unknown4 { get; private set; }
     public LazyRow< MinionRace > MinionRace { get; private set; }
-    public bool Unknown18 { get; private set; }
-    public bool Unknown19 { get; private set; }
-    public bool Unknown20 { get; private set; }
-    public bool Unknown21 { get; private set; }
-    public bool Unknown22 { get; private set; }
+    public bool Unknown5 { get; private set; }
+    public bool Unknown6 { get; private set; }
+    public bool Unknown7 { get; private set; }
+    public bool Unknown8 { get; private set; }
+    public bool Unknown9 { get; private set; }
     public bool Battle { get; private set; }
     public bool Roulette { get; private set; }
     public bool IdleAnimation { get; private set; }
@@ -60,7 +60,7 @@ public partial class Companion : ExcelRow
         Adjective = parser.ReadOffset< sbyte >( 8 );
         PossessivePronoun = parser.ReadOffset< sbyte >( 9 );
         StartsWithVowel = parser.ReadOffset< sbyte >( 10 );
-        Unknown5 = parser.ReadOffset< sbyte >( 11 );
+        Unknown0 = parser.ReadOffset< sbyte >( 11 );
         Pronoun = parser.ReadOffset< sbyte >( 12 );
         Article = parser.ReadOffset< sbyte >( 13 );
         Model = new LazyRow< ModelChara >( gameData, parser.ReadOffset< ushort >( 16 ), language );
@@ -70,7 +70,7 @@ public partial class Companion : ExcelRow
         Order = parser.ReadOffset< ushort >( 24 );
         HP = parser.ReadOffset< ushort >( 26 );
         SkillAngle = parser.ReadOffset< ushort >( 28 );
-        Unknown36 = parser.ReadOffset< ushort >( 30 );
+        Unknown1 = parser.ReadOffset< ushort >( 30 );
         Scale = parser.ReadOffset< byte >( 32 );
         InactiveIdle0 = parser.ReadOffset< byte >( 33 );
         InactiveIdle1 = parser.ReadOffset< byte >( 34 );
@@ -79,17 +79,17 @@ public partial class Companion : ExcelRow
         Behavior = new LazyRow< CompanionMove >( gameData, parser.ReadOffset< byte >( 37 ), language );
         Special = parser.ReadOffset< byte >( 38 );
         WanderingWait = parser.ReadOffset< byte >( 39 );
-        Unknown29 = parser.ReadOffset< byte >( 40 );
+        Unknown2 = parser.ReadOffset< byte >( 40 );
         Cost = parser.ReadOffset< byte >( 41 );
-        Unknown32 = parser.ReadOffset< byte >( 42 );
+        Unknown3 = parser.ReadOffset< byte >( 42 );
         SkillCost = parser.ReadOffset< byte >( 43 );
-        Unknown35 = parser.ReadOffset< byte >( 44 );
+        Unknown4 = parser.ReadOffset< byte >( 44 );
         MinionRace = new LazyRow< MinionRace >( gameData, parser.ReadOffset< byte >( 45 ), language );
-        Unknown18 = parser.ReadOffset< bool >( 46 );
-        Unknown19 = parser.ReadOffset< bool >( 46, 2 );
-        Unknown20 = parser.ReadOffset< bool >( 46, 4 );
-        Unknown21 = parser.ReadOffset< bool >( 46, 8 );
-        Unknown22 = parser.ReadOffset< bool >( 46, 16 );
+        Unknown5 = parser.ReadOffset< bool >( 46 );
+        Unknown6 = parser.ReadOffset< bool >( 46, 2 );
+        Unknown7 = parser.ReadOffset< bool >( 46, 4 );
+        Unknown8 = parser.ReadOffset< bool >( 46, 8 );
+        Unknown9 = parser.ReadOffset< bool >( 46, 16 );
         Battle = parser.ReadOffset< bool >( 46, 32 );
         Roulette = parser.ReadOffset< bool >( 46, 64 );
         IdleAnimation = parser.ReadOffset< bool >( 46, 128 );

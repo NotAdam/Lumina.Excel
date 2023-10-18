@@ -17,7 +17,7 @@ public partial class ItemSearchCategory : ExcelRow
     public byte Category { get; private set; }
     public byte Order { get; private set; }
     public LazyRow< ClassJob > ClassJob { get; private set; }
-    public bool Unknown5 { get; private set; }
+    public bool Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -28,7 +28,7 @@ public partial class ItemSearchCategory : ExcelRow
         Category = parser.ReadOffset< byte >( 8 );
         Order = parser.ReadOffset< byte >( 9 );
         ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadOffset< sbyte >( 10 ), language );
-        Unknown5 = parser.ReadOffset< bool >( 11 );
+        Unknown0 = parser.ReadOffset< bool >( 11 );
         
 
     }

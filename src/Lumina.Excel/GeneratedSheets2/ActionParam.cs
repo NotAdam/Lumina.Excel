@@ -13,14 +13,14 @@ public partial class ActionParam : ExcelRow
 {
     
     public short Name { get; private set; }
-    public short Unknown1 { get; private set; }
+    public short Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         Name = parser.ReadOffset< short >( 0 );
-        Unknown1 = parser.ReadOffset< short >( 2 );
+        Unknown0 = parser.ReadOffset< short >( 2 );
         
 
     }

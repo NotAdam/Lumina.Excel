@@ -13,16 +13,16 @@ public partial class JournalSection : ExcelRow
 {
     
     public SeString Name { get; private set; }
+    public bool Unknown0 { get; private set; }
     public bool Unknown1 { get; private set; }
-    public bool Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         Name = parser.ReadOffset< SeString >( 0 );
-        Unknown1 = parser.ReadOffset< bool >( 4 );
-        Unknown2 = parser.ReadOffset< bool >( 4, 2 );
+        Unknown0 = parser.ReadOffset< bool >( 4 );
+        Unknown1 = parser.ReadOffset< bool >( 4, 2 );
         
 
     }

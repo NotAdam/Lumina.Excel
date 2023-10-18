@@ -15,7 +15,7 @@ public partial class MovieStaffList : ExcelRow
     public float StartTime { get; private set; }
     public float EndTime { get; private set; }
     public uint Image { get; private set; }
-    public sbyte Unknown3 { get; private set; }
+    public sbyte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -24,7 +24,7 @@ public partial class MovieStaffList : ExcelRow
         StartTime = parser.ReadOffset< float >( 0 );
         EndTime = parser.ReadOffset< float >( 4 );
         Image = parser.ReadOffset< uint >( 8 );
-        Unknown3 = parser.ReadOffset< sbyte >( 12 );
+        Unknown0 = parser.ReadOffset< sbyte >( 12 );
         
 
     }

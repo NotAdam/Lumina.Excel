@@ -46,9 +46,9 @@ public partial class MountCustomize : ExcelRow
     public byte HrothgarMaleCameraHeight { get; private set; }
     public byte VieraMaleCameraHeight { get; private set; }
     public byte VieraFemaleCameraHeight { get; private set; }
-    public byte Unknown35 { get; private set; }
-    public byte Unknown36 { get; private set; }
-    public bool Unknown0 { get; private set; }
+    public byte Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
+    public bool Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -88,9 +88,9 @@ public partial class MountCustomize : ExcelRow
         HrothgarMaleCameraHeight = parser.ReadOffset< byte >( 49 );
         VieraMaleCameraHeight = parser.ReadOffset< byte >( 50 );
         VieraFemaleCameraHeight = parser.ReadOffset< byte >( 51 );
-        Unknown35 = parser.ReadOffset< byte >( 52 );
-        Unknown36 = parser.ReadOffset< byte >( 53 );
-        Unknown0 = parser.ReadOffset< bool >( 54 );
+        Unknown0 = parser.ReadOffset< byte >( 52 );
+        Unknown1 = parser.ReadOffset< byte >( 53 );
+        Unknown2 = parser.ReadOffset< bool >( 54 );
         
 
     }

@@ -19,7 +19,7 @@ public partial class DeepDungeonMagicStone : ExcelRow
     public sbyte Adjective { get; private set; }
     public sbyte PossessivePronoun { get; private set; }
     public sbyte StartsWithVowel { get; private set; }
-    public sbyte Unknown6 { get; private set; }
+    public sbyte Unknown0 { get; private set; }
     public sbyte Pronoun { get; private set; }
     public sbyte Article { get; private set; }
     public uint Icon { get; private set; }
@@ -35,7 +35,7 @@ public partial class DeepDungeonMagicStone : ExcelRow
         Adjective = parser.ReadOffset< sbyte >( 16 );
         PossessivePronoun = parser.ReadOffset< sbyte >( 17 );
         StartsWithVowel = parser.ReadOffset< sbyte >( 18 );
-        Unknown6 = parser.ReadOffset< sbyte >( 19 );
+        Unknown0 = parser.ReadOffset< sbyte >( 19 );
         Pronoun = parser.ReadOffset< sbyte >( 20 );
         Article = parser.ReadOffset< sbyte >( 21 );
         Icon = parser.ReadOffset< uint >( 24 );

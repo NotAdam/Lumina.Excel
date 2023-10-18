@@ -13,16 +13,16 @@ public partial class MountSpeed : ExcelRow
 {
     
     public LazyRow< Quest > Quest { get; private set; }
-    public uint Unknown1 { get; private set; }
-    public byte Unknown2 { get; private set; }
+    public uint Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         Quest = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 0 ), language );
-        Unknown1 = parser.ReadOffset< uint >( 4 );
-        Unknown2 = parser.ReadOffset< byte >( 8 );
+        Unknown0 = parser.ReadOffset< uint >( 4 );
+        Unknown1 = parser.ReadOffset< byte >( 8 );
         
 
     }

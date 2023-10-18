@@ -12,17 +12,17 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class SharlayanCraftWorks : ExcelRow
 {
     
-    public SeString Unknown2 { get; private set; }
-    public uint Unknown0 { get; private set; }
-    public ushort Unknown1 { get; private set; }
+    public SeString Unknown0 { get; private set; }
+    public uint Unknown1 { get; private set; }
+    public ushort Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown2 = parser.ReadOffset< SeString >( 0 );
-        Unknown0 = parser.ReadOffset< uint >( 4 );
-        Unknown1 = parser.ReadOffset< ushort >( 8 );
+        Unknown0 = parser.ReadOffset< SeString >( 0 );
+        Unknown1 = parser.ReadOffset< uint >( 4 );
+        Unknown2 = parser.ReadOffset< ushort >( 8 );
         
 
     }

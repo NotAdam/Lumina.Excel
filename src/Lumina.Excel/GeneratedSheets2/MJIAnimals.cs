@@ -16,8 +16,8 @@ public partial class MJIAnimals : ExcelRow
     public LazyRow< Item >[] Reward { get; private set; }
     public int Icon { get; private set; }
     public byte Size { get; private set; }
-    public byte Unknown2 { get; private set; }
-    public byte Unknown3 { get; private set; }
+    public byte Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -29,8 +29,8 @@ public partial class MJIAnimals : ExcelRow
         	Reward[i] = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( (ushort) ( 4 + i * 4 ) ), language );
         Icon = parser.ReadOffset< int >( 12 );
         Size = parser.ReadOffset< byte >( 16 );
-        Unknown2 = parser.ReadOffset< byte >( 17 );
-        Unknown3 = parser.ReadOffset< byte >( 18 );
+        Unknown0 = parser.ReadOffset< byte >( 17 );
+        Unknown1 = parser.ReadOffset< byte >( 18 );
         
 
     }

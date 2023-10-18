@@ -16,13 +16,13 @@ public partial class SpearfishingNotebook : ExcelRow
     public ushort Radius { get; private set; }
     public LazyRow< PlaceName > PlaceName { get; private set; }
     public LazyRow< GatheringPointBase > GatheringPointBase { get; private set; }
-    public ushort Unknown10 { get; private set; }
-    public ushort Unknown11 { get; private set; }
+    public ushort Unknown0 { get; private set; }
+    public ushort Unknown1 { get; private set; }
     public short X { get; private set; }
     public short Y { get; private set; }
     public byte GatheringLevel { get; private set; }
-    public byte Unknown6 { get; private set; }
-    public byte Unknown8 { get; private set; }
+    public byte Unknown2 { get; private set; }
+    public byte Unknown3 { get; private set; }
     public bool IsShadowNode { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -33,13 +33,13 @@ public partial class SpearfishingNotebook : ExcelRow
         Radius = parser.ReadOffset< ushort >( 4 );
         PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadOffset< ushort >( 6 ), language );
         GatheringPointBase = new LazyRow< GatheringPointBase >( gameData, parser.ReadOffset< ushort >( 8 ), language );
-        Unknown10 = parser.ReadOffset< ushort >( 10 );
-        Unknown11 = parser.ReadOffset< ushort >( 12 );
+        Unknown0 = parser.ReadOffset< ushort >( 10 );
+        Unknown1 = parser.ReadOffset< ushort >( 12 );
         X = parser.ReadOffset< short >( 14 );
         Y = parser.ReadOffset< short >( 16 );
         GatheringLevel = parser.ReadOffset< byte >( 18 );
-        Unknown6 = parser.ReadOffset< byte >( 19 );
-        Unknown8 = parser.ReadOffset< byte >( 20 );
+        Unknown2 = parser.ReadOffset< byte >( 19 );
+        Unknown3 = parser.ReadOffset< byte >( 20 );
         IsShadowNode = parser.ReadOffset< bool >( 21 );
         
 

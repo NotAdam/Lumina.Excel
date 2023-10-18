@@ -16,7 +16,7 @@ public partial class BuddyItem : ExcelRow
     public byte Status { get; private set; }
     public bool UseField { get; private set; }
     public bool UseTraining { get; private set; }
-    public bool Unknown3 { get; private set; }
+    public bool Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -26,7 +26,7 @@ public partial class BuddyItem : ExcelRow
         Status = parser.ReadOffset< byte >( 2 );
         UseField = parser.ReadOffset< bool >( 3 );
         UseTraining = parser.ReadOffset< bool >( 3, 2 );
-        Unknown3 = parser.ReadOffset< bool >( 3, 4 );
+        Unknown0 = parser.ReadOffset< bool >( 3, 4 );
         
 
     }

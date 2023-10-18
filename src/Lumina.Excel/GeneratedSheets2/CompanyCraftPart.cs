@@ -13,8 +13,8 @@ public partial class CompanyCraftPart : ExcelRow
 {
     
     public LazyRow< CompanyCraftProcess >[] CompanyCraftProcess { get; private set; }
-    public ushort Unknown5 { get; private set; }
-    public byte Unknown0 { get; private set; }
+    public ushort Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
     public LazyRow< CompanyCraftType > CompanyCraftType { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -24,8 +24,8 @@ public partial class CompanyCraftPart : ExcelRow
         CompanyCraftProcess = new LazyRow< CompanyCraftProcess >[3];
         for (int i = 0; i < 3; i++)
         	CompanyCraftProcess[i] = new LazyRow< CompanyCraftProcess >( gameData, parser.ReadOffset< ushort >( (ushort) ( 0 + i * 2 ) ), language );
-        Unknown5 = parser.ReadOffset< ushort >( 6 );
-        Unknown0 = parser.ReadOffset< byte >( 8 );
+        Unknown0 = parser.ReadOffset< ushort >( 6 );
+        Unknown1 = parser.ReadOffset< byte >( 8 );
         CompanyCraftType = new LazyRow< CompanyCraftType >( gameData, parser.ReadOffset< byte >( 9 ), language );
         
 

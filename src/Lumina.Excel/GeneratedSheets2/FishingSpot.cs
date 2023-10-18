@@ -25,7 +25,7 @@ public partial class FishingSpot : ExcelRow
     public short Z { get; private set; }
     public byte GatheringLevel { get; private set; }
     public byte FishingSpotCategory { get; private set; }
-    public byte Unknown11 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public bool Rare { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -47,7 +47,7 @@ public partial class FishingSpot : ExcelRow
         Z = parser.ReadOffset< short >( 62 );
         GatheringLevel = parser.ReadOffset< byte >( 64 );
         FishingSpotCategory = parser.ReadOffset< byte >( 65 );
-        Unknown11 = parser.ReadOffset< byte >( 66 );
+        Unknown0 = parser.ReadOffset< byte >( 66 );
         Rare = parser.ReadOffset< bool >( 67 );
         
 

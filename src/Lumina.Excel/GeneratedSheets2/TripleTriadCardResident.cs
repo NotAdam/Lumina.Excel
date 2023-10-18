@@ -27,7 +27,7 @@ public partial class TripleTriadCardResident : ExcelRow
     public byte SortKey { get; private set; }
     public byte UIPriority { get; private set; }
     public byte AcquisitionType { get; private set; }
-    public bool Unknown11 { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -48,7 +48,7 @@ public partial class TripleTriadCardResident : ExcelRow
         SortKey = parser.ReadOffset< byte >( 24 );
         UIPriority = parser.ReadOffset< byte >( 25 );
         AcquisitionType = parser.ReadOffset< byte >( 26 );
-        Unknown11 = parser.ReadOffset< bool >( 27 );
+        Unknown1 = parser.ReadOffset< bool >( 27 );
         
         Acquisition = AcquisitionType switch
         {

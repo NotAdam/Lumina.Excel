@@ -33,7 +33,7 @@ public partial class GcArmyExpedition : ExcelRow
     public byte UnlockFlag { get; private set; }
     public byte RequiredLevel { get; private set; }
     public byte PercentBase { get; private set; }
-    public byte Unknown6 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public LazyRow< GcArmyExpeditionType > GcArmyExpeditionType { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -61,7 +61,7 @@ public partial class GcArmyExpedition : ExcelRow
         UnlockFlag = parser.ReadOffset< byte >( 111 );
         RequiredLevel = parser.ReadOffset< byte >( 112 );
         PercentBase = parser.ReadOffset< byte >( 113 );
-        Unknown6 = parser.ReadOffset< byte >( 114 );
+        Unknown0 = parser.ReadOffset< byte >( 114 );
         GcArmyExpeditionType = new LazyRow< GcArmyExpeditionType >( gameData, parser.ReadOffset< byte >( 115 ), language );
         
 

@@ -23,12 +23,12 @@ public partial class RelicItem : ExcelRow
     public LazyRow< Item > ArcanistSCHItem { get; private set; }
     public LazyRow< Item > ShieldItem { get; private set; }
     public LazyRow< Item > RogueItem { get; private set; }
-    public uint Unknown12 { get; private set; }
-    public uint Unknown13 { get; private set; }
-    public uint Unknown14 { get; private set; }
-    public uint Unknown15 { get; private set; }
-    public uint Unknown16 { get; private set; }
-    public byte Unknown0 { get; private set; }
+    public uint Unknown0 { get; private set; }
+    public uint Unknown1 { get; private set; }
+    public uint Unknown2 { get; private set; }
+    public uint Unknown3 { get; private set; }
+    public uint Unknown4 { get; private set; }
+    public byte Unknown5 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -45,12 +45,12 @@ public partial class RelicItem : ExcelRow
         ArcanistSCHItem = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( 32 ), language );
         ShieldItem = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( 36 ), language );
         RogueItem = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( 40 ), language );
-        Unknown12 = parser.ReadOffset< uint >( 44 );
-        Unknown13 = parser.ReadOffset< uint >( 48 );
-        Unknown14 = parser.ReadOffset< uint >( 52 );
-        Unknown15 = parser.ReadOffset< uint >( 56 );
-        Unknown16 = parser.ReadOffset< uint >( 60 );
-        Unknown0 = parser.ReadOffset< byte >( 64 );
+        Unknown0 = parser.ReadOffset< uint >( 44 );
+        Unknown1 = parser.ReadOffset< uint >( 48 );
+        Unknown2 = parser.ReadOffset< uint >( 52 );
+        Unknown3 = parser.ReadOffset< uint >( 56 );
+        Unknown4 = parser.ReadOffset< uint >( 60 );
+        Unknown5 = parser.ReadOffset< byte >( 64 );
         
 
     }

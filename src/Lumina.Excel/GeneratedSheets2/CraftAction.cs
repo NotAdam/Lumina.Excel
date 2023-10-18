@@ -26,7 +26,7 @@ public partial class CraftAction : ExcelRow
     public LazyRow< ActionTimeline > AnimationStart { get; private set; }
     public LazyRow< ActionTimeline > AnimationEnd { get; private set; }
     public ushort Icon { get; private set; }
-    public ushort Unknown10 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     public LazyRow< ClassJobCategory > ClassJobCategory { get; private set; }
     public byte ClassJobLevel { get; private set; }
     public byte Cost { get; private set; }
@@ -51,7 +51,7 @@ public partial class CraftAction : ExcelRow
         AnimationStart = new LazyRow< ActionTimeline >( gameData, parser.ReadOffset< ushort >( 44 ), language );
         AnimationEnd = new LazyRow< ActionTimeline >( gameData, parser.ReadOffset< ushort >( 46 ), language );
         Icon = parser.ReadOffset< ushort >( 48 );
-        Unknown10 = parser.ReadOffset< ushort >( 50 );
+        Unknown0 = parser.ReadOffset< ushort >( 50 );
         ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 52 ), language );
         ClassJobLevel = parser.ReadOffset< byte >( 53 );
         Cost = parser.ReadOffset< byte >( 54 );

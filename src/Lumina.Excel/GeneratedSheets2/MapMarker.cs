@@ -21,8 +21,8 @@ public partial class MapMarker : ExcelRow
     public LazyRow< MapMarkerRegion > MapMarkerRegion { get; private set; }
     public byte Type { get; private set; }
     public byte DataType { get; private set; }
-    public byte Unknown9 { get; private set; }
-    public byte Unknown10 { get; private set; }
+    public byte Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -37,8 +37,8 @@ public partial class MapMarker : ExcelRow
         MapMarkerRegion = new LazyRow< MapMarkerRegion >( gameData, parser.ReadOffset< byte >( 11 ), language );
         Type = parser.ReadOffset< byte >( 12 );
         DataType = parser.ReadOffset< byte >( 13 );
-        Unknown9 = parser.ReadOffset< byte >( 14 );
-        Unknown10 = parser.ReadOffset< byte >( 15 );
+        Unknown0 = parser.ReadOffset< byte >( 14 );
+        Unknown1 = parser.ReadOffset< byte >( 15 );
         
         DataKey = DataType switch
         {

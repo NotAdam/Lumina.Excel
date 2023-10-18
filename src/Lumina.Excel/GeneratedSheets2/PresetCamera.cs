@@ -21,7 +21,7 @@ public partial class PresetCamera : ExcelRow
     public float Roe { get; private set; }
     public float Hrothgar { get; private set; }
     public float Viera { get; private set; }
-    public float Unknown10 { get; private set; }
+    public float Unknown0 { get; private set; }
     public float Hyur_F { get; private set; }
     public float Elezen_F { get; private set; }
     public float Lalafell_F { get; private set; }
@@ -44,7 +44,7 @@ public partial class PresetCamera : ExcelRow
         Roe = parser.ReadOffset< float >( 24 );
         Hrothgar = parser.ReadOffset< float >( 28 );
         Viera = parser.ReadOffset< float >( 32 );
-        Unknown10 = parser.ReadOffset< float >( 36 );
+        Unknown0 = parser.ReadOffset< float >( 36 );
         Hyur_F = parser.ReadOffset< float >( 40 );
         Elezen_F = parser.ReadOffset< float >( 44 );
         Lalafell_F = parser.ReadOffset< float >( 48 );

@@ -13,7 +13,7 @@ public partial class AnimaWeapon5 : ExcelRow
 {
     
     public LazyRow< Item > Item { get; private set; }
-    public byte Unknown1 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public byte SecondaryStatTotal { get; private set; }
     public LazyRow< AnimaWeapon5Param >[] Parameter { get; private set; }
     
@@ -22,7 +22,7 @@ public partial class AnimaWeapon5 : ExcelRow
         base.PopulateData( parser, gameData, language );
 
         Item = new LazyRow< Item >( gameData, parser.ReadOffset< int >( 0 ), language );
-        Unknown1 = parser.ReadOffset< byte >( 4 );
+        Unknown0 = parser.ReadOffset< byte >( 4 );
         SecondaryStatTotal = parser.ReadOffset< byte >( 5 );
         Parameter = new LazyRow< AnimaWeapon5Param >[5];
         for (int i = 0; i < 5; i++)

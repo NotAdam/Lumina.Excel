@@ -16,11 +16,11 @@ public partial class NpcYell : ExcelRow
     public float BalloonTime { get; private set; }
     public uint Unknown0 { get; private set; }
     public byte OutputType { get; private set; }
-    public byte Unknown8 { get; private set; }
-    public byte Unknown9 { get; private set; }
-    public bool Unknown1 { get; private set; }
-    public bool Unknown2 { get; private set; }
+    public byte Unknown1 { get; private set; }
+    public byte Unknown2 { get; private set; }
     public bool Unknown3 { get; private set; }
+    public bool Unknown4 { get; private set; }
+    public bool Unknown5 { get; private set; }
     public bool IsBalloonSlow { get; private set; }
     public bool BattleTalkTime { get; private set; }
     
@@ -32,11 +32,11 @@ public partial class NpcYell : ExcelRow
         BalloonTime = parser.ReadOffset< float >( 4 );
         Unknown0 = parser.ReadOffset< uint >( 8 );
         OutputType = parser.ReadOffset< byte >( 12 );
-        Unknown8 = parser.ReadOffset< byte >( 13 );
-        Unknown9 = parser.ReadOffset< byte >( 14 );
-        Unknown1 = parser.ReadOffset< bool >( 15 );
-        Unknown2 = parser.ReadOffset< bool >( 15, 2 );
-        Unknown3 = parser.ReadOffset< bool >( 15, 4 );
+        Unknown1 = parser.ReadOffset< byte >( 13 );
+        Unknown2 = parser.ReadOffset< byte >( 14 );
+        Unknown3 = parser.ReadOffset< bool >( 15 );
+        Unknown4 = parser.ReadOffset< bool >( 15, 2 );
+        Unknown5 = parser.ReadOffset< bool >( 15, 4 );
         IsBalloonSlow = parser.ReadOffset< bool >( 15, 8 );
         BattleTalkTime = parser.ReadOffset< bool >( 15, 16 );
         

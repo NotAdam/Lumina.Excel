@@ -14,10 +14,10 @@ public partial class RacingChocoboNameInfo : ExcelRow
     
     public LazyRow< RacingChocoboName >[] Name { get; private set; }
     public LazyRow< RacingChocoboNameCategory > RacingChocoboNameCategory { get; private set; }
+    public bool Unknown0 { get; private set; }
     public bool Unknown1 { get; private set; }
     public bool Unknown2 { get; private set; }
     public bool Unknown3 { get; private set; }
-    public bool Unknown4 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -27,10 +27,10 @@ public partial class RacingChocoboNameInfo : ExcelRow
         for (int i = 0; i < 3; i++)
         	Name[i] = new LazyRow< RacingChocoboName >( gameData, parser.ReadOffset< ushort >( (ushort) ( 0 + i * 2 ) ), language );
         RacingChocoboNameCategory = new LazyRow< RacingChocoboNameCategory >( gameData, parser.ReadOffset< byte >( 6 ), language );
-        Unknown1 = parser.ReadOffset< bool >( 7 );
-        Unknown2 = parser.ReadOffset< bool >( 8 );
-        Unknown3 = parser.ReadOffset< bool >( 9 );
-        Unknown4 = parser.ReadOffset< bool >( 10 );
+        Unknown0 = parser.ReadOffset< bool >( 7 );
+        Unknown1 = parser.ReadOffset< bool >( 8 );
+        Unknown2 = parser.ReadOffset< bool >( 9 );
+        Unknown3 = parser.ReadOffset< bool >( 10 );
         
 
     }

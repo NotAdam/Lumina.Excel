@@ -13,11 +13,11 @@ public partial class PvPAction : ExcelRow
 {
     
     public LazyRow< Action > Action { get; private set; }
+    public ushort Unknown0 { get; private set; }
+    public ushort Unknown1 { get; private set; }
     public ushort Unknown2 { get; private set; }
-    public ushort Unknown3 { get; private set; }
-    public ushort Unknown4 { get; private set; }
-    public byte Unknown1 { get; private set; }
-    public byte Unknown8 { get; private set; }
+    public byte Unknown3 { get; private set; }
+    public byte Unknown4 { get; private set; }
     public bool[] GrandCompany { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -25,11 +25,11 @@ public partial class PvPAction : ExcelRow
         base.PopulateData( parser, gameData, language );
 
         Action = new LazyRow< Action >( gameData, parser.ReadOffset< ushort >( 0 ), language );
-        Unknown2 = parser.ReadOffset< ushort >( 2 );
-        Unknown3 = parser.ReadOffset< ushort >( 4 );
-        Unknown4 = parser.ReadOffset< ushort >( 6 );
-        Unknown1 = parser.ReadOffset< byte >( 8 );
-        Unknown8 = parser.ReadOffset< byte >( 9 );
+        Unknown0 = parser.ReadOffset< ushort >( 2 );
+        Unknown1 = parser.ReadOffset< ushort >( 4 );
+        Unknown2 = parser.ReadOffset< ushort >( 6 );
+        Unknown3 = parser.ReadOffset< byte >( 8 );
+        Unknown4 = parser.ReadOffset< byte >( 9 );
         GrandCompany = new bool[3];
         for (int i = 0; i < 3; i++)
         	GrandCompany[i] = parser.ReadOffset< bool >( 10 + i * 1 );

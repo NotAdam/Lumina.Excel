@@ -15,8 +15,8 @@ public partial class TofuPresetObject : ExcelRow
     public int Unknown0 { get; private set; }
     public ushort Unknown1 { get; private set; }
     public ushort Unknown2 { get; private set; }
-    public short Unknown4 { get; private set; }
-    public byte Unknown3 { get; private set; }
+    public short Unknown3 { get; private set; }
+    public byte Unknown4 { get; private set; }
     public bool Unknown5 { get; private set; }
     public bool Unknown6 { get; private set; }
     
@@ -27,8 +27,8 @@ public partial class TofuPresetObject : ExcelRow
         Unknown0 = parser.ReadOffset< int >( 0 );
         Unknown1 = parser.ReadOffset< ushort >( 4 );
         Unknown2 = parser.ReadOffset< ushort >( 6 );
-        Unknown4 = parser.ReadOffset< short >( 8 );
-        Unknown3 = parser.ReadOffset< byte >( 10 );
+        Unknown3 = parser.ReadOffset< short >( 8 );
+        Unknown4 = parser.ReadOffset< byte >( 10 );
         Unknown5 = parser.ReadOffset< bool >( 11 );
         Unknown6 = parser.ReadOffset< bool >( 11, 2 );
         

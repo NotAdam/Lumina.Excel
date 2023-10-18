@@ -17,11 +17,11 @@ public partial class SatisfactionSupply : ExcelRow
     public ushort CollectabilityMid { get; private set; }
     public ushort CollectabilityHigh { get; private set; }
     public LazyRow< SatisfactionSupplyReward > Reward { get; private set; }
-    public ushort Unknown8 { get; private set; }
-    public ushort Unknown9 { get; private set; }
+    public ushort Unknown0 { get; private set; }
+    public ushort Unknown1 { get; private set; }
     public byte Slot { get; private set; }
     public byte ProbabilityPercent { get; private set; }
-    public bool Unknown7 { get; private set; }
+    public bool Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -32,11 +32,11 @@ public partial class SatisfactionSupply : ExcelRow
         CollectabilityMid = parser.ReadOffset< ushort >( 6 );
         CollectabilityHigh = parser.ReadOffset< ushort >( 8 );
         Reward = new LazyRow< SatisfactionSupplyReward >( gameData, parser.ReadOffset< ushort >( 10 ), language );
-        Unknown8 = parser.ReadOffset< ushort >( 12 );
-        Unknown9 = parser.ReadOffset< ushort >( 14 );
+        Unknown0 = parser.ReadOffset< ushort >( 12 );
+        Unknown1 = parser.ReadOffset< ushort >( 14 );
         Slot = parser.ReadOffset< byte >( 16 );
         ProbabilityPercent = parser.ReadOffset< byte >( 17 );
-        Unknown7 = parser.ReadOffset< bool >( 18 );
+        Unknown2 = parser.ReadOffset< bool >( 18 );
         
 
     }

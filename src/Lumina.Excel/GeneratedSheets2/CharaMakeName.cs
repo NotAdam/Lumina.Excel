@@ -53,9 +53,9 @@ public partial class CharaMakeName : ExcelRow
     public SeString HrothgarHellionsLastName { get; private set; }
     public SeString HrothgarLostFirstName { get; private set; }
     public SeString HrothgarLostLastName { get; private set; }
-    public SeString Unknown41 { get; private set; }
-    public SeString Unknown42 { get; private set; }
-    public SeString Unknown43 { get; private set; }
+    public SeString Unknown0 { get; private set; }
+    public SeString Unknown1 { get; private set; }
+    public SeString Unknown2 { get; private set; }
     public SeString VieraFirstName { get; private set; }
     public SeString VieraRavaLastName { get; private set; }
     public SeString VieraVeenaLastName { get; private set; }
@@ -105,9 +105,9 @@ public partial class CharaMakeName : ExcelRow
         HrothgarHellionsLastName = parser.ReadOffset< SeString >( 152 );
         HrothgarLostFirstName = parser.ReadOffset< SeString >( 156 );
         HrothgarLostLastName = parser.ReadOffset< SeString >( 160 );
-        Unknown41 = parser.ReadOffset< SeString >( 164 );
-        Unknown42 = parser.ReadOffset< SeString >( 168 );
-        Unknown43 = parser.ReadOffset< SeString >( 172 );
+        Unknown0 = parser.ReadOffset< SeString >( 164 );
+        Unknown1 = parser.ReadOffset< SeString >( 168 );
+        Unknown2 = parser.ReadOffset< SeString >( 172 );
         VieraFirstName = parser.ReadOffset< SeString >( 176 );
         VieraRavaLastName = parser.ReadOffset< SeString >( 180 );
         VieraVeenaLastName = parser.ReadOffset< SeString >( 184 );

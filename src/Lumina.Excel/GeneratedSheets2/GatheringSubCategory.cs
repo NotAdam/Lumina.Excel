@@ -18,7 +18,7 @@ public partial class GatheringSubCategory : ExcelRow
     public ushort Division { get; private set; }
     public LazyRow< GatheringType > GatheringType { get; private set; }
     public LazyRow< ClassJob > ClassJob { get; private set; }
-    public byte Unknown6 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -30,7 +30,7 @@ public partial class GatheringSubCategory : ExcelRow
         Division = parser.ReadOffset< ushort >( 12 );
         GatheringType = new LazyRow< GatheringType >( gameData, parser.ReadOffset< byte >( 14 ), language );
         ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadOffset< byte >( 15 ), language );
-        Unknown6 = parser.ReadOffset< byte >( 16 );
+        Unknown0 = parser.ReadOffset< byte >( 16 );
         
 
     }

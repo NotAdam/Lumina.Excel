@@ -16,7 +16,7 @@ public partial class OrchestrionCategory : ExcelRow
     public uint Icon { get; private set; }
     public byte HideOrder { get; private set; }
     public byte Order { get; private set; }
-    public bool Unknown4 { get; private set; }
+    public bool Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -26,7 +26,7 @@ public partial class OrchestrionCategory : ExcelRow
         Icon = parser.ReadOffset< uint >( 4 );
         HideOrder = parser.ReadOffset< byte >( 8 );
         Order = parser.ReadOffset< byte >( 9 );
-        Unknown4 = parser.ReadOffset< bool >( 10 );
+        Unknown0 = parser.ReadOffset< bool >( 10 );
         
 
     }

@@ -13,14 +13,14 @@ public partial class MJIRecipeMaterial : ExcelRow
 {
     
     public LazyRow< MJIItemPouch > ItemPouch { get; private set; }
-    public int Unknown1 { get; private set; }
+    public int Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         ItemPouch = new LazyRow< MJIItemPouch >( gameData, parser.ReadOffset< int >( 0 ), language );
-        Unknown1 = parser.ReadOffset< int >( 4 );
+        Unknown0 = parser.ReadOffset< int >( 4 );
         
 
     }

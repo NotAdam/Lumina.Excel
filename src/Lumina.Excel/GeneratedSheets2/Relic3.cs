@@ -17,7 +17,7 @@ public partial class Relic3 : ExcelRow
     public LazyRow< Item > ItemNovus { get; private set; }
     public int Icon { get; private set; }
     public byte MateriaLimit { get; private set; }
-    public sbyte Unknown5 { get; private set; }
+    public sbyte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -28,7 +28,7 @@ public partial class Relic3 : ExcelRow
         ItemNovus = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( 8 ), language );
         Icon = parser.ReadOffset< int >( 12 );
         MateriaLimit = parser.ReadOffset< byte >( 16 );
-        Unknown5 = parser.ReadOffset< sbyte >( 17 );
+        Unknown0 = parser.ReadOffset< sbyte >( 17 );
         
 
     }

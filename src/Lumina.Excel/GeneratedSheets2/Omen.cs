@@ -15,7 +15,7 @@ public partial class Omen : ExcelRow
     public SeString Path { get; private set; }
     public SeString PathAlly { get; private set; }
     public byte Type { get; private set; }
-    public sbyte Unknown5 { get; private set; }
+    public sbyte Unknown0 { get; private set; }
     public bool RestrictYScale { get; private set; }
     public bool LargeScale { get; private set; }
     
@@ -26,7 +26,7 @@ public partial class Omen : ExcelRow
         Path = parser.ReadOffset< SeString >( 0 );
         PathAlly = parser.ReadOffset< SeString >( 4 );
         Type = parser.ReadOffset< byte >( 8 );
-        Unknown5 = parser.ReadOffset< sbyte >( 9 );
+        Unknown0 = parser.ReadOffset< sbyte >( 9 );
         RestrictYScale = parser.ReadOffset< bool >( 10 );
         LargeScale = parser.ReadOffset< bool >( 10, 2 );
         

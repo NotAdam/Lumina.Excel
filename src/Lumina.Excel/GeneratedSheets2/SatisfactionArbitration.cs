@@ -15,7 +15,7 @@ public partial class SatisfactionArbitration : ExcelRow
     public LazyRow< Quest > Quest { get; private set; }
     public byte SatisfactionLevel { get; private set; }
     public LazyRow< SatisfactionNpc > SatisfactionNpc { get; private set; }
-    public byte Unknown3 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -24,7 +24,7 @@ public partial class SatisfactionArbitration : ExcelRow
         Quest = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 0 ), language );
         SatisfactionLevel = parser.ReadOffset< byte >( 4 );
         SatisfactionNpc = new LazyRow< SatisfactionNpc >( gameData, parser.ReadOffset< byte >( 5 ), language );
-        Unknown3 = parser.ReadOffset< byte >( 6 );
+        Unknown0 = parser.ReadOffset< byte >( 6 );
         
 
     }

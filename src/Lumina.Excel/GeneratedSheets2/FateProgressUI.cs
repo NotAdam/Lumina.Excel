@@ -17,7 +17,7 @@ public partial class FateProgressUI : ExcelRow
     public byte ReqFatesToRank2 { get; private set; }
     public byte ReqFatesToRank3 { get; private set; }
     public byte DisplayOrder { get; private set; }
-    public sbyte Unknown4 { get; private set; }
+    public sbyte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -28,7 +28,7 @@ public partial class FateProgressUI : ExcelRow
         ReqFatesToRank2 = parser.ReadOffset< byte >( 8 );
         ReqFatesToRank3 = parser.ReadOffset< byte >( 9 );
         DisplayOrder = parser.ReadOffset< byte >( 10 );
-        Unknown4 = parser.ReadOffset< sbyte >( 11 );
+        Unknown0 = parser.ReadOffset< sbyte >( 11 );
         
 
     }

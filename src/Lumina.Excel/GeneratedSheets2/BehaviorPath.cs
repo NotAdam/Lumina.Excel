@@ -17,7 +17,7 @@ public partial class BehaviorPath : ExcelRow
     public bool IsFadeOut { get; private set; }
     public bool IsFadeIn { get; private set; }
     public bool IsWalking { get; private set; }
-    public bool Unknown4 { get; private set; }
+    public bool Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -28,7 +28,7 @@ public partial class BehaviorPath : ExcelRow
         IsFadeOut = parser.ReadOffset< bool >( 4, 2 );
         IsFadeIn = parser.ReadOffset< bool >( 4, 4 );
         IsWalking = parser.ReadOffset< bool >( 4, 8 );
-        Unknown4 = parser.ReadOffset< bool >( 4, 16 );
+        Unknown0 = parser.ReadOffset< bool >( 4, 16 );
         
 
     }

@@ -22,7 +22,7 @@ public partial class Race : ExcelRow
     public LazyRow< Item > RSEFLegs { get; private set; }
     public LazyRow< Item > RSEMFeet { get; private set; }
     public LazyRow< Item > RSEFFeet { get; private set; }
-    public byte Unknown10 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public LazyRow< ExVersion > ExPac { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -39,7 +39,7 @@ public partial class Race : ExcelRow
         RSEFLegs = new LazyRow< Item >( gameData, parser.ReadOffset< int >( 28 ), language );
         RSEMFeet = new LazyRow< Item >( gameData, parser.ReadOffset< int >( 32 ), language );
         RSEFFeet = new LazyRow< Item >( gameData, parser.ReadOffset< int >( 36 ), language );
-        Unknown10 = parser.ReadOffset< byte >( 40 );
+        Unknown0 = parser.ReadOffset< byte >( 40 );
         ExPac = new LazyRow< ExVersion >( gameData, parser.ReadOffset< byte >( 41 ), language );
         
 

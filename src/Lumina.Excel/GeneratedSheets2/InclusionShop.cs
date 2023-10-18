@@ -12,21 +12,21 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class InclusionShop : ExcelRow
 {
     
-    public SeString Unknown2 { get; private set; }
+    public SeString Unknown0 { get; private set; }
     public LazyRow< InclusionShopCategory >[] Category { get; private set; }
-    public uint Unknown0 { get; private set; }
-    public byte Unknown1 { get; private set; }
+    public uint Unknown1 { get; private set; }
+    public byte Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown2 = parser.ReadOffset< SeString >( 0 );
+        Unknown0 = parser.ReadOffset< SeString >( 0 );
         Category = new LazyRow< InclusionShopCategory >[30];
         for (int i = 0; i < 30; i++)
         	Category[i] = new LazyRow< InclusionShopCategory >( gameData, parser.ReadOffset< ushort >( (ushort) ( 4 + i * 2 ) ), language );
-        Unknown0 = parser.ReadOffset< uint >( 64 );
-        Unknown1 = parser.ReadOffset< byte >( 68 );
+        Unknown1 = parser.ReadOffset< uint >( 64 );
+        Unknown2 = parser.ReadOffset< byte >( 68 );
         
 
     }

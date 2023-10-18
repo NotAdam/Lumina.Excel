@@ -27,7 +27,7 @@ public partial class Leve : ExcelRow
     public int Evaluation { get; private set; }
     public LazyRow< PlaceName > PlaceNameStart { get; private set; }
     public LazyRow< PlaceName > PlaceNameIssued { get; private set; }
-    public int Unknown17 { get; private set; }
+    public int Unknown0 { get; private set; }
     public LazyRow< PlaceName > PlaceNameStartZone { get; private set; }
     public int IconCityState { get; private set; }
     public ILazyRow DataId { get; private set; }
@@ -35,15 +35,15 @@ public partial class Leve : ExcelRow
     public ushort ClassJobLevel { get; private set; }
     public LazyRow< FishingSpot > FishingSpot { get; private set; }
     public LazyRow< BGM > BGM { get; private set; }
-    public byte Unknown3 { get; private set; }
+    public byte Unknown1 { get; private set; }
     public byte TimeLimit { get; private set; }
     public byte AllowanceCost { get; private set; }
-    public byte Unknown13 { get; private set; }
+    public byte Unknown2 { get; private set; }
     public LazyRow< ClassJobCategory > ClassJobCategory { get; private set; }
     public byte MaxDifficulty { get; private set; }
     public LazyRow< LeveVfx > LeveVfx { get; private set; }
     public LazyRow< LeveVfx > LeveVfxFrame { get; private set; }
-    public bool Unknown14 { get; private set; }
+    public bool Unknown3 { get; private set; }
     public bool CanCancel { get; private set; }
     public bool LockedLeve { get; private set; }
     
@@ -66,7 +66,7 @@ public partial class Leve : ExcelRow
         Evaluation = parser.ReadOffset< int >( 48 );
         PlaceNameStart = new LazyRow< PlaceName >( gameData, parser.ReadOffset< int >( 52 ), language );
         PlaceNameIssued = new LazyRow< PlaceName >( gameData, parser.ReadOffset< int >( 56 ), language );
-        Unknown17 = parser.ReadOffset< int >( 60 );
+        Unknown0 = parser.ReadOffset< int >( 60 );
         PlaceNameStartZone = new LazyRow< PlaceName >( gameData, parser.ReadOffset< int >( 64 ), language );
         IconCityState = parser.ReadOffset< int >( 68 );
         DataId = EmptyLazyRow.GetFirstLazyRowOrEmpty( gameData, (uint) parser.ReadOffset< int >( 72 ), language, "CraftLeve", "CompanyLeve", "GatheringLeve", "BattleLeve" );
@@ -74,15 +74,15 @@ public partial class Leve : ExcelRow
         ClassJobLevel = parser.ReadOffset< ushort >( 80 );
         FishingSpot = new LazyRow< FishingSpot >( gameData, parser.ReadOffset< ushort >( 82 ), language );
         BGM = new LazyRow< BGM >( gameData, parser.ReadOffset< ushort >( 84 ), language );
-        Unknown3 = parser.ReadOffset< byte >( 86 );
+        Unknown1 = parser.ReadOffset< byte >( 86 );
         TimeLimit = parser.ReadOffset< byte >( 87 );
         AllowanceCost = parser.ReadOffset< byte >( 88 );
-        Unknown13 = parser.ReadOffset< byte >( 89 );
+        Unknown2 = parser.ReadOffset< byte >( 89 );
         ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 90 ), language );
         MaxDifficulty = parser.ReadOffset< byte >( 91 );
         LeveVfx = new LazyRow< LeveVfx >( gameData, parser.ReadOffset< byte >( 92 ), language );
         LeveVfxFrame = new LazyRow< LeveVfx >( gameData, parser.ReadOffset< byte >( 93 ), language );
-        Unknown14 = parser.ReadOffset< bool >( 94 );
+        Unknown3 = parser.ReadOffset< bool >( 94 );
         CanCancel = parser.ReadOffset< bool >( 94, 2 );
         LockedLeve = parser.ReadOffset< bool >( 94, 4 );
         

@@ -21,9 +21,9 @@ public partial class AOZContent : ExcelRow
     public ILazyRow Act1 { get; private set; }
     public ILazyRow Act2 { get; private set; }
     public ILazyRow Act3 { get; private set; }
-    public ushort Unknown5 { get; private set; }
-    public ushort Unknown9 { get; private set; }
-    public ushort Unknown13 { get; private set; }
+    public ushort Unknown0 { get; private set; }
+    public ushort Unknown1 { get; private set; }
+    public ushort Unknown2 { get; private set; }
     public byte Act1FightType { get; private set; }
     public byte Act2FightType { get; private set; }
     public byte Act3FightType { get; private set; }
@@ -45,9 +45,9 @@ public partial class AOZContent : ExcelRow
         var Act1RowId = parser.ReadOffset< ushort >( 16 );
         var Act2RowId = parser.ReadOffset< ushort >( 18 );
         var Act3RowId = parser.ReadOffset< ushort >( 20 );
-        Unknown5 = parser.ReadOffset< ushort >( 22 );
-        Unknown9 = parser.ReadOffset< ushort >( 24 );
-        Unknown13 = parser.ReadOffset< ushort >( 26 );
+        Unknown0 = parser.ReadOffset< ushort >( 22 );
+        Unknown1 = parser.ReadOffset< ushort >( 24 );
+        Unknown2 = parser.ReadOffset< ushort >( 26 );
         Act1FightType = parser.ReadOffset< byte >( 28 );
         Act2FightType = parser.ReadOffset< byte >( 29 );
         Act3FightType = parser.ReadOffset< byte >( 30 );

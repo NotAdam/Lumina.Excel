@@ -12,23 +12,23 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class MiniGameTurnBreakStatus : ExcelRow
 {
     
-    public SeString Unknown4 { get; private set; }
-    public SeString Unknown5 { get; private set; }
-    public int Unknown0 { get; private set; }
-    public byte Unknown1 { get; private set; }
+    public SeString Unknown0 { get; private set; }
+    public SeString Unknown1 { get; private set; }
+    public int Unknown2 { get; private set; }
     public byte Unknown3 { get; private set; }
-    public bool Unknown2 { get; private set; }
+    public byte Unknown4 { get; private set; }
+    public bool Unknown5 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown4 = parser.ReadOffset< SeString >( 0 );
-        Unknown5 = parser.ReadOffset< SeString >( 4 );
-        Unknown0 = parser.ReadOffset< int >( 8 );
-        Unknown1 = parser.ReadOffset< byte >( 12 );
-        Unknown3 = parser.ReadOffset< byte >( 13 );
-        Unknown2 = parser.ReadOffset< bool >( 14 );
+        Unknown0 = parser.ReadOffset< SeString >( 0 );
+        Unknown1 = parser.ReadOffset< SeString >( 4 );
+        Unknown2 = parser.ReadOffset< int >( 8 );
+        Unknown3 = parser.ReadOffset< byte >( 12 );
+        Unknown4 = parser.ReadOffset< byte >( 13 );
+        Unknown5 = parser.ReadOffset< bool >( 14 );
         
 
     }

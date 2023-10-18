@@ -20,17 +20,17 @@ public partial class Emote : ExcelRow
     public ushort Icon { get; private set; }
     public LazyRow< LogMessage > LogMessageTargeted { get; private set; }
     public LazyRow< LogMessage > LogMessageUntargeted { get; private set; }
-    public ushort Unknown24 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     public LazyRow< EmoteCategory > EmoteCategory { get; private set; }
     public LazyRow< EmoteMode > EmoteMode { get; private set; }
-    public bool Unknown8 { get; private set; }
-    public bool Unknown9 { get; private set; }
-    public bool Unknown10 { get; private set; }
-    public bool Unknown13 { get; private set; }
-    public bool Unknown14 { get; private set; }
+    public bool Unknown1 { get; private set; }
+    public bool Unknown2 { get; private set; }
+    public bool Unknown3 { get; private set; }
+    public bool Unknown4 { get; private set; }
+    public bool Unknown5 { get; private set; }
     public bool HasCancelEmote { get; private set; }
     public bool DrawsWeapon { get; private set; }
-    public bool Unknown17 { get; private set; }
+    public bool Unknown6 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -46,17 +46,17 @@ public partial class Emote : ExcelRow
         Icon = parser.ReadOffset< ushort >( 28 );
         LogMessageTargeted = new LazyRow< LogMessage >( gameData, parser.ReadOffset< ushort >( 30 ), language );
         LogMessageUntargeted = new LazyRow< LogMessage >( gameData, parser.ReadOffset< ushort >( 32 ), language );
-        Unknown24 = parser.ReadOffset< ushort >( 34 );
+        Unknown0 = parser.ReadOffset< ushort >( 34 );
         EmoteCategory = new LazyRow< EmoteCategory >( gameData, parser.ReadOffset< byte >( 36 ), language );
         EmoteMode = new LazyRow< EmoteMode >( gameData, parser.ReadOffset< byte >( 37 ), language );
-        Unknown8 = parser.ReadOffset< bool >( 38 );
-        Unknown9 = parser.ReadOffset< bool >( 38, 2 );
-        Unknown10 = parser.ReadOffset< bool >( 38, 4 );
-        Unknown13 = parser.ReadOffset< bool >( 38, 8 );
-        Unknown14 = parser.ReadOffset< bool >( 38, 16 );
+        Unknown1 = parser.ReadOffset< bool >( 38 );
+        Unknown2 = parser.ReadOffset< bool >( 38, 2 );
+        Unknown3 = parser.ReadOffset< bool >( 38, 4 );
+        Unknown4 = parser.ReadOffset< bool >( 38, 8 );
+        Unknown5 = parser.ReadOffset< bool >( 38, 16 );
         HasCancelEmote = parser.ReadOffset< bool >( 38, 32 );
         DrawsWeapon = parser.ReadOffset< bool >( 38, 64 );
-        Unknown17 = parser.ReadOffset< bool >( 38, 128 );
+        Unknown6 = parser.ReadOffset< bool >( 38, 128 );
         
 
     }

@@ -31,27 +31,27 @@ public partial class Transformation : ExcelRow
     public LazyRow< Action > Action7 { get; private set; }
     public LazyRow< ModelChara > Model { get; private set; }
     public byte Unknown0 { get; private set; }
-    public byte Unknown22 { get; private set; }
-    public byte Unknown37 { get; private set; }
-    public sbyte Unknown34 { get; private set; }
-    public sbyte Unknown35 { get; private set; }
+    public byte Unknown1 { get; private set; }
+    public byte Unknown2 { get; private set; }
+    public sbyte Unknown3 { get; private set; }
+    public sbyte Unknown4 { get; private set; }
     public bool ExHotbarEnableConfig { get; private set; }
+    public bool Unknown5 { get; private set; }
+    public bool Unknown6 { get; private set; }
     public bool Unknown7 { get; private set; }
+    public bool Unknown8 { get; private set; }
     public bool Unknown9 { get; private set; }
+    public bool Unknown10 { get; private set; }
     public bool Unknown11 { get; private set; }
+    public bool Unknown12 { get; private set; }
     public bool Unknown13 { get; private set; }
-    public bool Unknown15 { get; private set; }
-    public bool Unknown17 { get; private set; }
-    public bool Unknown20 { get; private set; }
-    public bool Unknown21 { get; private set; }
-    public bool Unknown23 { get; private set; }
     public bool IsPvP { get; private set; }
     public bool IsEvent { get; private set; }
     public bool PlayerCamera { get; private set; }
-    public bool Unknown29 { get; private set; }
-    public bool Unknown30 { get; private set; }
-    public bool Unknown38 { get; private set; }
-    public bool Unknown39 { get; private set; }
+    public bool Unknown14 { get; private set; }
+    public bool Unknown15 { get; private set; }
+    public bool Unknown16 { get; private set; }
+    public bool Unknown17 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -76,27 +76,27 @@ public partial class Transformation : ExcelRow
         Action7 = new LazyRow< Action >( gameData, parser.ReadOffset< ushort >( 42 ), language );
         Model = new LazyRow< ModelChara >( gameData, parser.ReadOffset< short >( 44 ), language );
         Unknown0 = parser.ReadOffset< byte >( 46 );
-        Unknown22 = parser.ReadOffset< byte >( 47 );
-        Unknown37 = parser.ReadOffset< byte >( 48 );
-        Unknown34 = parser.ReadOffset< sbyte >( 49 );
-        Unknown35 = parser.ReadOffset< sbyte >( 50 );
+        Unknown1 = parser.ReadOffset< byte >( 47 );
+        Unknown2 = parser.ReadOffset< byte >( 48 );
+        Unknown3 = parser.ReadOffset< sbyte >( 49 );
+        Unknown4 = parser.ReadOffset< sbyte >( 50 );
         ExHotbarEnableConfig = parser.ReadOffset< bool >( 51 );
-        Unknown7 = parser.ReadOffset< bool >( 52 );
-        Unknown9 = parser.ReadOffset< bool >( 53 );
-        Unknown11 = parser.ReadOffset< bool >( 54 );
-        Unknown13 = parser.ReadOffset< bool >( 55 );
-        Unknown15 = parser.ReadOffset< bool >( 56 );
-        Unknown17 = parser.ReadOffset< bool >( 57 );
-        Unknown20 = parser.ReadOffset< bool >( 58 );
-        Unknown21 = parser.ReadOffset< bool >( 58, 2 );
-        Unknown23 = parser.ReadOffset< bool >( 58, 4 );
+        Unknown5 = parser.ReadOffset< bool >( 52 );
+        Unknown6 = parser.ReadOffset< bool >( 53 );
+        Unknown7 = parser.ReadOffset< bool >( 54 );
+        Unknown8 = parser.ReadOffset< bool >( 55 );
+        Unknown9 = parser.ReadOffset< bool >( 56 );
+        Unknown10 = parser.ReadOffset< bool >( 57 );
+        Unknown11 = parser.ReadOffset< bool >( 58 );
+        Unknown12 = parser.ReadOffset< bool >( 58, 2 );
+        Unknown13 = parser.ReadOffset< bool >( 58, 4 );
         IsPvP = parser.ReadOffset< bool >( 58, 8 );
         IsEvent = parser.ReadOffset< bool >( 58, 16 );
         PlayerCamera = parser.ReadOffset< bool >( 58, 32 );
-        Unknown29 = parser.ReadOffset< bool >( 58, 64 );
-        Unknown30 = parser.ReadOffset< bool >( 58, 128 );
-        Unknown38 = parser.ReadOffset< bool >( 59 );
-        Unknown39 = parser.ReadOffset< bool >( 59, 2 );
+        Unknown14 = parser.ReadOffset< bool >( 58, 64 );
+        Unknown15 = parser.ReadOffset< bool >( 58, 128 );
+        Unknown16 = parser.ReadOffset< bool >( 59 );
+        Unknown17 = parser.ReadOffset< bool >( 59, 2 );
         
 
     }

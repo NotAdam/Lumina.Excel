@@ -13,9 +13,9 @@ public partial class WeeklyLotBonus : ExcelRow
 {
     public struct WeeklyLotBonusParamStruct
     {
-    	public ushort Unknown32 { get; internal set; }
+    	public ushort Unknown0 { get; internal set; }
     	public LazyRow< WeeklyLotBonusThreshold > WeeklyLotBonusThreshold { get; internal set; }
-    	public byte Unknown64 { get; internal set; }
+    	public byte Unknown1 { get; internal set; }
     }
     
     public WeeklyLotBonusParamStruct[] WeeklyLotBonusParam { get; private set; }
@@ -27,9 +27,9 @@ public partial class WeeklyLotBonus : ExcelRow
         WeeklyLotBonusParam = new WeeklyLotBonusParamStruct[32];
         for (int i = 0; i < 32; i++)
         {
-        	WeeklyLotBonusParam[i].Unknown32 = parser.ReadOffset< ushort >( (ushort) (i * 4 + 0));
+        	WeeklyLotBonusParam[i].Unknown0 = parser.ReadOffset< ushort >( (ushort) (i * 4 + 0));
         	WeeklyLotBonusParam[i].WeeklyLotBonusThreshold = new LazyRow< WeeklyLotBonusThreshold >( gameData, parser.ReadOffset< byte >( (ushort) (i * 4 + 2) ), language );
-        	WeeklyLotBonusParam[i].Unknown64 = parser.ReadOffset< byte >( (ushort) (i * 4 + 3));
+        	WeeklyLotBonusParam[i].Unknown1 = parser.ReadOffset< byte >( (ushort) (i * 4 + 3));
         }
         
 

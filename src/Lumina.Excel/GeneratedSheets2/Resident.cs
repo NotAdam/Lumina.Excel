@@ -14,8 +14,8 @@ public partial class Resident : ExcelRow
     
     public ulong Model { get; private set; }
     public LazyRow< NpcYell > NpcYell { get; private set; }
-    public ushort Unknown3 { get; private set; }
-    public byte Unknown0 { get; private set; }
+    public ushort Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
     public LazyRow< ResidentMotionType > ResidentMotionType { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -24,8 +24,8 @@ public partial class Resident : ExcelRow
 
         Model = parser.ReadOffset< ulong >( 0 );
         NpcYell = new LazyRow< NpcYell >( gameData, parser.ReadOffset< int >( 8 ), language );
-        Unknown3 = parser.ReadOffset< ushort >( 12 );
-        Unknown0 = parser.ReadOffset< byte >( 14 );
+        Unknown0 = parser.ReadOffset< ushort >( 12 );
+        Unknown1 = parser.ReadOffset< byte >( 14 );
         ResidentMotionType = new LazyRow< ResidentMotionType >( gameData, parser.ReadOffset< byte >( 15 ), language );
         
 

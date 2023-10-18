@@ -19,7 +19,7 @@ public partial class WeeklyBingoRewardData : ExcelRow
     public ushort RewardQuantity2 { get; private set; }
     public ushort RewardQuantity3 { get; private set; }
     public byte RewardType1 { get; private set; }
-    public byte Unknown1 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public byte RewardType2 { get; private set; }
     public byte RewardType3 { get; private set; }
     public bool RewardHq2 { get; private set; }
@@ -37,7 +37,7 @@ public partial class WeeklyBingoRewardData : ExcelRow
         RewardQuantity2 = parser.ReadOffset< ushort >( 14 );
         RewardQuantity3 = parser.ReadOffset< ushort >( 16 );
         RewardType1 = parser.ReadOffset< byte >( 18 );
-        Unknown1 = parser.ReadOffset< byte >( 19 );
+        Unknown0 = parser.ReadOffset< byte >( 19 );
         RewardType2 = parser.ReadOffset< byte >( 20 );
         RewardType3 = parser.ReadOffset< byte >( 21 );
         RewardHq2 = parser.ReadOffset< bool >( 22 );

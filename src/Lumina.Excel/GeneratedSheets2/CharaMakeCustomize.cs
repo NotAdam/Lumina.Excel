@@ -17,7 +17,7 @@ public partial class CharaMakeCustomize : ExcelRow
     public LazyRow< Item > HintItem { get; private set; }
     public ushort Data { get; private set; }
     public byte FeatureID { get; private set; }
-    public byte Unknown6 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public bool IsPurchasable { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -29,7 +29,7 @@ public partial class CharaMakeCustomize : ExcelRow
         HintItem = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( 8 ), language );
         Data = parser.ReadOffset< ushort >( 12 );
         FeatureID = parser.ReadOffset< byte >( 14 );
-        Unknown6 = parser.ReadOffset< byte >( 15 );
+        Unknown0 = parser.ReadOffset< byte >( 15 );
         IsPurchasable = parser.ReadOffset< bool >( 16 );
         
 

@@ -13,14 +13,14 @@ public partial class EventItemHelp : ExcelRow
 {
     
     public SeString Description { get; private set; }
-    public bool Unknown1 { get; private set; }
+    public bool Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         Description = parser.ReadOffset< SeString >( 0 );
-        Unknown1 = parser.ReadOffset< bool >( 4 );
+        Unknown0 = parser.ReadOffset< bool >( 4 );
         
 
     }

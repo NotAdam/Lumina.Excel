@@ -14,12 +14,12 @@ public partial class GroupPoseFrame : ExcelRow
     
     public SeString Text { get; private set; }
     public SeString GridText { get; private set; }
-    public uint Unknown4 { get; private set; }
-    public int Unknown0 { get; private set; }
+    public uint Unknown0 { get; private set; }
+    public int Unknown1 { get; private set; }
     public int Image { get; private set; }
+    public int Unknown2 { get; private set; }
     public int Unknown3 { get; private set; }
-    public int Unknown6 { get; private set; }
-    public byte Unknown5 { get; private set; }
+    public byte Unknown4 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -27,12 +27,12 @@ public partial class GroupPoseFrame : ExcelRow
 
         Text = parser.ReadOffset< SeString >( 0 );
         GridText = parser.ReadOffset< SeString >( 4 );
-        Unknown4 = parser.ReadOffset< uint >( 8 );
-        Unknown0 = parser.ReadOffset< int >( 12 );
+        Unknown0 = parser.ReadOffset< uint >( 8 );
+        Unknown1 = parser.ReadOffset< int >( 12 );
         Image = parser.ReadOffset< int >( 16 );
-        Unknown3 = parser.ReadOffset< int >( 20 );
-        Unknown6 = parser.ReadOffset< int >( 24 );
-        Unknown5 = parser.ReadOffset< byte >( 28 );
+        Unknown2 = parser.ReadOffset< int >( 20 );
+        Unknown3 = parser.ReadOffset< int >( 24 );
+        Unknown4 = parser.ReadOffset< byte >( 28 );
         
 
     }

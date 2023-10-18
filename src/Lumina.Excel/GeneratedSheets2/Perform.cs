@@ -23,7 +23,7 @@ public partial class Perform : ExcelRow
     public LazyRow< ActionTimeline > AnimationEnd { get; private set; }
     public LazyRow< ActionTimeline > AnimationIdle { get; private set; }
     public LazyRow< PerformTransient > Transient { get; private set; }
-    public byte Unknown12 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -41,7 +41,7 @@ public partial class Perform : ExcelRow
         AnimationEnd = new LazyRow< ActionTimeline >( gameData, parser.ReadOffset< ushort >( 30 ), language );
         AnimationIdle = new LazyRow< ActionTimeline >( gameData, parser.ReadOffset< ushort >( 32 ), language );
         Transient = new LazyRow< PerformTransient >( gameData, parser.ReadOffset< byte >( 34 ), language );
-        Unknown12 = parser.ReadOffset< byte >( 35 );
+        Unknown0 = parser.ReadOffset< byte >( 35 );
         Unknown1 = parser.ReadOffset< bool >( 36 );
         
 

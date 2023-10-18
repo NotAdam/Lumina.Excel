@@ -19,9 +19,9 @@ public partial class QuestRedo : ExcelRow
     
     public QuestRedoParamStruct[] QuestRedoParam { get; private set; }
     public LazyRow< Quest > FinalQuest { get; private set; }
-    public uint Unknown1 { get; private set; }
+    public uint Unknown0 { get; private set; }
     public LazyRow< QuestRedoChapter > Chapter { get; private set; }
-    public byte Unknown2 { get; private set; }
+    public byte Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -34,9 +34,9 @@ public partial class QuestRedo : ExcelRow
         	QuestRedoParam[i].UnknownParam = parser.ReadOffset< byte >( (ushort) (i * 8 + 4));
         }
         FinalQuest = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 256 ), language );
-        Unknown1 = parser.ReadOffset< uint >( 260 );
+        Unknown0 = parser.ReadOffset< uint >( 260 );
         Chapter = new LazyRow< QuestRedoChapter >( gameData, parser.ReadOffset< ushort >( 264 ), language );
-        Unknown2 = parser.ReadOffset< byte >( 266 );
+        Unknown1 = parser.ReadOffset< byte >( 266 );
         
 
     }

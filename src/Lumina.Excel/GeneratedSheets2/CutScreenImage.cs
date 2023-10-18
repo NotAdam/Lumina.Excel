@@ -14,7 +14,7 @@ public partial class CutScreenImage : ExcelRow
     
     public int Image { get; private set; }
     public short Type { get; private set; }
-    public short Unknown2 { get; private set; }
+    public short Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -22,7 +22,7 @@ public partial class CutScreenImage : ExcelRow
 
         Image = parser.ReadOffset< int >( 0 );
         Type = parser.ReadOffset< short >( 4 );
-        Unknown2 = parser.ReadOffset< short >( 6 );
+        Unknown0 = parser.ReadOffset< short >( 6 );
         
 
     }

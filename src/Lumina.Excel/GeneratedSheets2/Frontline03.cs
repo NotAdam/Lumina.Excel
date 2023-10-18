@@ -18,8 +18,8 @@ public partial class Frontline03 : ExcelRow
     	public uint TwinAdderIcon { get; internal set; }
     	public uint ImmortalFlamesIcon { get; internal set; }
     	public byte Unknown0 { get; internal set; }
-    	public byte Unknown3 { get; internal set; }
-    	public byte Unknown6 { get; internal set; }
+    	public byte Unknown1 { get; internal set; }
+    	public byte Unknown2 { get; internal set; }
     }
     
     public OvooDataStruct[] OvooData { get; private set; }
@@ -36,8 +36,8 @@ public partial class Frontline03 : ExcelRow
         	OvooData[i].TwinAdderIcon = parser.ReadOffset< uint >( (ushort) (i * 20 + 8));
         	OvooData[i].ImmortalFlamesIcon = parser.ReadOffset< uint >( (ushort) (i * 20 + 12));
         	OvooData[i].Unknown0 = parser.ReadOffset< byte >( (ushort) (i * 20 + 16));
-        	OvooData[i].Unknown3 = parser.ReadOffset< byte >( (ushort) (i * 20 + 17));
-        	OvooData[i].Unknown6 = parser.ReadOffset< byte >( (ushort) (i * 20 + 18));
+        	OvooData[i].Unknown1 = parser.ReadOffset< byte >( (ushort) (i * 20 + 17));
+        	OvooData[i].Unknown2 = parser.ReadOffset< byte >( (ushort) (i * 20 + 18));
         }
         
 

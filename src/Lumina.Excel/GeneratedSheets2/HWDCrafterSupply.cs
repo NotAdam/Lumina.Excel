@@ -25,7 +25,7 @@ public partial class HWDCrafterSupply : ExcelRow
     	public LazyRow< HWDCrafterSupplyReward > HighCollectableRewardPostPhase { get; internal set; }
     	public byte Level { get; internal set; }
     	public byte LevelMax { get; internal set; }
-    	public byte Unknown1 { get; internal set; }
+    	public byte Unknown0 { get; internal set; }
     	public LazyRow< HWDCrafterSupplyTerm > TermName { get; internal set; }
     }
     
@@ -50,7 +50,7 @@ public partial class HWDCrafterSupply : ExcelRow
         	HWDCrafterSupplyParams[i].HighCollectableRewardPostPhase = new LazyRow< HWDCrafterSupplyReward >( gameData, parser.ReadOffset< ushort >( (ushort) (i * 28 + 20) ), language );
         	HWDCrafterSupplyParams[i].Level = parser.ReadOffset< byte >( (ushort) (i * 28 + 22));
         	HWDCrafterSupplyParams[i].LevelMax = parser.ReadOffset< byte >( (ushort) (i * 28 + 23));
-        	HWDCrafterSupplyParams[i].Unknown1 = parser.ReadOffset< byte >( (ushort) (i * 28 + 24));
+        	HWDCrafterSupplyParams[i].Unknown0 = parser.ReadOffset< byte >( (ushort) (i * 28 + 24));
         	HWDCrafterSupplyParams[i].TermName = new LazyRow< HWDCrafterSupplyTerm >( gameData, parser.ReadOffset< byte >( (ushort) (i * 28 + 25) ), language );
         }
         

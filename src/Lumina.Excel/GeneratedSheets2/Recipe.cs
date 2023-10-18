@@ -30,12 +30,12 @@ public partial class Recipe : ExcelRow
     public ushort QuickSynthCraftsmanship { get; private set; }
     public ushort QuickSynthControl { get; private set; }
     public LazyRow< SecretRecipeBook > SecretRecipeBook { get; private set; }
-    public ushort Unknown46 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     public ushort PatchNumber { get; private set; }
     public byte AmountResult { get; private set; }
     public byte[] AmountIngredient { get; private set; }
     public byte MaterialQualityFactor { get; private set; }
-    public byte Unknown45 { get; private set; }
+    public byte Unknown1 { get; private set; }
     public bool IsSecondary { get; private set; }
     public bool CanQuickSynth { get; private set; }
     public bool CanHq { get; private set; }
@@ -67,14 +67,14 @@ public partial class Recipe : ExcelRow
         QuickSynthCraftsmanship = parser.ReadOffset< ushort >( 82 );
         QuickSynthControl = parser.ReadOffset< ushort >( 84 );
         SecretRecipeBook = new LazyRow< SecretRecipeBook >( gameData, parser.ReadOffset< ushort >( 86 ), language );
-        Unknown46 = parser.ReadOffset< ushort >( 88 );
+        Unknown0 = parser.ReadOffset< ushort >( 88 );
         PatchNumber = parser.ReadOffset< ushort >( 90 );
         AmountResult = parser.ReadOffset< byte >( 92 );
         AmountIngredient = new byte[10];
         for (int i = 0; i < 10; i++)
         	AmountIngredient[i] = parser.ReadOffset< byte >( 93 + i * 1 );
         MaterialQualityFactor = parser.ReadOffset< byte >( 103 );
-        Unknown45 = parser.ReadOffset< byte >( 104 );
+        Unknown1 = parser.ReadOffset< byte >( 104 );
         IsSecondary = parser.ReadOffset< bool >( 105 );
         CanQuickSynth = parser.ReadOffset< bool >( 105, 2 );
         CanHq = parser.ReadOffset< bool >( 105, 4 );

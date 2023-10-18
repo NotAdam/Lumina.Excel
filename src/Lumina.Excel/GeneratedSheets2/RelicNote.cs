@@ -15,7 +15,7 @@ public partial class RelicNote : ExcelRow
     public LazyRow< EventItem > EventItem { get; private set; }
     public LazyRow< MonsterNoteTarget >[] MonsterNoteTargetCommon { get; private set; }
     public LazyRow< MonsterNoteTarget >[] MonsterNoteTargetNM { get; private set; }
-    public ushort Unknown24 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     public LazyRow< Fate >[] Fate { get; private set; }
     public LazyRow< PlaceName >[] PlaceNameFate { get; private set; }
     public LazyRow< Leve >[] Leve { get; private set; }
@@ -32,7 +32,7 @@ public partial class RelicNote : ExcelRow
         MonsterNoteTargetNM = new LazyRow< MonsterNoteTarget >[3];
         for (int i = 0; i < 3; i++)
         	MonsterNoteTargetNM[i] = new LazyRow< MonsterNoteTarget >( gameData, parser.ReadOffset< ushort >( (ushort) ( 24 + i * 2 ) ), language );
-        Unknown24 = parser.ReadOffset< ushort >( 30 );
+        Unknown0 = parser.ReadOffset< ushort >( 30 );
         Fate = new LazyRow< Fate >[3];
         for (int i = 0; i < 3; i++)
         	Fate[i] = new LazyRow< Fate >( gameData, parser.ReadOffset< ushort >( (ushort) ( 32 + i * 2 ) ), language );

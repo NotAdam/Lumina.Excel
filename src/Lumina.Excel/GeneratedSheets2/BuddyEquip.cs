@@ -18,7 +18,7 @@ public partial class BuddyEquip : ExcelRow
     public sbyte Adjective { get; private set; }
     public sbyte PossessivePronoun { get; private set; }
     public sbyte StartsWithVowel { get; private set; }
-    public sbyte Unknown5 { get; private set; }
+    public sbyte Unknown0 { get; private set; }
     public sbyte Pronoun { get; private set; }
     public sbyte Article { get; private set; }
     public int ModelTop { get; private set; }
@@ -40,7 +40,7 @@ public partial class BuddyEquip : ExcelRow
         Adjective = parser.ReadOffset< sbyte >( 12 );
         PossessivePronoun = parser.ReadOffset< sbyte >( 13 );
         StartsWithVowel = parser.ReadOffset< sbyte >( 14 );
-        Unknown5 = parser.ReadOffset< sbyte >( 15 );
+        Unknown0 = parser.ReadOffset< sbyte >( 15 );
         Pronoun = parser.ReadOffset< sbyte >( 16 );
         Article = parser.ReadOffset< sbyte >( 17 );
         ModelTop = parser.ReadOffset< int >( 20 );

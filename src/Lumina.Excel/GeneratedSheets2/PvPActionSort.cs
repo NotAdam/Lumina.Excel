@@ -12,21 +12,21 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class PvPActionSort : ExcelRow
 {
     
-    public int Unknown4 { get; private set; }
+    public int Unknown0 { get; private set; }
     public ILazyRow Action { get; private set; }
     public byte ActionType { get; private set; }
+    public bool Unknown1 { get; private set; }
     public bool Unknown2 { get; private set; }
-    public bool Unknown3 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown4 = parser.ReadOffset< int >( 0 );
+        Unknown0 = parser.ReadOffset< int >( 0 );
         var ActionRowId = parser.ReadOffset< ushort >( 4 );
         ActionType = parser.ReadOffset< byte >( 6 );
-        Unknown2 = parser.ReadOffset< bool >( 7 );
-        Unknown3 = parser.ReadOffset< bool >( 7, 2 );
+        Unknown1 = parser.ReadOffset< bool >( 7 );
+        Unknown2 = parser.ReadOffset< bool >( 7, 2 );
         
         Action = ActionType switch
         {

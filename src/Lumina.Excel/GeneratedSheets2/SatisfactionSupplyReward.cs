@@ -27,7 +27,7 @@ public partial class SatisfactionSupplyReward : ExcelRow
     public ushort GilMid { get; private set; }
     public ushort GilHigh { get; private set; }
     public byte Unknown0 { get; private set; }
-    public byte Unknown9 { get; private set; }
+    public byte Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -48,7 +48,7 @@ public partial class SatisfactionSupplyReward : ExcelRow
         GilMid = parser.ReadOffset< ushort >( 24 );
         GilHigh = parser.ReadOffset< ushort >( 26 );
         Unknown0 = parser.ReadOffset< byte >( 28 );
-        Unknown9 = parser.ReadOffset< byte >( 29 );
+        Unknown1 = parser.ReadOffset< byte >( 29 );
         
 
     }

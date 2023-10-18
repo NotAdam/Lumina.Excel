@@ -17,10 +17,10 @@ public partial class GeneralAction : ExcelRow
     public int Icon { get; private set; }
     public LazyRow< Action > Action { get; private set; }
     public ushort UnlockLink { get; private set; }
-    public byte Unknown2 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public byte Recast { get; private set; }
     public byte UIPriority { get; private set; }
-    public bool Unknown8 { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -31,10 +31,10 @@ public partial class GeneralAction : ExcelRow
         Icon = parser.ReadOffset< int >( 8 );
         Action = new LazyRow< Action >( gameData, parser.ReadOffset< ushort >( 12 ), language );
         UnlockLink = parser.ReadOffset< ushort >( 14 );
-        Unknown2 = parser.ReadOffset< byte >( 16 );
+        Unknown0 = parser.ReadOffset< byte >( 16 );
         Recast = parser.ReadOffset< byte >( 17 );
         UIPriority = parser.ReadOffset< byte >( 18 );
-        Unknown8 = parser.ReadOffset< bool >( 19 );
+        Unknown1 = parser.ReadOffset< bool >( 19 );
         
 
     }

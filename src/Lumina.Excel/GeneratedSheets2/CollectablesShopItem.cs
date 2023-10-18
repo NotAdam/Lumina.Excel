@@ -13,7 +13,7 @@ public partial class CollectablesShopItem : ExcelRow
 {
     
     public LazyRow< Item > Item { get; private set; }
-    public uint Unknown3 { get; private set; }
+    public uint Unknown0 { get; private set; }
     public ushort LevelMin { get; private set; }
     public ushort LevelMax { get; private set; }
     public LazyRow< CollectablesShopRefine > CollectablesShopRefine { get; private set; }
@@ -27,7 +27,7 @@ public partial class CollectablesShopItem : ExcelRow
         base.PopulateData( parser, gameData, language );
 
         Item = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( 0 ), language );
-        Unknown3 = parser.ReadOffset< uint >( 4 );
+        Unknown0 = parser.ReadOffset< uint >( 4 );
         LevelMin = parser.ReadOffset< ushort >( 8 );
         LevelMax = parser.ReadOffset< ushort >( 10 );
         CollectablesShopRefine = new LazyRow< CollectablesShopRefine >( gameData, parser.ReadOffset< ushort >( 12 ), language );

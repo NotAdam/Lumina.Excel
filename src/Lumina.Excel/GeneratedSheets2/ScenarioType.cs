@@ -13,14 +13,14 @@ public partial class ScenarioType : ExcelRow
 {
     
     public SeString Type { get; private set; }
-    public sbyte Unknown1 { get; private set; }
+    public sbyte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         Type = parser.ReadOffset< SeString >( 0 );
-        Unknown1 = parser.ReadOffset< sbyte >( 4 );
+        Unknown0 = parser.ReadOffset< sbyte >( 4 );
         
 
     }

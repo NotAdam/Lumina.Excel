@@ -13,14 +13,14 @@ public partial class IKDRouteTable : ExcelRow
 {
     
     public LazyRow< IKDRoute > Route { get; private set; }
-    public uint Unknown1 { get; private set; }
+    public uint Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         Route = new LazyRow< IKDRoute >( gameData, parser.ReadOffset< uint >( 0 ), language );
-        Unknown1 = parser.ReadOffset< uint >( 4 );
+        Unknown0 = parser.ReadOffset< uint >( 4 );
         
 
     }

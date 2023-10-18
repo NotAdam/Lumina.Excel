@@ -15,9 +15,9 @@ public partial class GardeningSeed : ExcelRow
     public LazyRow< Item > Item { get; private set; }
     public uint Icon { get; private set; }
     public ushort ModelID { get; private set; }
-    public byte Unknown5 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public bool SE { get; private set; }
-    public bool Unknown4 { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -26,9 +26,9 @@ public partial class GardeningSeed : ExcelRow
         Item = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( 0 ), language );
         Icon = parser.ReadOffset< uint >( 4 );
         ModelID = parser.ReadOffset< ushort >( 8 );
-        Unknown5 = parser.ReadOffset< byte >( 10 );
+        Unknown0 = parser.ReadOffset< byte >( 10 );
         SE = parser.ReadOffset< bool >( 11 );
-        Unknown4 = parser.ReadOffset< bool >( 11, 2 );
+        Unknown1 = parser.ReadOffset< bool >( 11, 2 );
         
 
     }

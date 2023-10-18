@@ -18,15 +18,15 @@ public partial class HousingFurniture : ExcelRow
     public ushort ModelKey { get; private set; }
     public byte HousingItemCategory { get; private set; }
     public byte UsageType { get; private set; }
-    public byte Unknown4 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public byte AquariumTier { get; private set; }
-    public byte Unknown10 { get; private set; }
-    public byte Unknown11 { get; private set; }
-    public byte Unknown12 { get; private set; }
+    public byte Unknown1 { get; private set; }
+    public byte Unknown2 { get; private set; }
+    public byte Unknown3 { get; private set; }
     public bool DestroyOnRemoval { get; private set; }
-    public bool Unknown9 { get; private set; }
-    public bool Unknown13 { get; private set; }
-    public bool Unknown14 { get; private set; }
+    public bool Unknown4 { get; private set; }
+    public bool Unknown5 { get; private set; }
+    public bool Unknown6 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -38,15 +38,15 @@ public partial class HousingFurniture : ExcelRow
         ModelKey = parser.ReadOffset< ushort >( 12 );
         HousingItemCategory = parser.ReadOffset< byte >( 14 );
         UsageType = parser.ReadOffset< byte >( 15 );
-        Unknown4 = parser.ReadOffset< byte >( 16 );
+        Unknown0 = parser.ReadOffset< byte >( 16 );
         AquariumTier = parser.ReadOffset< byte >( 17 );
-        Unknown10 = parser.ReadOffset< byte >( 18 );
-        Unknown11 = parser.ReadOffset< byte >( 19 );
-        Unknown12 = parser.ReadOffset< byte >( 20 );
+        Unknown1 = parser.ReadOffset< byte >( 18 );
+        Unknown2 = parser.ReadOffset< byte >( 19 );
+        Unknown3 = parser.ReadOffset< byte >( 20 );
         DestroyOnRemoval = parser.ReadOffset< bool >( 21 );
-        Unknown9 = parser.ReadOffset< bool >( 21, 2 );
-        Unknown13 = parser.ReadOffset< bool >( 21, 4 );
-        Unknown14 = parser.ReadOffset< bool >( 21, 8 );
+        Unknown4 = parser.ReadOffset< bool >( 21, 2 );
+        Unknown5 = parser.ReadOffset< bool >( 21, 4 );
+        Unknown6 = parser.ReadOffset< bool >( 21, 8 );
         
 
     }

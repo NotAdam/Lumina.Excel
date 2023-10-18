@@ -14,10 +14,10 @@ public partial class RideShootingTargetType : ExcelRow
     
     public LazyRow< EObj > EObj { get; private set; }
     public short Score { get; private set; }
+    public short Unknown0 { get; private set; }
+    public short Unknown1 { get; private set; }
     public short Unknown2 { get; private set; }
     public short Unknown3 { get; private set; }
-    public short Unknown4 { get; private set; }
-    public short Unknown5 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -25,10 +25,10 @@ public partial class RideShootingTargetType : ExcelRow
 
         EObj = new LazyRow< EObj >( gameData, parser.ReadOffset< uint >( 0 ), language );
         Score = parser.ReadOffset< short >( 4 );
-        Unknown2 = parser.ReadOffset< short >( 6 );
-        Unknown3 = parser.ReadOffset< short >( 8 );
-        Unknown4 = parser.ReadOffset< short >( 10 );
-        Unknown5 = parser.ReadOffset< short >( 12 );
+        Unknown0 = parser.ReadOffset< short >( 6 );
+        Unknown1 = parser.ReadOffset< short >( 8 );
+        Unknown2 = parser.ReadOffset< short >( 10 );
+        Unknown3 = parser.ReadOffset< short >( 12 );
         
 
     }

@@ -14,14 +14,14 @@ public partial class HugeCraftworksNpc : ExcelRow
     public struct HugeCraftworksTurnInParamStruct
     {
     	public LazyRow< Item > RequestedItem { get; internal set; }
-    	public ushort Unknown39 { get; internal set; }
+    	public ushort Unknown0 { get; internal set; }
     	public byte RequestedQuantity { get; internal set; }
-    	public byte Unknown21 { get; internal set; }
-    	public byte Unknown27 { get; internal set; }
-    	public byte Unknown33 { get; internal set; }
-    	public byte Unknown45 { get; internal set; }
-    	public byte Unknown51 { get; internal set; }
-    	public bool Unknown15 { get; internal set; }
+    	public byte Unknown1 { get; internal set; }
+    	public byte Unknown2 { get; internal set; }
+    	public byte Unknown3 { get; internal set; }
+    	public byte Unknown4 { get; internal set; }
+    	public byte Unknown5 { get; internal set; }
+    	public bool Unknown6 { get; internal set; }
     }
     public struct HugeCraftworksRewardParamStruct
     {
@@ -44,14 +44,14 @@ public partial class HugeCraftworksNpc : ExcelRow
         for (int i = 0; i < 6; i++)
         {
         	HugeCraftworksTurnInParam[i].RequestedItem = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( (ushort) (i * 16 + 0) ), language );
-        	HugeCraftworksTurnInParam[i].Unknown39 = parser.ReadOffset< ushort >( (ushort) (i * 16 + 4));
+        	HugeCraftworksTurnInParam[i].Unknown0 = parser.ReadOffset< ushort >( (ushort) (i * 16 + 4));
         	HugeCraftworksTurnInParam[i].RequestedQuantity = parser.ReadOffset< byte >( (ushort) (i * 16 + 6));
-        	HugeCraftworksTurnInParam[i].Unknown21 = parser.ReadOffset< byte >( (ushort) (i * 16 + 7));
-        	HugeCraftworksTurnInParam[i].Unknown27 = parser.ReadOffset< byte >( (ushort) (i * 16 + 8));
-        	HugeCraftworksTurnInParam[i].Unknown33 = parser.ReadOffset< byte >( (ushort) (i * 16 + 9));
-        	HugeCraftworksTurnInParam[i].Unknown45 = parser.ReadOffset< byte >( (ushort) (i * 16 + 10));
-        	HugeCraftworksTurnInParam[i].Unknown51 = parser.ReadOffset< byte >( (ushort) (i * 16 + 11));
-        	HugeCraftworksTurnInParam[i].Unknown15 = parser.ReadOffset< bool >( (ushort) (i * 16 + 12));
+        	HugeCraftworksTurnInParam[i].Unknown1 = parser.ReadOffset< byte >( (ushort) (i * 16 + 7));
+        	HugeCraftworksTurnInParam[i].Unknown2 = parser.ReadOffset< byte >( (ushort) (i * 16 + 8));
+        	HugeCraftworksTurnInParam[i].Unknown3 = parser.ReadOffset< byte >( (ushort) (i * 16 + 9));
+        	HugeCraftworksTurnInParam[i].Unknown4 = parser.ReadOffset< byte >( (ushort) (i * 16 + 10));
+        	HugeCraftworksTurnInParam[i].Unknown5 = parser.ReadOffset< byte >( (ushort) (i * 16 + 11));
+        	HugeCraftworksTurnInParam[i].Unknown6 = parser.ReadOffset< bool >( (ushort) (i * 16 + 12));
         }
         HugeCraftworksRewardParam = new HugeCraftworksRewardParamStruct[6];
         for (int i = 0; i < 6; i++)

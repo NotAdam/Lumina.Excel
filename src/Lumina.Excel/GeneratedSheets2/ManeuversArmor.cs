@@ -22,8 +22,8 @@ public partial class ManeuversArmor : ExcelRow
     public uint FalconMapImage { get; private set; }
     public uint RavenMapImage { get; private set; }
     public ushort Unknown0 { get; private set; }
-    public byte Unknown3 { get; private set; }
-    public bool Unknown4 { get; private set; }
+    public byte Unknown1 { get; private set; }
+    public bool Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -39,8 +39,8 @@ public partial class ManeuversArmor : ExcelRow
         FalconMapImage = parser.ReadOffset< uint >( 28 );
         RavenMapImage = parser.ReadOffset< uint >( 32 );
         Unknown0 = parser.ReadOffset< ushort >( 36 );
-        Unknown3 = parser.ReadOffset< byte >( 38 );
-        Unknown4 = parser.ReadOffset< bool >( 39 );
+        Unknown1 = parser.ReadOffset< byte >( 38 );
+        Unknown2 = parser.ReadOffset< bool >( 39 );
         
 
     }

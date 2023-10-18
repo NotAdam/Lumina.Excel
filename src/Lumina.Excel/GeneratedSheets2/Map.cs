@@ -27,11 +27,11 @@ public partial class Map : ExcelRow
     public byte PriorityCategoryUI { get; private set; }
     public byte PriorityUI { get; private set; }
     public byte Hierarchy { get; private set; }
-    public byte Unknown19 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public sbyte MapIndex { get; private set; }
     public bool DiscoveryArrayByte { get; private set; }
     public bool IsEvent { get; private set; }
-    public bool Unknown18 { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -52,11 +52,11 @@ public partial class Map : ExcelRow
         PriorityCategoryUI = parser.ReadOffset< byte >( 27 );
         PriorityUI = parser.ReadOffset< byte >( 28 );
         Hierarchy = parser.ReadOffset< byte >( 29 );
-        Unknown19 = parser.ReadOffset< byte >( 30 );
+        Unknown0 = parser.ReadOffset< byte >( 30 );
         MapIndex = parser.ReadOffset< sbyte >( 31 );
         DiscoveryArrayByte = parser.ReadOffset< bool >( 32 );
         IsEvent = parser.ReadOffset< bool >( 32, 2 );
-        Unknown18 = parser.ReadOffset< bool >( 32, 4 );
+        Unknown1 = parser.ReadOffset< bool >( 32, 4 );
         
 
     }

@@ -13,10 +13,10 @@ public partial class ContentTalkParam : ExcelRow
 {
     
     public LazyRow< ActionTimeline > TestAction { get; private set; }
+    public byte Unknown0 { get; private set; }
     public byte Unknown1 { get; private set; }
-    public byte Unknown5 { get; private set; }
+    public sbyte Unknown2 { get; private set; }
     public sbyte Unknown3 { get; private set; }
-    public sbyte Unknown4 { get; private set; }
     public bool Param { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -24,10 +24,10 @@ public partial class ContentTalkParam : ExcelRow
         base.PopulateData( parser, gameData, language );
 
         TestAction = new LazyRow< ActionTimeline >( gameData, parser.ReadOffset< uint >( 0 ), language );
-        Unknown1 = parser.ReadOffset< byte >( 4 );
-        Unknown5 = parser.ReadOffset< byte >( 5 );
-        Unknown3 = parser.ReadOffset< sbyte >( 6 );
-        Unknown4 = parser.ReadOffset< sbyte >( 7 );
+        Unknown0 = parser.ReadOffset< byte >( 4 );
+        Unknown1 = parser.ReadOffset< byte >( 5 );
+        Unknown2 = parser.ReadOffset< sbyte >( 6 );
+        Unknown3 = parser.ReadOffset< sbyte >( 7 );
         Param = parser.ReadOffset< bool >( 8 );
         
 

@@ -14,7 +14,7 @@ public partial class CompleteJournalCategory : ExcelRow
     
     public LazyRow< CompleteJournal > FirstQuest { get; private set; }
     public LazyRow< CompleteJournal > LastQuest { get; private set; }
-    public int Unknown2 { get; private set; }
+    public int Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -22,7 +22,7 @@ public partial class CompleteJournalCategory : ExcelRow
 
         FirstQuest = new LazyRow< CompleteJournal >( gameData, parser.ReadOffset< uint >( 0 ), language );
         LastQuest = new LazyRow< CompleteJournal >( gameData, parser.ReadOffset< uint >( 4 ), language );
-        Unknown2 = parser.ReadOffset< int >( 8 );
+        Unknown0 = parser.ReadOffset< int >( 8 );
         
 
     }

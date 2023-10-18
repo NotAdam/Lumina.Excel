@@ -12,12 +12,12 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class PatchMark : ExcelRow
 {
     
-    public uint Unknown4 { get; private set; }
+    public uint Unknown0 { get; private set; }
     public uint MarkID { get; private set; }
     public ushort SubCategory { get; private set; }
-    public ushort Unknown7 { get; private set; }
+    public ushort Unknown1 { get; private set; }
     public byte SubCategoryType { get; private set; }
-    public byte Unknown3 { get; private set; }
+    public byte Unknown2 { get; private set; }
     public byte Version { get; private set; }
     public sbyte Category { get; private set; }
     
@@ -25,12 +25,12 @@ public partial class PatchMark : ExcelRow
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown4 = parser.ReadOffset< uint >( 0 );
+        Unknown0 = parser.ReadOffset< uint >( 0 );
         MarkID = parser.ReadOffset< uint >( 4 );
         SubCategory = parser.ReadOffset< ushort >( 8 );
-        Unknown7 = parser.ReadOffset< ushort >( 10 );
+        Unknown1 = parser.ReadOffset< ushort >( 10 );
         SubCategoryType = parser.ReadOffset< byte >( 12 );
-        Unknown3 = parser.ReadOffset< byte >( 13 );
+        Unknown2 = parser.ReadOffset< byte >( 13 );
         Version = parser.ReadOffset< byte >( 14 );
         Category = parser.ReadOffset< sbyte >( 15 );
         

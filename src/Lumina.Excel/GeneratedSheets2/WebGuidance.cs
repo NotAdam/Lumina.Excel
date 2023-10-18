@@ -13,7 +13,7 @@ public partial class WebGuidance : ExcelRow
 {
     
     public SeString Name { get; private set; }
-    public SeString Unknown3 { get; private set; }
+    public SeString Unknown0 { get; private set; }
     public SeString Description { get; private set; }
     public int Image { get; private set; }
     public LazyRow< WebURL > Url { get; private set; }
@@ -23,7 +23,7 @@ public partial class WebGuidance : ExcelRow
         base.PopulateData( parser, gameData, language );
 
         Name = parser.ReadOffset< SeString >( 0 );
-        Unknown3 = parser.ReadOffset< SeString >( 4 );
+        Unknown0 = parser.ReadOffset< SeString >( 4 );
         Description = parser.ReadOffset< SeString >( 8 );
         Image = parser.ReadOffset< int >( 12 );
         Url = new LazyRow< WebURL >( gameData, parser.ReadOffset< byte >( 16 ), language );

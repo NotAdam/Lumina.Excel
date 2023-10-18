@@ -16,7 +16,7 @@ public partial class JournalCategory : ExcelRow
     public byte SeparateType { get; private set; }
     public byte DataType { get; private set; }
     public LazyRow< JournalSection > JournalSection { get; private set; }
-    public byte Unknown4 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -26,7 +26,7 @@ public partial class JournalCategory : ExcelRow
         SeparateType = parser.ReadOffset< byte >( 4 );
         DataType = parser.ReadOffset< byte >( 5 );
         JournalSection = new LazyRow< JournalSection >( gameData, parser.ReadOffset< byte >( 6 ), language );
-        Unknown4 = parser.ReadOffset< byte >( 7 );
+        Unknown0 = parser.ReadOffset< byte >( 7 );
         
 
     }

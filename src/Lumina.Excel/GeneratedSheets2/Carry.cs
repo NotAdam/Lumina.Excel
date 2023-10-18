@@ -14,8 +14,8 @@ public partial class Carry : ExcelRow
     
     public ulong Model { get; private set; }
     public byte Timeline { get; private set; }
-    public byte Unknown2 { get; private set; }
-    public byte Unknown3 { get; private set; }
+    public byte Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -23,8 +23,8 @@ public partial class Carry : ExcelRow
 
         Model = parser.ReadOffset< ulong >( 0 );
         Timeline = parser.ReadOffset< byte >( 8 );
-        Unknown2 = parser.ReadOffset< byte >( 9 );
-        Unknown3 = parser.ReadOffset< byte >( 10 );
+        Unknown0 = parser.ReadOffset< byte >( 9 );
+        Unknown1 = parser.ReadOffset< byte >( 10 );
         
 
     }

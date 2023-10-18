@@ -13,14 +13,14 @@ public partial class FCChestName : ExcelRow
 {
     
     public SeString Name { get; private set; }
-    public byte Unknown1 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         Name = parser.ReadOffset< SeString >( 0 );
-        Unknown1 = parser.ReadOffset< byte >( 4 );
+        Unknown0 = parser.ReadOffset< byte >( 4 );
         
 
     }

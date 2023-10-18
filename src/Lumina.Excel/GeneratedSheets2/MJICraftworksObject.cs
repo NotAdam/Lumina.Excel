@@ -14,7 +14,7 @@ public partial class MJICraftworksObject : ExcelRow
     
     public LazyRow< Item > Item { get; private set; }
     public LazyRow< MJICraftworksObjectTheme >[] Theme { get; private set; }
-    public ushort Unknown3 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     public LazyRow< MJIItemPouch >[] Material { get; private set; }
     public ushort[] Amount { get; private set; }
     public ushort LevelReq { get; private set; }
@@ -29,7 +29,7 @@ public partial class MJICraftworksObject : ExcelRow
         Theme = new LazyRow< MJICraftworksObjectTheme >[2];
         for (int i = 0; i < 2; i++)
         	Theme[i] = new LazyRow< MJICraftworksObjectTheme >( gameData, parser.ReadOffset< ushort >( (ushort) ( 2 + i * 2 ) ), language );
-        Unknown3 = parser.ReadOffset< ushort >( 6 );
+        Unknown0 = parser.ReadOffset< ushort >( 6 );
         Material = new LazyRow< MJIItemPouch >[4];
         for (int i = 0; i < 4; i++)
         	Material[i] = new LazyRow< MJIItemPouch >( gameData, parser.ReadOffset< ushort >( (ushort) ( 8 + i * 2 ) ), language );

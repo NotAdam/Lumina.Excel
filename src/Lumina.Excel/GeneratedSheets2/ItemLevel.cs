@@ -85,7 +85,7 @@ public partial class ItemLevel : ExcelRow
     public ushort Control { get; private set; }
     public ushort Gathering { get; private set; }
     public ushort Perception { get; private set; }
-    public ushort Unknown73 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -164,7 +164,7 @@ public partial class ItemLevel : ExcelRow
         Control = parser.ReadOffset< ushort >( 140 );
         Gathering = parser.ReadOffset< ushort >( 142 );
         Perception = parser.ReadOffset< ushort >( 144 );
-        Unknown73 = parser.ReadOffset< ushort >( 146 );
+        Unknown0 = parser.ReadOffset< ushort >( 146 );
         
 
     }

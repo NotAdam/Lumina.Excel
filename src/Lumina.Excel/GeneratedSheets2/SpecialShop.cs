@@ -19,7 +19,7 @@ public partial class SpecialShop : ExcelRow
     	public LazyRow< SpecialShopItemCategory >[] Category { get; internal set; }
     	public int[] ItemCost { get; internal set; }
     	public LazyRow< Quest > Quest { get; internal set; }
-    	public int[] Unknown { get; internal set; }
+    	public int[] Unknown0 { get; internal set; }
     	public LazyRow< Achievement > AchievementUnlock { get; internal set; }
     	public int Unknown2 { get; internal set; }
     	public ushort[] CollectabilityCost { get; internal set; }
@@ -32,15 +32,15 @@ public partial class SpecialShop : ExcelRow
     public SeString Name { get; private set; }
     public ItemStruct[] Item { get; private set; }
     public LazyRow< Quest > Quest { get; private set; }
-    public uint Unknown2 { get; private set; }
-    public uint Unknown3 { get; private set; }
+    public uint Unknown0 { get; private set; }
+    public uint Unknown1 { get; private set; }
     public int CompleteText { get; private set; }
     public int NotCompleteText { get; private set; }
-    public ushort Unknown4 { get; private set; }
-    public ushort Unknown7 { get; private set; }
+    public ushort Unknown2 { get; private set; }
+    public ushort Unknown5 { get; private set; }
     public byte UseCurrencyType { get; private set; }
-    public bool Unknown5 { get; private set; }
-    public bool Unknown6 { get; private set; }
+    public bool Unknown3 { get; private set; }
+    public bool Unknown4 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -66,9 +66,9 @@ public partial class SpecialShop : ExcelRow
         	for (int ItemCostIndexer = 0; ItemCostIndexer < 3; ItemCostIndexer++)
         		Item[i].ItemCost[ItemCostIndexer] = parser.ReadOffset< int >( (ushort) ( i * 96 + 40 + ItemCostIndexer * 4 ) );
         	Item[i].Quest = new LazyRow< Quest >( gameData, parser.ReadOffset< int >( (ushort) (i * 96 + 52) ), language );
-        	Item[i].Unknown = new int[4];
-        	for (int UnknownIndexer = 0; UnknownIndexer < 4; UnknownIndexer++)
-        		Item[i].Unknown[UnknownIndexer] = parser.ReadOffset< int >( (ushort) ( i * 96 + 56 + UnknownIndexer * 4 ) );
+        	Item[i].Unknown0 = new int[4];
+        	for (int Unknown0Indexer = 0; Unknown0Indexer < 4; Unknown0Indexer++)
+        		Item[i].Unknown0[Unknown0Indexer] = parser.ReadOffset< int >( (ushort) ( i * 96 + 56 + Unknown0Indexer * 4 ) );
         	Item[i].AchievementUnlock = new LazyRow< Achievement >( gameData, parser.ReadOffset< int >( (ushort) (i * 96 + 72) ), language );
         	Item[i].Unknown2 = parser.ReadOffset< int >( (ushort) (i * 96 + 76));
         	Item[i].CollectabilityCost = new ushort[3];
@@ -86,15 +86,15 @@ public partial class SpecialShop : ExcelRow
         		Item[i].ReceiveHq[ReceiveHqIndexer] = parser.ReadOffset< byte >( (ushort) ( i * 96 + 96 + ReceiveHqIndexer * 1 ) );
         }
         Quest = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 5764 ), language );
-        Unknown2 = parser.ReadOffset< uint >( 5768 );
-        Unknown3 = parser.ReadOffset< uint >( 5772 );
+        Unknown0 = parser.ReadOffset< uint >( 5768 );
+        Unknown1 = parser.ReadOffset< uint >( 5772 );
         CompleteText = parser.ReadOffset< int >( 5776 );
         NotCompleteText = parser.ReadOffset< int >( 5780 );
-        Unknown4 = parser.ReadOffset< ushort >( 5784 );
-        Unknown7 = parser.ReadOffset< ushort >( 5786 );
+        Unknown2 = parser.ReadOffset< ushort >( 5784 );
+        Unknown5 = parser.ReadOffset< ushort >( 5786 );
         UseCurrencyType = parser.ReadOffset< byte >( 5788 );
-        Unknown5 = parser.ReadOffset< bool >( 5789 );
-        Unknown6 = parser.ReadOffset< bool >( 5789, 2 );
+        Unknown3 = parser.ReadOffset< bool >( 5789 );
+        Unknown4 = parser.ReadOffset< bool >( 5789, 2 );
         
 
     }

@@ -15,7 +15,7 @@ public partial class IKDContentBonus : ExcelRow
     public SeString Objective { get; private set; }
     public SeString Requirement { get; private set; }
     public uint Image { get; private set; }
-    public ushort Unknown2 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     public byte Order { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -25,7 +25,7 @@ public partial class IKDContentBonus : ExcelRow
         Objective = parser.ReadOffset< SeString >( 0 );
         Requirement = parser.ReadOffset< SeString >( 4 );
         Image = parser.ReadOffset< uint >( 8 );
-        Unknown2 = parser.ReadOffset< ushort >( 12 );
+        Unknown0 = parser.ReadOffset< ushort >( 12 );
         Order = parser.ReadOffset< byte >( 14 );
         
 

@@ -15,7 +15,7 @@ public partial class AdventureExPhase : ExcelRow
     public LazyRow< Quest > Quest { get; private set; }
     public LazyRow< Adventure > AdventureBegin { get; private set; }
     public LazyRow< Adventure > AdventureEnd { get; private set; }
-    public uint Unknown4 { get; private set; }
+    public uint Unknown0 { get; private set; }
     public LazyRow< ExVersion > Expansion { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -25,7 +25,7 @@ public partial class AdventureExPhase : ExcelRow
         Quest = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 0 ), language );
         AdventureBegin = new LazyRow< Adventure >( gameData, parser.ReadOffset< uint >( 4 ), language );
         AdventureEnd = new LazyRow< Adventure >( gameData, parser.ReadOffset< uint >( 8 ), language );
-        Unknown4 = parser.ReadOffset< uint >( 12 );
+        Unknown0 = parser.ReadOffset< uint >( 12 );
         Expansion = new LazyRow< ExVersion >( gameData, parser.ReadOffset< byte >( 16 ), language );
         
 

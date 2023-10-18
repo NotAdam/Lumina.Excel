@@ -13,30 +13,30 @@ public partial class GrandCompany : ExcelRow
 {
     
     public SeString Name { get; private set; }
-    public SeString Unknown2 { get; private set; }
-    public SeString Unknown8 { get; private set; }
-    public sbyte Unknown1 { get; private set; }
+    public SeString Unknown0 { get; private set; }
+    public SeString Unknown1 { get; private set; }
+    public sbyte Unknown2 { get; private set; }
     public sbyte Unknown3 { get; private set; }
     public sbyte Unknown4 { get; private set; }
     public sbyte Unknown5 { get; private set; }
     public sbyte Unknown6 { get; private set; }
     public sbyte Unknown7 { get; private set; }
-    public sbyte Unknown9 { get; private set; }
+    public sbyte Unknown8 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         Name = parser.ReadOffset< SeString >( 0 );
-        Unknown2 = parser.ReadOffset< SeString >( 4 );
-        Unknown8 = parser.ReadOffset< SeString >( 8 );
-        Unknown1 = parser.ReadOffset< sbyte >( 12 );
+        Unknown0 = parser.ReadOffset< SeString >( 4 );
+        Unknown1 = parser.ReadOffset< SeString >( 8 );
+        Unknown2 = parser.ReadOffset< sbyte >( 12 );
         Unknown3 = parser.ReadOffset< sbyte >( 13 );
         Unknown4 = parser.ReadOffset< sbyte >( 14 );
         Unknown5 = parser.ReadOffset< sbyte >( 15 );
         Unknown6 = parser.ReadOffset< sbyte >( 16 );
         Unknown7 = parser.ReadOffset< sbyte >( 17 );
-        Unknown9 = parser.ReadOffset< sbyte >( 20 );
+        Unknown8 = parser.ReadOffset< sbyte >( 20 );
         
 
     }

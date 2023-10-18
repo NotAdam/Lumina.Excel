@@ -71,13 +71,13 @@ public partial class Quest : ExcelRow
     public byte TomestoneReward { get; private set; }
     public byte TomestoneCountReward { get; private set; }
     public byte ReputationReward { get; private set; }
-    public bool Unknown1465 { get; private set; }
-    public bool Unknown1466 { get; private set; }
-    public bool Unknown1467 { get; private set; }
-    public bool Unknown1468 { get; private set; }
-    public bool Unknown1469 { get; private set; }
-    public bool Unknown1470 { get; private set; }
-    public bool Unknown1471 { get; private set; }
+    public bool Unknown0 { get; private set; }
+    public bool Unknown1 { get; private set; }
+    public bool Unknown2 { get; private set; }
+    public bool Unknown3 { get; private set; }
+    public bool Unknown4 { get; private set; }
+    public bool Unknown5 { get; private set; }
+    public bool Unknown6 { get; private set; }
     public bool[] OptionalItemIsHQReward { get; private set; }
     public SeString Id { get; private set; }
     public LazyRow< Quest >[] PreviousQuest { get; private set; }
@@ -104,10 +104,10 @@ public partial class Quest : ExcelRow
     public byte QuestLevelOffset { get; private set; }
     public LazyRow< ClassJobCategory > ClassJobCategory1 { get; private set; }
     public byte PreviousQuestJoin { get; private set; }
-    public byte Unknown10 { get; private set; }
+    public byte Unknown7 { get; private set; }
     public byte QuestLockJoin { get; private set; }
-    public byte Unknown17 { get; private set; }
-    public byte Unknown18 { get; private set; }
+    public byte Unknown8 { get; private set; }
+    public byte Unknown9 { get; private set; }
     public LazyRow< ClassJob > ClassJobUnlock { get; private set; }
     public LazyRow< GrandCompany > GrandCompany { get; private set; }
     public LazyRow< GrandCompanyRank > GrandCompanyRank { get; private set; }
@@ -126,16 +126,16 @@ public partial class Quest : ExcelRow
     public byte LevelMax { get; private set; }
     public LazyRow< ClassJob > ClassJobRequired { get; private set; }
     public LazyRow< QuestRewardOther > QuestRewardOtherDisplay { get; private set; }
-    public byte Unknown1514 { get; private set; }
+    public byte Unknown10 { get; private set; }
     public LazyRow< EventIconType > EventIconType { get; private set; }
-    public byte Unknown1520 { get; private set; }
+    public byte Unknown11 { get; private set; }
     public bool IsHouseRequired { get; private set; }
     public bool IsRepeatable { get; private set; }
     public bool CanCancel { get; private set; }
     public bool Introduction { get; private set; }
     public bool HideOfferIcon { get; private set; }
-    public bool Unknown1522 { get; private set; }
-    public bool Unknown1523 { get; private set; }
+    public bool Unknown12 { get; private set; }
+    public bool Unknown13 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -225,13 +225,13 @@ public partial class Quest : ExcelRow
         TomestoneReward = parser.ReadOffset< byte >( 2403 );
         TomestoneCountReward = parser.ReadOffset< byte >( 2404 );
         ReputationReward = parser.ReadOffset< byte >( 2405 );
-        Unknown1465 = parser.ReadOffset< bool >( 2406 );
-        Unknown1466 = parser.ReadOffset< bool >( 2407 );
-        Unknown1467 = parser.ReadOffset< bool >( 2408 );
-        Unknown1468 = parser.ReadOffset< bool >( 2409 );
-        Unknown1469 = parser.ReadOffset< bool >( 2410 );
-        Unknown1470 = parser.ReadOffset< bool >( 2411 );
-        Unknown1471 = parser.ReadOffset< bool >( 2412 );
+        Unknown0 = parser.ReadOffset< bool >( 2406 );
+        Unknown1 = parser.ReadOffset< bool >( 2407 );
+        Unknown2 = parser.ReadOffset< bool >( 2408 );
+        Unknown3 = parser.ReadOffset< bool >( 2409 );
+        Unknown4 = parser.ReadOffset< bool >( 2410 );
+        Unknown5 = parser.ReadOffset< bool >( 2411 );
+        Unknown6 = parser.ReadOffset< bool >( 2412 );
         OptionalItemIsHQReward = new bool[5];
         for (int i = 0; i < 5; i++)
         	OptionalItemIsHQReward[i] = parser.ReadOffset< bool >( 2413 + i * 1 );
@@ -268,10 +268,10 @@ public partial class Quest : ExcelRow
         QuestLevelOffset = parser.ReadOffset< byte >( 2506 );
         ClassJobCategory1 = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 2507 ), language );
         PreviousQuestJoin = parser.ReadOffset< byte >( 2508 );
-        Unknown10 = parser.ReadOffset< byte >( 2509 );
+        Unknown7 = parser.ReadOffset< byte >( 2509 );
         QuestLockJoin = parser.ReadOffset< byte >( 2510 );
-        Unknown17 = parser.ReadOffset< byte >( 2511 );
-        Unknown18 = parser.ReadOffset< byte >( 2512 );
+        Unknown8 = parser.ReadOffset< byte >( 2511 );
+        Unknown9 = parser.ReadOffset< byte >( 2512 );
         ClassJobUnlock = new LazyRow< ClassJob >( gameData, parser.ReadOffset< byte >( 2513 ), language );
         GrandCompany = new LazyRow< GrandCompany >( gameData, parser.ReadOffset< byte >( 2514 ), language );
         GrandCompanyRank = new LazyRow< GrandCompanyRank >( gameData, parser.ReadOffset< byte >( 2515 ), language );
@@ -290,16 +290,16 @@ public partial class Quest : ExcelRow
         LevelMax = parser.ReadOffset< byte >( 2528 );
         ClassJobRequired = new LazyRow< ClassJob >( gameData, parser.ReadOffset< byte >( 2529 ), language );
         QuestRewardOtherDisplay = new LazyRow< QuestRewardOther >( gameData, parser.ReadOffset< byte >( 2530 ), language );
-        Unknown1514 = parser.ReadOffset< byte >( 2531 );
+        Unknown10 = parser.ReadOffset< byte >( 2531 );
         EventIconType = new LazyRow< EventIconType >( gameData, parser.ReadOffset< byte >( 2532 ), language );
-        Unknown1520 = parser.ReadOffset< byte >( 2533 );
+        Unknown11 = parser.ReadOffset< byte >( 2533 );
         IsHouseRequired = parser.ReadOffset< bool >( 2534 );
         IsRepeatable = parser.ReadOffset< bool >( 2534, 2 );
         CanCancel = parser.ReadOffset< bool >( 2534, 4 );
         Introduction = parser.ReadOffset< bool >( 2534, 8 );
         HideOfferIcon = parser.ReadOffset< bool >( 2534, 16 );
-        Unknown1522 = parser.ReadOffset< bool >( 2534, 32 );
-        Unknown1523 = parser.ReadOffset< bool >( 2534, 64 );
+        Unknown12 = parser.ReadOffset< bool >( 2534, 32 );
+        Unknown13 = parser.ReadOffset< bool >( 2534, 64 );
         
         for( int i = 0; i < 7; i++ )
         {

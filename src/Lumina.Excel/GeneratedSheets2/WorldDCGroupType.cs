@@ -14,7 +14,7 @@ public partial class WorldDCGroupType : ExcelRow
     
     public SeString Name { get; private set; }
     public byte Region { get; private set; }
-    public bool Unknown1 { get; private set; }
+    public bool Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -22,7 +22,7 @@ public partial class WorldDCGroupType : ExcelRow
 
         Name = parser.ReadOffset< SeString >( 0 );
         Region = parser.ReadOffset< byte >( 4 );
-        Unknown1 = parser.ReadOffset< bool >( 5 );
+        Unknown0 = parser.ReadOffset< bool >( 5 );
         
 
     }

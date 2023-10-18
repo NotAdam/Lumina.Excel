@@ -27,34 +27,34 @@ public partial class TerritoryType : ExcelRow
     public ILazyRow BGM { get; private set; }
     public LazyRow< QuestBattle > QuestBattle { get; private set; }
     public ushort Resident { get; private set; }
-    public ushort Unknown42 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     public byte BattalionMode { get; private set; }
     public LazyRow< LoadingImage > LoadingImage { get; private set; }
     public byte ExclusiveType { get; private set; }
     public byte TerritoryIntendedUse { get; private set; }
     public byte WeatherRate { get; private set; }
-    public byte Unknown14 { get; private set; }
+    public byte Unknown1 { get; private set; }
     public LazyRow< ExVersion > ExVersion { get; private set; }
-    public byte Unknown30 { get; private set; }
-    public byte Unknown31 { get; private set; }
-    public byte Unknown32 { get; private set; }
+    public byte Unknown2 { get; private set; }
+    public byte Unknown3 { get; private set; }
+    public byte Unknown4 { get; private set; }
     public LazyRow< MountSpeed > MountSpeed { get; private set; }
-    public byte Unknown36 { get; private set; }
+    public byte Unknown5 { get; private set; }
     public sbyte AchievementIndex { get; private set; }
-    public bool Unknown11 { get; private set; }
-    public bool Unknown13 { get; private set; }
+    public bool Unknown6 { get; private set; }
+    public bool Unknown7 { get; private set; }
     public bool PCSearch { get; private set; }
     public bool Stealth { get; private set; }
     public bool Mount { get; private set; }
-    public bool Unknown18 { get; private set; }
+    public bool Unknown8 { get; private set; }
     public bool IsPvpZone { get; private set; }
-    public bool Unknown34 { get; private set; }
-    public bool Unknown35 { get; private set; }
-    public bool Unknown37 { get; private set; }
-    public bool Unknown38 { get; private set; }
-    public bool Unknown39 { get; private set; }
-    public bool Unknown40 { get; private set; }
-    public bool Unknown41 { get; private set; }
+    public bool Unknown9 { get; private set; }
+    public bool Unknown10 { get; private set; }
+    public bool Unknown11 { get; private set; }
+    public bool Unknown12 { get; private set; }
+    public bool Unknown13 { get; private set; }
+    public bool Unknown14 { get; private set; }
+    public bool Unknown15 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -75,34 +75,34 @@ public partial class TerritoryType : ExcelRow
         BGM = EmptyLazyRow.GetFirstLazyRowOrEmpty( gameData, (uint) parser.ReadOffset< ushort >( 38 ), language, "BGM", "BGMSituation" );
         QuestBattle = new LazyRow< QuestBattle >( gameData, parser.ReadOffset< ushort >( 40 ), language );
         Resident = parser.ReadOffset< ushort >( 42 );
-        Unknown42 = parser.ReadOffset< ushort >( 44 );
+        Unknown0 = parser.ReadOffset< ushort >( 44 );
         BattalionMode = parser.ReadOffset< byte >( 46 );
         LoadingImage = new LazyRow< LoadingImage >( gameData, parser.ReadOffset< byte >( 47 ), language );
         ExclusiveType = parser.ReadOffset< byte >( 48 );
         TerritoryIntendedUse = parser.ReadOffset< byte >( 49 );
         WeatherRate = parser.ReadOffset< byte >( 50 );
-        Unknown14 = parser.ReadOffset< byte >( 51 );
+        Unknown1 = parser.ReadOffset< byte >( 51 );
         ExVersion = new LazyRow< ExVersion >( gameData, parser.ReadOffset< byte >( 52 ), language );
-        Unknown30 = parser.ReadOffset< byte >( 53 );
-        Unknown31 = parser.ReadOffset< byte >( 54 );
-        Unknown32 = parser.ReadOffset< byte >( 55 );
+        Unknown2 = parser.ReadOffset< byte >( 53 );
+        Unknown3 = parser.ReadOffset< byte >( 54 );
+        Unknown4 = parser.ReadOffset< byte >( 55 );
         MountSpeed = new LazyRow< MountSpeed >( gameData, parser.ReadOffset< byte >( 56 ), language );
-        Unknown36 = parser.ReadOffset< byte >( 57 );
+        Unknown5 = parser.ReadOffset< byte >( 57 );
         AchievementIndex = parser.ReadOffset< sbyte >( 58 );
-        Unknown11 = parser.ReadOffset< bool >( 59 );
-        Unknown13 = parser.ReadOffset< bool >( 59, 2 );
+        Unknown6 = parser.ReadOffset< bool >( 59 );
+        Unknown7 = parser.ReadOffset< bool >( 59, 2 );
         PCSearch = parser.ReadOffset< bool >( 59, 4 );
         Stealth = parser.ReadOffset< bool >( 59, 8 );
         Mount = parser.ReadOffset< bool >( 59, 16 );
-        Unknown18 = parser.ReadOffset< bool >( 59, 32 );
+        Unknown8 = parser.ReadOffset< bool >( 59, 32 );
         IsPvpZone = parser.ReadOffset< bool >( 59, 64 );
-        Unknown34 = parser.ReadOffset< bool >( 59, 128 );
-        Unknown35 = parser.ReadOffset< bool >( 60 );
-        Unknown37 = parser.ReadOffset< bool >( 60, 2 );
-        Unknown38 = parser.ReadOffset< bool >( 60, 4 );
-        Unknown39 = parser.ReadOffset< bool >( 60, 8 );
-        Unknown40 = parser.ReadOffset< bool >( 60, 16 );
-        Unknown41 = parser.ReadOffset< bool >( 60, 32 );
+        Unknown9 = parser.ReadOffset< bool >( 59, 128 );
+        Unknown10 = parser.ReadOffset< bool >( 60 );
+        Unknown11 = parser.ReadOffset< bool >( 60, 2 );
+        Unknown12 = parser.ReadOffset< bool >( 60, 4 );
+        Unknown13 = parser.ReadOffset< bool >( 60, 8 );
+        Unknown14 = parser.ReadOffset< bool >( 60, 16 );
+        Unknown15 = parser.ReadOffset< bool >( 60, 32 );
         
 
     }

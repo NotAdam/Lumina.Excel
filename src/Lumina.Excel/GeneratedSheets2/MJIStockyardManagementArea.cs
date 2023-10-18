@@ -14,7 +14,7 @@ public partial class MJIStockyardManagementArea : ExcelRow
     
     public LazyRow< MJIText > Area { get; private set; }
     public LazyRow< MJIItemPouch > RareMaterial { get; private set; }
-    public byte Unknown1 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -22,7 +22,7 @@ public partial class MJIStockyardManagementArea : ExcelRow
 
         Area = new LazyRow< MJIText >( gameData, parser.ReadOffset< ushort >( 0 ), language );
         RareMaterial = new LazyRow< MJIItemPouch >( gameData, parser.ReadOffset< byte >( 2 ), language );
-        Unknown1 = parser.ReadOffset< byte >( 3 );
+        Unknown0 = parser.ReadOffset< byte >( 3 );
         
 
     }

@@ -15,8 +15,8 @@ public partial class DescriptionPage : ExcelRow
     public LazyRow< Quest > Quest { get; private set; }
     public uint[] Image { get; private set; }
     public LazyRow< DescriptionString >[] Text { get; private set; }
-    public ushort Unknown25 { get; private set; }
-    public byte Unknown0 { get; private set; }
+    public ushort Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
     public byte Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -30,8 +30,8 @@ public partial class DescriptionPage : ExcelRow
         Text = new LazyRow< DescriptionString >[11];
         for (int i = 0; i < 11; i++)
         	Text[i] = new LazyRow< DescriptionString >( gameData, parser.ReadOffset< ushort >( (ushort) ( 48 + i * 2 ) ), language );
-        Unknown25 = parser.ReadOffset< ushort >( 70 );
-        Unknown0 = parser.ReadOffset< byte >( 72 );
+        Unknown0 = parser.ReadOffset< ushort >( 70 );
+        Unknown1 = parser.ReadOffset< byte >( 72 );
         Unknown2 = parser.ReadOffset< byte >( 73 );
         
 

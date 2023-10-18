@@ -16,7 +16,7 @@ public partial class MYCWarResultNotebook : ExcelRow
     public SeString Description { get; private set; }
     public SeString NameJP { get; private set; }
     public LazyRow< Quest > Quest { get; private set; }
-    public int Unknown4 { get; private set; }
+    public int Unknown0 { get; private set; }
     public int Icon { get; private set; }
     public int Image { get; private set; }
     public byte Number { get; private set; }
@@ -32,7 +32,7 @@ public partial class MYCWarResultNotebook : ExcelRow
         Description = parser.ReadOffset< SeString >( 4 );
         NameJP = parser.ReadOffset< SeString >( 8 );
         Quest = new LazyRow< Quest >( gameData, parser.ReadOffset< int >( 12 ), language );
-        Unknown4 = parser.ReadOffset< int >( 16 );
+        Unknown0 = parser.ReadOffset< int >( 16 );
         Icon = parser.ReadOffset< int >( 20 );
         Image = parser.ReadOffset< int >( 24 );
         Number = parser.ReadOffset< byte >( 28 );

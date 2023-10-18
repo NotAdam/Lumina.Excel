@@ -27,26 +27,26 @@ public partial class RecastNavimesh : ExcelRow
     public float VertsPerPoly { get; private set; }
     public float DetailMeshSampleDistance { get; private set; }
     public float DetailMeshMaxSampleError { get; private set; }
-    public float Unknown17 { get; private set; }
-    public float Unknown18 { get; private set; }
-    public float Unknown19 { get; private set; }
-    public float Unknown20 { get; private set; }
-    public float Unknown21 { get; private set; }
-    public float Unknown22 { get; private set; }
-    public float Unknown23 { get; private set; }
-    public float Unknown24 { get; private set; }
-    public float Unknown25 { get; private set; }
-    public float Unknown26 { get; private set; }
-    public float Unknown27 { get; private set; }
-    public float Unknown28 { get; private set; }
-    public float Unknown29 { get; private set; }
-    public float Unknown31 { get; private set; }
-    public float Unknown32 { get; private set; }
-    public float Unknown33 { get; private set; }
-    public bool Unknown8 { get; private set; }
-    public bool Unknown11 { get; private set; }
-    public bool Unknown30 { get; private set; }
-    public bool Unknown34 { get; private set; }
+    public float Unknown1 { get; private set; }
+    public float Unknown2 { get; private set; }
+    public float Unknown3 { get; private set; }
+    public float Unknown4 { get; private set; }
+    public float Unknown5 { get; private set; }
+    public float Unknown6 { get; private set; }
+    public float Unknown7 { get; private set; }
+    public float Unknown8 { get; private set; }
+    public float Unknown9 { get; private set; }
+    public float Unknown10 { get; private set; }
+    public float Unknown11 { get; private set; }
+    public float Unknown12 { get; private set; }
+    public float Unknown13 { get; private set; }
+    public float Unknown14 { get; private set; }
+    public float Unknown15 { get; private set; }
+    public float Unknown16 { get; private set; }
+    public bool Unknown17 { get; private set; }
+    public bool Unknown18 { get; private set; }
+    public bool Unknown19 { get; private set; }
+    public bool Unknown20 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -67,26 +67,26 @@ public partial class RecastNavimesh : ExcelRow
         VertsPerPoly = parser.ReadOffset< float >( 48 );
         DetailMeshSampleDistance = parser.ReadOffset< float >( 52 );
         DetailMeshMaxSampleError = parser.ReadOffset< float >( 56 );
-        Unknown17 = parser.ReadOffset< float >( 60 );
-        Unknown18 = parser.ReadOffset< float >( 64 );
-        Unknown19 = parser.ReadOffset< float >( 68 );
-        Unknown20 = parser.ReadOffset< float >( 72 );
-        Unknown21 = parser.ReadOffset< float >( 76 );
-        Unknown22 = parser.ReadOffset< float >( 80 );
-        Unknown23 = parser.ReadOffset< float >( 84 );
-        Unknown24 = parser.ReadOffset< float >( 88 );
-        Unknown25 = parser.ReadOffset< float >( 92 );
-        Unknown26 = parser.ReadOffset< float >( 96 );
-        Unknown27 = parser.ReadOffset< float >( 100 );
-        Unknown28 = parser.ReadOffset< float >( 104 );
-        Unknown29 = parser.ReadOffset< float >( 108 );
-        Unknown31 = parser.ReadOffset< float >( 112 );
-        Unknown32 = parser.ReadOffset< float >( 116 );
-        Unknown33 = parser.ReadOffset< float >( 120 );
-        Unknown8 = parser.ReadOffset< bool >( 124 );
-        Unknown11 = parser.ReadOffset< bool >( 124, 2 );
-        Unknown30 = parser.ReadOffset< bool >( 124, 4 );
-        Unknown34 = parser.ReadOffset< bool >( 124, 8 );
+        Unknown1 = parser.ReadOffset< float >( 60 );
+        Unknown2 = parser.ReadOffset< float >( 64 );
+        Unknown3 = parser.ReadOffset< float >( 68 );
+        Unknown4 = parser.ReadOffset< float >( 72 );
+        Unknown5 = parser.ReadOffset< float >( 76 );
+        Unknown6 = parser.ReadOffset< float >( 80 );
+        Unknown7 = parser.ReadOffset< float >( 84 );
+        Unknown8 = parser.ReadOffset< float >( 88 );
+        Unknown9 = parser.ReadOffset< float >( 92 );
+        Unknown10 = parser.ReadOffset< float >( 96 );
+        Unknown11 = parser.ReadOffset< float >( 100 );
+        Unknown12 = parser.ReadOffset< float >( 104 );
+        Unknown13 = parser.ReadOffset< float >( 108 );
+        Unknown14 = parser.ReadOffset< float >( 112 );
+        Unknown15 = parser.ReadOffset< float >( 116 );
+        Unknown16 = parser.ReadOffset< float >( 120 );
+        Unknown17 = parser.ReadOffset< bool >( 124 );
+        Unknown18 = parser.ReadOffset< bool >( 124, 2 );
+        Unknown19 = parser.ReadOffset< bool >( 124, 4 );
+        Unknown20 = parser.ReadOffset< bool >( 124, 8 );
         
 
     }

@@ -17,7 +17,7 @@ public partial class MainCommand : ExcelRow
     public int Icon { get; private set; }
     public byte Category { get; private set; }
     public LazyRow< MainCommandCategory > MainCommandCategory { get; private set; }
-    public byte Unknown4 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public sbyte SortID { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -29,7 +29,7 @@ public partial class MainCommand : ExcelRow
         Icon = parser.ReadOffset< int >( 8 );
         Category = parser.ReadOffset< byte >( 12 );
         MainCommandCategory = new LazyRow< MainCommandCategory >( gameData, parser.ReadOffset< byte >( 13 ), language );
-        Unknown4 = parser.ReadOffset< byte >( 14 );
+        Unknown0 = parser.ReadOffset< byte >( 14 );
         SortID = parser.ReadOffset< sbyte >( 15 );
         
 

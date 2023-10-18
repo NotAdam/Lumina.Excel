@@ -19,7 +19,7 @@ public partial class PetAction : ExcelRow
     public LazyRow< Pet > Pet { get; private set; }
     public bool MasterOrder { get; private set; }
     public bool DisableOrder { get; private set; }
-    public bool Unknown7 { get; private set; }
+    public bool Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -32,7 +32,7 @@ public partial class PetAction : ExcelRow
         Pet = new LazyRow< Pet >( gameData, parser.ReadOffset< byte >( 14 ), language );
         MasterOrder = parser.ReadOffset< bool >( 15 );
         DisableOrder = parser.ReadOffset< bool >( 15, 2 );
-        Unknown7 = parser.ReadOffset< bool >( 15, 4 );
+        Unknown0 = parser.ReadOffset< bool >( 15, 4 );
         
 
     }

@@ -15,7 +15,7 @@ public partial class SwitchTalkVariation : ExcelRow
     public LazyRow< Quest > Quest0 { get; private set; }
     public LazyRow< Quest > Quest1 { get; private set; }
     public LazyRow< DefaultTalk > DefaultTalk { get; private set; }
-    public byte Unknown2 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -24,7 +24,7 @@ public partial class SwitchTalkVariation : ExcelRow
         Quest0 = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 0 ), language );
         Quest1 = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 4 ), language );
         DefaultTalk = new LazyRow< DefaultTalk >( gameData, parser.ReadOffset< uint >( 8 ), language );
-        Unknown2 = parser.ReadOffset< byte >( 12 );
+        Unknown0 = parser.ReadOffset< byte >( 12 );
         
 
     }

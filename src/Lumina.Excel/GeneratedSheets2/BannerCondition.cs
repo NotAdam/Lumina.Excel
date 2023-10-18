@@ -21,7 +21,7 @@ public partial class BannerCondition : ExcelRow
     public byte UnlockType2 { get; private set; }
     public byte PrerequisiteType { get; private set; }
     public LazyRow< BannerObtainHintType > UnlockHint { get; private set; }
-    public bool Unknown14 { get; private set; }
+    public bool Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -41,7 +41,7 @@ public partial class BannerCondition : ExcelRow
         UnlockType2 = parser.ReadOffset< byte >( 41 );
         PrerequisiteType = parser.ReadOffset< byte >( 42 );
         UnlockHint = new LazyRow< BannerObtainHintType >( gameData, parser.ReadOffset< byte >( 43 ), language );
-        Unknown14 = parser.ReadOffset< bool >( 44 );
+        Unknown0 = parser.ReadOffset< bool >( 44 );
         
         for( int i = 0; i < 6; i++ )
         {

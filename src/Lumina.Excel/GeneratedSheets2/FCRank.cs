@@ -15,8 +15,8 @@ public partial class FCRank : ExcelRow
     public uint NextPoint { get; private set; }
     public uint CurrentPoint { get; private set; }
     public ushort Rights { get; private set; }
-    public ushort Unknown3 { get; private set; }
-    public ushort Unknown4 { get; private set; }
+    public ushort Unknown0 { get; private set; }
+    public ushort Unknown1 { get; private set; }
     public byte FCActionActiveNum { get; private set; }
     public byte FCActionStockNum { get; private set; }
     public byte FCChestCompartments { get; private set; }
@@ -28,8 +28,8 @@ public partial class FCRank : ExcelRow
         NextPoint = parser.ReadOffset< uint >( 0 );
         CurrentPoint = parser.ReadOffset< uint >( 4 );
         Rights = parser.ReadOffset< ushort >( 8 );
-        Unknown3 = parser.ReadOffset< ushort >( 10 );
-        Unknown4 = parser.ReadOffset< ushort >( 12 );
+        Unknown0 = parser.ReadOffset< ushort >( 10 );
+        Unknown1 = parser.ReadOffset< ushort >( 12 );
         FCActionActiveNum = parser.ReadOffset< byte >( 14 );
         FCActionStockNum = parser.ReadOffset< byte >( 15 );
         FCChestCompartments = parser.ReadOffset< byte >( 16 );

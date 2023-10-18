@@ -15,8 +15,8 @@ public partial class MJILandmarkPlace : ExcelRow
     public uint Unknown0 { get; private set; }
     public LazyRow< EObjName > Name { get; private set; }
     public LazyRow< ExportedSG >[] SGB { get; private set; }
-    public short Unknown4 { get; private set; }
-    public short Unknown5 { get; private set; }
+    public short Unknown1 { get; private set; }
+    public short Unknown2 { get; private set; }
     public byte Unknown3 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -28,8 +28,8 @@ public partial class MJILandmarkPlace : ExcelRow
         SGB = new LazyRow< ExportedSG >[2];
         for (int i = 0; i < 2; i++)
         	SGB[i] = new LazyRow< ExportedSG >( gameData, parser.ReadOffset< uint >( (ushort) ( 8 + i * 4 ) ), language );
-        Unknown4 = parser.ReadOffset< short >( 16 );
-        Unknown5 = parser.ReadOffset< short >( 18 );
+        Unknown1 = parser.ReadOffset< short >( 16 );
+        Unknown2 = parser.ReadOffset< short >( 18 );
         Unknown3 = parser.ReadOffset< byte >( 20 );
         
 

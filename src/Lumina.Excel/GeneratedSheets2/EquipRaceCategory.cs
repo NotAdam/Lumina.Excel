@@ -18,8 +18,8 @@ public partial class EquipRaceCategory : ExcelRow
     public bool Miqote { get; private set; }
     public bool Roegadyn { get; private set; }
     public bool AuRa { get; private set; }
-    public bool Unknown6 { get; private set; }
-    public bool Unknown7 { get; private set; }
+    public bool Unknown0 { get; private set; }
+    public bool Unknown1 { get; private set; }
     public bool Male { get; private set; }
     public bool Female { get; private set; }
     
@@ -33,8 +33,8 @@ public partial class EquipRaceCategory : ExcelRow
         Miqote = parser.ReadOffset< bool >( 3 );
         Roegadyn = parser.ReadOffset< bool >( 4 );
         AuRa = parser.ReadOffset< bool >( 5 );
-        Unknown6 = parser.ReadOffset< bool >( 6 );
-        Unknown7 = parser.ReadOffset< bool >( 7 );
+        Unknown0 = parser.ReadOffset< bool >( 6 );
+        Unknown1 = parser.ReadOffset< bool >( 7 );
         Male = parser.ReadOffset< bool >( 8 );
         Female = parser.ReadOffset< bool >( 8, 2 );
         

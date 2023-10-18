@@ -14,7 +14,7 @@ public partial class FCAuthority : ExcelRow
     
     public SeString Name { get; private set; }
     public LazyRow< FCAuthorityCategory > FCAuthorityCategory { get; private set; }
-    public byte Unknown2 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -22,7 +22,7 @@ public partial class FCAuthority : ExcelRow
 
         Name = parser.ReadOffset< SeString >( 0 );
         FCAuthorityCategory = new LazyRow< FCAuthorityCategory >( gameData, parser.ReadOffset< int >( 4 ), language );
-        Unknown2 = parser.ReadOffset< byte >( 8 );
+        Unknown0 = parser.ReadOffset< byte >( 8 );
         
 
     }

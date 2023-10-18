@@ -17,8 +17,7 @@ public partial class EObj : ExcelRow
     public byte PopType { get; private set; }
     public byte Invisibility { get; private set; }
     public byte EventHighAddition { get; private set; }
-    public byte Unknown17 { get; private set; }
-    public bool Unknown0 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public bool Unknown1 { get; private set; }
     public bool Unknown2 { get; private set; }
     public bool Unknown3 { get; private set; }
@@ -26,12 +25,13 @@ public partial class EObj : ExcelRow
     public bool Unknown5 { get; private set; }
     public bool Unknown6 { get; private set; }
     public bool Unknown7 { get; private set; }
+    public bool Unknown8 { get; private set; }
     public bool EyeCollision { get; private set; }
     public bool DirectorControl { get; private set; }
     public bool Target { get; private set; }
-    public bool Unknown16 { get; private set; }
+    public bool Unknown9 { get; private set; }
     public bool AddedIn53 { get; private set; }
-    public bool Unknown19 { get; private set; }
+    public bool Unknown10 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -42,21 +42,21 @@ public partial class EObj : ExcelRow
         PopType = parser.ReadOffset< byte >( 6 );
         Invisibility = parser.ReadOffset< byte >( 7 );
         EventHighAddition = parser.ReadOffset< byte >( 8 );
-        Unknown17 = parser.ReadOffset< byte >( 9 );
-        Unknown0 = parser.ReadOffset< bool >( 10 );
-        Unknown1 = parser.ReadOffset< bool >( 11 );
-        Unknown2 = parser.ReadOffset< bool >( 12 );
-        Unknown3 = parser.ReadOffset< bool >( 13 );
-        Unknown4 = parser.ReadOffset< bool >( 14 );
-        Unknown5 = parser.ReadOffset< bool >( 15 );
-        Unknown6 = parser.ReadOffset< bool >( 16 );
-        Unknown7 = parser.ReadOffset< bool >( 17 );
+        Unknown0 = parser.ReadOffset< byte >( 9 );
+        Unknown1 = parser.ReadOffset< bool >( 10 );
+        Unknown2 = parser.ReadOffset< bool >( 11 );
+        Unknown3 = parser.ReadOffset< bool >( 12 );
+        Unknown4 = parser.ReadOffset< bool >( 13 );
+        Unknown5 = parser.ReadOffset< bool >( 14 );
+        Unknown6 = parser.ReadOffset< bool >( 15 );
+        Unknown7 = parser.ReadOffset< bool >( 16 );
+        Unknown8 = parser.ReadOffset< bool >( 17 );
         EyeCollision = parser.ReadOffset< bool >( 18 );
         DirectorControl = parser.ReadOffset< bool >( 18, 2 );
         Target = parser.ReadOffset< bool >( 18, 4 );
-        Unknown16 = parser.ReadOffset< bool >( 18, 8 );
+        Unknown9 = parser.ReadOffset< bool >( 18, 8 );
         AddedIn53 = parser.ReadOffset< bool >( 18, 16 );
-        Unknown19 = parser.ReadOffset< bool >( 18, 32 );
+        Unknown10 = parser.ReadOffset< bool >( 18, 32 );
         
 
     }

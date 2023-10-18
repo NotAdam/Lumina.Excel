@@ -17,10 +17,10 @@ public partial class Aetheryte : ExcelRow
     public sbyte Adjective { get; private set; }
     public sbyte PossessivePronoun { get; private set; }
     public sbyte StartsWithVowel { get; private set; }
-    public sbyte Unknown5 { get; private set; }
+    public sbyte Unknown0 { get; private set; }
     public sbyte Pronoun { get; private set; }
     public sbyte Article { get; private set; }
-    public SeString Unknown16 { get; private set; }
+    public SeString Unknown1 { get; private set; }
     public LazyRow< Level >[] Level { get; private set; }
     public LazyRow< Quest > RequiredQuest { get; private set; }
     public LazyRow< PlaceName > PlaceName { get; private set; }
@@ -31,7 +31,7 @@ public partial class Aetheryte : ExcelRow
     public short AetherstreamY { get; private set; }
     public byte AethernetGroup { get; private set; }
     public byte Order { get; private set; }
-    public byte Unknown1 { get; private set; }
+    public byte Unknown2 { get; private set; }
     public bool IsAetheryte { get; private set; }
     public bool Invisible { get; private set; }
     
@@ -44,10 +44,10 @@ public partial class Aetheryte : ExcelRow
         Adjective = parser.ReadOffset< sbyte >( 8 );
         PossessivePronoun = parser.ReadOffset< sbyte >( 9 );
         StartsWithVowel = parser.ReadOffset< sbyte >( 10 );
-        Unknown5 = parser.ReadOffset< sbyte >( 11 );
+        Unknown0 = parser.ReadOffset< sbyte >( 11 );
         Pronoun = parser.ReadOffset< sbyte >( 12 );
         Article = parser.ReadOffset< sbyte >( 13 );
-        Unknown16 = parser.ReadOffset< SeString >( 16 );
+        Unknown1 = parser.ReadOffset< SeString >( 16 );
         Level = new LazyRow< Level >[4];
         for (int i = 0; i < 4; i++)
         	Level[i] = new LazyRow< Level >( gameData, parser.ReadOffset< uint >( (ushort) ( 20 + i * 4 ) ), language );
@@ -60,7 +60,7 @@ public partial class Aetheryte : ExcelRow
         AetherstreamY = parser.ReadOffset< short >( 50 );
         AethernetGroup = parser.ReadOffset< byte >( 52 );
         Order = parser.ReadOffset< byte >( 53 );
-        Unknown1 = parser.ReadOffset< byte >( 54 );
+        Unknown2 = parser.ReadOffset< byte >( 54 );
         IsAetheryte = parser.ReadOffset< bool >( 55 );
         Invisible = parser.ReadOffset< bool >( 55, 2 );
         

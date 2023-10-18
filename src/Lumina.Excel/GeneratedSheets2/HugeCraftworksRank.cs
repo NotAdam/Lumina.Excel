@@ -14,7 +14,7 @@ public partial class HugeCraftworksRank : ExcelRow
     
     public uint ExpRewardPerItem { get; private set; }
     public byte CrafterLevel { get; private set; }
-    public byte Unknown2 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -22,7 +22,7 @@ public partial class HugeCraftworksRank : ExcelRow
 
         ExpRewardPerItem = parser.ReadOffset< uint >( 0 );
         CrafterLevel = parser.ReadOffset< byte >( 4 );
-        Unknown2 = parser.ReadOffset< byte >( 5 );
+        Unknown0 = parser.ReadOffset< byte >( 5 );
         
 
     }

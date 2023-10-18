@@ -14,7 +14,7 @@ public partial class IKDFishParam : ExcelRow
     
     public LazyRow< FishParameter > Fish { get; private set; }
     public LazyRow< IKDContentBonus > IKDContentBonus { get; private set; }
-    public byte Unknown2 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -22,7 +22,7 @@ public partial class IKDFishParam : ExcelRow
 
         Fish = new LazyRow< FishParameter >( gameData, parser.ReadOffset< uint >( 0 ), language );
         IKDContentBonus = new LazyRow< IKDContentBonus >( gameData, parser.ReadOffset< byte >( 4 ), language );
-        Unknown2 = parser.ReadOffset< byte >( 5 );
+        Unknown0 = parser.ReadOffset< byte >( 5 );
         
 
     }

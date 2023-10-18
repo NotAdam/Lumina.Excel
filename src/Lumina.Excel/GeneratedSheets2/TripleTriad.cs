@@ -27,7 +27,7 @@ public partial class TripleTriad : ExcelRow
     public LazyRow< TripleTriadRule >[] TripleTriadRule { get; private set; }
     public byte PreviousQuestJoin { get; private set; }
     public bool UsesRegionalRules { get; private set; }
-    public bool Unknown25 { get; private set; }
+    public bool Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -58,7 +58,7 @@ public partial class TripleTriad : ExcelRow
         	TripleTriadRule[i] = new LazyRow< TripleTriadRule >( gameData, parser.ReadOffset< byte >( (ushort) ( 74 + i * 1 ) ), language );
         PreviousQuestJoin = parser.ReadOffset< byte >( 76 );
         UsesRegionalRules = parser.ReadOffset< bool >( 77 );
-        Unknown25 = parser.ReadOffset< bool >( 77, 2 );
+        Unknown0 = parser.ReadOffset< bool >( 77, 2 );
         
 
     }

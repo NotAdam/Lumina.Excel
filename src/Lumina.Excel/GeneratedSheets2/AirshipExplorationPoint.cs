@@ -21,10 +21,10 @@ public partial class AirshipExplorationPoint : ExcelRow
     public short X { get; private set; }
     public short Y { get; private set; }
     public byte RankReq { get; private set; }
-    public byte Unknown9 { get; private set; }
-    public byte Unknown11 { get; private set; }
+    public byte Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
     public byte SurveillanceReq { get; private set; }
-    public byte Unknown12 { get; private set; }
+    public byte Unknown2 { get; private set; }
     public bool Passengers { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -40,10 +40,10 @@ public partial class AirshipExplorationPoint : ExcelRow
         X = parser.ReadOffset< short >( 18 );
         Y = parser.ReadOffset< short >( 20 );
         RankReq = parser.ReadOffset< byte >( 22 );
-        Unknown9 = parser.ReadOffset< byte >( 23 );
-        Unknown11 = parser.ReadOffset< byte >( 24 );
+        Unknown0 = parser.ReadOffset< byte >( 23 );
+        Unknown1 = parser.ReadOffset< byte >( 24 );
         SurveillanceReq = parser.ReadOffset< byte >( 25 );
-        Unknown12 = parser.ReadOffset< byte >( 26 );
+        Unknown2 = parser.ReadOffset< byte >( 26 );
         Passengers = parser.ReadOffset< bool >( 27 );
         
 

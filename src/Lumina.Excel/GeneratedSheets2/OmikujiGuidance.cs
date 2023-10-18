@@ -12,17 +12,17 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class OmikujiGuidance : ExcelRow
 {
     
+    public SeString Unknown0 { get; private set; }
     public SeString Unknown1 { get; private set; }
-    public SeString Unknown2 { get; private set; }
-    public bool Unknown0 { get; private set; }
+    public bool Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown1 = parser.ReadOffset< SeString >( 0 );
-        Unknown2 = parser.ReadOffset< SeString >( 4 );
-        Unknown0 = parser.ReadOffset< bool >( 8 );
+        Unknown0 = parser.ReadOffset< SeString >( 0 );
+        Unknown1 = parser.ReadOffset< SeString >( 4 );
+        Unknown2 = parser.ReadOffset< bool >( 8 );
         
 
     }

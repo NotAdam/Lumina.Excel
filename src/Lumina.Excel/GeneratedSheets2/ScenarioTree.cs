@@ -15,9 +15,9 @@ public partial class ScenarioTree : ExcelRow
     public SeString Name { get; private set; }
     public LazyRow< Addon > Addon { get; private set; }
     public LazyRow< QuestChapter > QuestChapter { get; private set; }
-    public uint Unknown6 { get; private set; }
-    public int Unknown5 { get; private set; }
-    public ushort Unknown1 { get; private set; }
+    public uint Unknown0 { get; private set; }
+    public int Unknown1 { get; private set; }
+    public ushort Unknown2 { get; private set; }
     public LazyRow< ScenarioType > Type { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -27,9 +27,9 @@ public partial class ScenarioTree : ExcelRow
         Name = parser.ReadOffset< SeString >( 0 );
         Addon = new LazyRow< Addon >( gameData, parser.ReadOffset< uint >( 4 ), language );
         QuestChapter = new LazyRow< QuestChapter >( gameData, parser.ReadOffset< uint >( 8 ), language );
-        Unknown6 = parser.ReadOffset< uint >( 12 );
-        Unknown5 = parser.ReadOffset< int >( 16 );
-        Unknown1 = parser.ReadOffset< ushort >( 20 );
+        Unknown0 = parser.ReadOffset< uint >( 12 );
+        Unknown1 = parser.ReadOffset< int >( 16 );
+        Unknown2 = parser.ReadOffset< ushort >( 20 );
         Type = new LazyRow< ScenarioType >( gameData, parser.ReadOffset< byte >( 22 ), language );
         
 

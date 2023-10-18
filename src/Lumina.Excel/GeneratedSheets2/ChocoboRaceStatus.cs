@@ -13,14 +13,14 @@ public partial class ChocoboRaceStatus : ExcelRow
 {
     
     public LazyRow< Status > Status { get; private set; }
-    public ushort Unknown1 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         Status = new LazyRow< Status >( gameData, parser.ReadOffset< int >( 0 ), language );
-        Unknown1 = parser.ReadOffset< ushort >( 4 );
+        Unknown0 = parser.ReadOffset< ushort >( 4 );
         
 
     }

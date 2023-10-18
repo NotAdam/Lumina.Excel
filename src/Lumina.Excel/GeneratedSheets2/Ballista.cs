@@ -19,8 +19,8 @@ public partial class Ballista : ExcelRow
     public LazyRow< Action > Action2 { get; private set; }
     public LazyRow< Action > Action3 { get; private set; }
     public byte Bullet { get; private set; }
-    public byte Unknown5 { get; private set; }
-    public byte Unknown6 { get; private set; }
+    public byte Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
     public sbyte Near { get; private set; }
     public sbyte Far { get; private set; }
     
@@ -35,8 +35,8 @@ public partial class Ballista : ExcelRow
         Action2 = new LazyRow< Action >( gameData, parser.ReadOffset< ushort >( 8 ), language );
         Action3 = new LazyRow< Action >( gameData, parser.ReadOffset< ushort >( 10 ), language );
         Bullet = parser.ReadOffset< byte >( 12 );
-        Unknown5 = parser.ReadOffset< byte >( 13 );
-        Unknown6 = parser.ReadOffset< byte >( 14 );
+        Unknown0 = parser.ReadOffset< byte >( 13 );
+        Unknown1 = parser.ReadOffset< byte >( 14 );
         Near = parser.ReadOffset< sbyte >( 15 );
         Far = parser.ReadOffset< sbyte >( 16 );
         

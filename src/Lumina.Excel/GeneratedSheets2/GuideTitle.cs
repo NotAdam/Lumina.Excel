@@ -13,14 +13,14 @@ public partial class GuideTitle : ExcelRow
 {
     
     public SeString Title { get; private set; }
-    public SeString Unknown1 { get; private set; }
+    public SeString Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
         Title = parser.ReadOffset< SeString >( 0 );
-        Unknown1 = parser.ReadOffset< SeString >( 4 );
+        Unknown0 = parser.ReadOffset< SeString >( 4 );
         
 
     }

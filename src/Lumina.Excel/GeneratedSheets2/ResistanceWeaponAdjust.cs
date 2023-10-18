@@ -16,7 +16,7 @@ public partial class ResistanceWeaponAdjust : ExcelRow
     public ushort MaxTotalStats { get; private set; }
     public ushort MaxEachStat { get; private set; }
     public LazyRow< BaseParam >[] BaseParam { get; private set; }
-    public byte Unknown7 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -28,7 +28,7 @@ public partial class ResistanceWeaponAdjust : ExcelRow
         BaseParam = new LazyRow< BaseParam >[4];
         for (int i = 0; i < 4; i++)
         	BaseParam[i] = new LazyRow< BaseParam >( gameData, parser.ReadOffset< byte >( (ushort) ( 8 + i * 1 ) ), language );
-        Unknown7 = parser.ReadOffset< byte >( 12 );
+        Unknown0 = parser.ReadOffset< byte >( 12 );
         
 
     }

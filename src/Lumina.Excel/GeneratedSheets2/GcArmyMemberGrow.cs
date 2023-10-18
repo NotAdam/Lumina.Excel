@@ -20,10 +20,10 @@ public partial class GcArmyMemberGrow : ExcelRow
     }
     
     public MemberParamsStruct[] MemberParams { get; private set; }
-    public ushort Unknown62 { get; private set; }
-    public byte Unknown123 { get; private set; }
-    public byte Unknown184 { get; private set; }
-    public byte Unknown245 { get; private set; }
+    public ushort Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
+    public byte Unknown2 { get; private set; }
+    public byte Unknown3 { get; private set; }
     public LazyRow< Item > ClassBook { get; private set; }
     public LazyRow< ClassJob > ClassJob { get; private set; }
     
@@ -39,10 +39,10 @@ public partial class GcArmyMemberGrow : ExcelRow
         	MemberParams[i].Mental = parser.ReadOffset< byte >( (ushort) (i * 6 + 3));
         	MemberParams[i].Tactical = parser.ReadOffset< byte >( (ushort) (i * 6 + 4));
         }
-        Unknown62 = parser.ReadOffset< ushort >( 360 );
-        Unknown123 = parser.ReadOffset< byte >( 362 );
-        Unknown184 = parser.ReadOffset< byte >( 363 );
-        Unknown245 = parser.ReadOffset< byte >( 364 );
+        Unknown0 = parser.ReadOffset< ushort >( 360 );
+        Unknown1 = parser.ReadOffset< byte >( 362 );
+        Unknown2 = parser.ReadOffset< byte >( 363 );
+        Unknown3 = parser.ReadOffset< byte >( 364 );
         ClassBook = new LazyRow< Item >( gameData, parser.ReadOffset< int >( 368 ), language );
         ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadOffset< byte >( 372 ), language );
         

@@ -14,7 +14,7 @@ public partial class MJIRank : ExcelRow
     
     public uint ExpToNext { get; private set; }
     public LazyRow< LogMessage >[] LogMessage { get; private set; }
-    public byte Unknown1 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -24,7 +24,7 @@ public partial class MJIRank : ExcelRow
         LogMessage = new LazyRow< LogMessage >[3];
         for (int i = 0; i < 3; i++)
         	LogMessage[i] = new LazyRow< LogMessage >( gameData, parser.ReadOffset< uint >( (ushort) ( 4 + i * 4 ) ), language );
-        Unknown1 = parser.ReadOffset< byte >( 16 );
+        Unknown0 = parser.ReadOffset< byte >( 16 );
         
 
     }

@@ -23,12 +23,12 @@ public partial class PublicContent : ExcelRow
     public ushort TimeLimit { get; private set; }
     public LazyRow< ContentFinderCondition > ContentFinderCondition { get; private set; }
     public ILazyRow AdditionalData { get; private set; }
-    public ushort Unknown12 { get; private set; }
-    public ushort Unknown13 { get; private set; }
-    public ushort Unknown14 { get; private set; }
-    public ushort Unknown15 { get; private set; }
+    public ushort Unknown0 { get; private set; }
+    public ushort Unknown1 { get; private set; }
+    public ushort Unknown2 { get; private set; }
+    public ushort Unknown3 { get; private set; }
     public byte Type { get; private set; }
-    public byte Unknown11 { get; private set; }
+    public byte Unknown4 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -45,12 +45,12 @@ public partial class PublicContent : ExcelRow
         TimeLimit = parser.ReadOffset< ushort >( 32 );
         ContentFinderCondition = new LazyRow< ContentFinderCondition >( gameData, parser.ReadOffset< ushort >( 34 ), language );
         var AdditionalDataRowId = parser.ReadOffset< ushort >( 36 );
-        Unknown12 = parser.ReadOffset< ushort >( 38 );
-        Unknown13 = parser.ReadOffset< ushort >( 40 );
-        Unknown14 = parser.ReadOffset< ushort >( 42 );
-        Unknown15 = parser.ReadOffset< ushort >( 44 );
+        Unknown0 = parser.ReadOffset< ushort >( 38 );
+        Unknown1 = parser.ReadOffset< ushort >( 40 );
+        Unknown2 = parser.ReadOffset< ushort >( 42 );
+        Unknown3 = parser.ReadOffset< ushort >( 44 );
         Type = parser.ReadOffset< byte >( 46 );
-        Unknown11 = parser.ReadOffset< byte >( 47 );
+        Unknown4 = parser.ReadOffset< byte >( 47 );
         
         AdditionalData = Type switch
         {

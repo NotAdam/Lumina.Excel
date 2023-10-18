@@ -25,15 +25,15 @@ public partial class ActionTimeline : ExcelRow
     public byte StartAttach { get; private set; }
     public byte ResidentPap { get; private set; }
     public byte IsLoop { get; private set; }
-    public byte Unknown20 { get; private set; }
-    public byte Unknown21 { get; private set; }
+    public byte Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
     public bool Pause { get; private set; }
     public bool Resident { get; private set; }
     public bool IsMotionCanceledByMoving { get; private set; }
-    public bool Unknown15 { get; private set; }
-    public bool Unknown17 { get; private set; }
-    public bool Unknown18 { get; private set; }
-    public bool Unknown19 { get; private set; }
+    public bool Unknown2 { get; private set; }
+    public bool Unknown3 { get; private set; }
+    public bool Unknown4 { get; private set; }
+    public bool Unknown5 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -52,15 +52,15 @@ public partial class ActionTimeline : ExcelRow
         StartAttach = parser.ReadOffset< byte >( 14 );
         ResidentPap = parser.ReadOffset< byte >( 15 );
         IsLoop = parser.ReadOffset< byte >( 16 );
-        Unknown20 = parser.ReadOffset< byte >( 17 );
-        Unknown21 = parser.ReadOffset< byte >( 18 );
+        Unknown0 = parser.ReadOffset< byte >( 17 );
+        Unknown1 = parser.ReadOffset< byte >( 18 );
         Pause = parser.ReadOffset< bool >( 19 );
         Resident = parser.ReadOffset< bool >( 19, 2 );
         IsMotionCanceledByMoving = parser.ReadOffset< bool >( 19, 4 );
-        Unknown15 = parser.ReadOffset< bool >( 19, 8 );
-        Unknown17 = parser.ReadOffset< bool >( 19, 16 );
-        Unknown18 = parser.ReadOffset< bool >( 19, 32 );
-        Unknown19 = parser.ReadOffset< bool >( 19, 64 );
+        Unknown2 = parser.ReadOffset< bool >( 19, 8 );
+        Unknown3 = parser.ReadOffset< bool >( 19, 16 );
+        Unknown4 = parser.ReadOffset< bool >( 19, 32 );
+        Unknown5 = parser.ReadOffset< bool >( 19, 64 );
         
 
     }

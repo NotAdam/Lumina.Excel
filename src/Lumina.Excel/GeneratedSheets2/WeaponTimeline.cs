@@ -14,7 +14,7 @@ public partial class WeaponTimeline : ExcelRow
     
     public SeString File { get; private set; }
     public short NextWeaponTimeline { get; private set; }
-    public bool Unknown2 { get; private set; }
+    public bool Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -22,7 +22,7 @@ public partial class WeaponTimeline : ExcelRow
 
         File = parser.ReadOffset< SeString >( 0 );
         NextWeaponTimeline = parser.ReadOffset< short >( 4 );
-        Unknown2 = parser.ReadOffset< bool >( 6 );
+        Unknown0 = parser.ReadOffset< bool >( 6 );
         
 
     }

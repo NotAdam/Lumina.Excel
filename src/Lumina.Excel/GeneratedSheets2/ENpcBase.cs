@@ -57,7 +57,7 @@ public partial class ENpcBase : ExcelRow
     public byte ExtraFeature2OrBust { get; private set; }
     public byte FacePaint { get; private set; }
     public byte FacePaintColor { get; private set; }
-    public byte Unknown62 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public LazyRow< Stain > DyeMainHand { get; private set; }
     public LazyRow< Stain > DyeOffHand { get; private set; }
     public LazyRow< Stain > DyeHead { get; private set; }
@@ -72,7 +72,7 @@ public partial class ENpcBase : ExcelRow
     public LazyRow< Stain > DyeRightRing { get; private set; }
     public byte Invisibility { get; private set; }
     public byte DefaultBalloon { get; private set; }
-    public byte Unknown94 { get; private set; }
+    public byte Unknown1 { get; private set; }
     public bool Important { get; private set; }
     public bool Visor { get; private set; }
     public bool NotRewriteHeight { get; private set; }
@@ -128,7 +128,7 @@ public partial class ENpcBase : ExcelRow
         ExtraFeature2OrBust = parser.ReadOffset< byte >( 221 );
         FacePaint = parser.ReadOffset< byte >( 222 );
         FacePaintColor = parser.ReadOffset< byte >( 223 );
-        Unknown62 = parser.ReadOffset< byte >( 224 );
+        Unknown0 = parser.ReadOffset< byte >( 224 );
         DyeMainHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 225 ), language );
         DyeOffHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 226 ), language );
         DyeHead = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 227 ), language );
@@ -143,7 +143,7 @@ public partial class ENpcBase : ExcelRow
         DyeRightRing = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 236 ), language );
         Invisibility = parser.ReadOffset< byte >( 237 );
         DefaultBalloon = parser.ReadOffset< byte >( 238 );
-        Unknown94 = parser.ReadOffset< byte >( 239 );
+        Unknown1 = parser.ReadOffset< byte >( 239 );
         Important = parser.ReadOffset< bool >( 240 );
         Visor = parser.ReadOffset< bool >( 240, 2 );
         NotRewriteHeight = parser.ReadOffset< bool >( 240, 4 );

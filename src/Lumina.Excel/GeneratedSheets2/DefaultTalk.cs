@@ -14,11 +14,11 @@ public partial class DefaultTalk : ExcelRow
     public struct DefaultTalkParamsStruct
     {
     	public LazyRow< ActionTimeline > ActionTimelinePose { get; internal set; }
-    	public ushort Unknown1 { get; internal set; }
+    	public ushort Unknown0 { get; internal set; }
+    	public byte Unknown1 { get; internal set; }
     	public byte Unknown2 { get; internal set; }
     	public byte Unknown3 { get; internal set; }
-    	public byte Unknown4 { get; internal set; }
-    	public bool Unknown5 { get; internal set; }
+    	public bool Unknown4 { get; internal set; }
     }
     
     public DefaultTalkParamsStruct[] DefaultTalkParams { get; private set; }
@@ -34,11 +34,11 @@ public partial class DefaultTalk : ExcelRow
         for (int i = 0; i < 3; i++)
         {
         	DefaultTalkParams[i].ActionTimelinePose = new LazyRow< ActionTimeline >( gameData, parser.ReadOffset< ushort >( (ushort) (i * 8 + 0) ), language );
-        	DefaultTalkParams[i].Unknown1 = parser.ReadOffset< ushort >( (ushort) (i * 8 + 2));
-        	DefaultTalkParams[i].Unknown2 = parser.ReadOffset< byte >( (ushort) (i * 8 + 4));
-        	DefaultTalkParams[i].Unknown3 = parser.ReadOffset< byte >( (ushort) (i * 8 + 5));
-        	DefaultTalkParams[i].Unknown4 = parser.ReadOffset< byte >( (ushort) (i * 8 + 6));
-        	DefaultTalkParams[i].Unknown5 = parser.ReadOffset< bool >( (ushort) (i * 8 + 7));
+        	DefaultTalkParams[i].Unknown0 = parser.ReadOffset< ushort >( (ushort) (i * 8 + 2));
+        	DefaultTalkParams[i].Unknown1 = parser.ReadOffset< byte >( (ushort) (i * 8 + 4));
+        	DefaultTalkParams[i].Unknown2 = parser.ReadOffset< byte >( (ushort) (i * 8 + 5));
+        	DefaultTalkParams[i].Unknown3 = parser.ReadOffset< byte >( (ushort) (i * 8 + 6));
+        	DefaultTalkParams[i].Unknown4 = parser.ReadOffset< bool >( (ushort) (i * 8 + 7));
         }
         Text = new SeString[3];
         for (int i = 0; i < 3; i++)

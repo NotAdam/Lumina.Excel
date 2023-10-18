@@ -15,9 +15,9 @@ public partial class WeeklyBingoOrderData : ExcelRow
     public uint Type { get; private set; }
     public ILazyRow Data { get; private set; }
     public uint Icon { get; private set; }
-    public byte Unknown2 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public LazyRow< WeeklyBingoText > Text { get; private set; }
-    public byte Unknown5 { get; private set; }
+    public byte Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -26,9 +26,9 @@ public partial class WeeklyBingoOrderData : ExcelRow
         Type = parser.ReadOffset< uint >( 0 );
         var DataRowId = parser.ReadOffset< uint >( 4 );
         Icon = parser.ReadOffset< uint >( 8 );
-        Unknown2 = parser.ReadOffset< byte >( 12 );
+        Unknown0 = parser.ReadOffset< byte >( 12 );
         Text = new LazyRow< WeeklyBingoText >( gameData, parser.ReadOffset< byte >( 13 ), language );
-        Unknown5 = parser.ReadOffset< byte >( 14 );
+        Unknown1 = parser.ReadOffset< byte >( 14 );
         
         Data = Type switch
         {

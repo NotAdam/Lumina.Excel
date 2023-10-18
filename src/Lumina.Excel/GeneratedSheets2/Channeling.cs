@@ -14,9 +14,9 @@ public partial class Channeling : ExcelRow
     
     public SeString File { get; private set; }
     public byte WidthScale { get; private set; }
+    public bool Unknown0 { get; private set; }
+    public bool Unknown1 { get; private set; }
     public bool Unknown2 { get; private set; }
-    public bool Unknown3 { get; private set; }
-    public bool Unknown4 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -24,9 +24,9 @@ public partial class Channeling : ExcelRow
 
         File = parser.ReadOffset< SeString >( 0 );
         WidthScale = parser.ReadOffset< byte >( 4 );
-        Unknown2 = parser.ReadOffset< bool >( 5 );
-        Unknown3 = parser.ReadOffset< bool >( 5, 2 );
-        Unknown4 = parser.ReadOffset< bool >( 5, 4 );
+        Unknown0 = parser.ReadOffset< bool >( 5 );
+        Unknown1 = parser.ReadOffset< bool >( 5, 2 );
+        Unknown2 = parser.ReadOffset< bool >( 5, 4 );
         
 
     }

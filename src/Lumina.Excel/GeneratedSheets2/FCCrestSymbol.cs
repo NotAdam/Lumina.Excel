@@ -12,7 +12,7 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class FCCrestSymbol : ExcelRow
 {
     
-    public ushort Unknown2 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     public byte ColorNum { get; private set; }
     public byte FCRight { get; private set; }
     
@@ -20,7 +20,7 @@ public partial class FCCrestSymbol : ExcelRow
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown2 = parser.ReadOffset< ushort >( 0 );
+        Unknown0 = parser.ReadOffset< ushort >( 0 );
         ColorNum = parser.ReadOffset< byte >( 2 );
         FCRight = parser.ReadOffset< byte >( 3 );
         

@@ -14,9 +14,9 @@ public partial class TopicSelect : ExcelRow
     
     public SeString Name { get; private set; }
     public ILazyRow[] Shop { get; private set; }
-    public ushort Unknown3 { get; private set; }
-    public byte Unknown2 { get; private set; }
-    public bool Unknown1 { get; private set; }
+    public ushort Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
+    public bool Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -26,9 +26,9 @@ public partial class TopicSelect : ExcelRow
         Shop = new ILazyRow[10];
         for (int i = 0; i < 10; i++)
         	Shop[i] = EmptyLazyRow.GetFirstLazyRowOrEmpty( gameData, (uint) parser.ReadOffset< uint >( 4 + i * 4 ), language, "SpecialShop", "GilShop", "PreHandler" );
-        Unknown3 = parser.ReadOffset< ushort >( 44 );
-        Unknown2 = parser.ReadOffset< byte >( 46 );
-        Unknown1 = parser.ReadOffset< bool >( 47 );
+        Unknown0 = parser.ReadOffset< ushort >( 44 );
+        Unknown1 = parser.ReadOffset< byte >( 46 );
+        Unknown2 = parser.ReadOffset< bool >( 47 );
         
 
     }

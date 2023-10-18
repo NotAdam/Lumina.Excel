@@ -18,8 +18,8 @@ public partial class DeepDungeon : ExcelRow
     public LazyRow< ContentFinderCondition > ContentFinderConditionStart { get; private set; }
     public LazyRow< DeepDungeonEquipment > AetherpoolArm { get; private set; }
     public LazyRow< DeepDungeonEquipment > AetherpoolArmor { get; private set; }
-    public byte Unknown18 { get; private set; }
-    public bool Unknown25 { get; private set; }
+    public byte Unknown0 { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -35,8 +35,8 @@ public partial class DeepDungeon : ExcelRow
         ContentFinderConditionStart = new LazyRow< ContentFinderCondition >( gameData, parser.ReadOffset< ushort >( 24 ), language );
         AetherpoolArm = new LazyRow< DeepDungeonEquipment >( gameData, parser.ReadOffset< byte >( 26 ), language );
         AetherpoolArmor = new LazyRow< DeepDungeonEquipment >( gameData, parser.ReadOffset< byte >( 27 ), language );
-        Unknown18 = parser.ReadOffset< byte >( 28 );
-        Unknown25 = parser.ReadOffset< bool >( 29 );
+        Unknown0 = parser.ReadOffset< byte >( 28 );
+        Unknown1 = parser.ReadOffset< bool >( 29 );
         
 
     }

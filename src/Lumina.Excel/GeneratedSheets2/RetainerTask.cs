@@ -13,13 +13,13 @@ public partial class RetainerTask : ExcelRow
 {
     
     public int Experience { get; private set; }
-    public ushort Unknown3 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     public LazyRow< RetainerTaskParameter > RetainerTaskParameter { get; private set; }
     public ushort VentureCost { get; private set; }
     public ushort MaxTimemin { get; private set; }
     public ushort RequiredItemLevel { get; private set; }
     public ushort RequiredGathering { get; private set; }
-    public ushort Unknown12 { get; private set; }
+    public ushort Unknown1 { get; private set; }
     public ILazyRow Task { get; private set; }
     public LazyRow< ClassJobCategory > ClassJobCategory { get; private set; }
     public byte RetainerLevel { get; private set; }
@@ -32,13 +32,13 @@ public partial class RetainerTask : ExcelRow
         base.PopulateData( parser, gameData, language );
 
         Experience = parser.ReadOffset< int >( 0 );
-        Unknown3 = parser.ReadOffset< ushort >( 4 );
+        Unknown0 = parser.ReadOffset< ushort >( 4 );
         RetainerTaskParameter = new LazyRow< RetainerTaskParameter >( gameData, parser.ReadOffset< ushort >( 6 ), language );
         VentureCost = parser.ReadOffset< ushort >( 8 );
         MaxTimemin = parser.ReadOffset< ushort >( 10 );
         RequiredItemLevel = parser.ReadOffset< ushort >( 12 );
         RequiredGathering = parser.ReadOffset< ushort >( 14 );
-        Unknown12 = parser.ReadOffset< ushort >( 16 );
+        Unknown1 = parser.ReadOffset< ushort >( 16 );
         Task = EmptyLazyRow.GetFirstLazyRowOrEmpty( gameData, (uint) parser.ReadOffset< ushort >( 18 ), language, "RetainerTaskNormal", "RetainerTaskRandom" );
         ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 20 ), language );
         RetainerLevel = parser.ReadOffset< byte >( 21 );

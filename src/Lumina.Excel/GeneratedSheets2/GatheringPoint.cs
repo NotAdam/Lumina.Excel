@@ -18,7 +18,7 @@ public partial class GatheringPoint : ExcelRow
     public LazyRow< PlaceName > PlaceName { get; private set; }
     public LazyRow< GatheringSubCategory > GatheringSubCategory { get; private set; }
     public byte Type { get; private set; }
-    public byte Unknown1 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public byte Count { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -33,7 +33,7 @@ public partial class GatheringPoint : ExcelRow
         PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadOffset< ushort >( 10 ), language );
         GatheringSubCategory = new LazyRow< GatheringSubCategory >( gameData, parser.ReadOffset< ushort >( 12 ), language );
         Type = parser.ReadOffset< byte >( 14 );
-        Unknown1 = parser.ReadOffset< byte >( 15 );
+        Unknown0 = parser.ReadOffset< byte >( 15 );
         Count = parser.ReadOffset< byte >( 16 );
         
 

@@ -12,15 +12,15 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class FittingShopCategory : ExcelRow
 {
     
-    public SeString Unknown1 { get; private set; }
-    public byte Unknown0 { get; private set; }
+    public SeString Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown1 = parser.ReadOffset< SeString >( 0 );
-        Unknown0 = parser.ReadOffset< byte >( 4 );
+        Unknown0 = parser.ReadOffset< SeString >( 0 );
+        Unknown1 = parser.ReadOffset< byte >( 4 );
         
 
     }

@@ -19,7 +19,7 @@ public partial class Trait : ExcelRow
     public LazyRow< ClassJob > ClassJob { get; private set; }
     public byte Level { get; private set; }
     public LazyRow< ClassJobCategory > ClassJobCategory { get; private set; }
-    public byte Unknown7 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -32,7 +32,7 @@ public partial class Trait : ExcelRow
         ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadOffset< byte >( 14 ), language );
         Level = parser.ReadOffset< byte >( 15 );
         ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 16 ), language );
-        Unknown7 = parser.ReadOffset< byte >( 17 );
+        Unknown0 = parser.ReadOffset< byte >( 17 );
         
 
     }

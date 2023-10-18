@@ -14,7 +14,7 @@ public partial class PvPSeries : ExcelRow
     public struct LevelRewardsStruct
     {
     	public LazyRow< Item >[] LevelRewardItem { get; internal set; }
-    	public int Unknown129 { get; internal set; }
+    	public int Unknown0 { get; internal set; }
     	public ushort[] LevelRewardCount { get; internal set; }
     }
     
@@ -31,7 +31,7 @@ public partial class PvPSeries : ExcelRow
         	LevelRewards[i].LevelRewardItem = new LazyRow< Item >[2];
         	for (int LevelRewardItemIndexer = 0; LevelRewardItemIndexer < 2; LevelRewardItemIndexer++)
         		LevelRewards[i].LevelRewardItem[LevelRewardItemIndexer] = new LazyRow< Item >( gameData, parser.ReadOffset< int >( i * 16 +  0 + LevelRewardItemIndexer * 4 ), language );
-        	LevelRewards[i].Unknown129 = parser.ReadOffset< int >( (ushort) (i * 16 + 8));
+        	LevelRewards[i].Unknown0 = parser.ReadOffset< int >( (ushort) (i * 16 + 8));
         	LevelRewards[i].LevelRewardCount = new ushort[2];
         	for (int LevelRewardCountIndexer = 0; LevelRewardCountIndexer < 2; LevelRewardCountIndexer++)
         		LevelRewards[i].LevelRewardCount[LevelRewardCountIndexer] = parser.ReadOffset< ushort >( (ushort) ( i * 16 + 12 + LevelRewardCountIndexer * 2 ) );

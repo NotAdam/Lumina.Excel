@@ -14,7 +14,7 @@ public partial class CompleteJournal : ExcelRow
     
     public SeString Name { get; private set; }
     public uint Unknown0 { get; private set; }
-    public uint Unknown4 { get; private set; }
+    public uint Unknown1 { get; private set; }
     public int Icon { get; private set; }
     public LazyRow< Cutscene >[] Cutscene { get; private set; }
     public ushort RequiredLevel { get; private set; }
@@ -26,7 +26,7 @@ public partial class CompleteJournal : ExcelRow
 
         Name = parser.ReadOffset< SeString >( 0 );
         Unknown0 = parser.ReadOffset< uint >( 4 );
-        Unknown4 = parser.ReadOffset< uint >( 8 );
+        Unknown1 = parser.ReadOffset< uint >( 8 );
         Icon = parser.ReadOffset< int >( 12 );
         Cutscene = new LazyRow< Cutscene >[24];
         for (int i = 0; i < 24; i++)

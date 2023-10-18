@@ -14,8 +14,8 @@ public partial class QuestAcceptAdditionCondition : ExcelRow
     
     public LazyRow< Quest > Requirement0 { get; private set; }
     public LazyRow< Quest > Requirement1 { get; private set; }
-    public uint Unknown2 { get; private set; }
-    public bool Unknown3 { get; private set; }
+    public uint Unknown0 { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -23,8 +23,8 @@ public partial class QuestAcceptAdditionCondition : ExcelRow
 
         Requirement0 = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 0 ), language );
         Requirement1 = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 4 ), language );
-        Unknown2 = parser.ReadOffset< uint >( 8 );
-        Unknown3 = parser.ReadOffset< bool >( 12 );
+        Unknown0 = parser.ReadOffset< uint >( 8 );
+        Unknown1 = parser.ReadOffset< bool >( 12 );
         
 
     }

@@ -13,8 +13,8 @@ public partial class ChocoboRaceTutorial : ExcelRow
 {
     
     public LazyRow< NpcYell >[] NpcYell { get; private set; }
-    public ushort Unknown8 { get; private set; }
-    public ushort Unknown9 { get; private set; }
+    public ushort Unknown0 { get; private set; }
+    public ushort Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -23,8 +23,8 @@ public partial class ChocoboRaceTutorial : ExcelRow
         NpcYell = new LazyRow< NpcYell >[8];
         for (int i = 0; i < 8; i++)
         	NpcYell[i] = new LazyRow< NpcYell >( gameData, parser.ReadOffset< int >( (ushort) ( 0 + i * 4 ) ), language );
-        Unknown8 = parser.ReadOffset< ushort >( 32 );
-        Unknown9 = parser.ReadOffset< ushort >( 34 );
+        Unknown0 = parser.ReadOffset< ushort >( 32 );
+        Unknown1 = parser.ReadOffset< ushort >( 34 );
         
 
     }

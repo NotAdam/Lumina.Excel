@@ -22,14 +22,14 @@ public partial class Achievement : ExcelRow
     public ushort Order { get; private set; }
     public LazyRow< AchievementCategory > AchievementCategory { get; private set; }
     public LazyRow< AchievementTarget > AchievementTarget { get; private set; }
-    public byte Unknown4 { get; private set; }
+    public byte Unknown0 { get; private set; }
     public byte Points { get; private set; }
-    public byte Unknown8 { get; private set; }
-    public byte Unknown9 { get; private set; }
-    public byte Unknown10 { get; private set; }
-    public byte Unknown12 { get; private set; }
+    public byte Unknown1 { get; private set; }
+    public byte Unknown2 { get; private set; }
+    public byte Unknown3 { get; private set; }
+    public byte Unknown4 { get; private set; }
     public byte Type { get; private set; }
-    public byte Unknown24 { get; private set; }
+    public byte Unknown5 { get; private set; }
     public LazyRow< AchievementHideCondition > AchievementHideCondition { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -51,14 +51,14 @@ public partial class Achievement : ExcelRow
         Order = parser.ReadOffset< ushort >( 52 );
         AchievementCategory = new LazyRow< AchievementCategory >( gameData, parser.ReadOffset< byte >( 54 ), language );
         AchievementTarget = new LazyRow< AchievementTarget >( gameData, parser.ReadOffset< byte >( 55 ), language );
-        Unknown4 = parser.ReadOffset< byte >( 56 );
+        Unknown0 = parser.ReadOffset< byte >( 56 );
         Points = parser.ReadOffset< byte >( 57 );
-        Unknown8 = parser.ReadOffset< byte >( 58 );
-        Unknown9 = parser.ReadOffset< byte >( 59 );
-        Unknown10 = parser.ReadOffset< byte >( 60 );
-        Unknown12 = parser.ReadOffset< byte >( 61 );
+        Unknown1 = parser.ReadOffset< byte >( 58 );
+        Unknown2 = parser.ReadOffset< byte >( 59 );
+        Unknown3 = parser.ReadOffset< byte >( 60 );
+        Unknown4 = parser.ReadOffset< byte >( 61 );
         Type = parser.ReadOffset< byte >( 62 );
-        Unknown24 = parser.ReadOffset< byte >( 63 );
+        Unknown5 = parser.ReadOffset< byte >( 63 );
         AchievementHideCondition = new LazyRow< AchievementHideCondition >( gameData, parser.ReadOffset< byte >( 64 ), language );
         
         Key = Type switch

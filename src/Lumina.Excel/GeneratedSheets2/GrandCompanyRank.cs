@@ -22,7 +22,7 @@ public partial class GrandCompanyRank : ExcelRow
     public LazyRow< Quest > QuestFlames { get; private set; }
     public byte Tier { get; private set; }
     public byte Order { get; private set; }
-    public byte Unknown10 { get; private set; }
+    public byte Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -38,7 +38,7 @@ public partial class GrandCompanyRank : ExcelRow
         QuestFlames = new LazyRow< Quest >( gameData, parser.ReadOffset< int >( 28 ), language );
         Tier = parser.ReadOffset< byte >( 32 );
         Order = parser.ReadOffset< byte >( 33 );
-        Unknown10 = parser.ReadOffset< byte >( 34 );
+        Unknown0 = parser.ReadOffset< byte >( 34 );
         
 
     }

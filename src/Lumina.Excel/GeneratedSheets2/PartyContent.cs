@@ -19,10 +19,10 @@ public partial class PartyContent : ExcelRow
     public LazyRow< PartyContentTextData > TextDataEnd { get; private set; }
     public uint Image { get; private set; }
     public ushort TimeLimit { get; private set; }
-    public ushort Unknown32 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     public LazyRow< ContentFinderCondition > ContentFinderCondition { get; private set; }
     public byte Key { get; private set; }
-    public byte Unknown35 { get; private set; }
+    public byte Unknown1 { get; private set; }
     public bool Name { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -42,10 +42,10 @@ public partial class PartyContent : ExcelRow
         TextDataEnd = new LazyRow< PartyContentTextData >( gameData, parser.ReadOffset< uint >( 112 ), language );
         Image = parser.ReadOffset< uint >( 116 );
         TimeLimit = parser.ReadOffset< ushort >( 120 );
-        Unknown32 = parser.ReadOffset< ushort >( 122 );
+        Unknown0 = parser.ReadOffset< ushort >( 122 );
         ContentFinderCondition = new LazyRow< ContentFinderCondition >( gameData, parser.ReadOffset< ushort >( 124 ), language );
         Key = parser.ReadOffset< byte >( 126 );
-        Unknown35 = parser.ReadOffset< byte >( 127 );
+        Unknown1 = parser.ReadOffset< byte >( 127 );
         Name = parser.ReadOffset< bool >( 128 );
         
 

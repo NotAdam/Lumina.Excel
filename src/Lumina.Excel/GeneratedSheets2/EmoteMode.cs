@@ -19,7 +19,7 @@ public partial class EmoteMode : ExcelRow
     public bool Camera { get; private set; }
     public bool EndOnRotate { get; private set; }
     public bool EndOnEmote { get; private set; }
-    public bool Unknown7 { get; private set; }
+    public bool Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -32,7 +32,7 @@ public partial class EmoteMode : ExcelRow
         Camera = parser.ReadOffset< bool >( 5, 2 );
         EndOnRotate = parser.ReadOffset< bool >( 5, 4 );
         EndOnEmote = parser.ReadOffset< bool >( 5, 8 );
-        Unknown7 = parser.ReadOffset< bool >( 5, 16 );
+        Unknown0 = parser.ReadOffset< bool >( 5, 16 );
         
 
     }

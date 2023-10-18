@@ -14,9 +14,9 @@ public partial class ChocoboTaxi : ExcelRow
     
     public LazyRow< ChocoboTaxiStand > Location { get; private set; }
     public ushort TimeRequired { get; private set; }
-    public ushort Unknown3 { get; private set; }
+    public ushort Unknown0 { get; private set; }
     public byte Fare { get; private set; }
-    public bool Unknown4 { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -24,9 +24,9 @@ public partial class ChocoboTaxi : ExcelRow
 
         Location = new LazyRow< ChocoboTaxiStand >( gameData, parser.ReadOffset< uint >( 0 ), language );
         TimeRequired = parser.ReadOffset< ushort >( 4 );
-        Unknown3 = parser.ReadOffset< ushort >( 6 );
+        Unknown0 = parser.ReadOffset< ushort >( 6 );
         Fare = parser.ReadOffset< byte >( 8 );
-        Unknown4 = parser.ReadOffset< bool >( 9 );
+        Unknown1 = parser.ReadOffset< bool >( 9 );
         
 
     }

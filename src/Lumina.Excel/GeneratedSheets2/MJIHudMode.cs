@@ -15,7 +15,7 @@ public partial class MJIHudMode : ExcelRow
     public SeString Name { get; private set; }
     public SeString Title { get; private set; }
     public uint Icon { get; private set; }
-    public uint Unknown3 { get; private set; }
+    public uint Unknown0 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -24,7 +24,7 @@ public partial class MJIHudMode : ExcelRow
         Name = parser.ReadOffset< SeString >( 0 );
         Title = parser.ReadOffset< SeString >( 4 );
         Icon = parser.ReadOffset< uint >( 8 );
-        Unknown3 = parser.ReadOffset< uint >( 12 );
+        Unknown0 = parser.ReadOffset< uint >( 12 );
         
 
     }

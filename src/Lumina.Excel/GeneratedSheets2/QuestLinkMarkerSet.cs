@@ -12,8 +12,8 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class QuestLinkMarkerSet : ExcelRow
 {
     
-    public uint Unknown1 { get; private set; }
-    public ushort Unknown0 { get; private set; }
+    public uint Unknown0 { get; private set; }
+    public ushort Unknown1 { get; private set; }
     public byte Unknown2 { get; private set; }
     public byte Unknown3 { get; private set; }
     public byte Unknown4 { get; private set; }
@@ -24,8 +24,8 @@ public partial class QuestLinkMarkerSet : ExcelRow
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown1 = parser.ReadOffset< uint >( 0 );
-        Unknown0 = parser.ReadOffset< ushort >( 4 );
+        Unknown0 = parser.ReadOffset< uint >( 0 );
+        Unknown1 = parser.ReadOffset< ushort >( 4 );
         Unknown2 = parser.ReadOffset< byte >( 6 );
         Unknown3 = parser.ReadOffset< byte >( 7 );
         Unknown4 = parser.ReadOffset< byte >( 8 );

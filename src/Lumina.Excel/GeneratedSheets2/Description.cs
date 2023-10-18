@@ -18,7 +18,7 @@ public partial class Description : ExcelRow
     public LazyRow< Quest > Quest { get; private set; }
     public LazyRow< DescriptionSection > Section { get; private set; }
     public byte Unknown0 { get; private set; }
-    public bool Unknown5 { get; private set; }
+    public bool Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -30,7 +30,7 @@ public partial class Description : ExcelRow
         Quest = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 12 ), language );
         Section = new LazyRow< DescriptionSection >( gameData, parser.ReadOffset< uint >( 16 ), language );
         Unknown0 = parser.ReadOffset< byte >( 20 );
-        Unknown5 = parser.ReadOffset< bool >( 21 );
+        Unknown1 = parser.ReadOffset< bool >( 21 );
         
 
     }

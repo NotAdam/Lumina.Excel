@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Lumina" Version="3.10.2"/>
+        <PackageReference Include="Lumina" Version="3.15.0"/>
         <PackageReference Include="SharpYaml" Version="2.1.0" />
     </ItemGroup>
 

@@ -27,7 +27,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Lumina" Version="3.10.0" />
+        <PackageReference Include="Lumina" Version="3.15.0" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
         <PackageReference Include="MinVer" Version="2.3.1">
             <PrivateAssets>all</PrivateAssets>
@@ -38,6 +38,10 @@
     <ItemGroup>
         <None Remove="RSV\**\*.rsv" />
         <EmbeddedResource Include="RSV\**\*.rsv" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="CustomSheets\" />
     </ItemGroup>
 
 </Project>

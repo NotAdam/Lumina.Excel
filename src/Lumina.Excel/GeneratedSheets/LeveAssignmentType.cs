@@ -6,11 +6,10 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "LeveAssignmentType", columnHash: 0x7c19f23c )]
+    [Sheet( "LeveAssignmentType", columnHash: 0x0c8db36c )]
     public partial class LeveAssignmentType : ExcelRow
     {
         
-        public bool IsFaction { get; set; }
         public int Icon { get; set; }
         public SeString Name { get; set; }
         
@@ -18,9 +17,8 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            IsFaction = parser.ReadColumn< bool >( 0 );
-            Icon = parser.ReadColumn< int >( 1 );
-            Name = parser.ReadColumn< SeString >( 2 );
+            Icon = parser.ReadColumn< int >( 0 );
+            Name = parser.ReadColumn< SeString >( 1 );
         }
     }
 }

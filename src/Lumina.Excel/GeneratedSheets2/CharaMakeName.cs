@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "CharaMakeName", columnHash: 0x2bb0117b )]
+[Sheet( "CharaMakeName", columnHash: 0x6fbe744d )]
 public partial class CharaMakeName : ExcelRow
 {
     
@@ -59,6 +59,9 @@ public partial class CharaMakeName : ExcelRow
     public SeString VieraFirstName { get; private set; }
     public SeString VieraRavaLastName { get; private set; }
     public SeString VieraVeenaLastName { get; private set; }
+    public SeString Unknown_70_1 { get; private set; }
+    public SeString Unknown_70_2 { get; private set; }
+    public SeString Unknown_70_3 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -111,6 +114,9 @@ public partial class CharaMakeName : ExcelRow
         VieraFirstName = parser.ReadOffset< SeString >( 176 );
         VieraRavaLastName = parser.ReadOffset< SeString >( 180 );
         VieraVeenaLastName = parser.ReadOffset< SeString >( 184 );
+        Unknown_70_1 = parser.ReadOffset< SeString >( 188 );
+        Unknown_70_2 = parser.ReadOffset< SeString >( 192 );
+        Unknown_70_3 = parser.ReadOffset< SeString >( 196 );
         
 
     }

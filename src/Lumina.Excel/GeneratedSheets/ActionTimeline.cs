@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ActionTimeline", columnHash: 0x55e1a16f )]
+    [Sheet( "ActionTimeline", columnHash: 0xd803699f )]
     public partial class ActionTimeline : ExcelRow
     {
         
@@ -22,16 +22,16 @@ namespace Lumina.Excel.GeneratedSheets
         public byte LoadType { get; set; }
         public byte StartAttach { get; set; }
         public byte ResidentPap { get; set; }
-        public bool Resident { get; set; }
-        public ushort KillUpper { get; set; }
+        public ushort Unknown12 { get; set; }
+        public bool KillUpper { get; set; }
         public bool IsMotionCanceledByMoving { get; set; }
-        public bool Unknown15 { get; set; }
-        public byte IsLoop { get; set; }
+        public byte Unknown15 { get; set; }
+        public bool Unknown16 { get; set; }
         public bool Unknown17 { get; set; }
-        public bool Unknown18 { get; set; }
-        public bool Unknown19 { get; set; }
+        public bool IsLoop { get; set; }
+        public byte Unknown19 { get; set; }
         public byte Unknown20 { get; set; }
-        public byte Unknown21 { get; set; }
+        public bool Unknown21 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -45,20 +45,20 @@ namespace Lumina.Excel.GeneratedSheets
             LookAtMode = parser.ReadColumn< byte >( 5 );
             Key = parser.ReadColumn< SeString >( 6 );
             ActionTimelineIDMode = parser.ReadColumn< byte >( 7 );
-            WeaponTimeline = new LazyRow< WeaponTimeline >( gameData, parser.ReadColumn< byte >( 8 ), language );
+            WeaponTimeline = new LazyRow< WeaponTimeline >( gameData, parser.ReadColumn< ushort >( 8 ), language );
             LoadType = parser.ReadColumn< byte >( 9 );
             StartAttach = parser.ReadColumn< byte >( 10 );
             ResidentPap = parser.ReadColumn< byte >( 11 );
-            Resident = parser.ReadColumn< bool >( 12 );
-            KillUpper = parser.ReadColumn< ushort >( 13 );
+            Unknown12 = parser.ReadColumn< ushort >( 12 );
+            KillUpper = parser.ReadColumn< bool >( 13 );
             IsMotionCanceledByMoving = parser.ReadColumn< bool >( 14 );
-            Unknown15 = parser.ReadColumn< bool >( 15 );
-            IsLoop = parser.ReadColumn< byte >( 16 );
+            Unknown15 = parser.ReadColumn< byte >( 15 );
+            Unknown16 = parser.ReadColumn< bool >( 16 );
             Unknown17 = parser.ReadColumn< bool >( 17 );
-            Unknown18 = parser.ReadColumn< bool >( 18 );
-            Unknown19 = parser.ReadColumn< bool >( 19 );
+            IsLoop = parser.ReadColumn< bool >( 18 );
+            Unknown19 = parser.ReadColumn< byte >( 19 );
             Unknown20 = parser.ReadColumn< byte >( 20 );
-            Unknown21 = parser.ReadColumn< byte >( 21 );
+            Unknown21 = parser.ReadColumn< bool >( 21 );
         }
     }
 }

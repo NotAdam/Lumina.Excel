@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ClassJob", columnHash: 0x16808bcd )]
+    [Sheet( "ClassJob", columnHash: 0xe62cb7ae )]
     public partial class ClassJob : ExcelRow
     {
         
@@ -33,13 +33,15 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown20 { get; set; }
         public ushort Unknown21 { get; set; }
         public ushort Unknown22 { get; set; }
-        public byte Unknown23 { get; set; }
-        public byte PvPActionSortRow { get; set; }
+        public int Unknown23 { get; set; }
+        public int Unknown24 { get; set; }
         public byte Unknown25 { get; set; }
+        public byte PvPActionSortRow { get; set; }
+        public byte Unknown27 { get; set; }
         public LazyRow< ClassJob > ClassJobParent { get; set; }
         public SeString NameEnglish { get; set; }
         public LazyRow< Item > ItemStartingWeapon { get; set; }
-        public int Unknown29 { get; set; }
+        public int Unknown31 { get; set; }
         public byte Role { get; set; }
         public LazyRow< Town > StartingTown { get; set; }
         public LazyRow< MonsterNote > MonsterNote { get; set; }
@@ -54,7 +56,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Quest > Prerequisite { get; set; }
         public byte StartingLevel { get; set; }
         public byte PartyBonus { get; set; }
-        public byte Unknown44 { get; set; }
+        public byte Unknown46 { get; set; }
         public bool IsLimitedJob { get; set; }
         public bool CanQueueForDuty { get; set; }
         
@@ -85,30 +87,32 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown20 = parser.ReadColumn< ushort >( 20 );
             Unknown21 = parser.ReadColumn< ushort >( 21 );
             Unknown22 = parser.ReadColumn< ushort >( 22 );
-            Unknown23 = parser.ReadColumn< byte >( 23 );
-            PvPActionSortRow = parser.ReadColumn< byte >( 24 );
+            Unknown23 = parser.ReadColumn< int >( 23 );
+            Unknown24 = parser.ReadColumn< int >( 24 );
             Unknown25 = parser.ReadColumn< byte >( 25 );
-            ClassJobParent = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 26 ), language );
-            NameEnglish = parser.ReadColumn< SeString >( 27 );
-            ItemStartingWeapon = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 28 ), language );
-            Unknown29 = parser.ReadColumn< int >( 29 );
-            Role = parser.ReadColumn< byte >( 30 );
-            StartingTown = new LazyRow< Town >( gameData, parser.ReadColumn< byte >( 31 ), language );
-            MonsterNote = new LazyRow< MonsterNote >( gameData, parser.ReadColumn< sbyte >( 32 ), language );
-            PrimaryStat = parser.ReadColumn< byte >( 33 );
-            LimitBreak1 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 34 ), language );
-            LimitBreak2 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 35 ), language );
-            LimitBreak3 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 36 ), language );
-            UIPriority = parser.ReadColumn< byte >( 37 );
-            ItemSoulCrystal = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 38 ), language );
-            UnlockQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 39 ), language );
-            RelicQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 40 ), language );
-            Prerequisite = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 41 ), language );
-            StartingLevel = parser.ReadColumn< byte >( 42 );
-            PartyBonus = parser.ReadColumn< byte >( 43 );
-            Unknown44 = parser.ReadColumn< byte >( 44 );
-            IsLimitedJob = parser.ReadColumn< bool >( 45 );
-            CanQueueForDuty = parser.ReadColumn< bool >( 46 );
+            PvPActionSortRow = parser.ReadColumn< byte >( 26 );
+            Unknown27 = parser.ReadColumn< byte >( 27 );
+            ClassJobParent = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 28 ), language );
+            NameEnglish = parser.ReadColumn< SeString >( 29 );
+            ItemStartingWeapon = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 30 ), language );
+            Unknown31 = parser.ReadColumn< int >( 31 );
+            Role = parser.ReadColumn< byte >( 32 );
+            StartingTown = new LazyRow< Town >( gameData, parser.ReadColumn< byte >( 33 ), language );
+            MonsterNote = new LazyRow< MonsterNote >( gameData, parser.ReadColumn< sbyte >( 34 ), language );
+            PrimaryStat = parser.ReadColumn< byte >( 35 );
+            LimitBreak1 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 36 ), language );
+            LimitBreak2 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 37 ), language );
+            LimitBreak3 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 38 ), language );
+            UIPriority = parser.ReadColumn< byte >( 39 );
+            ItemSoulCrystal = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 40 ), language );
+            UnlockQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 41 ), language );
+            RelicQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 42 ), language );
+            Prerequisite = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 43 ), language );
+            StartingLevel = parser.ReadColumn< byte >( 44 );
+            PartyBonus = parser.ReadColumn< byte >( 45 );
+            Unknown46 = parser.ReadColumn< byte >( 46 );
+            IsLimitedJob = parser.ReadColumn< bool >( 47 );
+            CanQueueForDuty = parser.ReadColumn< bool >( 48 );
         }
     }
 }

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Channeling", columnHash: 0xd5952f72 )]
+    [Sheet( "Channeling", columnHash: 0x6dfe9f55 )]
     public partial class Channeling : ExcelRow
     {
         
@@ -15,6 +15,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown2 { get; set; }
         public bool Unknown3 { get; set; }
         public bool Unknown4 { get; set; }
+        public bool Unknown5 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -25,6 +26,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown2 = parser.ReadColumn< bool >( 2 );
             Unknown3 = parser.ReadColumn< bool >( 3 );
             Unknown4 = parser.ReadColumn< bool >( 4 );
+            Unknown5 = parser.ReadColumn< bool >( 5 );
         }
     }
 }

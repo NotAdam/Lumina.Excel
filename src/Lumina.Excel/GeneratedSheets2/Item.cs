@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "Item", columnHash: 0x800968c9 )]
+[Sheet( "Item", columnHash: 0xe9a33c9d )]
 public partial class Item : ExcelRow
 {
     
@@ -34,7 +34,7 @@ public partial class Item : ExcelRow
     public short[] BaseParamValue { get; private set; }
     public short[] BaseParamValueSpecial { get; private set; }
     public byte LevelEquip { get; private set; }
-    public byte Unknown1 { get; private set; }
+    public byte RequiredPvpRank { get; private set; }
     public byte EquipRestriction { get; private set; }
     public LazyRow< ClassJobCategory > ClassJobCategory { get; private set; }
     public LazyRow< GrandCompany > GrandCompany { get; private set; }
@@ -72,14 +72,14 @@ public partial class Item : ExcelRow
     public LazyRow< ItemSearchCategory > ItemSearchCategory { get; private set; }
     public LazyRow< EquipSlotCategory > EquipSlotCategory { get; private set; }
     public LazyRow< ItemSortCategory > ItemSortCategory { get; private set; }
-    public byte CastTimes { get; private set; }
+    public byte DyeCount { get; private set; }
+    public byte CastTimeSeconds { get; private set; }
     public LazyRow< ClassJob > ClassJobRepair { get; private set; }
     public bool IsUnique { get; private set; }
     public bool IsUntradable { get; private set; }
     public bool IsIndisposable { get; private set; }
     public bool Lot { get; private set; }
     public bool CanBeHq { get; private set; }
-    public bool IsDyeable { get; private set; }
     public bool IsCrestWorthy { get; private set; }
     public bool IsCollectable { get; private set; }
     public bool AlwaysCollectable { get; private set; }
@@ -114,7 +114,7 @@ public partial class Item : ExcelRow
         for (int i = 0; i < 6; i++)
         	BaseParamValueSpecial[i] = parser.ReadOffset< short >( 66 + i * 2 );
         LevelEquip = parser.ReadOffset< byte >( 78 );
-        Unknown1 = parser.ReadOffset< byte >( 79 );
+        RequiredPvpRank = parser.ReadOffset< byte >( 79 );
         EquipRestriction = parser.ReadOffset< byte >( 80 );
         ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 81 ), language );
         GrandCompany = new LazyRow< GrandCompany >( gameData, parser.ReadOffset< byte >( 82 ), language );
@@ -156,17 +156,17 @@ public partial class Item : ExcelRow
         ItemSearchCategory = new LazyRow< ItemSearchCategory >( gameData, parser.ReadOffset< byte >( 153 ), language );
         EquipSlotCategory = new LazyRow< EquipSlotCategory >( gameData, parser.ReadOffset< byte >( 154 ), language );
         ItemSortCategory = new LazyRow< ItemSortCategory >( gameData, parser.ReadOffset< byte >( 155 ), language );
-        CastTimes = parser.ReadOffset< byte >( 156 );
-        ClassJobRepair = new LazyRow< ClassJob >( gameData, parser.ReadOffset< byte >( 157 ), language );
-        IsUnique = parser.ReadOffset< bool >( 158 );
-        IsUntradable = parser.ReadOffset< bool >( 158, 2 );
-        IsIndisposable = parser.ReadOffset< bool >( 158, 4 );
-        Lot = parser.ReadOffset< bool >( 158, 8 );
-        CanBeHq = parser.ReadOffset< bool >( 158, 16 );
-        IsDyeable = parser.ReadOffset< bool >( 158, 32 );
-        IsCrestWorthy = parser.ReadOffset< bool >( 158, 64 );
-        IsCollectable = parser.ReadOffset< bool >( 158, 128 );
-        AlwaysCollectable = parser.ReadOffset< bool >( 159 );
+        DyeCount = parser.ReadOffset< byte >( 156 );
+        CastTimeSeconds = parser.ReadOffset< byte >( 157 );
+        ClassJobRepair = new LazyRow< ClassJob >( gameData, parser.ReadOffset< byte >( 158 ), language );
+        IsUnique = parser.ReadOffset< bool >( 159 );
+        IsUntradable = parser.ReadOffset< bool >( 159, 2 );
+        IsIndisposable = parser.ReadOffset< bool >( 159, 4 );
+        Lot = parser.ReadOffset< bool >( 159, 8 );
+        CanBeHq = parser.ReadOffset< bool >( 159, 16 );
+        IsCrestWorthy = parser.ReadOffset< bool >( 159, 32 );
+        IsCollectable = parser.ReadOffset< bool >( 159, 64 );
+        AlwaysCollectable = parser.ReadOffset< bool >( 159, 128 );
         
         AdditionalData = FilterGroup switch
         {

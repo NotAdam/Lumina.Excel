@@ -8,12 +8,13 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "FishingSpot", columnHash: 0xb014a98d )]
+[Sheet( "FishingSpot", columnHash: 0x9e0d2a6c )]
 public partial class FishingSpot : ExcelRow
 {
     
     public SeString BigFishOnReach { get; private set; }
     public SeString BigFishOnEnd { get; private set; }
+    public SeString Unknown_70_1 { get; private set; }
     public LazyRow< Item >[] Item { get; private set; }
     public LazyRow< TerritoryType > TerritoryType { get; private set; }
     public LazyRow< PlaceName > PlaceNameMain { get; private set; }
@@ -34,21 +35,22 @@ public partial class FishingSpot : ExcelRow
 
         BigFishOnReach = parser.ReadOffset< SeString >( 0 );
         BigFishOnEnd = parser.ReadOffset< SeString >( 4 );
+        Unknown_70_1 = parser.ReadOffset< SeString >( 8 );
         Item = new LazyRow< Item >[10];
         for (int i = 0; i < 10; i++)
-        	Item[i] = new LazyRow< Item >( gameData, parser.ReadOffset< int >( (ushort) ( 8 + i * 4 ) ), language );
-        TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadOffset< ushort >( 48 ), language );
-        PlaceNameMain = new LazyRow< PlaceName >( gameData, parser.ReadOffset< ushort >( 50 ), language );
-        PlaceNameSub = new LazyRow< PlaceName >( gameData, parser.ReadOffset< ushort >( 52 ), language );
-        Radius = parser.ReadOffset< ushort >( 54 );
-        PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadOffset< ushort >( 56 ), language );
-        Order = parser.ReadOffset< ushort >( 58 );
-        X = parser.ReadOffset< short >( 60 );
-        Z = parser.ReadOffset< short >( 62 );
-        GatheringLevel = parser.ReadOffset< byte >( 64 );
-        FishingSpotCategory = parser.ReadOffset< byte >( 65 );
-        Unknown0 = parser.ReadOffset< byte >( 66 );
-        Rare = parser.ReadOffset< bool >( 67 );
+        	Item[i] = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( (ushort) ( 12 + i * 4 ) ), language );
+        TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadOffset< ushort >( 52 ), language );
+        PlaceNameMain = new LazyRow< PlaceName >( gameData, parser.ReadOffset< ushort >( 54 ), language );
+        PlaceNameSub = new LazyRow< PlaceName >( gameData, parser.ReadOffset< ushort >( 56 ), language );
+        Radius = parser.ReadOffset< ushort >( 58 );
+        PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadOffset< ushort >( 60 ), language );
+        Order = parser.ReadOffset< ushort >( 62 );
+        X = parser.ReadOffset< short >( 64 );
+        Z = parser.ReadOffset< short >( 66 );
+        GatheringLevel = parser.ReadOffset< byte >( 68 );
+        FishingSpotCategory = parser.ReadOffset< byte >( 69 );
+        Unknown0 = parser.ReadOffset< byte >( 70 );
+        Rare = parser.ReadOffset< bool >( 71 );
         
 
     }

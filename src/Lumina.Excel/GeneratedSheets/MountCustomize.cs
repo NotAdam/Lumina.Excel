@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MountCustomize", columnHash: 0x859ade0f )]
+    [Sheet( "MountCustomize", columnHash: 0xdde90e69 )]
     public partial class MountCustomize : ExcelRow
     {
         
@@ -26,6 +26,7 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort AuRaMaleScale { get; set; }
         public ushort AuRaFemaleScale { get; set; }
         public ushort HrothgarMaleScale { get; set; }
+        public ushort HrothgarFemaleScale { get; set; }
         public ushort VieraMaleScale { get; set; }
         public ushort VieraFemaleScale { get; set; }
         public ushort HyurMidlanderMaleCameraHeight { get; set; }
@@ -45,8 +46,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte HrothgarMaleCameraHeight { get; set; }
         public byte VieraMaleCameraHeight { get; set; }
         public byte VieraFemaleCameraHeight { get; set; }
-        public byte Unknown35 { get; set; }
         public byte Unknown36 { get; set; }
+        public byte Unknown37 { get; set; }
+        public byte Unknown38 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -68,27 +70,29 @@ namespace Lumina.Excel.GeneratedSheets
             AuRaMaleScale = parser.ReadColumn< ushort >( 13 );
             AuRaFemaleScale = parser.ReadColumn< ushort >( 14 );
             HrothgarMaleScale = parser.ReadColumn< ushort >( 15 );
-            VieraMaleScale = parser.ReadColumn< ushort >( 16 );
-            VieraFemaleScale = parser.ReadColumn< ushort >( 17 );
-            HyurMidlanderMaleCameraHeight = parser.ReadColumn< ushort >( 18 );
-            HyurMidlanderFemaleCameraHeight = parser.ReadColumn< byte >( 19 );
-            HyurHighlanderMaleCameraHeight = parser.ReadColumn< byte >( 20 );
-            HyurHighlanderFemaleCameraHeight = parser.ReadColumn< byte >( 21 );
-            ElezenMaleCameraHeight = parser.ReadColumn< byte >( 22 );
-            ElezenFemaleCameraHeight = parser.ReadColumn< byte >( 23 );
-            LalaMaleCameraHeight = parser.ReadColumn< byte >( 24 );
-            LalaFemaleCameraHeight = parser.ReadColumn< byte >( 25 );
-            MiqoMaleCameraHeight = parser.ReadColumn< byte >( 26 );
-            MiqoFemaleCameraHeight = parser.ReadColumn< byte >( 27 );
-            RoeMaleCameraHeight = parser.ReadColumn< byte >( 28 );
-            RoeFemaleCameraHeight = parser.ReadColumn< byte >( 29 );
-            AuRaMaleCameraHeight = parser.ReadColumn< byte >( 30 );
-            AuRaFemaleCameraHeight = parser.ReadColumn< byte >( 31 );
-            HrothgarMaleCameraHeight = parser.ReadColumn< byte >( 32 );
-            VieraMaleCameraHeight = parser.ReadColumn< byte >( 33 );
-            VieraFemaleCameraHeight = parser.ReadColumn< byte >( 34 );
-            Unknown35 = parser.ReadColumn< byte >( 35 );
+            HrothgarFemaleScale = parser.ReadColumn< ushort >( 16 );
+            VieraMaleScale = parser.ReadColumn< ushort >( 17 );
+            VieraFemaleScale = parser.ReadColumn< ushort >( 18 );
+            HyurMidlanderMaleCameraHeight = parser.ReadColumn< ushort >( 19 );
+            HyurMidlanderFemaleCameraHeight = parser.ReadColumn< byte >( 20 );
+            HyurHighlanderMaleCameraHeight = parser.ReadColumn< byte >( 21 );
+            HyurHighlanderFemaleCameraHeight = parser.ReadColumn< byte >( 22 );
+            ElezenMaleCameraHeight = parser.ReadColumn< byte >( 23 );
+            ElezenFemaleCameraHeight = parser.ReadColumn< byte >( 24 );
+            LalaMaleCameraHeight = parser.ReadColumn< byte >( 25 );
+            LalaFemaleCameraHeight = parser.ReadColumn< byte >( 26 );
+            MiqoMaleCameraHeight = parser.ReadColumn< byte >( 27 );
+            MiqoFemaleCameraHeight = parser.ReadColumn< byte >( 28 );
+            RoeMaleCameraHeight = parser.ReadColumn< byte >( 29 );
+            RoeFemaleCameraHeight = parser.ReadColumn< byte >( 30 );
+            AuRaMaleCameraHeight = parser.ReadColumn< byte >( 31 );
+            AuRaFemaleCameraHeight = parser.ReadColumn< byte >( 32 );
+            HrothgarMaleCameraHeight = parser.ReadColumn< byte >( 33 );
+            VieraMaleCameraHeight = parser.ReadColumn< byte >( 34 );
+            VieraFemaleCameraHeight = parser.ReadColumn< byte >( 35 );
             Unknown36 = parser.ReadColumn< byte >( 36 );
+            Unknown37 = parser.ReadColumn< byte >( 37 );
+            Unknown38 = parser.ReadColumn< byte >( 38 );
         }
     }
 }

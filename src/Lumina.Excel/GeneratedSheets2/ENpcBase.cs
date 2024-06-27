@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "ENpcBase", columnHash: 0x927347d8 )]
+[Sheet( "ENpcBase", columnHash: 0x464052cd )]
 public partial class ENpcBase : ExcelRow
 {
     
@@ -30,6 +30,8 @@ public partial class ENpcBase : ExcelRow
     public LazyRow< ModelChara > ModelChara { get; private set; }
     public LazyRow< NpcEquip > NpcEquip { get; private set; }
     public LazyRow< Behavior > Behavior { get; private set; }
+    public ushort Unknown_70_1 { get; private set; }
+    public ushort Unknown_70_2 { get; private set; }
     public LazyRow< Balloon > Balloon { get; private set; }
     public LazyRow< Race > Race { get; private set; }
     public byte Gender { get; private set; }
@@ -59,7 +61,9 @@ public partial class ENpcBase : ExcelRow
     public byte FacePaintColor { get; private set; }
     public byte Unknown0 { get; private set; }
     public LazyRow< Stain > DyeMainHand { get; private set; }
+    public LazyRow< Stain > Dye2MainHand { get; private set; }
     public LazyRow< Stain > DyeOffHand { get; private set; }
+    public LazyRow< Stain > Dye2OffHand { get; private set; }
     public LazyRow< Stain > DyeHead { get; private set; }
     public LazyRow< Stain > DyeBody { get; private set; }
     public LazyRow< Stain > DyeHands { get; private set; }
@@ -70,6 +74,16 @@ public partial class ENpcBase : ExcelRow
     public LazyRow< Stain > DyeWrists { get; private set; }
     public LazyRow< Stain > DyeLeftRing { get; private set; }
     public LazyRow< Stain > DyeRightRing { get; private set; }
+    public LazyRow< Stain > Dye2Head { get; private set; }
+    public LazyRow< Stain > Dye2Body { get; private set; }
+    public LazyRow< Stain > Dye2Hands { get; private set; }
+    public LazyRow< Stain > Dye2Legs { get; private set; }
+    public LazyRow< Stain > Dye2Feet { get; private set; }
+    public LazyRow< Stain > Dye2Ears { get; private set; }
+    public LazyRow< Stain > Dye2Neck { get; private set; }
+    public LazyRow< Stain > Dye2Wrists { get; private set; }
+    public LazyRow< Stain > Dye2LeftRing { get; private set; }
+    public LazyRow< Stain > Dye2RightRing { get; private set; }
     public byte Invisibility { get; private set; }
     public byte DefaultBalloon { get; private set; }
     public byte Unknown1 { get; private set; }
@@ -101,52 +115,66 @@ public partial class ENpcBase : ExcelRow
         ModelChara = new LazyRow< ModelChara >( gameData, parser.ReadOffset< ushort >( 190 ), language );
         NpcEquip = new LazyRow< NpcEquip >( gameData, parser.ReadOffset< ushort >( 192 ), language );
         Behavior = new LazyRow< Behavior >( gameData, parser.ReadOffset< ushort >( 194 ), language );
-        Balloon = new LazyRow< Balloon >( gameData, parser.ReadOffset< ushort >( 196 ), language );
-        Race = new LazyRow< Race >( gameData, parser.ReadOffset< byte >( 198 ), language );
-        Gender = parser.ReadOffset< byte >( 199 );
-        BodyType = parser.ReadOffset< byte >( 200 );
-        Height = parser.ReadOffset< byte >( 201 );
-        Tribe = new LazyRow< Tribe >( gameData, parser.ReadOffset< byte >( 202 ), language );
-        Face = parser.ReadOffset< byte >( 203 );
-        HairStyle = parser.ReadOffset< byte >( 204 );
-        HairHighlight = parser.ReadOffset< byte >( 205 );
-        SkinColor = parser.ReadOffset< byte >( 206 );
-        EyeHeterochromia = parser.ReadOffset< byte >( 207 );
-        HairColor = parser.ReadOffset< byte >( 208 );
-        HairHighlightColor = parser.ReadOffset< byte >( 209 );
-        FacialFeature = parser.ReadOffset< byte >( 210 );
-        FacialFeatureColor = parser.ReadOffset< byte >( 211 );
-        Eyebrows = parser.ReadOffset< byte >( 212 );
-        EyeColor = parser.ReadOffset< byte >( 213 );
-        EyeShape = parser.ReadOffset< byte >( 214 );
-        Nose = parser.ReadOffset< byte >( 215 );
-        Jaw = parser.ReadOffset< byte >( 216 );
-        Mouth = parser.ReadOffset< byte >( 217 );
-        LipColor = parser.ReadOffset< byte >( 218 );
-        BustOrTone1 = parser.ReadOffset< byte >( 219 );
-        ExtraFeature1 = parser.ReadOffset< byte >( 220 );
-        ExtraFeature2OrBust = parser.ReadOffset< byte >( 221 );
-        FacePaint = parser.ReadOffset< byte >( 222 );
-        FacePaintColor = parser.ReadOffset< byte >( 223 );
-        Unknown0 = parser.ReadOffset< byte >( 224 );
-        DyeMainHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 225 ), language );
-        DyeOffHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 226 ), language );
-        DyeHead = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 227 ), language );
-        DyeBody = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 228 ), language );
-        DyeHands = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 229 ), language );
-        DyeLegs = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 230 ), language );
-        DyeFeet = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 231 ), language );
-        DyeEars = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 232 ), language );
-        DyeNeck = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 233 ), language );
-        DyeWrists = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 234 ), language );
-        DyeLeftRing = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 235 ), language );
-        DyeRightRing = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 236 ), language );
-        Invisibility = parser.ReadOffset< byte >( 237 );
-        DefaultBalloon = parser.ReadOffset< byte >( 238 );
-        Unknown1 = parser.ReadOffset< byte >( 239 );
-        Important = parser.ReadOffset< bool >( 240 );
-        Visor = parser.ReadOffset< bool >( 240, 2 );
-        NotRewriteHeight = parser.ReadOffset< bool >( 240, 4 );
+        Unknown_70_1 = parser.ReadOffset< ushort >( 196 );
+        Unknown_70_2 = parser.ReadOffset< ushort >( 198 );
+        Balloon = new LazyRow< Balloon >( gameData, parser.ReadOffset< ushort >( 200 ), language );
+        Race = new LazyRow< Race >( gameData, parser.ReadOffset< byte >( 202 ), language );
+        Gender = parser.ReadOffset< byte >( 203 );
+        BodyType = parser.ReadOffset< byte >( 204 );
+        Height = parser.ReadOffset< byte >( 205 );
+        Tribe = new LazyRow< Tribe >( gameData, parser.ReadOffset< byte >( 206 ), language );
+        Face = parser.ReadOffset< byte >( 207 );
+        HairStyle = parser.ReadOffset< byte >( 208 );
+        HairHighlight = parser.ReadOffset< byte >( 209 );
+        SkinColor = parser.ReadOffset< byte >( 210 );
+        EyeHeterochromia = parser.ReadOffset< byte >( 211 );
+        HairColor = parser.ReadOffset< byte >( 212 );
+        HairHighlightColor = parser.ReadOffset< byte >( 213 );
+        FacialFeature = parser.ReadOffset< byte >( 214 );
+        FacialFeatureColor = parser.ReadOffset< byte >( 215 );
+        Eyebrows = parser.ReadOffset< byte >( 216 );
+        EyeColor = parser.ReadOffset< byte >( 217 );
+        EyeShape = parser.ReadOffset< byte >( 218 );
+        Nose = parser.ReadOffset< byte >( 219 );
+        Jaw = parser.ReadOffset< byte >( 220 );
+        Mouth = parser.ReadOffset< byte >( 221 );
+        LipColor = parser.ReadOffset< byte >( 222 );
+        BustOrTone1 = parser.ReadOffset< byte >( 223 );
+        ExtraFeature1 = parser.ReadOffset< byte >( 224 );
+        ExtraFeature2OrBust = parser.ReadOffset< byte >( 225 );
+        FacePaint = parser.ReadOffset< byte >( 226 );
+        FacePaintColor = parser.ReadOffset< byte >( 227 );
+        Unknown0 = parser.ReadOffset< byte >( 228 );
+        DyeMainHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 229 ), language );
+        Dye2MainHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 230 ), language );
+        DyeOffHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 231 ), language );
+        Dye2OffHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 232 ), language );
+        DyeHead = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 233 ), language );
+        DyeBody = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 234 ), language );
+        DyeHands = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 235 ), language );
+        DyeLegs = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 236 ), language );
+        DyeFeet = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 237 ), language );
+        DyeEars = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 238 ), language );
+        DyeNeck = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 239 ), language );
+        DyeWrists = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 240 ), language );
+        DyeLeftRing = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 241 ), language );
+        DyeRightRing = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 242 ), language );
+        Dye2Head = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 243 ), language );
+        Dye2Body = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 244 ), language );
+        Dye2Hands = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 245 ), language );
+        Dye2Legs = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 246 ), language );
+        Dye2Feet = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 247 ), language );
+        Dye2Ears = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 248 ), language );
+        Dye2Neck = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 249 ), language );
+        Dye2Wrists = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 250 ), language );
+        Dye2LeftRing = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 251 ), language );
+        Dye2RightRing = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 252 ), language );
+        Invisibility = parser.ReadOffset< byte >( 253 );
+        DefaultBalloon = parser.ReadOffset< byte >( 254 );
+        Unknown1 = parser.ReadOffset< byte >( 255 );
+        Important = parser.ReadOffset< bool >( 256 );
+        Visor = parser.ReadOffset< bool >( 256, 2 );
+        NotRewriteHeight = parser.ReadOffset< bool >( 256, 4 );
         
 
     }

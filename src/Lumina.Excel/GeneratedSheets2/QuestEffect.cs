@@ -8,35 +8,35 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "QuestEffect", columnHash: 0x9f0492cf )]
+[Sheet( "QuestEffect", columnHash: 0x899c55ad )]
 public partial class QuestEffect : ExcelRow
 {
+    public struct UnknownStructStruct
+    {
+    	public uint Unknown1 { get; internal set; }
+    	public uint Unknown_70 { get; internal set; }
+    	public byte Unknown2 { get; internal set; }
+    }
     
-    public uint Unknown0 { get; private set; }
-    public byte Unknown1 { get; private set; }
-    public uint Unknown2 { get; private set; }
-    public byte Unknown3 { get; private set; }
-    public uint Unknown4 { get; private set; }
-    public byte Unknown5 { get; private set; }
-    public uint Unknown6 { get; private set; }
-    public byte Unknown7 { get; private set; }
+    public UnknownStructStruct[] UnknownStruct { get; private set; }
     public uint Unknown8 { get; private set; }
     public uint Unknown9 { get; private set; }
+    public bool Unknown_70 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown0 = parser.ReadOffset< uint >( 0 );
-        Unknown1 = parser.ReadOffset< byte >( 4 );
-        Unknown2 = parser.ReadOffset< uint >( 8 );
-        Unknown3 = parser.ReadOffset< byte >( 12 );
-        Unknown4 = parser.ReadOffset< uint >( 16 );
-        Unknown5 = parser.ReadOffset< byte >( 20 );
-        Unknown6 = parser.ReadOffset< uint >( 24 );
-        Unknown7 = parser.ReadOffset< byte >( 28 );
-        Unknown8 = parser.ReadOffset< uint >( 32 );
-        Unknown9 = parser.ReadOffset< uint >( 36 );
+        UnknownStruct = new UnknownStructStruct[4];
+        for (int i = 0; i < 4; i++)
+        {
+        	UnknownStruct[i].Unknown1 = parser.ReadOffset< uint >( (ushort) (i * 12 + 0));
+        	UnknownStruct[i].Unknown_70 = parser.ReadOffset< uint >( (ushort) (i * 12 + 4));
+        	UnknownStruct[i].Unknown2 = parser.ReadOffset< byte >( (ushort) (i * 12 + 8));
+        }
+        Unknown8 = parser.ReadOffset< uint >( 48 );
+        Unknown9 = parser.ReadOffset< uint >( 52 );
+        Unknown_70 = parser.ReadOffset< bool >( 56 );
         
 
     }

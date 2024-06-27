@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "SystemGraphicPreset", columnHash: 0xde56aadc )]
+[Sheet( "SystemGraphicPreset", columnHash: 0xa904455e )]
 public partial class SystemGraphicPreset : ExcelRow
 {
     
@@ -45,6 +45,13 @@ public partial class SystemGraphicPreset : ExcelRow
     public sbyte Unknown30 { get; private set; }
     public sbyte Unknown31 { get; private set; }
     public sbyte Unknown32 { get; private set; }
+    public sbyte Unknown_70_1 { get; private set; }
+    public sbyte Unknown_70_2 { get; private set; }
+    public sbyte Unknown_70_3 { get; private set; }
+    public sbyte Unknown_70_4 { get; private set; }
+    public sbyte Unknown_70_5 { get; private set; }
+    public sbyte Unknown_70_6 { get; private set; }
+    public sbyte Unknown_70_7 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -83,6 +90,13 @@ public partial class SystemGraphicPreset : ExcelRow
         Unknown30 = parser.ReadOffset< sbyte >( 30 );
         Unknown31 = parser.ReadOffset< sbyte >( 31 );
         Unknown32 = parser.ReadOffset< sbyte >( 32 );
+        Unknown_70_1 = parser.ReadOffset< sbyte >( 33 );
+        Unknown_70_2 = parser.ReadOffset< sbyte >( 34 );
+        Unknown_70_3 = parser.ReadOffset< sbyte >( 35 );
+        Unknown_70_4 = parser.ReadOffset< sbyte >( 36 );
+        Unknown_70_5 = parser.ReadOffset< sbyte >( 37 );
+        Unknown_70_6 = parser.ReadOffset< sbyte >( 38 );
+        Unknown_70_7 = parser.ReadOffset< sbyte >( 39 );
         
 
     }

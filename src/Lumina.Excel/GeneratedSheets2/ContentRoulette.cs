@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "ContentRoulette", columnHash: 0xd2a22d99 )]
+[Sheet( "ContentRoulette", columnHash: 0x9510a340 )]
 public partial class ContentRoulette : ExcelRow
 {
     
@@ -21,7 +21,6 @@ public partial class ContentRoulette : ExcelRow
     public uint Icon { get; private set; }
     public uint Unknown2 { get; private set; }
     public uint Unknown3 { get; private set; }
-    public int Unknown25 { get; private set; }
     public ushort ItemLevelRequired { get; private set; }
     public ushort Unknown4 { get; private set; }
     public ushort RewardTomeA { get; private set; }
@@ -50,6 +49,7 @@ public partial class ContentRoulette : ExcelRow
     public bool IsGoldSaucer { get; private set; }
     public bool IsInDutyFinder { get; private set; }
     public bool IsPvP { get; private set; }
+    public bool Unknown25 { get; private set; }
     public bool Unknown18 { get; private set; }
     public bool Unknown19 { get; private set; }
     public bool Unknown20 { get; private set; }
@@ -72,43 +72,43 @@ public partial class ContentRoulette : ExcelRow
         Icon = parser.ReadOffset< uint >( 24 );
         Unknown2 = parser.ReadOffset< uint >( 28 );
         Unknown3 = parser.ReadOffset< uint >( 32 );
-        Unknown25 = parser.ReadOffset< int >( 36 );
-        ItemLevelRequired = parser.ReadOffset< ushort >( 40 );
-        Unknown4 = parser.ReadOffset< ushort >( 42 );
-        RewardTomeA = parser.ReadOffset< ushort >( 44 );
-        RewardTomeB = parser.ReadOffset< ushort >( 46 );
-        RewardTomeC = parser.ReadOffset< ushort >( 48 );
-        Unknown5 = parser.ReadOffset< ushort >( 50 );
-        InstanceContent = new LazyRow< InstanceContent >( gameData, parser.ReadOffset< ushort >( 52 ), language );
-        Unknown6 = parser.ReadOffset< byte >( 54 );
-        OpenRule = new LazyRow< ContentRouletteOpenRule >( gameData, parser.ReadOffset< byte >( 55 ), language );
-        RequiredLevel = parser.ReadOffset< byte >( 56 );
-        Unknown7 = parser.ReadOffset< byte >( 57 );
-        ContentRouletteRoleBonus = new LazyRow< ContentRouletteRoleBonus >( gameData, parser.ReadOffset< byte >( 58 ), language );
-        SortKey = parser.ReadOffset< byte >( 59 );
-        Unknown8 = parser.ReadOffset< byte >( 60 );
-        ContentMemberType = new LazyRow< ContentMemberType >( gameData, parser.ReadOffset< byte >( 61 ), language );
-        Unknown9 = parser.ReadOffset< byte >( 62 );
-        Unknown10 = parser.ReadOffset< byte >( 63 );
-        Unknown11 = parser.ReadOffset< byte >( 64 );
-        Unknown12 = parser.ReadOffset< byte >( 65 );
-        Unknown13 = parser.ReadOffset< byte >( 66 );
-        Unknown14 = parser.ReadOffset< byte >( 67 );
-        ContentRouletteOpenRule = parser.ReadOffset< byte >( 68 );
-        Unknown15 = parser.ReadOffset< byte >( 69 );
-        Unknown16 = parser.ReadOffset< byte >( 70 );
-        Unknown17 = parser.ReadOffset< sbyte >( 71 );
-        IsGoldSaucer = parser.ReadOffset< bool >( 72 );
-        IsInDutyFinder = parser.ReadOffset< bool >( 72, 2 );
-        IsPvP = parser.ReadOffset< bool >( 72, 4 );
-        Unknown18 = parser.ReadOffset< bool >( 72, 8 );
-        Unknown19 = parser.ReadOffset< bool >( 72, 16 );
-        Unknown20 = parser.ReadOffset< bool >( 72, 32 );
-        RequireAllDuties = parser.ReadOffset< bool >( 72, 64 );
-        Unknown21 = parser.ReadOffset< bool >( 72, 128 );
-        Unknown22 = parser.ReadOffset< bool >( 73 );
-        Unknown23 = parser.ReadOffset< bool >( 73, 2 );
-        Unknown24 = parser.ReadOffset< bool >( 73, 4 );
+        ItemLevelRequired = parser.ReadOffset< ushort >( 36 );
+        Unknown4 = parser.ReadOffset< ushort >( 38 );
+        RewardTomeA = parser.ReadOffset< ushort >( 40 );
+        RewardTomeB = parser.ReadOffset< ushort >( 42 );
+        RewardTomeC = parser.ReadOffset< ushort >( 44 );
+        Unknown5 = parser.ReadOffset< ushort >( 46 );
+        InstanceContent = new LazyRow< InstanceContent >( gameData, parser.ReadOffset< ushort >( 48 ), language );
+        Unknown6 = parser.ReadOffset< byte >( 50 );
+        OpenRule = new LazyRow< ContentRouletteOpenRule >( gameData, parser.ReadOffset< byte >( 51 ), language );
+        RequiredLevel = parser.ReadOffset< byte >( 52 );
+        Unknown7 = parser.ReadOffset< byte >( 53 );
+        ContentRouletteRoleBonus = new LazyRow< ContentRouletteRoleBonus >( gameData, parser.ReadOffset< byte >( 54 ), language );
+        SortKey = parser.ReadOffset< byte >( 55 );
+        Unknown8 = parser.ReadOffset< byte >( 56 );
+        ContentMemberType = new LazyRow< ContentMemberType >( gameData, parser.ReadOffset< byte >( 57 ), language );
+        Unknown9 = parser.ReadOffset< byte >( 58 );
+        Unknown10 = parser.ReadOffset< byte >( 59 );
+        Unknown11 = parser.ReadOffset< byte >( 60 );
+        Unknown12 = parser.ReadOffset< byte >( 61 );
+        Unknown13 = parser.ReadOffset< byte >( 62 );
+        Unknown14 = parser.ReadOffset< byte >( 63 );
+        ContentRouletteOpenRule = parser.ReadOffset< byte >( 64 );
+        Unknown15 = parser.ReadOffset< byte >( 65 );
+        Unknown16 = parser.ReadOffset< byte >( 66 );
+        Unknown17 = parser.ReadOffset< sbyte >( 67 );
+        IsGoldSaucer = parser.ReadOffset< bool >( 68 );
+        IsInDutyFinder = parser.ReadOffset< bool >( 68, 2 );
+        IsPvP = parser.ReadOffset< bool >( 68, 4 );
+        Unknown25 = parser.ReadOffset< bool >( 68, 8 );
+        Unknown18 = parser.ReadOffset< bool >( 68, 16 );
+        Unknown19 = parser.ReadOffset< bool >( 68, 32 );
+        Unknown20 = parser.ReadOffset< bool >( 68, 64 );
+        RequireAllDuties = parser.ReadOffset< bool >( 68, 128 );
+        Unknown21 = parser.ReadOffset< bool >( 69 );
+        Unknown22 = parser.ReadOffset< bool >( 69, 2 );
+        Unknown23 = parser.ReadOffset< bool >( 69, 4 );
+        Unknown24 = parser.ReadOffset< bool >( 69, 8 );
         
 
     }

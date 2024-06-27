@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "ClassJob", columnHash: 0x16808bcd )]
+[Sheet( "ClassJob", columnHash: 0xe62cb7ae )]
 public partial class ClassJob : ExcelRow
 {
     
@@ -21,6 +21,8 @@ public partial class ClassJob : ExcelRow
     public LazyRow< Quest > UnlockQuest { get; private set; }
     public LazyRow< Quest > RelicQuest { get; private set; }
     public LazyRow< Quest > Prerequisite { get; private set; }
+    public int Unknown_70_1 { get; private set; }
+    public int Unknown_70_2 { get; private set; }
     public LazyRow< Item > ItemStartingWeapon { get; private set; }
     public int Unknown1 { get; private set; }
     public ushort ModifierHitPoints { get; private set; }
@@ -73,44 +75,46 @@ public partial class ClassJob : ExcelRow
         UnlockQuest = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 24 ), language );
         RelicQuest = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 28 ), language );
         Prerequisite = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 32 ), language );
-        ItemStartingWeapon = new LazyRow< Item >( gameData, parser.ReadOffset< int >( 36 ), language );
-        Unknown1 = parser.ReadOffset< int >( 40 );
-        ModifierHitPoints = parser.ReadOffset< ushort >( 44 );
-        ModifierManaPoints = parser.ReadOffset< ushort >( 46 );
-        ModifierStrength = parser.ReadOffset< ushort >( 48 );
-        ModifierVitality = parser.ReadOffset< ushort >( 50 );
-        ModifierDexterity = parser.ReadOffset< ushort >( 52 );
-        ModifierIntelligence = parser.ReadOffset< ushort >( 54 );
-        ModifierMind = parser.ReadOffset< ushort >( 56 );
-        ModifierPiety = parser.ReadOffset< ushort >( 58 );
-        Unknown2 = parser.ReadOffset< ushort >( 60 );
-        Unknown3 = parser.ReadOffset< ushort >( 62 );
-        Unknown4 = parser.ReadOffset< ushort >( 64 );
-        Unknown5 = parser.ReadOffset< ushort >( 66 );
-        Unknown6 = parser.ReadOffset< ushort >( 68 );
-        Unknown7 = parser.ReadOffset< ushort >( 70 );
-        LimitBreak1 = new LazyRow< Action >( gameData, parser.ReadOffset< ushort >( 72 ), language );
-        LimitBreak2 = new LazyRow< Action >( gameData, parser.ReadOffset< ushort >( 74 ), language );
-        LimitBreak3 = new LazyRow< Action >( gameData, parser.ReadOffset< ushort >( 76 ), language );
-        ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 78 ), language );
-        Unknown8 = parser.ReadOffset< byte >( 79 );
-        JobIndex = parser.ReadOffset< byte >( 80 );
-        Unknown9 = parser.ReadOffset< byte >( 81 );
-        PvPActionSortRow = parser.ReadOffset< byte >( 82 );
-        Unknown10 = parser.ReadOffset< byte >( 83 );
-        ClassJobParent = new LazyRow< ClassJob >( gameData, parser.ReadOffset< byte >( 84 ), language );
-        Role = parser.ReadOffset< byte >( 85 );
-        StartingTown = new LazyRow< Town >( gameData, parser.ReadOffset< byte >( 86 ), language );
-        PrimaryStat = parser.ReadOffset< byte >( 87 );
-        UIPriority = parser.ReadOffset< byte >( 88 );
-        StartingLevel = parser.ReadOffset< byte >( 89 );
-        PartyBonus = parser.ReadOffset< byte >( 90 );
-        Unknown11 = parser.ReadOffset< byte >( 91 );
-        ExpArrayIndex = parser.ReadOffset< sbyte >( 92 );
-        BattleClassIndex = parser.ReadOffset< sbyte >( 93 );
-        DohDolJobIndex = parser.ReadOffset< sbyte >( 94 );
-        MonsterNote = new LazyRow< MonsterNote >( gameData, parser.ReadOffset< sbyte >( 95 ), language );
-        IsLimitedJob = parser.ReadOffset< bool >( 96 );
+        Unknown_70_1 = parser.ReadOffset< int >( 36 );
+        Unknown_70_2 = parser.ReadOffset< int >( 40 );
+        ItemStartingWeapon = new LazyRow< Item >( gameData, parser.ReadOffset< int >( 44 ), language );
+        Unknown1 = parser.ReadOffset< int >( 48 );
+        ModifierHitPoints = parser.ReadOffset< ushort >( 52 );
+        ModifierManaPoints = parser.ReadOffset< ushort >( 54 );
+        ModifierStrength = parser.ReadOffset< ushort >( 56 );
+        ModifierVitality = parser.ReadOffset< ushort >( 58 );
+        ModifierDexterity = parser.ReadOffset< ushort >( 60 );
+        ModifierIntelligence = parser.ReadOffset< ushort >( 62 );
+        ModifierMind = parser.ReadOffset< ushort >( 64 );
+        ModifierPiety = parser.ReadOffset< ushort >( 66 );
+        Unknown2 = parser.ReadOffset< ushort >( 68 );
+        Unknown3 = parser.ReadOffset< ushort >( 70 );
+        Unknown4 = parser.ReadOffset< ushort >( 72 );
+        Unknown5 = parser.ReadOffset< ushort >( 74 );
+        Unknown6 = parser.ReadOffset< ushort >( 76 );
+        Unknown7 = parser.ReadOffset< ushort >( 78 );
+        LimitBreak1 = new LazyRow< Action >( gameData, parser.ReadOffset< ushort >( 80 ), language );
+        LimitBreak2 = new LazyRow< Action >( gameData, parser.ReadOffset< ushort >( 82 ), language );
+        LimitBreak3 = new LazyRow< Action >( gameData, parser.ReadOffset< ushort >( 84 ), language );
+        ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 86 ), language );
+        Unknown8 = parser.ReadOffset< byte >( 87 );
+        JobIndex = parser.ReadOffset< byte >( 88 );
+        Unknown9 = parser.ReadOffset< byte >( 89 );
+        PvPActionSortRow = parser.ReadOffset< byte >( 90 );
+        Unknown10 = parser.ReadOffset< byte >( 91 );
+        ClassJobParent = new LazyRow< ClassJob >( gameData, parser.ReadOffset< byte >( 92 ), language );
+        Role = parser.ReadOffset< byte >( 93 );
+        StartingTown = new LazyRow< Town >( gameData, parser.ReadOffset< byte >( 94 ), language );
+        PrimaryStat = parser.ReadOffset< byte >( 95 );
+        UIPriority = parser.ReadOffset< byte >( 96 );
+        StartingLevel = parser.ReadOffset< byte >( 97 );
+        PartyBonus = parser.ReadOffset< byte >( 98 );
+        Unknown11 = parser.ReadOffset< byte >( 99 );
+        ExpArrayIndex = parser.ReadOffset< sbyte >( 100 );
+        BattleClassIndex = parser.ReadOffset< sbyte >( 101 );
+        DohDolJobIndex = parser.ReadOffset< sbyte >( 102 );
+        MonsterNote = new LazyRow< MonsterNote >( gameData, parser.ReadOffset< sbyte >( 103 ), language );
+        IsLimitedJob = parser.ReadOffset< bool >( 104 );
         
 
     }

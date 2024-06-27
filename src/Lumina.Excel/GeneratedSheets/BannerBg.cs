@@ -6,13 +6,16 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BannerBg", columnHash: 0x1c6c81a1 )]
+    [Sheet( "BannerBg", columnHash: 0xdf1d09d9 )]
     public partial class BannerBg : ExcelRow
     {
         
         public int Image { get; set; }
         public int Icon { get; set; }
+        public byte Unknown2 { get; set; }
         public LazyRow< BannerCondition > UnlockCondition { get; set; }
+        public ushort Unknown4 { get; set; }
+        public ushort Unknown5 { get; set; }
         public ushort SortKey { get; set; }
         public SeString Name { get; set; }
         
@@ -22,9 +25,12 @@ namespace Lumina.Excel.GeneratedSheets
 
             Image = parser.ReadColumn< int >( 0 );
             Icon = parser.ReadColumn< int >( 1 );
-            UnlockCondition = new LazyRow< BannerCondition >( gameData, parser.ReadColumn< ushort >( 2 ), language );
-            SortKey = parser.ReadColumn< ushort >( 3 );
-            Name = parser.ReadColumn< SeString >( 4 );
+            Unknown2 = parser.ReadColumn< byte >( 2 );
+            UnlockCondition = new LazyRow< BannerCondition >( gameData, parser.ReadColumn< ushort >( 3 ), language );
+            Unknown4 = parser.ReadColumn< ushort >( 4 );
+            Unknown5 = parser.ReadColumn< ushort >( 5 );
+            SortKey = parser.ReadColumn< ushort >( 6 );
+            Name = parser.ReadColumn< SeString >( 7 );
         }
     }
 }

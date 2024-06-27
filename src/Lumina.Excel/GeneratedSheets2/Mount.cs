@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "Mount", columnHash: 0x33b2e4b2 )]
+[Sheet( "Mount", columnHash: 0x304b5115 )]
 public partial class Mount : ExcelRow
 {
     
@@ -33,6 +33,8 @@ public partial class Mount : ExcelRow
     public ushort Icon { get; private set; }
     public ushort UIPriority { get; private set; }
     public LazyRow< MountAction > MountAction { get; private set; }
+    public ushort Unknown_70_1 { get; private set; }
+    public ushort Unknown_70_2 { get; private set; }
     public short Order { get; private set; }
     public LazyRow< MountFlyingCondition > FlyingCondition { get; private set; }
     public byte Unknown5 { get; private set; }
@@ -85,32 +87,34 @@ public partial class Mount : ExcelRow
         Icon = parser.ReadOffset< ushort >( 52 );
         UIPriority = parser.ReadOffset< ushort >( 54 );
         MountAction = new LazyRow< MountAction >( gameData, parser.ReadOffset< ushort >( 56 ), language );
-        Order = parser.ReadOffset< short >( 58 );
-        FlyingCondition = new LazyRow< MountFlyingCondition >( gameData, parser.ReadOffset< byte >( 60 ), language );
-        Unknown5 = parser.ReadOffset< byte >( 61 );
-        Unknown6 = parser.ReadOffset< byte >( 62 );
-        Unknown7 = parser.ReadOffset< byte >( 63 );
-        IsFlying = parser.ReadOffset< byte >( 64 );
-        Unknown8 = parser.ReadOffset< byte >( 65 );
-        MountCustomize = new LazyRow< MountCustomize >( gameData, parser.ReadOffset< byte >( 66 ), language );
-        ExitMoveDist = parser.ReadOffset< byte >( 67 );
-        ExitMoveSpeed = parser.ReadOffset< byte >( 68 );
-        RadiusRate = parser.ReadOffset< byte >( 69 );
-        BaseMotionSpeed_Run = parser.ReadOffset< byte >( 70 );
-        BaseMotionSpeed_Walk = parser.ReadOffset< byte >( 71 );
-        Unknown9 = parser.ReadOffset< byte >( 72 );
-        ExtraSeats = parser.ReadOffset< byte >( 73 );
-        Unknown10 = parser.ReadOffset< byte >( 74 );
-        Unknown11 = parser.ReadOffset< byte >( 75 );
-        Unknown12 = parser.ReadOffset< bool >( 76 );
-        IsEmote = parser.ReadOffset< bool >( 76, 2 );
-        IsAirborne = parser.ReadOffset< bool >( 76, 4 );
-        ExHotbarEnableConfig = parser.ReadOffset< bool >( 76, 8 );
-        UseEP = parser.ReadOffset< bool >( 76, 16 );
-        Unknown13 = parser.ReadOffset< bool >( 76, 32 );
-        IsImmobile = parser.ReadOffset< bool >( 76, 64 );
-        Unknown14 = parser.ReadOffset< bool >( 76, 128 );
-        Unknown15 = parser.ReadOffset< bool >( 77 );
+        Unknown_70_1 = parser.ReadOffset< ushort >( 58 );
+        Unknown_70_2 = parser.ReadOffset< ushort >( 60 );
+        Order = parser.ReadOffset< short >( 62 );
+        FlyingCondition = new LazyRow< MountFlyingCondition >( gameData, parser.ReadOffset< byte >( 64 ), language );
+        Unknown5 = parser.ReadOffset< byte >( 65 );
+        Unknown6 = parser.ReadOffset< byte >( 66 );
+        Unknown7 = parser.ReadOffset< byte >( 67 );
+        IsFlying = parser.ReadOffset< byte >( 68 );
+        Unknown8 = parser.ReadOffset< byte >( 69 );
+        MountCustomize = new LazyRow< MountCustomize >( gameData, parser.ReadOffset< byte >( 70 ), language );
+        ExitMoveDist = parser.ReadOffset< byte >( 71 );
+        ExitMoveSpeed = parser.ReadOffset< byte >( 72 );
+        RadiusRate = parser.ReadOffset< byte >( 73 );
+        BaseMotionSpeed_Run = parser.ReadOffset< byte >( 74 );
+        BaseMotionSpeed_Walk = parser.ReadOffset< byte >( 75 );
+        Unknown9 = parser.ReadOffset< byte >( 76 );
+        ExtraSeats = parser.ReadOffset< byte >( 77 );
+        Unknown10 = parser.ReadOffset< byte >( 78 );
+        Unknown11 = parser.ReadOffset< byte >( 79 );
+        Unknown12 = parser.ReadOffset< bool >( 80 );
+        IsEmote = parser.ReadOffset< bool >( 80, 2 );
+        IsAirborne = parser.ReadOffset< bool >( 80, 4 );
+        ExHotbarEnableConfig = parser.ReadOffset< bool >( 80, 8 );
+        UseEP = parser.ReadOffset< bool >( 80, 16 );
+        Unknown13 = parser.ReadOffset< bool >( 80, 32 );
+        IsImmobile = parser.ReadOffset< bool >( 80, 64 );
+        Unknown14 = parser.ReadOffset< bool >( 80, 128 );
+        Unknown15 = parser.ReadOffset< bool >( 81 );
         
 
     }

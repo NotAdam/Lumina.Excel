@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "BNpcBase", columnHash: 0xe136dda3 )]
+[Sheet( "BNpcBase", columnHash: 0x86278126 )]
 public partial class BNpcBase : ExcelRow
 {
     
@@ -29,11 +29,12 @@ public partial class BNpcBase : ExcelRow
     public byte Unknown2 { get; private set; }
     public byte Unknown3 { get; private set; }
     public byte Unknown4 { get; private set; }
-    public bool Unknown5 { get; private set; }
+    public bool IsOmnidirectional { get; private set; }
     public bool Unknown6 { get; private set; }
     public bool IsTargetLine { get; private set; }
     public bool IsDisplayLevel { get; private set; }
     public bool Unknown7 { get; private set; }
+    public bool Unknown_70 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -56,11 +57,12 @@ public partial class BNpcBase : ExcelRow
         Unknown2 = parser.ReadOffset< byte >( 25 );
         Unknown3 = parser.ReadOffset< byte >( 26 );
         Unknown4 = parser.ReadOffset< byte >( 27 );
-        Unknown5 = parser.ReadOffset< bool >( 28 );
+        IsOmnidirectional = parser.ReadOffset< bool >( 28 );
         Unknown6 = parser.ReadOffset< bool >( 28, 2 );
         IsTargetLine = parser.ReadOffset< bool >( 28, 4 );
         IsDisplayLevel = parser.ReadOffset< bool >( 28, 8 );
         Unknown7 = parser.ReadOffset< bool >( 28, 16 );
+        Unknown_70 = parser.ReadOffset< bool >( 28, 32 );
         
 
     }

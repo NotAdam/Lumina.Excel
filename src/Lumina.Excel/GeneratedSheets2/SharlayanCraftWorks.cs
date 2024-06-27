@@ -12,16 +12,16 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class SharlayanCraftWorks : ExcelRow
 {
     
-    public SeString Unknown0 { get; private set; }
-    public uint Unknown1 { get; private set; }
+    public SeString Description { get; private set; }
+    public LazyRow< Level > Questgiver { get; private set; }
     public ushort Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown0 = parser.ReadOffset< SeString >( 0 );
-        Unknown1 = parser.ReadOffset< uint >( 4 );
+        Description = parser.ReadOffset< SeString >( 0 );
+        Questgiver = new LazyRow< Level >( gameData, parser.ReadOffset< uint >( 4 ), language );
         Unknown2 = parser.ReadOffset< ushort >( 8 );
         
 

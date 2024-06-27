@@ -6,41 +6,31 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CSBonusContentType", columnHash: 0xdb38341a )]
+    [Sheet( "CSBonusContentType", columnHash: 0x9ff5145f )]
     public partial class CSBonusContentType : ExcelRow
     {
         
-        public byte Unknown0 { get; set; }
-        public uint Unknown1 { get; set; }
-        public uint Unknown2 { get; set; }
-        public uint Unknown3 { get; set; }
-        public uint Unknown4 { get; set; }
-        public uint Unknown5 { get; set; }
+        public LazyRow< ContentType > ContentType { get; set; }
+        public LazyRow< Addon >[] Text { get; set; }
+        public uint Image { get; set; }
         public bool Unknown6 { get; set; }
-        public bool Unknown7 { get; set; }
+        public LazyRow< Quest > UnlockQuest { get; set; }
         public uint Unknown8 { get; set; }
         public uint Unknown9 { get; set; }
-        public uint Unknown10 { get; set; }
-        public uint Unknown11 { get; set; }
-        public uint Unknown12 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< byte >( 0 );
-            Unknown1 = parser.ReadColumn< uint >( 1 );
-            Unknown2 = parser.ReadColumn< uint >( 2 );
-            Unknown3 = parser.ReadColumn< uint >( 3 );
-            Unknown4 = parser.ReadColumn< uint >( 4 );
-            Unknown5 = parser.ReadColumn< uint >( 5 );
+            ContentType = new LazyRow< ContentType >( gameData, parser.ReadColumn< byte >( 0 ), language );
+            Text = new LazyRow< Addon >[ 4 ];
+            for( var i = 0; i < 4; i++ )
+                Text[ i ] = new LazyRow< Addon >( gameData, parser.ReadColumn< uint >( 1 + i ), language );
+            Image = parser.ReadColumn< uint >( 5 );
             Unknown6 = parser.ReadColumn< bool >( 6 );
-            Unknown7 = parser.ReadColumn< bool >( 7 );
+            UnlockQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 7 ), language );
             Unknown8 = parser.ReadColumn< uint >( 8 );
             Unknown9 = parser.ReadColumn< uint >( 9 );
-            Unknown10 = parser.ReadColumn< uint >( 10 );
-            Unknown11 = parser.ReadColumn< uint >( 11 );
-            Unknown12 = parser.ReadColumn< uint >( 12 );
         }
     }
 }

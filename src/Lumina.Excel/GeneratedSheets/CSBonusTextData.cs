@@ -10,13 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public partial class CSBonusTextData : ExcelRow
     {
         
-        public SeString Unknown0 { get; set; }
+        public SeString Text { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< SeString >( 0 );
+            Text = parser.ReadColumn< SeString >( 0 );
         }
     }
 }

@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "PresetCamera", columnHash: 0x246479ab )]
+[Sheet( "PresetCamera", columnHash: 0x38cdbc61 )]
 public partial class PresetCamera : ExcelRow
 {
     
@@ -29,6 +29,7 @@ public partial class PresetCamera : ExcelRow
     public float Roe_F { get; private set; }
     public float Hrothgar_F { get; private set; }
     public float Viera_F { get; private set; }
+    public float Unknown_70 { get; private set; }
     public ushort EID { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -52,7 +53,8 @@ public partial class PresetCamera : ExcelRow
         Roe_F = parser.ReadOffset< float >( 56 );
         Hrothgar_F = parser.ReadOffset< float >( 60 );
         Viera_F = parser.ReadOffset< float >( 64 );
-        EID = parser.ReadOffset< ushort >( 68 );
+        Unknown_70 = parser.ReadOffset< float >( 68 );
+        EID = parser.ReadOffset< ushort >( 72 );
         
 
     }

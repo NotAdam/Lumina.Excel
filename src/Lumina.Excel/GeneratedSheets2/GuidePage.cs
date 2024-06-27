@@ -8,12 +8,13 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "GuidePage", columnHash: 0x5bfa8a4e )]
+[Sheet( "GuidePage", columnHash: 0x7fcd4e75 )]
 public partial class GuidePage : ExcelRow
 {
     
     public ILazyRow Output { get; private set; }
     public byte Key { get; private set; }
+    public bool Unknown_70 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -21,6 +22,7 @@ public partial class GuidePage : ExcelRow
 
         var OutputRowId = parser.ReadOffset< uint >( 0 );
         Key = parser.ReadOffset< byte >( 4 );
+        Unknown_70 = parser.ReadOffset< bool >( 5 );
         
         Output = Key switch
         {

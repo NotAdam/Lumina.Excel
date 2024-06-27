@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "QuestBattle", columnHash: 0xd46e8441 )]
+    [Sheet( "QuestBattle", columnHash: 0xd455ddb1 )]
     public partial class QuestBattle : ExcelRow
     {
         
@@ -25,12 +25,12 @@ namespace Lumina.Excel.GeneratedSheets
             QuestBattleScene = parser.ReadColumn< byte >( 1 );
             TimeLimit = parser.ReadColumn< ushort >( 2 );
             LevelSync = parser.ReadColumn< ushort >( 3 );
-            ScriptInstruction = new SeString[ 200 ];
-            for( var i = 0; i < 200; i++ )
+            ScriptInstruction = new SeString[ 220 ];
+            for( var i = 0; i < 220; i++ )
                 ScriptInstruction[ i ] = parser.ReadColumn< SeString >( 4 + i );
-            ScriptValue = new uint[ 200 ];
-            for( var i = 0; i < 200; i++ )
-                ScriptValue[ i ] = parser.ReadColumn< uint >( 204 + i );
+            ScriptValue = new uint[ 220 ];
+            for( var i = 0; i < 220; i++ )
+                ScriptValue[ i ] = parser.ReadColumn< uint >( 224 + i );
         }
     }
 }

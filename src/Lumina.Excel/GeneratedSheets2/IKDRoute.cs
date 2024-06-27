@@ -17,7 +17,7 @@ public partial class IKDRoute : ExcelRow
     public uint Image { get; private set; }
     public uint Unknown0 { get; private set; }
     public uint Unknown1 { get; private set; }
-    public LazyRow< TerritoryType > TerritoryType { get; private set; }
+    public LazyRow< ContentFinderCondition > Instance { get; private set; }
     public uint Unknown2 { get; private set; }
     public LazyRow< IKDTimeDefine >[] Time { get; private set; }
     
@@ -32,7 +32,7 @@ public partial class IKDRoute : ExcelRow
         Image = parser.ReadOffset< uint >( 16 );
         Unknown0 = parser.ReadOffset< uint >( 20 );
         Unknown1 = parser.ReadOffset< uint >( 24 );
-        TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadOffset< uint >( 28 ), language );
+        Instance = new LazyRow< ContentFinderCondition >( gameData, parser.ReadOffset< uint >( 28 ), language );
         Unknown2 = parser.ReadOffset< uint >( 32 );
         Time = new LazyRow< IKDTimeDefine >[3];
         for (int i = 0; i < 3; i++)

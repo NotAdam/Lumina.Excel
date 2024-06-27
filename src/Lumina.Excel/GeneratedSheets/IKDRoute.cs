@@ -19,7 +19,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Image { get; set; }
         public uint Unknown7 { get; set; }
         public uint Unknown8 { get; set; }
-        public LazyRow< TerritoryType > TerritoryType { get; set; }
+        public LazyRow< ContentFinderCondition > ContentFinderCondition { get; set; }
         public uint Unknown10 { get; set; }
         public SeString Name { get; set; }
         
@@ -37,7 +37,7 @@ namespace Lumina.Excel.GeneratedSheets
             Image = parser.ReadColumn< uint >( 6 );
             Unknown7 = parser.ReadColumn< uint >( 7 );
             Unknown8 = parser.ReadColumn< uint >( 8 );
-            TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< uint >( 9 ), language );
+            ContentFinderCondition = new LazyRow< ContentFinderCondition >( gameData, parser.ReadColumn< uint >( 9 ), language );
             Unknown10 = parser.ReadColumn< uint >( 10 );
             Name = parser.ReadColumn< SeString >( 11 );
         }

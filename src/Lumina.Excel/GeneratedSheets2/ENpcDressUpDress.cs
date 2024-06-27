@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "ENpcDressUpDress", columnHash: 0xd0267043 )]
+[Sheet( "ENpcDressUpDress", columnHash: 0xb07c9caa )]
 public partial class ENpcDressUpDress : ExcelRow
 {
     
@@ -57,17 +57,29 @@ public partial class ENpcDressUpDress : ExcelRow
     public byte Unknown33 { get; private set; }
     public byte Unknown34 { get; private set; }
     public LazyRow< Stain > DyeMainHand { get; private set; }
+    public LazyRow< Stain > Dye2MainHand { get; private set; }
     public LazyRow< Stain > DyeOffHand { get; private set; }
+    public LazyRow< Stain > Dye2OffHand { get; private set; }
     public LazyRow< Stain > DyeHead { get; private set; }
     public LazyRow< Stain > DyeBody { get; private set; }
     public LazyRow< Stain > DyeHands { get; private set; }
     public LazyRow< Stain > DyeLegs { get; private set; }
     public LazyRow< Stain > DyeFeet { get; private set; }
-    public byte Unknown35 { get; private set; }
-    public byte Unknown36 { get; private set; }
-    public byte Unknown37 { get; private set; }
-    public byte Unknown38 { get; private set; }
-    public byte Unknown39 { get; private set; }
+    public LazyRow< Stain > DyeEars { get; private set; }
+    public LazyRow< Stain > DyeNeck { get; private set; }
+    public LazyRow< Stain > DyeWrists { get; private set; }
+    public LazyRow< Stain > DyeLeftRing { get; private set; }
+    public LazyRow< Stain > DyeRightRing { get; private set; }
+    public LazyRow< Stain > Dye2Head { get; private set; }
+    public LazyRow< Stain > Dye2Body { get; private set; }
+    public LazyRow< Stain > Dye2Hands { get; private set; }
+    public LazyRow< Stain > Dye2Legs { get; private set; }
+    public LazyRow< Stain > Dye2Feet { get; private set; }
+    public LazyRow< Stain > Dye2Ears { get; private set; }
+    public LazyRow< Stain > Dye2Neck { get; private set; }
+    public LazyRow< Stain > Dye2Wrists { get; private set; }
+    public LazyRow< Stain > Dye2LeftRing { get; private set; }
+    public LazyRow< Stain > Dye2RightRing { get; private set; }
     public bool Unknown40 { get; private set; }
     public bool Unknown41 { get; private set; }
     public bool Unknown42 { get; private set; }
@@ -123,22 +135,34 @@ public partial class ENpcDressUpDress : ExcelRow
         Unknown33 = parser.ReadOffset< byte >( 95 );
         Unknown34 = parser.ReadOffset< byte >( 96 );
         DyeMainHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 97 ), language );
-        DyeOffHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 98 ), language );
-        DyeHead = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 99 ), language );
-        DyeBody = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 100 ), language );
-        DyeHands = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 101 ), language );
-        DyeLegs = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 102 ), language );
-        DyeFeet = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 103 ), language );
-        Unknown35 = parser.ReadOffset< byte >( 104 );
-        Unknown36 = parser.ReadOffset< byte >( 105 );
-        Unknown37 = parser.ReadOffset< byte >( 106 );
-        Unknown38 = parser.ReadOffset< byte >( 107 );
-        Unknown39 = parser.ReadOffset< byte >( 108 );
-        Unknown40 = parser.ReadOffset< bool >( 109 );
-        Unknown41 = parser.ReadOffset< bool >( 109, 2 );
-        Unknown42 = parser.ReadOffset< bool >( 109, 4 );
-        Unknown43 = parser.ReadOffset< bool >( 109, 8 );
-        Unknown44 = parser.ReadOffset< bool >( 109, 16 );
+        Dye2MainHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 98 ), language );
+        DyeOffHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 99 ), language );
+        Dye2OffHand = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 100 ), language );
+        DyeHead = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 101 ), language );
+        DyeBody = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 102 ), language );
+        DyeHands = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 103 ), language );
+        DyeLegs = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 104 ), language );
+        DyeFeet = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 105 ), language );
+        DyeEars = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 106 ), language );
+        DyeNeck = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 107 ), language );
+        DyeWrists = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 108 ), language );
+        DyeLeftRing = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 109 ), language );
+        DyeRightRing = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 110 ), language );
+        Dye2Head = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 111 ), language );
+        Dye2Body = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 112 ), language );
+        Dye2Hands = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 113 ), language );
+        Dye2Legs = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 114 ), language );
+        Dye2Feet = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 115 ), language );
+        Dye2Ears = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 116 ), language );
+        Dye2Neck = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 117 ), language );
+        Dye2Wrists = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 118 ), language );
+        Dye2LeftRing = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 119 ), language );
+        Dye2RightRing = new LazyRow< Stain >( gameData, parser.ReadOffset< byte >( 120 ), language );
+        Unknown40 = parser.ReadOffset< bool >( 121 );
+        Unknown41 = parser.ReadOffset< bool >( 121, 2 );
+        Unknown42 = parser.ReadOffset< bool >( 121, 4 );
+        Unknown43 = parser.ReadOffset< bool >( 121, 8 );
+        Unknown44 = parser.ReadOffset< bool >( 121, 16 );
         
 
     }

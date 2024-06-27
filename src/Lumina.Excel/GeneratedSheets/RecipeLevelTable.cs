@@ -6,14 +6,13 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "RecipeLevelTable", columnHash: 0x6d3c3f32 )]
+    [Sheet( "RecipeLevelTable", columnHash: 0x463c491f )]
     public partial class RecipeLevelTable : ExcelRow
     {
         
         public byte ClassJobLevel { get; set; }
         public byte Stars { get; set; }
         public ushort SuggestedCraftsmanship { get; set; }
-        public ushort SuggestedControl { get; set; }
         public ushort Difficulty { get; set; }
         public uint Quality { get; set; }
         public byte ProgressDivider { get; set; }
@@ -30,15 +29,14 @@ namespace Lumina.Excel.GeneratedSheets
             ClassJobLevel = parser.ReadColumn< byte >( 0 );
             Stars = parser.ReadColumn< byte >( 1 );
             SuggestedCraftsmanship = parser.ReadColumn< ushort >( 2 );
-            SuggestedControl = parser.ReadColumn< ushort >( 3 );
-            Difficulty = parser.ReadColumn< ushort >( 4 );
-            Quality = parser.ReadColumn< uint >( 5 );
-            ProgressDivider = parser.ReadColumn< byte >( 6 );
-            QualityDivider = parser.ReadColumn< byte >( 7 );
-            ProgressModifier = parser.ReadColumn< byte >( 8 );
-            QualityModifier = parser.ReadColumn< byte >( 9 );
-            Durability = parser.ReadColumn< ushort >( 10 );
-            ConditionsFlag = parser.ReadColumn< ushort >( 11 );
+            Difficulty = parser.ReadColumn< ushort >( 3 );
+            Quality = parser.ReadColumn< uint >( 4 );
+            ProgressDivider = parser.ReadColumn< byte >( 5 );
+            QualityDivider = parser.ReadColumn< byte >( 6 );
+            ProgressModifier = parser.ReadColumn< byte >( 7 );
+            QualityModifier = parser.ReadColumn< byte >( 8 );
+            Durability = parser.ReadColumn< ushort >( 9 );
+            ConditionsFlag = parser.ReadColumn< ushort >( 10 );
         }
     }
 }

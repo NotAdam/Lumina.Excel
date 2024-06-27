@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ENpcDressUpDress", columnHash: 0xd0267043 )]
+    [Sheet( "ENpcDressUpDress", columnHash: 0xb07c9caa )]
     public partial class ENpcDressUpDress : ExcelRow
     {
         
@@ -49,28 +49,40 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown36 { get; set; }
         public ulong ModelMainHand { get; set; }
         public LazyRow< Stain > DyeMainHand { get; set; }
+        public LazyRow< Stain > Dye2MainHand { get; set; }
         public ulong ModelOffHand { get; set; }
         public LazyRow< Stain > DyeOffHand { get; set; }
+        public LazyRow< Stain > Dye2OffHand { get; set; }
         public uint ModelHead { get; set; }
         public LazyRow< Stain > DyeHead { get; set; }
+        public LazyRow< Stain > Dye2Head { get; set; }
         public uint ModelBody { get; set; }
         public LazyRow< Stain > DyeBody { get; set; }
+        public LazyRow< Stain > Dye2Body { get; set; }
         public uint ModelHands { get; set; }
         public LazyRow< Stain > DyeHands { get; set; }
+        public LazyRow< Stain > Dye2Hands { get; set; }
         public uint ModelLegs { get; set; }
         public LazyRow< Stain > DyeLegs { get; set; }
+        public LazyRow< Stain > Dye2Legs { get; set; }
         public uint ModelFeet { get; set; }
         public LazyRow< Stain > DyeFeet { get; set; }
-        public uint Unknown51 { get; set; }
-        public byte Unknown52 { get; set; }
-        public uint Unknown53 { get; set; }
-        public byte Unknown54 { get; set; }
-        public uint Unknown55 { get; set; }
-        public byte Unknown56 { get; set; }
-        public uint Unknown57 { get; set; }
-        public byte Unknown58 { get; set; }
-        public uint Unknown59 { get; set; }
+        public LazyRow< Stain > Dye2Feet { get; set; }
+        public uint Unknown58 { get; set; }
+        public byte Unknown59 { get; set; }
         public byte Unknown60 { get; set; }
+        public uint Unknown61 { get; set; }
+        public byte Unknown62 { get; set; }
+        public byte Unknown63 { get; set; }
+        public uint Unknown64 { get; set; }
+        public byte Unknown65 { get; set; }
+        public byte Unknown66 { get; set; }
+        public uint Unknown67 { get; set; }
+        public byte Unknown68 { get; set; }
+        public byte Unknown69 { get; set; }
+        public uint Unknown70 { get; set; }
+        public byte Unknown71 { get; set; }
+        public byte Unknown72 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -115,28 +127,40 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown36 = parser.ReadColumn< byte >( 36 );
             ModelMainHand = parser.ReadColumn< ulong >( 37 );
             DyeMainHand = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 38 ), language );
-            ModelOffHand = parser.ReadColumn< ulong >( 39 );
-            DyeOffHand = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 40 ), language );
-            ModelHead = parser.ReadColumn< uint >( 41 );
-            DyeHead = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 42 ), language );
-            ModelBody = parser.ReadColumn< uint >( 43 );
-            DyeBody = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 44 ), language );
-            ModelHands = parser.ReadColumn< uint >( 45 );
-            DyeHands = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 46 ), language );
-            ModelLegs = parser.ReadColumn< uint >( 47 );
-            DyeLegs = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 48 ), language );
-            ModelFeet = parser.ReadColumn< uint >( 49 );
-            DyeFeet = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 50 ), language );
-            Unknown51 = parser.ReadColumn< uint >( 51 );
-            Unknown52 = parser.ReadColumn< byte >( 52 );
-            Unknown53 = parser.ReadColumn< uint >( 53 );
-            Unknown54 = parser.ReadColumn< byte >( 54 );
-            Unknown55 = parser.ReadColumn< uint >( 55 );
-            Unknown56 = parser.ReadColumn< byte >( 56 );
-            Unknown57 = parser.ReadColumn< uint >( 57 );
-            Unknown58 = parser.ReadColumn< byte >( 58 );
-            Unknown59 = parser.ReadColumn< uint >( 59 );
+            Dye2MainHand = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 39 ), language );
+            ModelOffHand = parser.ReadColumn< ulong >( 40 );
+            DyeOffHand = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 41 ), language );
+            Dye2OffHand = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 42 ), language );
+            ModelHead = parser.ReadColumn< uint >( 43 );
+            DyeHead = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 44 ), language );
+            Dye2Head = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 45 ), language );
+            ModelBody = parser.ReadColumn< uint >( 46 );
+            DyeBody = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 47 ), language );
+            Dye2Body = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 48 ), language );
+            ModelHands = parser.ReadColumn< uint >( 49 );
+            DyeHands = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 50 ), language );
+            Dye2Hands = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 51 ), language );
+            ModelLegs = parser.ReadColumn< uint >( 52 );
+            DyeLegs = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 53 ), language );
+            Dye2Legs = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 54 ), language );
+            ModelFeet = parser.ReadColumn< uint >( 55 );
+            DyeFeet = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 56 ), language );
+            Dye2Feet = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 57 ), language );
+            Unknown58 = parser.ReadColumn< uint >( 58 );
+            Unknown59 = parser.ReadColumn< byte >( 59 );
             Unknown60 = parser.ReadColumn< byte >( 60 );
+            Unknown61 = parser.ReadColumn< uint >( 61 );
+            Unknown62 = parser.ReadColumn< byte >( 62 );
+            Unknown63 = parser.ReadColumn< byte >( 63 );
+            Unknown64 = parser.ReadColumn< uint >( 64 );
+            Unknown65 = parser.ReadColumn< byte >( 65 );
+            Unknown66 = parser.ReadColumn< byte >( 66 );
+            Unknown67 = parser.ReadColumn< uint >( 67 );
+            Unknown68 = parser.ReadColumn< byte >( 68 );
+            Unknown69 = parser.ReadColumn< byte >( 69 );
+            Unknown70 = parser.ReadColumn< uint >( 70 );
+            Unknown71 = parser.ReadColumn< byte >( 71 );
+            Unknown72 = parser.ReadColumn< byte >( 72 );
         }
     }
 }

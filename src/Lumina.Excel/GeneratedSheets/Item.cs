@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Item", columnHash: 0x800968c9 )]
+    [Sheet( "Item", columnHash: 0xe9a33c9d )]
     public partial class Item : ExcelRow
     {
         public class ItemUnkData59Obj
@@ -48,7 +48,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint PriceMid { get; set; }
         public uint PriceLow { get; set; }
         public bool CanBeHq { get; set; }
-        public bool IsDyeable { get; set; }
+        public byte DyeCount { get; set; }
         public bool IsCrestWorthy { get; set; }
         public LazyRow< ItemAction > ItemAction { get; set; }
         public byte CastTimes { get; set; }
@@ -61,7 +61,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool AlwaysCollectable { get; set; }
         public ushort AetherialReduce { get; set; }
         public byte LevelEquip { get; set; }
-        public byte Unknown41 { get; set; }
+        public byte RequiredPvpRank { get; set; }
         public byte EquipRestriction { get; set; }
         public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
         public LazyRow< GrandCompany > GrandCompany { get; set; }
@@ -122,7 +122,7 @@ namespace Lumina.Excel.GeneratedSheets
             PriceMid = parser.ReadColumn< uint >( 25 );
             PriceLow = parser.ReadColumn< uint >( 26 );
             CanBeHq = parser.ReadColumn< bool >( 27 );
-            IsDyeable = parser.ReadColumn< bool >( 28 );
+            DyeCount = parser.ReadColumn< byte >( 28 );
             IsCrestWorthy = parser.ReadColumn< bool >( 29 );
             ItemAction = new LazyRow< ItemAction >( gameData, parser.ReadColumn< ushort >( 30 ), language );
             CastTimes = parser.ReadColumn< byte >( 31 );
@@ -135,7 +135,7 @@ namespace Lumina.Excel.GeneratedSheets
             AlwaysCollectable = parser.ReadColumn< bool >( 38 );
             AetherialReduce = parser.ReadColumn< ushort >( 39 );
             LevelEquip = parser.ReadColumn< byte >( 40 );
-            Unknown41 = parser.ReadColumn< byte >( 41 );
+            RequiredPvpRank = parser.ReadColumn< byte >( 41 );
             EquipRestriction = parser.ReadColumn< byte >( 42 );
             ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 43 ), language );
             GrandCompany = new LazyRow< GrandCompany >( gameData, parser.ReadColumn< byte >( 44 ), language );

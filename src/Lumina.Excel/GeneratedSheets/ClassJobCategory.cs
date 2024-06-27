@@ -52,8 +52,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool DNC { get; set; }
         public bool RPR { get; set; }
         public bool SGE { get; set; }
-        public bool Unknown42 { get; set; }
-        public bool Unknown43 { get; set; }
+        public bool VPR { get; set; }
+        public bool PCT { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -101,8 +101,8 @@ namespace Lumina.Excel.GeneratedSheets
             DNC = parser.ReadColumn< bool >( 39 );
             RPR = parser.ReadColumn< bool >( 40 );
             SGE = parser.ReadColumn< bool >( 41 );
-            Unknown42 = parser.ReadColumn< bool >( 42 );
-            Unknown43 = parser.ReadColumn< bool >( 43 );
+            VPR = parser.ReadColumn< bool >( 42 );
+            PCT = parser.ReadColumn< bool >( 43 );
         }
     }
 }

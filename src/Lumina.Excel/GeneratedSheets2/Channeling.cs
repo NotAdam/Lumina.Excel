@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "Channeling", columnHash: 0xd5952f72 )]
+[Sheet( "Channeling", columnHash: 0x6dfe9f55 )]
 public partial class Channeling : ExcelRow
 {
     
@@ -17,6 +17,7 @@ public partial class Channeling : ExcelRow
     public bool Unknown0 { get; private set; }
     public bool Unknown1 { get; private set; }
     public bool Unknown2 { get; private set; }
+    public bool Unknown_70 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -27,6 +28,7 @@ public partial class Channeling : ExcelRow
         Unknown0 = parser.ReadOffset< bool >( 5 );
         Unknown1 = parser.ReadOffset< bool >( 5, 2 );
         Unknown2 = parser.ReadOffset< bool >( 5, 4 );
+        Unknown_70 = parser.ReadOffset< bool >( 5, 8 );
         
 
     }

@@ -60,18 +60,21 @@ public partial class AOZContent : ExcelRow
         {
         	1 => new LazyRow< AOZArrangement >( gameData, Act1RowId, language ),
         	2 => new LazyRow< AOZBoss >( gameData, Act1RowId, language ),
+        	3 => new LazyRow< AOZBoss >( gameData, Act1RowId, language ),
         	_ => new EmptyLazyRow( (uint) Act1RowId ),
         };
         Act2 = Act2FightType switch
         {
         	1 => new LazyRow< AOZArrangement >( gameData, Act2RowId, language ),
         	2 => new LazyRow< AOZBoss >( gameData, Act2RowId, language ),
+        	3 => new LazyRow< AOZBoss >( gameData, Act2RowId, language ),
         	_ => new EmptyLazyRow( (uint) Act2RowId ),
         };
         Act3 = Act3FightType switch
         {
         	1 => new LazyRow< AOZArrangement >( gameData, Act3RowId, language ),
         	2 => new LazyRow< AOZBoss >( gameData, Act3RowId, language ),
+        	3 => new LazyRow< AOZBoss >( gameData, Act3RowId, language ),
         	_ => new EmptyLazyRow( (uint) Act3RowId ),
         };
     }

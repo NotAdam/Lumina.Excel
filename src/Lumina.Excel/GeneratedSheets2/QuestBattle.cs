@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "QuestBattle", columnHash: 0xd46e8441 )]
+[Sheet( "QuestBattle", columnHash: 0xd455ddb1 )]
 public partial class QuestBattle : ExcelRow
 {
     public struct QuestBattleParamsStruct
@@ -27,16 +27,16 @@ public partial class QuestBattle : ExcelRow
     {
         base.PopulateData( parser, gameData, language );
 
-        QuestBattleParams = new QuestBattleParamsStruct[200];
-        for (int i = 0; i < 200; i++)
+        QuestBattleParams = new QuestBattleParamsStruct[220];
+        for (int i = 0; i < 220; i++)
         {
         	QuestBattleParams[i].ScriptInstruction = parser.ReadOffset< SeString >( (ushort) (i * 8 + 0));
         	QuestBattleParams[i].ScriptValue = parser.ReadOffset< uint >( (ushort) (i * 8 + 4));
         }
-        Quest = EmptyLazyRow.GetFirstLazyRowOrEmpty( gameData, (uint) parser.ReadOffset< int >( 1600 ), language, "ArrayEventHandler", "Quest" );
-        TimeLimit = parser.ReadOffset< ushort >( 1604 );
-        LevelSync = parser.ReadOffset< ushort >( 1606 );
-        QuestBattleScene = parser.ReadOffset< byte >( 1608 );
+        Quest = EmptyLazyRow.GetFirstLazyRowOrEmpty( gameData, (uint) parser.ReadOffset< int >( 1760 ), language, "ArrayEventHandler", "Quest" );
+        TimeLimit = parser.ReadOffset< ushort >( 1764 );
+        LevelSync = parser.ReadOffset< ushort >( 1766 );
+        QuestBattleScene = parser.ReadOffset< byte >( 1768 );
         
 
     }

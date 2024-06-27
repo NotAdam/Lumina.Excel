@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "Leve", columnHash: 0xb1795a98 )]
+[Sheet( "Leve", columnHash: 0xdab38bf5 )]
 public partial class Leve : ExcelRow
 {
     
@@ -24,10 +24,8 @@ public partial class Leve : ExcelRow
     public LazyRow< LeveClient > LeveClient { get; private set; }
     public LazyRow< LeveAssignmentType > LeveAssignmentType { get; private set; }
     public LazyRow< Town > Town { get; private set; }
-    public int Evaluation { get; private set; }
     public LazyRow< PlaceName > PlaceNameStart { get; private set; }
     public LazyRow< PlaceName > PlaceNameIssued { get; private set; }
-    public int Unknown0 { get; private set; }
     public LazyRow< PlaceName > PlaceNameStartZone { get; private set; }
     public int IconCityState { get; private set; }
     public ILazyRow DataId { get; private set; }
@@ -43,7 +41,6 @@ public partial class Leve : ExcelRow
     public byte MaxDifficulty { get; private set; }
     public LazyRow< LeveVfx > LeveVfx { get; private set; }
     public LazyRow< LeveVfx > LeveVfxFrame { get; private set; }
-    public bool Unknown3 { get; private set; }
     public bool CanCancel { get; private set; }
     public bool LockedLeve { get; private set; }
     
@@ -63,28 +60,25 @@ public partial class Leve : ExcelRow
         LeveClient = new LazyRow< LeveClient >( gameData, parser.ReadOffset< int >( 36 ), language );
         LeveAssignmentType = new LazyRow< LeveAssignmentType >( gameData, parser.ReadOffset< int >( 40 ), language );
         Town = new LazyRow< Town >( gameData, parser.ReadOffset< int >( 44 ), language );
-        Evaluation = parser.ReadOffset< int >( 48 );
-        PlaceNameStart = new LazyRow< PlaceName >( gameData, parser.ReadOffset< int >( 52 ), language );
-        PlaceNameIssued = new LazyRow< PlaceName >( gameData, parser.ReadOffset< int >( 56 ), language );
-        Unknown0 = parser.ReadOffset< int >( 60 );
-        PlaceNameStartZone = new LazyRow< PlaceName >( gameData, parser.ReadOffset< int >( 64 ), language );
-        IconCityState = parser.ReadOffset< int >( 68 );
-        DataId = EmptyLazyRow.GetFirstLazyRowOrEmpty( gameData, (uint) parser.ReadOffset< int >( 72 ), language, "CraftLeve", "CompanyLeve", "GatheringLeve", "BattleLeve" );
-        IconIssuer = parser.ReadOffset< int >( 76 );
-        ClassJobLevel = parser.ReadOffset< ushort >( 80 );
-        FishingSpot = new LazyRow< FishingSpot >( gameData, parser.ReadOffset< ushort >( 82 ), language );
-        BGM = new LazyRow< BGM >( gameData, parser.ReadOffset< ushort >( 84 ), language );
-        Unknown1 = parser.ReadOffset< byte >( 86 );
-        TimeLimit = parser.ReadOffset< byte >( 87 );
-        AllowanceCost = parser.ReadOffset< byte >( 88 );
-        Unknown2 = parser.ReadOffset< byte >( 89 );
-        ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 90 ), language );
-        MaxDifficulty = parser.ReadOffset< byte >( 91 );
-        LeveVfx = new LazyRow< LeveVfx >( gameData, parser.ReadOffset< byte >( 92 ), language );
-        LeveVfxFrame = new LazyRow< LeveVfx >( gameData, parser.ReadOffset< byte >( 93 ), language );
-        Unknown3 = parser.ReadOffset< bool >( 94 );
-        CanCancel = parser.ReadOffset< bool >( 94, 2 );
-        LockedLeve = parser.ReadOffset< bool >( 94, 4 );
+        PlaceNameStart = new LazyRow< PlaceName >( gameData, parser.ReadOffset< int >( 48 ), language );
+        PlaceNameIssued = new LazyRow< PlaceName >( gameData, parser.ReadOffset< int >( 52 ), language );
+        PlaceNameStartZone = new LazyRow< PlaceName >( gameData, parser.ReadOffset< int >( 56 ), language );
+        IconCityState = parser.ReadOffset< int >( 60 );
+        DataId = EmptyLazyRow.GetFirstLazyRowOrEmpty( gameData, (uint) parser.ReadOffset< int >( 64 ), language, "CraftLeve", "CompanyLeve", "GatheringLeve", "BattleLeve" );
+        IconIssuer = parser.ReadOffset< int >( 68 );
+        ClassJobLevel = parser.ReadOffset< ushort >( 72 );
+        FishingSpot = new LazyRow< FishingSpot >( gameData, parser.ReadOffset< ushort >( 74 ), language );
+        BGM = new LazyRow< BGM >( gameData, parser.ReadOffset< ushort >( 76 ), language );
+        Unknown1 = parser.ReadOffset< byte >( 78 );
+        TimeLimit = parser.ReadOffset< byte >( 79 );
+        AllowanceCost = parser.ReadOffset< byte >( 80 );
+        Unknown2 = parser.ReadOffset< byte >( 81 );
+        ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 82 ), language );
+        MaxDifficulty = parser.ReadOffset< byte >( 83 );
+        LeveVfx = new LazyRow< LeveVfx >( gameData, parser.ReadOffset< byte >( 84 ), language );
+        LeveVfxFrame = new LazyRow< LeveVfx >( gameData, parser.ReadOffset< byte >( 85 ), language );
+        CanCancel = parser.ReadOffset< bool >( 86 );
+        LockedLeve = parser.ReadOffset< bool >( 86, 2 );
         
 
     }

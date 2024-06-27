@@ -12,19 +12,19 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class TerritoryTypeTelepo : ExcelRow
 {
     
-    public ushort Unknown0 { get; private set; }
-    public ushort Unknown1 { get; private set; }
-    public ushort Unknown2 { get; private set; }
-    public byte Unknown3 { get; private set; }
+    public ushort X { get; private set; }
+    public ushort Y { get; private set; }
+    public ushort Expansion { get; private set; }
+    public LazyRow< TelepoRelay > Relay { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown0 = parser.ReadOffset< ushort >( 0 );
-        Unknown1 = parser.ReadOffset< ushort >( 2 );
-        Unknown2 = parser.ReadOffset< ushort >( 4 );
-        Unknown3 = parser.ReadOffset< byte >( 6 );
+        X = parser.ReadOffset< ushort >( 0 );
+        Y = parser.ReadOffset< ushort >( 2 );
+        Expansion = parser.ReadOffset< ushort >( 4 );
+        Relay = new LazyRow< TelepoRelay >( gameData, parser.ReadOffset< byte >( 6 ), language );
         
 
     }

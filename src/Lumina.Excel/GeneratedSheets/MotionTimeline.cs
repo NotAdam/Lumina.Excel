@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MotionTimeline", columnHash: 0xd5952f72 )]
+    [Sheet( "MotionTimeline", columnHash: 0x53852bca )]
     public partial class MotionTimeline : ExcelRow
     {
         
@@ -15,6 +15,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsLoop { get; set; }
         public bool IsBlinkEnable { get; set; }
         public bool IsLipEnable { get; set; }
+        public byte Unknown5 { get; set; }
+        public byte Unknown6 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -25,6 +27,8 @@ namespace Lumina.Excel.GeneratedSheets
             IsLoop = parser.ReadColumn< bool >( 2 );
             IsBlinkEnable = parser.ReadColumn< bool >( 3 );
             IsLipEnable = parser.ReadColumn< bool >( 4 );
+            Unknown5 = parser.ReadColumn< byte >( 5 );
+            Unknown6 = parser.ReadColumn< byte >( 6 );
         }
     }
 }

@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "MountCustomize", columnHash: 0x859ade0f )]
+[Sheet( "MountCustomize", columnHash: 0xdde90e69 )]
 public partial class MountCustomize : ExcelRow
 {
     
@@ -30,7 +30,7 @@ public partial class MountCustomize : ExcelRow
     public ushort VieraMaleScale { get; private set; }
     public ushort VieraFemaleScale { get; private set; }
     public ushort HyurMidlanderMaleCameraHeight { get; private set; }
-    public byte HyurMidlanderFemaleCameraHeight { get; private set; }
+    public ushort HyurMidlanderFemaleCameraHeight { get; private set; }
     public byte HyurHighlanderMaleCameraHeight { get; private set; }
     public byte HyurHighlanderFemaleCameraHeight { get; private set; }
     public byte ElezenMaleCameraHeight { get; private set; }
@@ -48,6 +48,8 @@ public partial class MountCustomize : ExcelRow
     public byte VieraFemaleCameraHeight { get; private set; }
     public byte Unknown0 { get; private set; }
     public byte Unknown1 { get; private set; }
+    public byte Unknown_70_1 { get; private set; }
+    public byte Unknown_70_2 { get; private set; }
     public bool Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -72,25 +74,27 @@ public partial class MountCustomize : ExcelRow
         VieraMaleScale = parser.ReadOffset< ushort >( 30 );
         VieraFemaleScale = parser.ReadOffset< ushort >( 32 );
         HyurMidlanderMaleCameraHeight = parser.ReadOffset< ushort >( 34 );
-        HyurMidlanderFemaleCameraHeight = parser.ReadOffset< byte >( 36 );
-        HyurHighlanderMaleCameraHeight = parser.ReadOffset< byte >( 37 );
-        HyurHighlanderFemaleCameraHeight = parser.ReadOffset< byte >( 38 );
-        ElezenMaleCameraHeight = parser.ReadOffset< byte >( 39 );
-        ElezenFemaleCameraHeight = parser.ReadOffset< byte >( 40 );
-        LalaMaleCameraHeight = parser.ReadOffset< byte >( 41 );
-        LalaFemaleCameraHeight = parser.ReadOffset< byte >( 42 );
-        MiqoMaleCameraHeight = parser.ReadOffset< byte >( 43 );
-        MiqoFemaleCameraHeight = parser.ReadOffset< byte >( 44 );
-        RoeMaleCameraHeight = parser.ReadOffset< byte >( 45 );
-        RoeFemaleCameraHeight = parser.ReadOffset< byte >( 46 );
-        AuRaMaleCameraHeight = parser.ReadOffset< byte >( 47 );
-        AuRaFemaleCameraHeight = parser.ReadOffset< byte >( 48 );
-        HrothgarMaleCameraHeight = parser.ReadOffset< byte >( 49 );
-        VieraMaleCameraHeight = parser.ReadOffset< byte >( 50 );
-        VieraFemaleCameraHeight = parser.ReadOffset< byte >( 51 );
-        Unknown0 = parser.ReadOffset< byte >( 52 );
-        Unknown1 = parser.ReadOffset< byte >( 53 );
-        Unknown2 = parser.ReadOffset< bool >( 54 );
+        HyurMidlanderFemaleCameraHeight = parser.ReadOffset< ushort >( 36 );
+        HyurHighlanderMaleCameraHeight = parser.ReadOffset< byte >( 38 );
+        HyurHighlanderFemaleCameraHeight = parser.ReadOffset< byte >( 39 );
+        ElezenMaleCameraHeight = parser.ReadOffset< byte >( 40 );
+        ElezenFemaleCameraHeight = parser.ReadOffset< byte >( 41 );
+        LalaMaleCameraHeight = parser.ReadOffset< byte >( 42 );
+        LalaFemaleCameraHeight = parser.ReadOffset< byte >( 43 );
+        MiqoMaleCameraHeight = parser.ReadOffset< byte >( 44 );
+        MiqoFemaleCameraHeight = parser.ReadOffset< byte >( 45 );
+        RoeMaleCameraHeight = parser.ReadOffset< byte >( 46 );
+        RoeFemaleCameraHeight = parser.ReadOffset< byte >( 47 );
+        AuRaMaleCameraHeight = parser.ReadOffset< byte >( 48 );
+        AuRaFemaleCameraHeight = parser.ReadOffset< byte >( 49 );
+        HrothgarMaleCameraHeight = parser.ReadOffset< byte >( 50 );
+        VieraMaleCameraHeight = parser.ReadOffset< byte >( 51 );
+        VieraFemaleCameraHeight = parser.ReadOffset< byte >( 52 );
+        Unknown0 = parser.ReadOffset< byte >( 53 );
+        Unknown1 = parser.ReadOffset< byte >( 54 );
+        Unknown_70_1 = parser.ReadOffset< byte >( 55 );
+        Unknown_70_2 = parser.ReadOffset< byte >( 56 );
+        Unknown2 = parser.ReadOffset< bool >( 57 );
         
 
     }

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "FateShop", columnHash: 0x478c9a56 )]
+    [Sheet( "FateShop", columnHash: 0x58d1a3e4 )]
     public partial class FateShop : ExcelRow
     {
         
@@ -17,12 +17,12 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            SpecialShop = new LazyRow< SpecialShop >[ 2 ];
-            for( var i = 0; i < 2; i++ )
+            SpecialShop = new LazyRow< SpecialShop >[ 3 ];
+            for( var i = 0; i < 3; i++ )
                 SpecialShop[ i ] = new LazyRow< SpecialShop >( gameData, parser.ReadColumn< uint >( 0 + i ), language );
-            DefaultTalk = new LazyRow< DefaultTalk >[ 8 ];
-            for( var i = 0; i < 8; i++ )
-                DefaultTalk[ i ] = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< uint >( 2 + i ), language );
+            DefaultTalk = new LazyRow< DefaultTalk >[ 10 ];
+            for( var i = 0; i < 10; i++ )
+                DefaultTalk[ i ] = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< uint >( 3 + i ), language );
         }
     }
 }

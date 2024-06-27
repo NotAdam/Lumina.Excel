@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Adventure", columnHash: 0xf6b785f8 )]
+    [Sheet( "Adventure", columnHash: 0xbe0f5d9a )]
     public partial class Adventure : ExcelRow
     {
         
@@ -19,11 +19,11 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< PlaceName > PlaceName { get; set; }
         public int IconList { get; set; }
         public int IconDiscovered { get; set; }
+        public int IconUndiscovered { get; set; }
+        public bool IsInitial { get; set; }
         public SeString Name { get; set; }
         public SeString Impression { get; set; }
         public SeString Description { get; set; }
-        public int IconUndiscovered { get; set; }
-        public bool IsInitial { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -38,11 +38,11 @@ namespace Lumina.Excel.GeneratedSheets
             PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< int >( 6 ), language );
             IconList = parser.ReadColumn< int >( 7 );
             IconDiscovered = parser.ReadColumn< int >( 8 );
-            Name = parser.ReadColumn< SeString >( 9 );
-            Impression = parser.ReadColumn< SeString >( 10 );
-            Description = parser.ReadColumn< SeString >( 11 );
-            IconUndiscovered = parser.ReadColumn< int >( 12 );
-            IsInitial = parser.ReadColumn< bool >( 13 );
+            IconUndiscovered = parser.ReadColumn< int >( 9 );
+            IsInitial = parser.ReadColumn< bool >( 10 );
+            Name = parser.ReadColumn< SeString >( 11 );
+            Impression = parser.ReadColumn< SeString >( 12 );
+            Description = parser.ReadColumn< SeString >( 13 );
         }
     }
 }

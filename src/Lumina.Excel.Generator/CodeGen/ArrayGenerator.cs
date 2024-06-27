@@ -137,7 +137,7 @@ public class ArrayGenerator : BaseGenerator
         }
         else if( Util.IsComplexLinkArray( Field ) )
         {
-            sb.AppendLine( $"var {Field.Name} = new ILazyRow[ {Field.Count} ];" );
+            sb.AppendLine( $"{Field.Name} = new ILazyRow[ {Field.Count} ];" );
             sb.AppendLine( $"UIntSpan {Field.Name}RowId = stackalloc uint[ {Field.Count} ];" );
             sb.AppendLine( $"for( int i = 0; i < {Field.Count}; i++ )" );
             sb.AppendLine( "{" );

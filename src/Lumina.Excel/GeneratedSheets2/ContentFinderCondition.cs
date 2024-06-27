@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "ContentFinderCondition", columnHash: 0xc43e7247 )]
+[Sheet( "ContentFinderCondition", columnHash: 0x997006f9 )]
 public partial class ContentFinderCondition : ExcelRow
 {
     
@@ -60,6 +60,7 @@ public partial class ContentFinderCondition : ExcelRow
     public uint Unknown30 { get; private set; }
     public LazyRow< Quest > UnlockQuest { get; private set; }
     public uint Unknown31 { get; private set; }
+    public uint Unknown_70_1 { get; private set; }
     public ILazyRow Transient { get; private set; }
     public uint Image { get; private set; }
     public uint Icon { get; private set; }
@@ -86,6 +87,7 @@ public partial class ContentFinderCondition : ExcelRow
     public byte Unknown40 { get; private set; }
     public sbyte Unknown41 { get; private set; }
     public bool PvP { get; private set; }
+    public bool Unknown_70_2 { get; private set; }
     public bool Unknown42 { get; private set; }
     public bool AllowUndersized { get; private set; }
     public bool Unknown43 { get; private set; }
@@ -159,52 +161,54 @@ public partial class ContentFinderCondition : ExcelRow
         Unknown30 = parser.ReadOffset< uint >( 60 );
         UnlockQuest = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 64 ), language );
         Unknown31 = parser.ReadOffset< uint >( 68 );
-        var TransientRowId = parser.ReadOffset< uint >( 72 );
-        Image = parser.ReadOffset< uint >( 76 );
-        Icon = parser.ReadOffset< uint >( 80 );
-        Unknown32 = parser.ReadOffset< int >( 84 );
-        TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadOffset< ushort >( 88 ), language );
-        var ContentRowId = parser.ReadOffset< ushort >( 90 );
-        ItemLevelRequired = parser.ReadOffset< ushort >( 92 );
-        ItemLevelSync = parser.ReadOffset< ushort >( 94 );
-        SortKey = parser.ReadOffset< ushort >( 96 );
-        ContentLinkType = parser.ReadOffset< byte >( 98 );
-        Unknown33 = parser.ReadOffset< byte >( 99 );
-        AcceptClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 100 ), language );
-        ContentMemberType = new LazyRow< ContentMemberType >( gameData, parser.ReadOffset< byte >( 101 ), language );
-        Unknown34 = parser.ReadOffset< byte >( 102 );
-        Unknown35 = parser.ReadOffset< byte >( 103 );
-        Unknown36 = parser.ReadOffset< byte >( 104 );
-        Unknown37 = parser.ReadOffset< byte >( 105 );
-        ClassJobLevelRequired = parser.ReadOffset< byte >( 106 );
-        ClassJobLevelSync = parser.ReadOffset< byte >( 107 );
-        Unknown38 = parser.ReadOffset< byte >( 108 );
-        Unknown39 = parser.ReadOffset< byte >( 109 );
-        ContentType = new LazyRow< ContentType >( gameData, parser.ReadOffset< byte >( 110 ), language );
-        TransientKey = parser.ReadOffset< byte >( 111 );
-        Unknown40 = parser.ReadOffset< byte >( 112 );
-        Unknown41 = parser.ReadOffset< sbyte >( 113 );
-        PvP = parser.ReadOffset< bool >( 114 );
-        Unknown42 = parser.ReadOffset< bool >( 114, 2 );
-        AllowUndersized = parser.ReadOffset< bool >( 114, 4 );
-        Unknown43 = parser.ReadOffset< bool >( 114, 8 );
-        AllowReplacement = parser.ReadOffset< bool >( 114, 16 );
-        Unknown44 = parser.ReadOffset< bool >( 114, 32 );
-        AllowExplorerMode = parser.ReadOffset< bool >( 114, 64 );
-        Unknown45 = parser.ReadOffset< bool >( 114, 128 );
-        Unknown46 = parser.ReadOffset< bool >( 115 );
-        Unknown47 = parser.ReadOffset< bool >( 115, 2 );
-        Unknown48 = parser.ReadOffset< bool >( 115, 4 );
-        HighEndDuty = parser.ReadOffset< bool >( 115, 8 );
-        Unknown49 = parser.ReadOffset< bool >( 115, 16 );
-        Unknown50 = parser.ReadOffset< bool >( 115, 32 );
-        Unknown51 = parser.ReadOffset< bool >( 115, 64 );
-        DutyRecorderAllowed = parser.ReadOffset< bool >( 115, 128 );
-        Unknown52 = parser.ReadOffset< bool >( 116 );
-        Unknown53 = parser.ReadOffset< bool >( 116, 2 );
-        Unknown54 = parser.ReadOffset< bool >( 116, 4 );
-        Unknown55 = parser.ReadOffset< bool >( 116, 8 );
-        Unknown56 = parser.ReadOffset< bool >( 116, 16 );
+        Unknown_70_1 = parser.ReadOffset< uint >( 72 );
+        var TransientRowId = parser.ReadOffset< uint >( 76 );
+        Image = parser.ReadOffset< uint >( 80 );
+        Icon = parser.ReadOffset< uint >( 84 );
+        Unknown32 = parser.ReadOffset< int >( 88 );
+        TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadOffset< ushort >( 92 ), language );
+        var ContentRowId = parser.ReadOffset< ushort >( 94 );
+        ItemLevelRequired = parser.ReadOffset< ushort >( 96 );
+        ItemLevelSync = parser.ReadOffset< ushort >( 98 );
+        SortKey = parser.ReadOffset< ushort >( 100 );
+        ContentLinkType = parser.ReadOffset< byte >( 102 );
+        Unknown33 = parser.ReadOffset< byte >( 103 );
+        AcceptClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 104 ), language );
+        ContentMemberType = new LazyRow< ContentMemberType >( gameData, parser.ReadOffset< byte >( 105 ), language );
+        Unknown34 = parser.ReadOffset< byte >( 106 );
+        Unknown35 = parser.ReadOffset< byte >( 107 );
+        Unknown36 = parser.ReadOffset< byte >( 108 );
+        Unknown37 = parser.ReadOffset< byte >( 109 );
+        ClassJobLevelRequired = parser.ReadOffset< byte >( 110 );
+        ClassJobLevelSync = parser.ReadOffset< byte >( 111 );
+        Unknown38 = parser.ReadOffset< byte >( 112 );
+        Unknown39 = parser.ReadOffset< byte >( 113 );
+        ContentType = new LazyRow< ContentType >( gameData, parser.ReadOffset< byte >( 114 ), language );
+        TransientKey = parser.ReadOffset< byte >( 115 );
+        Unknown40 = parser.ReadOffset< byte >( 116 );
+        Unknown41 = parser.ReadOffset< sbyte >( 117 );
+        PvP = parser.ReadOffset< bool >( 118 );
+        Unknown_70_2 = parser.ReadOffset< bool >( 118, 2 );
+        Unknown42 = parser.ReadOffset< bool >( 118, 4 );
+        AllowUndersized = parser.ReadOffset< bool >( 118, 8 );
+        Unknown43 = parser.ReadOffset< bool >( 118, 16 );
+        AllowReplacement = parser.ReadOffset< bool >( 118, 32 );
+        Unknown44 = parser.ReadOffset< bool >( 118, 64 );
+        AllowExplorerMode = parser.ReadOffset< bool >( 118, 128 );
+        Unknown45 = parser.ReadOffset< bool >( 119 );
+        Unknown46 = parser.ReadOffset< bool >( 119, 2 );
+        Unknown47 = parser.ReadOffset< bool >( 119, 4 );
+        Unknown48 = parser.ReadOffset< bool >( 119, 8 );
+        HighEndDuty = parser.ReadOffset< bool >( 119, 16 );
+        Unknown49 = parser.ReadOffset< bool >( 119, 32 );
+        Unknown50 = parser.ReadOffset< bool >( 119, 64 );
+        Unknown51 = parser.ReadOffset< bool >( 119, 128 );
+        DutyRecorderAllowed = parser.ReadOffset< bool >( 120 );
+        Unknown52 = parser.ReadOffset< bool >( 120, 2 );
+        Unknown53 = parser.ReadOffset< bool >( 120, 4 );
+        Unknown54 = parser.ReadOffset< bool >( 120, 8 );
+        Unknown55 = parser.ReadOffset< bool >( 120, 16 );
+        Unknown56 = parser.ReadOffset< bool >( 120, 32 );
         
         Transient = TransientKey switch
         {

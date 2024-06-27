@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Status", columnHash: 0x0dab68bb )]
+    [Sheet( "Status", columnHash: 0x23d71660 )]
     public partial class Status : ExcelRow
     {
         
@@ -32,7 +32,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte CanIncreaseRewards { get; set; }
         public bool Unknown20 { get; set; }
         public bool Unknown21 { get; set; }
-        public short ParamModifier { get; set; }
+        public int ParamModifier { get; set; }
         public byte ParamEffect { get; set; }
         public bool CanStatusOff { get; set; }
         public ushort Log { get; set; }
@@ -43,6 +43,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Flags { get; set; }
         public byte Unknown31 { get; set; }
         public bool Unknown32 { get; set; }
+        public bool Unknown33 { get; set; }
+        public byte Unknown34 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -70,7 +72,7 @@ namespace Lumina.Excel.GeneratedSheets
             CanIncreaseRewards = parser.ReadColumn< byte >( 19 );
             Unknown20 = parser.ReadColumn< bool >( 20 );
             Unknown21 = parser.ReadColumn< bool >( 21 );
-            ParamModifier = parser.ReadColumn< short >( 22 );
+            ParamModifier = parser.ReadColumn< int >( 22 );
             ParamEffect = parser.ReadColumn< byte >( 23 );
             CanStatusOff = parser.ReadColumn< bool >( 24 );
             Log = parser.ReadColumn< ushort >( 25 );
@@ -81,6 +83,8 @@ namespace Lumina.Excel.GeneratedSheets
             Flags = parser.ReadColumn< byte >( 30 );
             Unknown31 = parser.ReadColumn< byte >( 31 );
             Unknown32 = parser.ReadColumn< bool >( 32 );
+            Unknown33 = parser.ReadColumn< bool >( 33 );
+            Unknown34 = parser.ReadColumn< byte >( 34 );
         }
     }
 }

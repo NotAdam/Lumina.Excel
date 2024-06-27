@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BannerTimeline", columnHash: 0xdb953b5e )]
+    [Sheet( "BannerTimeline", columnHash: 0xc47e00f1 )]
     public partial class BannerTimeline : ExcelRow
     {
         
@@ -15,6 +15,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ClassJobCategory > AcceptClassJobCategory { get; set; }
         public byte Category { get; set; }
         public LazyRow< BannerCondition > UnlockCondition { get; set; }
+        public ushort Unknown5 { get; set; }
+        public ushort Unknown6 { get; set; }
         public ushort SortKey { get; set; }
         public int Icon { get; set; }
         public SeString Name { get; set; }
@@ -28,9 +30,11 @@ namespace Lumina.Excel.GeneratedSheets
             AcceptClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 2 ), language );
             Category = parser.ReadColumn< byte >( 3 );
             UnlockCondition = new LazyRow< BannerCondition >( gameData, parser.ReadColumn< ushort >( 4 ), language );
-            SortKey = parser.ReadColumn< ushort >( 5 );
-            Icon = parser.ReadColumn< int >( 6 );
-            Name = parser.ReadColumn< SeString >( 7 );
+            Unknown5 = parser.ReadColumn< ushort >( 5 );
+            Unknown6 = parser.ReadColumn< ushort >( 6 );
+            SortKey = parser.ReadColumn< ushort >( 7 );
+            Icon = parser.ReadColumn< int >( 8 );
+            Name = parser.ReadColumn< SeString >( 9 );
         }
     }
 }

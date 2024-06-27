@@ -13,7 +13,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< DeepDungeonEquipment > AetherpoolArm { get; set; }
         public LazyRow< DeepDungeonEquipment > AetherpoolArmor { get; set; }
         public LazyRow< DeepDungeonItem >[] PomanderSlot { get; set; }
-        public LazyRow< DeepDungeonMagicStone >[] MagiciteSlot { get; set; }
+        public byte DeepDungeonType { get; set; }
+        public byte[] StoneSlot { get; set; }
         public SeString Name { get; set; }
         public LazyRow< ContentFinderCondition > ContentFinderConditionStart { get; set; }
         public bool Unknown25 { get; set; }
@@ -27,9 +28,10 @@ namespace Lumina.Excel.GeneratedSheets
             PomanderSlot = new LazyRow< DeepDungeonItem >[ 16 ];
             for( var i = 0; i < 16; i++ )
                 PomanderSlot[ i ] = new LazyRow< DeepDungeonItem >( gameData, parser.ReadColumn< byte >( 2 + i ), language );
-            MagiciteSlot = new LazyRow< DeepDungeonMagicStone >[ 5 ];
-            for( var i = 0; i < 5; i++ )
-                MagiciteSlot[ i ] = new LazyRow< DeepDungeonMagicStone >( gameData, parser.ReadColumn< byte >( 18 + i ), language );
+            DeepDungeonType = parser.ReadColumn< byte >( 18 );
+            StoneSlot = new byte[ 4 ];
+            for( var i = 0; i < 4; i++ )
+                StoneSlot[ i ] = parser.ReadColumn< byte >( 19 + i );
             Name = parser.ReadColumn< SeString >( 23 );
             ContentFinderConditionStart = new LazyRow< ContentFinderCondition >( gameData, parser.ReadColumn< ushort >( 24 ), language );
             Unknown25 = parser.ReadColumn< bool >( 25 );

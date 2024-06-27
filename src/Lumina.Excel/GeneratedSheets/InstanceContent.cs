@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "InstanceContent", columnHash: 0xa1adecb4 )]
+    [Sheet( "InstanceContent", columnHash: 0xd00494fa )]
     public partial class InstanceContent : ExcelRow
     {
         
@@ -63,6 +63,7 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown66 { get; set; }
         public bool Unknown67 { get; set; }
         public ushort Unknown68 { get; set; }
+        public ushort Unknown69 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -129,6 +130,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown66 = parser.ReadColumn< ushort >( 66 );
             Unknown67 = parser.ReadColumn< bool >( 67 );
             Unknown68 = parser.ReadColumn< ushort >( 68 );
+            Unknown69 = parser.ReadColumn< ushort >( 69 );
         }
     }
 }

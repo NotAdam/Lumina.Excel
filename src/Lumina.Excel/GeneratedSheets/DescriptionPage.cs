@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DescriptionPage", columnHash: 0xe721cad2 )]
+    [Sheet( "DescriptionPage", columnHash: 0xda11a692 )]
     public partial class DescriptionPage : ExcelRow
     {
         public class DescriptionPageUnkData3Obj
@@ -17,7 +17,7 @@ namespace Lumina.Excel.GeneratedSheets
         
         public byte Unknown0 { get; set; }
         public LazyRow< Quest > Quest { get; set; }
-        public byte Unknown2 { get; set; }
+        public uint Unknown2 { get; set; }
         public DescriptionPageUnkData3Obj[] UnkData3 { get; set; }
         public ushort Unknown25 { get; set; }
         
@@ -27,7 +27,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 1 ), language );
-            Unknown2 = parser.ReadColumn< byte >( 2 );
+            Unknown2 = parser.ReadColumn< uint >( 2 );
             UnkData3 = new DescriptionPageUnkData3Obj[ 11 ];
             for( var i = 0; i < 11; i++ )
             {

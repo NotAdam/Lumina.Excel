@@ -27,11 +27,11 @@ public partial class TerritoryType : ExcelRow
     public ILazyRow BGM { get; private set; }
     public LazyRow< QuestBattle > QuestBattle { get; private set; }
     public ushort Resident { get; private set; }
-    public ushort Unknown0 { get; private set; }
+    public LazyRow< NotoriousMonsterTerritory > NotoriousMonsterTerritory { get; private set; }
     public byte BattalionMode { get; private set; }
     public LazyRow< LoadingImage > LoadingImage { get; private set; }
     public byte ExclusiveType { get; private set; }
-    public byte TerritoryIntendedUse { get; private set; }
+    public LazyRow< TerritoryIntendedUse > TerritoryIntendedUse { get; private set; }
     public byte WeatherRate { get; private set; }
     public byte Unknown1 { get; private set; }
     public LazyRow< ExVersion > ExVersion { get; private set; }
@@ -75,11 +75,11 @@ public partial class TerritoryType : ExcelRow
         BGM = EmptyLazyRow.GetFirstLazyRowOrEmpty( gameData, (uint) parser.ReadOffset< ushort >( 38 ), language, "BGM", "BGMSituation" );
         QuestBattle = new LazyRow< QuestBattle >( gameData, parser.ReadOffset< ushort >( 40 ), language );
         Resident = parser.ReadOffset< ushort >( 42 );
-        Unknown0 = parser.ReadOffset< ushort >( 44 );
+        NotoriousMonsterTerritory = new LazyRow< NotoriousMonsterTerritory >( gameData, parser.ReadOffset< ushort >( 44 ), language );
         BattalionMode = parser.ReadOffset< byte >( 46 );
         LoadingImage = new LazyRow< LoadingImage >( gameData, parser.ReadOffset< byte >( 47 ), language );
         ExclusiveType = parser.ReadOffset< byte >( 48 );
-        TerritoryIntendedUse = parser.ReadOffset< byte >( 49 );
+        TerritoryIntendedUse = new LazyRow< TerritoryIntendedUse >( gameData, parser.ReadOffset< byte >( 49 ), language );
         WeatherRate = parser.ReadOffset< byte >( 50 );
         Unknown1 = parser.ReadOffset< byte >( 51 );
         ExVersion = new LazyRow< ExVersion >( gameData, parser.ReadOffset< byte >( 52 ), language );

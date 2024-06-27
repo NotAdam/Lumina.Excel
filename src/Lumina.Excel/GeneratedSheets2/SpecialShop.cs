@@ -26,7 +26,7 @@ public partial class SpecialShop : ExcelRow
     	public ushort PatchNumber { get; internal set; }
     	public byte[] HqCost { get; internal set; }
     	public byte[] Unknown1 { get; internal set; }
-    	public byte[] ReceiveHq { get; internal set; }
+    	public bool[] ReceiveHq { get; internal set; }
     }
     
     public SeString Name { get; private set; }
@@ -78,12 +78,12 @@ public partial class SpecialShop : ExcelRow
         	Item[i].HqCost = new byte[3];
         	for (int HqCostIndexer = 0; HqCostIndexer < 3; HqCostIndexer++)
         		Item[i].HqCost[HqCostIndexer] = parser.ReadOffset< byte >( (ushort) ( i * 96 + 88 + HqCostIndexer * 1 ) );
-        	Item[i].Unknown1 = new byte[5];
-        	for (int Unknown1Indexer = 0; Unknown1Indexer < 5; Unknown1Indexer++)
+        	Item[i].Unknown1 = new byte[6];
+        	for (int Unknown1Indexer = 0; Unknown1Indexer < 6; Unknown1Indexer++)
         		Item[i].Unknown1[Unknown1Indexer] = parser.ReadOffset< byte >( (ushort) ( i * 96 + 91 + Unknown1Indexer * 1 ) );
-        	Item[i].ReceiveHq = new byte[3];
-        	for (int ReceiveHqIndexer = 0; ReceiveHqIndexer < 3; ReceiveHqIndexer++)
-        		Item[i].ReceiveHq[ReceiveHqIndexer] = parser.ReadOffset< byte >( (ushort) ( i * 96 + 96 + ReceiveHqIndexer * 1 ) );
+        	Item[i].ReceiveHq = new bool[2];
+        	for (int ReceiveHqIndexer = 0; ReceiveHqIndexer < 2; ReceiveHqIndexer++)
+        		Item[i].ReceiveHq[ReceiveHqIndexer] = parser.ReadOffset< bool >( (ushort) ( i * 96 + 97 + ReceiveHqIndexer * 1 ) );
         }
         Quest = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 5764 ), language );
         Unknown0 = parser.ReadOffset< uint >( 5768 );

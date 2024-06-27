@@ -12,39 +12,39 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class CSBonusContent : ExcelRow
 {
     
-    public int Unknown0 { get; private set; }
-    public int Unknown1 { get; private set; }
-    public int Unknown2 { get; private set; }
-    public int Unknown3 { get; private set; }
-    public int Unknown4 { get; private set; }
-    public ushort Unknown5 { get; private set; }
-    public ushort Unknown6 { get; private set; }
-    public ushort Unknown7 { get; private set; }
-    public byte Unknown8 { get; private set; }
-    public byte Unknown9 { get; private set; }
-    public byte Unknown10 { get; private set; }
-    public byte Unknown11 { get; private set; }
-    public byte Unknown12 { get; private set; }
-    public byte Unknown13 { get; private set; }
+    public int Score1 { get; private set; }
+    public int Score2 { get; private set; }
+    public int Score3 { get; private set; }
+    public int Score4 { get; private set; }
+    public int Score5 { get; private set; }
+    public LazyRow< CSBonusContentIdentifier > Content0 { get; private set; }
+    public LazyRow< CSBonusContentIdentifier > Content1 { get; private set; }
+    public ushort Score0 { get; private set; }
+    public LazyRow< CSBonusContentType > ContentType { get; private set; }
+    public byte RewardCount0 { get; private set; }
+    public byte RewardCount1 { get; private set; }
+    public byte RewardCount2 { get; private set; }
+    public byte RewardCount3 { get; private set; }
+    public byte RewardCount4 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown0 = parser.ReadOffset< int >( 0 );
-        Unknown1 = parser.ReadOffset< int >( 4 );
-        Unknown2 = parser.ReadOffset< int >( 8 );
-        Unknown3 = parser.ReadOffset< int >( 12 );
-        Unknown4 = parser.ReadOffset< int >( 16 );
-        Unknown5 = parser.ReadOffset< ushort >( 20 );
-        Unknown6 = parser.ReadOffset< ushort >( 22 );
-        Unknown7 = parser.ReadOffset< ushort >( 24 );
-        Unknown8 = parser.ReadOffset< byte >( 26 );
-        Unknown9 = parser.ReadOffset< byte >( 27 );
-        Unknown10 = parser.ReadOffset< byte >( 28 );
-        Unknown11 = parser.ReadOffset< byte >( 29 );
-        Unknown12 = parser.ReadOffset< byte >( 30 );
-        Unknown13 = parser.ReadOffset< byte >( 31 );
+        Score1 = parser.ReadOffset< int >( 0 );
+        Score2 = parser.ReadOffset< int >( 4 );
+        Score3 = parser.ReadOffset< int >( 8 );
+        Score4 = parser.ReadOffset< int >( 12 );
+        Score5 = parser.ReadOffset< int >( 16 );
+        Content0 = new LazyRow< CSBonusContentIdentifier >( gameData, parser.ReadOffset< ushort >( 20 ), language );
+        Content1 = new LazyRow< CSBonusContentIdentifier >( gameData, parser.ReadOffset< ushort >( 22 ), language );
+        Score0 = parser.ReadOffset< ushort >( 24 );
+        ContentType = new LazyRow< CSBonusContentType >( gameData, parser.ReadOffset< byte >( 26 ), language );
+        RewardCount0 = parser.ReadOffset< byte >( 27 );
+        RewardCount1 = parser.ReadOffset< byte >( 28 );
+        RewardCount2 = parser.ReadOffset< byte >( 29 );
+        RewardCount3 = parser.ReadOffset< byte >( 30 );
+        RewardCount4 = parser.ReadOffset< byte >( 31 );
         
 
     }

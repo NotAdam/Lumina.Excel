@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ShellFixedFromCommand", columnHash: 0xde380e3e )]
+    [Sheet( "ShellFixedFromCommand", columnHash: 0x219477f2 )]
     public partial class ShellFixedFromCommand : ExcelRow
     {
         
@@ -18,11 +18,11 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown5 { get; set; }
         public uint Unknown6 { get; set; }
         public byte Unknown7 { get; set; }
-        public SeString Unknown8 { get; set; }
-        public SeString Unknown9 { get; set; }
-        public SeString Unknown10 { get; set; }
-        public SeString Unknown11 { get; set; }
-        public SeString Unknown12 { get; set; }
+        public ulong Unknown8 { get; set; }
+        public ulong Unknown9 { get; set; }
+        public ulong Unknown10 { get; set; }
+        public ulong Unknown11 { get; set; }
+        public ulong Unknown12 { get; set; }
         public byte Unknown13 { get; set; }
         public byte Unknown14 { get; set; }
         public byte Unknown15 { get; set; }
@@ -45,11 +45,11 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown5 = parser.ReadColumn< bool >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );
             Unknown7 = parser.ReadColumn< byte >( 7 );
-            Unknown8 = parser.ReadColumn< SeString >( 8 );
-            Unknown9 = parser.ReadColumn< SeString >( 9 );
-            Unknown10 = parser.ReadColumn< SeString >( 10 );
-            Unknown11 = parser.ReadColumn< SeString >( 11 );
-            Unknown12 = parser.ReadColumn< SeString >( 12 );
+            Unknown8 = parser.ReadColumn< ulong >( 8 );
+            Unknown9 = parser.ReadColumn< ulong >( 9 );
+            Unknown10 = parser.ReadColumn< ulong >( 10 );
+            Unknown11 = parser.ReadColumn< ulong >( 11 );
+            Unknown12 = parser.ReadColumn< ulong >( 12 );
             Unknown13 = parser.ReadColumn< byte >( 13 );
             Unknown14 = parser.ReadColumn< byte >( 14 );
             Unknown15 = parser.ReadColumn< byte >( 15 );

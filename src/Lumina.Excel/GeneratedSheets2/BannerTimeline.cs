@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "BannerTimeline", columnHash: 0xdb953b5e )]
+[Sheet( "BannerTimeline", columnHash: 0xc47e00f1 )]
 public partial class BannerTimeline : ExcelRow
 {
     
@@ -16,6 +16,8 @@ public partial class BannerTimeline : ExcelRow
     public ILazyRow AdditionalData { get; private set; }
     public int Icon { get; private set; }
     public LazyRow< BannerCondition > UnlockCondition { get; private set; }
+    public ushort Unknown_70_1 { get; private set; }
+    public ushort Unknown_70_2 { get; private set; }
     public ushort SortKey { get; private set; }
     public byte Type { get; private set; }
     public LazyRow< ClassJobCategory > AcceptClassJobCategory { get; private set; }
@@ -29,10 +31,12 @@ public partial class BannerTimeline : ExcelRow
         var AdditionalDataRowId = parser.ReadOffset< uint >( 4 );
         Icon = parser.ReadOffset< int >( 8 );
         UnlockCondition = new LazyRow< BannerCondition >( gameData, parser.ReadOffset< ushort >( 12 ), language );
-        SortKey = parser.ReadOffset< ushort >( 14 );
-        Type = parser.ReadOffset< byte >( 16 );
-        AcceptClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 17 ), language );
-        Category = parser.ReadOffset< byte >( 18 );
+        Unknown_70_1 = parser.ReadOffset< ushort >( 14 );
+        Unknown_70_2 = parser.ReadOffset< ushort >( 16 );
+        SortKey = parser.ReadOffset< ushort >( 18 );
+        Type = parser.ReadOffset< byte >( 20 );
+        AcceptClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadOffset< byte >( 21 ), language );
+        Category = parser.ReadOffset< byte >( 22 );
         
         AdditionalData = Type switch
         {

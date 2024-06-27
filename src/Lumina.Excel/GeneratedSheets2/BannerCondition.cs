@@ -27,7 +27,7 @@ public partial class BannerCondition : ExcelRow
     {
         base.PopulateData( parser, gameData, language );
 
-        var UnlockCriteria1 = new ILazyRow[ 6 ];
+        UnlockCriteria1 = new ILazyRow[ 6 ];
         UIntSpan UnlockCriteria1RowId = stackalloc uint[ 6 ];
         for( int i = 0; i < 6; i++ )
         {

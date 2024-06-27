@@ -40,7 +40,7 @@ public partial class Achievement : ExcelRow
         Description = parser.ReadOffset< SeString >( 4 );
         Item = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( 8 ), language );
         var KeyRowId = parser.ReadOffset< int >( 12 );
-        var Data = new ILazyRow[ 8 ];
+        Data = new ILazyRow[ 8 ];
         UIntSpan DataRowId = stackalloc uint[ 8 ];
         for( int i = 0; i < 8; i++ )
         {

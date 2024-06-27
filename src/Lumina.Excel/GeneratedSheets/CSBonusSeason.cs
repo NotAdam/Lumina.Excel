@@ -15,13 +15,9 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown2 { get; set; }
         public bool Unknown3 { get; set; }
         public bool Unknown4 { get; set; }
-        public uint Unknown5 { get; set; }
-        public ushort Unknown6 { get; set; }
-        public ushort Unknown7 { get; set; }
-        public ushort Unknown8 { get; set; }
-        public ushort Unknown9 { get; set; }
-        public byte Unknown10 { get; set; }
-        public byte Unknown11 { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public ushort[] Category { get; set; }
+        public LazyRow< CSBonusTextData >[] Text { get; set; }
         public byte Unknown12 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -33,13 +29,13 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown2 = parser.ReadColumn< ushort >( 2 );
             Unknown3 = parser.ReadColumn< bool >( 3 );
             Unknown4 = parser.ReadColumn< bool >( 4 );
-            Unknown5 = parser.ReadColumn< uint >( 5 );
-            Unknown6 = parser.ReadColumn< ushort >( 6 );
-            Unknown7 = parser.ReadColumn< ushort >( 7 );
-            Unknown8 = parser.ReadColumn< ushort >( 8 );
-            Unknown9 = parser.ReadColumn< ushort >( 9 );
-            Unknown10 = parser.ReadColumn< byte >( 10 );
-            Unknown11 = parser.ReadColumn< byte >( 11 );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 5 ), language );
+            Category = new ushort[ 4 ];
+            for( var i = 0; i < 4; i++ )
+                Category[ i ] = parser.ReadColumn< ushort >( 6 + i );
+            Text = new LazyRow< CSBonusTextData >[ 2 ];
+            for( var i = 0; i < 2; i++ )
+                Text[ i ] = new LazyRow< CSBonusTextData >( gameData, parser.ReadColumn< byte >( 10 + i ), language );
             Unknown12 = parser.ReadColumn< byte >( 12 );
         }
     }

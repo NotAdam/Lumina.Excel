@@ -13,10 +13,10 @@ public partial class GatheringItem : ExcelRow
 {
     
     public uint Unknown0 { get; private set; }
-    public uint Unknown1 { get; private set; }
+    public LazyRow< GatheringItem > SublimeVariant { get; private set; }
     public ILazyRow Item { get; private set; }
     public LazyRow< GatheringItemLevelConvertTable > GatheringItemLevel { get; private set; }
-    public LazyRow< Quest > Quest { get; private set; }
+    public ushort PerceptionReq { get; private set; }
     public ushort Unknown2 { get; private set; }
     public byte Unknown3 { get; private set; }
     public bool Unknown4 { get; private set; }
@@ -27,10 +27,10 @@ public partial class GatheringItem : ExcelRow
         base.PopulateData( parser, gameData, language );
 
         Unknown0 = parser.ReadOffset< uint >( 0 );
-        Unknown1 = parser.ReadOffset< uint >( 4 );
+        SublimeVariant = new LazyRow< GatheringItem >( gameData, parser.ReadOffset< uint >( 4 ), language );
         Item = EmptyLazyRow.GetFirstLazyRowOrEmpty( gameData, (uint) parser.ReadOffset< int >( 8 ), language, "Item", "EventItem" );
         GatheringItemLevel = new LazyRow< GatheringItemLevelConvertTable >( gameData, parser.ReadOffset< ushort >( 12 ), language );
-        Quest = new LazyRow< Quest >( gameData, parser.ReadOffset< ushort >( 14 ), language );
+        PerceptionReq = parser.ReadOffset< ushort >( 14 );
         Unknown2 = parser.ReadOffset< ushort >( 16 );
         Unknown3 = parser.ReadOffset< byte >( 18 );
         Unknown4 = parser.ReadOffset< bool >( 19 );

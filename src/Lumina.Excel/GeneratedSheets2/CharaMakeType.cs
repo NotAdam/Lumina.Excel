@@ -23,6 +23,16 @@ public partial class CharaMakeType : ExcelRow
     	public byte LookAt { get; internal set; }
     	public byte[] SubMenuGraphic { get; internal set; }
     }
+    public struct FacialFeatureOptionStruct
+    {
+    	public int Option1 { get; internal set; }
+    	public int Option2 { get; internal set; }
+    	public int Option3 { get; internal set; }
+    	public int Option4 { get; internal set; }
+    	public int Option5 { get; internal set; }
+    	public int Option6 { get; internal set; }
+    	public int Option7 { get; internal set; }
+    }
     public struct EquipmentStruct
     {
     	public ulong Helmet { get; internal set; }
@@ -36,7 +46,7 @@ public partial class CharaMakeType : ExcelRow
     
     public CharaMakeStructStruct[] CharaMakeStruct { get; private set; }
     public byte[] VoiceStruct { get; private set; }
-    public int[] FacialFeatureOption { get; private set; }
+    public FacialFeatureOptionStruct[] FacialFeatureOption { get; private set; }
     public EquipmentStruct[] Equipment { get; private set; }
     public LazyRow< Race > Race { get; private set; }
     public LazyRow< Tribe > Tribe { get; private set; }
@@ -66,9 +76,17 @@ public partial class CharaMakeType : ExcelRow
         VoiceStruct = new byte[12];
         for (int i = 0; i < 12; i++)
         	VoiceStruct[i] = parser.ReadOffset< byte >( 11984 + i * 1 );
-        FacialFeatureOption = new int[8];
+        FacialFeatureOption = new FacialFeatureOptionStruct[8];
         for (int i = 0; i < 8; i++)
-        	FacialFeatureOption[i] = parser.ReadOffset< int >( 11996 + i * 4 );
+        {
+        	FacialFeatureOption[i].Option1 = parser.ReadOffset< int >( (ushort) (i * 28 + 11996));
+        	FacialFeatureOption[i].Option2 = parser.ReadOffset< int >( (ushort) (i * 28 + 12000));
+        	FacialFeatureOption[i].Option3 = parser.ReadOffset< int >( (ushort) (i * 28 + 12004));
+        	FacialFeatureOption[i].Option4 = parser.ReadOffset< int >( (ushort) (i * 28 + 12008));
+        	FacialFeatureOption[i].Option5 = parser.ReadOffset< int >( (ushort) (i * 28 + 12012));
+        	FacialFeatureOption[i].Option6 = parser.ReadOffset< int >( (ushort) (i * 28 + 12016));
+        	FacialFeatureOption[i].Option7 = parser.ReadOffset< int >( (ushort) (i * 28 + 12020));
+        }
         Equipment = new EquipmentStruct[3];
         for (int i = 0; i < 3; i++)
         {

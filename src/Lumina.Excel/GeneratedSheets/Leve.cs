@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Leve", columnHash: 0xb1795a98 )]
+    [Sheet( "Leve", columnHash: 0xdab38bf5 )]
     public partial class Leve : ExcelRow
     {
         
@@ -19,15 +19,12 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort ClassJobLevel { get; set; }
         public byte TimeLimit { get; set; }
         public byte AllowanceCost { get; set; }
-        public int Evaluation { get; set; }
         public LazyRow< PlaceName > PlaceNameStart { get; set; }
         public LazyRow< PlaceName > PlaceNameIssued { get; set; }
         public LazyRow< FishingSpot > FishingSpot { get; set; }
-        public byte Unknown13 { get; set; }
-        public bool Unknown14 { get; set; }
+        public byte Unknown12 { get; set; }
         public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
         public LazyRow< JournalGenre > JournalGenre { get; set; }
-        public int Unknown17 { get; set; }
         public LazyRow< PlaceName > PlaceNameStartZone { get; set; }
         public int IconCityState { get; set; }
         public int DataId { get; set; }
@@ -58,31 +55,28 @@ namespace Lumina.Excel.GeneratedSheets
             ClassJobLevel = parser.ReadColumn< ushort >( 6 );
             TimeLimit = parser.ReadColumn< byte >( 7 );
             AllowanceCost = parser.ReadColumn< byte >( 8 );
-            Evaluation = parser.ReadColumn< int >( 9 );
-            PlaceNameStart = new LazyRow< PlaceName >( gameData, parser.ReadColumn< int >( 10 ), language );
-            PlaceNameIssued = new LazyRow< PlaceName >( gameData, parser.ReadColumn< int >( 11 ), language );
-            FishingSpot = new LazyRow< FishingSpot >( gameData, parser.ReadColumn< ushort >( 12 ), language );
-            Unknown13 = parser.ReadColumn< byte >( 13 );
-            Unknown14 = parser.ReadColumn< bool >( 14 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 15 ), language );
-            JournalGenre = new LazyRow< JournalGenre >( gameData, parser.ReadColumn< uint >( 16 ), language );
-            Unknown17 = parser.ReadColumn< int >( 17 );
-            PlaceNameStartZone = new LazyRow< PlaceName >( gameData, parser.ReadColumn< int >( 18 ), language );
-            IconCityState = parser.ReadColumn< int >( 19 );
-            DataId = parser.ReadColumn< int >( 20 );
-            CanCancel = parser.ReadColumn< bool >( 21 );
-            MaxDifficulty = parser.ReadColumn< byte >( 22 );
-            ExpFactor = parser.ReadColumn< float >( 23 );
-            ExpReward = parser.ReadColumn< uint >( 24 );
-            GilReward = parser.ReadColumn< uint >( 25 );
-            LeveRewardItem = new LazyRow< LeveRewardItem >( gameData, parser.ReadColumn< ushort >( 26 ), language );
-            LeveVfx = new LazyRow< LeveVfx >( gameData, parser.ReadColumn< byte >( 27 ), language );
-            LeveVfxFrame = new LazyRow< LeveVfx >( gameData, parser.ReadColumn< byte >( 28 ), language );
-            LevelLevemete = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 29 ), language );
-            IconIssuer = parser.ReadColumn< int >( 30 );
-            LockedLeve = parser.ReadColumn< bool >( 31 );
-            LevelStart = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 32 ), language );
-            BGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 33 ), language );
+            PlaceNameStart = new LazyRow< PlaceName >( gameData, parser.ReadColumn< int >( 9 ), language );
+            PlaceNameIssued = new LazyRow< PlaceName >( gameData, parser.ReadColumn< int >( 10 ), language );
+            FishingSpot = new LazyRow< FishingSpot >( gameData, parser.ReadColumn< ushort >( 11 ), language );
+            Unknown12 = parser.ReadColumn< byte >( 12 );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 13 ), language );
+            JournalGenre = new LazyRow< JournalGenre >( gameData, parser.ReadColumn< uint >( 14 ), language );
+            PlaceNameStartZone = new LazyRow< PlaceName >( gameData, parser.ReadColumn< int >( 15 ), language );
+            IconCityState = parser.ReadColumn< int >( 16 );
+            DataId = parser.ReadColumn< int >( 17 );
+            CanCancel = parser.ReadColumn< bool >( 18 );
+            MaxDifficulty = parser.ReadColumn< byte >( 19 );
+            ExpFactor = parser.ReadColumn< float >( 20 );
+            ExpReward = parser.ReadColumn< uint >( 21 );
+            GilReward = parser.ReadColumn< uint >( 22 );
+            LeveRewardItem = new LazyRow< LeveRewardItem >( gameData, parser.ReadColumn< ushort >( 23 ), language );
+            LeveVfx = new LazyRow< LeveVfx >( gameData, parser.ReadColumn< byte >( 24 ), language );
+            LeveVfxFrame = new LazyRow< LeveVfx >( gameData, parser.ReadColumn< byte >( 25 ), language );
+            LevelLevemete = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 26 ), language );
+            IconIssuer = parser.ReadColumn< int >( 27 );
+            LockedLeve = parser.ReadColumn< bool >( 28 );
+            LevelStart = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 29 ), language );
+            BGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 30 ), language );
         }
     }
 }

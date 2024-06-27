@@ -8,57 +8,31 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "TelepoRelay", columnHash: 0x0df60fef )]
+[Sheet( "TelepoRelay", columnHash: 0xcafd686e )]
 public partial class TelepoRelay : ExcelRow
 {
+    public struct RelaysStruct
+    {
+    	public LazyRow< TerritoryType > EnterTerritory { get; internal set; }
+    	public LazyRow< TerritoryType > ExitTerritory { get; internal set; }
+    	public ushort Cost { get; internal set; }
+    }
     
-    public ushort Unknown0 { get; private set; }
-    public ushort Unknown1 { get; private set; }
-    public ushort Unknown2 { get; private set; }
-    public ushort Unknown3 { get; private set; }
-    public ushort Unknown4 { get; private set; }
-    public ushort Unknown5 { get; private set; }
-    public ushort Unknown6 { get; private set; }
-    public ushort Unknown7 { get; private set; }
-    public ushort Unknown8 { get; private set; }
-    public ushort Unknown9 { get; private set; }
-    public ushort Unknown10 { get; private set; }
-    public ushort Unknown11 { get; private set; }
-    public ushort Unknown12 { get; private set; }
-    public ushort Unknown13 { get; private set; }
-    public ushort Unknown14 { get; private set; }
-    public ushort Unknown15 { get; private set; }
-    public ushort Unknown16 { get; private set; }
-    public ushort Unknown17 { get; private set; }
-    public ushort Unknown18 { get; private set; }
-    public ushort Unknown19 { get; private set; }
-    public ushort Unknown20 { get; private set; }
+    public RelaysStruct[] Relays { get; private set; }
+    public uint Unknown_70 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown0 = parser.ReadOffset< ushort >( 0 );
-        Unknown1 = parser.ReadOffset< ushort >( 2 );
-        Unknown2 = parser.ReadOffset< ushort >( 4 );
-        Unknown3 = parser.ReadOffset< ushort >( 6 );
-        Unknown4 = parser.ReadOffset< ushort >( 8 );
-        Unknown5 = parser.ReadOffset< ushort >( 10 );
-        Unknown6 = parser.ReadOffset< ushort >( 12 );
-        Unknown7 = parser.ReadOffset< ushort >( 14 );
-        Unknown8 = parser.ReadOffset< ushort >( 16 );
-        Unknown9 = parser.ReadOffset< ushort >( 18 );
-        Unknown10 = parser.ReadOffset< ushort >( 20 );
-        Unknown11 = parser.ReadOffset< ushort >( 22 );
-        Unknown12 = parser.ReadOffset< ushort >( 24 );
-        Unknown13 = parser.ReadOffset< ushort >( 26 );
-        Unknown14 = parser.ReadOffset< ushort >( 28 );
-        Unknown15 = parser.ReadOffset< ushort >( 30 );
-        Unknown16 = parser.ReadOffset< ushort >( 32 );
-        Unknown17 = parser.ReadOffset< ushort >( 34 );
-        Unknown18 = parser.ReadOffset< ushort >( 36 );
-        Unknown19 = parser.ReadOffset< ushort >( 38 );
-        Unknown20 = parser.ReadOffset< ushort >( 40 );
+        Relays = new RelaysStruct[8];
+        for (int i = 0; i < 8; i++)
+        {
+        	Relays[i].EnterTerritory = new LazyRow< TerritoryType >( gameData, parser.ReadOffset< ushort >( (ushort) (i * 6 + 0) ), language );
+        	Relays[i].ExitTerritory = new LazyRow< TerritoryType >( gameData, parser.ReadOffset< ushort >( (ushort) (i * 6 + 2) ), language );
+        	Relays[i].Cost = parser.ReadOffset< ushort >( (ushort) (i * 6 + 4));
+        }
+        Unknown_70 = parser.ReadOffset< uint >( 48 );
         
 
     }

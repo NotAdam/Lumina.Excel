@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "Quest", columnHash: 0x73334779 )]
+[Sheet( "Quest", columnHash: 0x1f8c7430 )]
 public partial class Quest : ExcelRow
 {
     public struct QuestParamsStruct
@@ -123,6 +123,7 @@ public partial class Quest : ExcelRow
     public byte RepeatIntervalType { get; private set; }
     public LazyRow< QuestRepeatFlag > QuestRepeatFlag { get; private set; }
     public byte Type { get; private set; }
+    public byte Unknown_70 { get; private set; }
     public byte LevelMax { get; private set; }
     public LazyRow< ClassJob > ClassJobRequired { get; private set; }
     public LazyRow< QuestRewardOther > QuestRewardOtherDisplay { get; private set; }
@@ -181,7 +182,7 @@ public partial class Quest : ExcelRow
         GilReward = parser.ReadOffset< uint >( 2292 );
         CurrencyReward = new LazyRow< Item >( gameData, parser.ReadOffset< uint >( 2296 ), language );
         CurrencyRewardCount = parser.ReadOffset< uint >( 2300 );
-        var Reward = new ILazyRow[ 7 ];
+        Reward = new ILazyRow[ 7 ];
         UIntSpan RewardRowId = stackalloc uint[ 7 ];
         for( int i = 0; i < 7; i++ )
         {
@@ -287,19 +288,20 @@ public partial class Quest : ExcelRow
         RepeatIntervalType = parser.ReadOffset< byte >( 2525 );
         QuestRepeatFlag = new LazyRow< QuestRepeatFlag >( gameData, parser.ReadOffset< byte >( 2526 ), language );
         Type = parser.ReadOffset< byte >( 2527 );
-        LevelMax = parser.ReadOffset< byte >( 2528 );
-        ClassJobRequired = new LazyRow< ClassJob >( gameData, parser.ReadOffset< byte >( 2529 ), language );
-        QuestRewardOtherDisplay = new LazyRow< QuestRewardOther >( gameData, parser.ReadOffset< byte >( 2530 ), language );
-        Unknown10 = parser.ReadOffset< byte >( 2531 );
-        EventIconType = new LazyRow< EventIconType >( gameData, parser.ReadOffset< byte >( 2532 ), language );
-        Unknown11 = parser.ReadOffset< byte >( 2533 );
-        IsHouseRequired = parser.ReadOffset< bool >( 2534 );
-        IsRepeatable = parser.ReadOffset< bool >( 2534, 2 );
-        CanCancel = parser.ReadOffset< bool >( 2534, 4 );
-        Introduction = parser.ReadOffset< bool >( 2534, 8 );
-        HideOfferIcon = parser.ReadOffset< bool >( 2534, 16 );
-        Unknown12 = parser.ReadOffset< bool >( 2534, 32 );
-        Unknown13 = parser.ReadOffset< bool >( 2534, 64 );
+        Unknown_70 = parser.ReadOffset< byte >( 2528 );
+        LevelMax = parser.ReadOffset< byte >( 2529 );
+        ClassJobRequired = new LazyRow< ClassJob >( gameData, parser.ReadOffset< byte >( 2530 ), language );
+        QuestRewardOtherDisplay = new LazyRow< QuestRewardOther >( gameData, parser.ReadOffset< byte >( 2531 ), language );
+        Unknown10 = parser.ReadOffset< byte >( 2532 );
+        EventIconType = new LazyRow< EventIconType >( gameData, parser.ReadOffset< byte >( 2533 ), language );
+        Unknown11 = parser.ReadOffset< byte >( 2534 );
+        IsHouseRequired = parser.ReadOffset< bool >( 2535 );
+        IsRepeatable = parser.ReadOffset< bool >( 2535, 2 );
+        CanCancel = parser.ReadOffset< bool >( 2535, 4 );
+        Introduction = parser.ReadOffset< bool >( 2535, 8 );
+        HideOfferIcon = parser.ReadOffset< bool >( 2535, 16 );
+        Unknown12 = parser.ReadOffset< bool >( 2535, 32 );
+        Unknown13 = parser.ReadOffset< bool >( 2535, 64 );
         
         for( int i = 0; i < 7; i++ )
         {

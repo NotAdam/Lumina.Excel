@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "InstanceContent", columnHash: 0xa1adecb4 )]
+[Sheet( "InstanceContent", columnHash: 0xd00494fa )]
 public partial class InstanceContent : ExcelRow
 {
     
@@ -50,6 +50,7 @@ public partial class InstanceContent : ExcelRow
     public ushort Unknown6 { get; private set; }
     public ushort Unknown7 { get; private set; }
     public ushort Unknown8 { get; private set; }
+    public ushort Unknown_70 { get; private set; }
     public short PartyCondition { get; private set; }
     public LazyRow< InstanceContentType > InstanceContentType { get; private set; }
     public byte WeekRestriction { get; private set; }
@@ -116,21 +117,22 @@ public partial class InstanceContent : ExcelRow
         Unknown6 = parser.ReadOffset< ushort >( 148 );
         Unknown7 = parser.ReadOffset< ushort >( 150 );
         Unknown8 = parser.ReadOffset< ushort >( 152 );
-        PartyCondition = parser.ReadOffset< short >( 154 );
-        InstanceContentType = new LazyRow< InstanceContentType >( gameData, parser.ReadOffset< byte >( 156 ), language );
-        WeekRestriction = parser.ReadOffset< byte >( 157 );
-        Colosseum = new LazyRow< Colosseum >( gameData, parser.ReadOffset< byte >( 158 ), language );
-        Unknown9 = parser.ReadOffset< byte >( 159 );
-        Unknown10 = parser.ReadOffset< byte >( 160 );
-        Unknown11 = parser.ReadOffset< byte >( 161 );
-        Unknown12 = parser.ReadOffset< byte >( 162 );
-        Unknown19 = parser.ReadOffset< byte >( 163 );
-        Unknown13 = parser.ReadOffset< byte >( 164 );
-        Unknown14 = parser.ReadOffset< bool >( 165 );
-        Unknown15 = parser.ReadOffset< bool >( 165, 2 );
-        Unknown16 = parser.ReadOffset< bool >( 165, 4 );
-        Unknown17 = parser.ReadOffset< bool >( 165, 8 );
-        Unknown18 = parser.ReadOffset< bool >( 165, 16 );
+        Unknown_70 = parser.ReadOffset< ushort >( 154 );
+        PartyCondition = parser.ReadOffset< short >( 156 );
+        InstanceContentType = new LazyRow< InstanceContentType >( gameData, parser.ReadOffset< byte >( 158 ), language );
+        WeekRestriction = parser.ReadOffset< byte >( 159 );
+        Colosseum = new LazyRow< Colosseum >( gameData, parser.ReadOffset< byte >( 160 ), language );
+        Unknown9 = parser.ReadOffset< byte >( 161 );
+        Unknown10 = parser.ReadOffset< byte >( 162 );
+        Unknown11 = parser.ReadOffset< byte >( 163 );
+        Unknown12 = parser.ReadOffset< byte >( 164 );
+        Unknown19 = parser.ReadOffset< byte >( 165 );
+        Unknown13 = parser.ReadOffset< byte >( 166 );
+        Unknown14 = parser.ReadOffset< bool >( 167 );
+        Unknown15 = parser.ReadOffset< bool >( 167, 2 );
+        Unknown16 = parser.ReadOffset< bool >( 167, 4 );
+        Unknown17 = parser.ReadOffset< bool >( 167, 8 );
+        Unknown18 = parser.ReadOffset< bool >( 167, 16 );
         
 
     }

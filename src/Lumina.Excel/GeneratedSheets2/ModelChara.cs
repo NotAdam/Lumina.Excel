@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "ModelChara", columnHash: 0x89b148f4 )]
+[Sheet( "ModelChara", columnHash: 0x25b9b3e2 )]
 public partial class ModelChara : ExcelRow
 {
     
@@ -24,6 +24,7 @@ public partial class ModelChara : ExcelRow
     public byte Unknown4 { get; private set; }
     public byte Unknown5 { get; private set; }
     public byte Unknown14 { get; private set; }
+    public byte Unknown_70 { get; private set; }
     public sbyte Unknown6 { get; private set; }
     public bool Unknown7 { get; private set; }
     public bool PapVariation { get; private set; }
@@ -50,15 +51,16 @@ public partial class ModelChara : ExcelRow
         Unknown4 = parser.ReadOffset< byte >( 17 );
         Unknown5 = parser.ReadOffset< byte >( 18 );
         Unknown14 = parser.ReadOffset< byte >( 19 );
-        Unknown6 = parser.ReadOffset< sbyte >( 20 );
-        Unknown7 = parser.ReadOffset< bool >( 21 );
-        PapVariation = parser.ReadOffset< bool >( 21, 2 );
-        Unknown8 = parser.ReadOffset< bool >( 21, 4 );
-        Unknown9 = parser.ReadOffset< bool >( 21, 8 );
-        Unknown10 = parser.ReadOffset< bool >( 21, 16 );
-        Unknown11 = parser.ReadOffset< bool >( 21, 32 );
-        Unknown12 = parser.ReadOffset< bool >( 21, 64 );
-        Unknown13 = parser.ReadOffset< bool >( 21, 128 );
+        Unknown_70 = parser.ReadOffset< byte >( 20 );
+        Unknown6 = parser.ReadOffset< sbyte >( 21 );
+        Unknown7 = parser.ReadOffset< bool >( 22 );
+        PapVariation = parser.ReadOffset< bool >( 22, 2 );
+        Unknown8 = parser.ReadOffset< bool >( 22, 4 );
+        Unknown9 = parser.ReadOffset< bool >( 22, 8 );
+        Unknown10 = parser.ReadOffset< bool >( 22, 16 );
+        Unknown11 = parser.ReadOffset< bool >( 22, 32 );
+        Unknown12 = parser.ReadOffset< bool >( 22, 64 );
+        Unknown13 = parser.ReadOffset< bool >( 22, 128 );
         
 
     }

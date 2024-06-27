@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentRoulette", columnHash: 0xd2a22d99 )]
+    [Sheet( "ContentRoulette", columnHash: 0x9510a340 )]
     public partial class ContentRoulette : ExcelRow
     {
         
@@ -24,8 +24,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte RequiredLevel { get; set; }
         public byte Unknown12 { get; set; }
         public ushort ItemLevelRequired { get; set; }
-        public ushort Unknown14 { get; set; }
-        public int Unknown15 { get; set; }
+        public bool Unknown14 { get; set; }
+        public ushort Unknown15 { get; set; }
         public uint Icon { get; set; }
         public LazyRow< ContentRouletteRoleBonus > ContentRouletteRoleBonus { get; set; }
         public ushort RewardTomeA { get; set; }
@@ -75,8 +75,8 @@ namespace Lumina.Excel.GeneratedSheets
             RequiredLevel = parser.ReadColumn< byte >( 11 );
             Unknown12 = parser.ReadColumn< byte >( 12 );
             ItemLevelRequired = parser.ReadColumn< ushort >( 13 );
-            Unknown14 = parser.ReadColumn< ushort >( 14 );
-            Unknown15 = parser.ReadColumn< int >( 15 );
+            Unknown14 = parser.ReadColumn< bool >( 14 );
+            Unknown15 = parser.ReadColumn< ushort >( 15 );
             Icon = parser.ReadColumn< uint >( 16 );
             ContentRouletteRoleBonus = new LazyRow< ContentRouletteRoleBonus >( gameData, parser.ReadColumn< byte >( 17 ), language );
             RewardTomeA = parser.ReadColumn< ushort >( 18 );

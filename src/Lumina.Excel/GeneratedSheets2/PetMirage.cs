@@ -73,8 +73,8 @@ public partial class PetMirage : ExcelRow
     public ushort Unknown57 { get; private set; }
     public ushort Unknown58 { get; private set; }
     public byte Unknown59 { get; private set; }
-    public float Unknown60 { get; private set; }
-    public ushort Unknown61 { get; private set; }
+    public float Scale { get; private set; }
+    public LazyRow< ModelChara > ModelChara { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
@@ -141,8 +141,8 @@ public partial class PetMirage : ExcelRow
         Unknown57 = parser.ReadOffset< ushort >( 118 );
         Unknown58 = parser.ReadOffset< ushort >( 120 );
         Unknown59 = parser.ReadOffset< byte >( 122 );
-        Unknown60 = parser.ReadOffset< float >( 124 );
-        Unknown61 = parser.ReadOffset< ushort >( 128 );
+        Scale = parser.ReadOffset< float >( 124 );
+        ModelChara = new LazyRow< ModelChara >( gameData, parser.ReadOffset< ushort >( 128 ), language );
         
 
     }

@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "LogMessage", columnHash: 0xf3a6d024 )]
+[Sheet( "LogMessage", columnHash: 0x8a9fe863 )]
 public partial class LogMessage : ExcelRow
 {
     
@@ -16,6 +16,7 @@ public partial class LogMessage : ExcelRow
     public ushort LogKind { get; private set; }
     public ushort Unknown0 { get; private set; }
     public byte Unknown1 { get; private set; }
+    public byte Unknown_70 { get; private set; }
     public bool Unknown2 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -26,7 +27,8 @@ public partial class LogMessage : ExcelRow
         LogKind = parser.ReadOffset< ushort >( 4 );
         Unknown0 = parser.ReadOffset< ushort >( 6 );
         Unknown1 = parser.ReadOffset< byte >( 8 );
-        Unknown2 = parser.ReadOffset< bool >( 9 );
+        Unknown_70 = parser.ReadOffset< byte >( 9 );
+        Unknown2 = parser.ReadOffset< bool >( 10 );
         
 
     }

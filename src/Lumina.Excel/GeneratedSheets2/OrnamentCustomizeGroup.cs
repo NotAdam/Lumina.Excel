@@ -8,7 +8,7 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "OrnamentCustomizeGroup", columnHash: 0x39b0074b )]
+[Sheet( "OrnamentCustomizeGroup", columnHash: 0x90fd7146 )]
 public partial class OrnamentCustomizeGroup : ExcelRow
 {
     
@@ -27,6 +27,7 @@ public partial class OrnamentCustomizeGroup : ExcelRow
     public ushort Unknown12 { get; private set; }
     public ushort Unknown13 { get; private set; }
     public ushort Unknown14 { get; private set; }
+    public ushort Unknown_70 { get; private set; }
     public ushort Unknown15 { get; private set; }
     public ushort Unknown16 { get; private set; }
     public ushort Unknown17 { get; private set; }
@@ -51,10 +52,11 @@ public partial class OrnamentCustomizeGroup : ExcelRow
         Unknown12 = parser.ReadOffset< ushort >( 24 );
         Unknown13 = parser.ReadOffset< ushort >( 26 );
         Unknown14 = parser.ReadOffset< ushort >( 28 );
-        Unknown15 = parser.ReadOffset< ushort >( 30 );
-        Unknown16 = parser.ReadOffset< ushort >( 32 );
-        Unknown17 = parser.ReadOffset< ushort >( 34 );
-        Unknown18 = parser.ReadOffset< byte >( 36 );
+        Unknown_70 = parser.ReadOffset< ushort >( 30 );
+        Unknown15 = parser.ReadOffset< ushort >( 32 );
+        Unknown16 = parser.ReadOffset< ushort >( 34 );
+        Unknown17 = parser.ReadOffset< ushort >( 36 );
+        Unknown18 = parser.ReadOffset< byte >( 38 );
         
 
     }

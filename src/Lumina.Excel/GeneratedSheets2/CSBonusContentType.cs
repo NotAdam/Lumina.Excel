@@ -8,41 +8,31 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "CSBonusContentType", columnHash: 0xdb38341a )]
+[Sheet( "CSBonusContentType", columnHash: 0x9ff5145f )]
 public partial class CSBonusContentType : ExcelRow
 {
     
-    public uint Unknown0 { get; private set; }
-    public uint Unknown1 { get; private set; }
-    public uint Unknown2 { get; private set; }
-    public uint Unknown3 { get; private set; }
-    public uint Unknown4 { get; private set; }
-    public uint Unknown5 { get; private set; }
-    public uint Unknown6 { get; private set; }
-    public uint Unknown7 { get; private set; }
-    public uint Unknown8 { get; private set; }
-    public uint Unknown9 { get; private set; }
-    public byte Unknown10 { get; private set; }
-    public bool Unknown11 { get; private set; }
-    public bool Unknown12 { get; private set; }
+    public LazyRow< Addon >[] Dialogue { get; private set; }
+    public uint Image { get; private set; }
+    public LazyRow< Quest > UnlockQuest { get; private set; }
+    public uint Unknown11 { get; private set; }
+    public uint Unknown12 { get; private set; }
+    public LazyRow< ContentType > ContentType { get; private set; }
+    public bool Unknown6 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown0 = parser.ReadOffset< uint >( 0 );
-        Unknown1 = parser.ReadOffset< uint >( 4 );
-        Unknown2 = parser.ReadOffset< uint >( 8 );
-        Unknown3 = parser.ReadOffset< uint >( 12 );
-        Unknown4 = parser.ReadOffset< uint >( 16 );
-        Unknown5 = parser.ReadOffset< uint >( 20 );
-        Unknown6 = parser.ReadOffset< uint >( 24 );
-        Unknown7 = parser.ReadOffset< uint >( 28 );
-        Unknown8 = parser.ReadOffset< uint >( 32 );
-        Unknown9 = parser.ReadOffset< uint >( 36 );
-        Unknown10 = parser.ReadOffset< byte >( 40 );
-        Unknown11 = parser.ReadOffset< bool >( 41 );
-        Unknown12 = parser.ReadOffset< bool >( 41, 2 );
+        Dialogue = new LazyRow< Addon >[4];
+        for (int i = 0; i < 4; i++)
+        	Dialogue[i] = new LazyRow< Addon >( gameData, parser.ReadOffset< uint >( (ushort) ( 0 + i * 4 ) ), language );
+        Image = parser.ReadOffset< uint >( 16 );
+        UnlockQuest = new LazyRow< Quest >( gameData, parser.ReadOffset< uint >( 20 ), language );
+        Unknown11 = parser.ReadOffset< uint >( 24 );
+        Unknown12 = parser.ReadOffset< uint >( 28 );
+        ContentType = new LazyRow< ContentType >( gameData, parser.ReadOffset< byte >( 32 ), language );
+        Unknown6 = parser.ReadOffset< bool >( 33 );
         
 
     }

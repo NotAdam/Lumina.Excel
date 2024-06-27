@@ -12,15 +12,15 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class CSBonusMission : ExcelRow
 {
     
-    public ushort Unknown0 { get; private set; }
-    public ushort Unknown1 { get; private set; }
+    public LazyRow< CSBonusContent > Content0 { get; private set; }
+    public LazyRow< CSBonusContent > Content1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown0 = parser.ReadOffset< ushort >( 0 );
-        Unknown1 = parser.ReadOffset< ushort >( 2 );
+        Content0 = new LazyRow< CSBonusContent >( gameData, parser.ReadOffset< ushort >( 0 ), language );
+        Content1 = new LazyRow< CSBonusContent >( gameData, parser.ReadOffset< ushort >( 2 ), language );
         
 
     }

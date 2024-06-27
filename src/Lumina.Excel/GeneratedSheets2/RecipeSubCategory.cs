@@ -8,17 +8,19 @@ using Lumina.Excel;
 
 namespace Lumina.Excel.GeneratedSheets2;
 
-[Sheet( "MateriaTomestoneRate", columnHash: 0xdbf43666 )]
-public partial class MateriaTomestoneRate : ExcelRow
+[Sheet( "RecipeSubCategory", columnHash: 0x5eb59ccb )]
+public partial class RecipeSubCategory : ExcelRow
 {
     
-    public uint Rate { get; private set; }
+    public SeString Unknown0 { get; private set; }
+    public byte Unknown1 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Rate = parser.ReadOffset< uint >( 0 );
+        Unknown0 = parser.ReadOffset< SeString >( 0 );
+        Unknown1 = parser.ReadOffset< byte >( 4 );
         
 
     }

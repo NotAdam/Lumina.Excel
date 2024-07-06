@@ -14,8 +14,8 @@ public partial class Status : ExcelRow
     
     public SeString Name { get; private set; }
     public SeString Description { get; private set; }
-    public uint ParamModifier { get; private set; }
-    public int Icon { get; private set; }
+    public uint Icon { get; private set; }
+    public int ParamModifier { get; private set; }
     public LazyRow< StatusLoopVFX > VFX { get; private set; }
     public ushort Log { get; private set; }
     public byte Unknown0 { get; private set; }
@@ -54,8 +54,8 @@ public partial class Status : ExcelRow
 
         Name = parser.ReadOffset< SeString >( 0 );
         Description = parser.ReadOffset< SeString >( 4 );
-        ParamModifier = parser.ReadOffset< uint >( 8 );
-        Icon = parser.ReadOffset< int >( 12 );
+        Icon = parser.ReadOffset< uint >( 8 );
+        ParamModifier = parser.ReadOffset< int >( 12 );
         VFX = new LazyRow< StatusLoopVFX >( gameData, parser.ReadOffset< ushort >( 16 ), language );
         Log = parser.ReadOffset< ushort >( 18 );
         Unknown0 = parser.ReadOffset< byte >( 20 );

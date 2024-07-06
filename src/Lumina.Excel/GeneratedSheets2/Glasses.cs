@@ -12,39 +12,39 @@ namespace Lumina.Excel.GeneratedSheets2;
 public partial class Glasses : ExcelRow
 {
     
-    public SeString Unknown0 { get; private set; }
-    public SeString Unknown1 { get; private set; }
-    public SeString Unknown2 { get; private set; }
-    public SeString Unknown3 { get; private set; }
-    public sbyte Unknown4 { get; private set; }
-    public sbyte Unknown5 { get; private set; }
-    public sbyte Unknown6 { get; private set; }
-    public sbyte Unknown7 { get; private set; }
-    public sbyte Unknown8 { get; private set; }
-    public sbyte Unknown9 { get; private set; }
-    public uint Unknown10 { get; private set; }
-    public int Unknown11 { get; private set; }
-    public ushort Unknown12 { get; private set; }
-    public short Unknown13 { get; private set; }
+    public SeString Singular { get; private set; }
+    public SeString Plural { get; private set; }
+    public SeString Description { get; private set; }
+    public SeString Name { get; private set; }
+    public sbyte Unknown_70_1 { get; private set; }
+    public sbyte Unknown_70_2 { get; private set; }
+    public sbyte Unknown_70_3 { get; private set; }
+    public sbyte Unknown_70_4 { get; private set; }
+    public sbyte Unknown_70_5 { get; private set; }
+    public sbyte Unknown_70_6 { get; private set; }
+    public uint Unknown_70_7 { get; private set; }
+    public int Icon { get; private set; }
+    public ushort Unknown_70_8 { get; private set; }
+    public short Unknown_70_9 { get; private set; }
     
     public override void PopulateData( RowParser parser, GameData gameData, Language language )
     {
         base.PopulateData( parser, gameData, language );
 
-        Unknown0 = parser.ReadOffset< SeString >( 0 );
-        Unknown1 = parser.ReadOffset< SeString >( 4 );
-        Unknown2 = parser.ReadOffset< SeString >( 8 );
-        Unknown3 = parser.ReadOffset< SeString >( 12 );
-        Unknown4 = parser.ReadOffset< sbyte >( 16 );
-        Unknown5 = parser.ReadOffset< sbyte >( 17 );
-        Unknown6 = parser.ReadOffset< sbyte >( 18 );
-        Unknown7 = parser.ReadOffset< sbyte >( 19 );
-        Unknown8 = parser.ReadOffset< sbyte >( 20 );
-        Unknown9 = parser.ReadOffset< sbyte >( 21 );
-        Unknown10 = parser.ReadOffset< uint >( 24 );
-        Unknown11 = parser.ReadOffset< int >( 28 );
-        Unknown12 = parser.ReadOffset< ushort >( 32 );
-        Unknown13 = parser.ReadOffset< short >( 34 );
+        Singular = parser.ReadOffset< SeString >( 0 );
+        Plural = parser.ReadOffset< SeString >( 4 );
+        Description = parser.ReadOffset< SeString >( 8 );
+        Name = parser.ReadOffset< SeString >( 12 );
+        Unknown_70_1 = parser.ReadOffset< sbyte >( 16 );
+        Unknown_70_2 = parser.ReadOffset< sbyte >( 17 );
+        Unknown_70_3 = parser.ReadOffset< sbyte >( 18 );
+        Unknown_70_4 = parser.ReadOffset< sbyte >( 19 );
+        Unknown_70_5 = parser.ReadOffset< sbyte >( 20 );
+        Unknown_70_6 = parser.ReadOffset< sbyte >( 21 );
+        Unknown_70_7 = parser.ReadOffset< uint >( 24 );
+        Icon = parser.ReadOffset< int >( 28 );
+        Unknown_70_8 = parser.ReadOffset< ushort >( 32 );
+        Unknown_70_9 = parser.ReadOffset< short >( 34 );
         
 
     }

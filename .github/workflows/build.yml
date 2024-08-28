@@ -38,7 +38,7 @@ jobs:
         uses: WorkingRobot/ffxiv-downloader@v1
         id: downloader
         with:
-          output-path: ${{ github.workspace }}/exd-data
+          output-path: /github/workspace/exd-data
           file-regex: '^sqpack\/ffxiv\/0a0000\..+$'
 
       - name: Restore

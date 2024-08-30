@@ -1,8 +1,6 @@
 using Lumina.Excel.Generator.Schema;
-using Lumina;
 using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
-using Lumina.Excel;
 using Lumina.Text.ReadOnly;
 using System;
 using System.Collections.Generic;
@@ -14,9 +12,11 @@ public class SchemaSourceConverter
 {
     public Sheet Definition { get; }
     public GameData GameData { get; }
+    public string AssemblyName { get; }
     public TypeGlobalizer TypeGlobalizer { get; }
     public string IndentString { get; }
     private RawExcelSheet GameSheet { get; }
+    private string? Namespace { get; }
     private string? ReferencedSheetNamespace { get; }
 
     public string Code { get; }
@@ -25,14 +25,19 @@ public class SchemaSourceConverter
     public uint ColumnHash { get; }
     public bool HasSubrows { get; }
 
-    public SchemaSourceConverter(Sheet sheetDefinition, GameData gameData, TypeGlobalizer typeGlobalizer, string indentString, string? referencedSheetNamespace)
+    public bool IsUnsafe { get; set; }
+
+    public SchemaSourceConverter(Sheet sheetDefinition, GameData gameData, string assemblyName, TypeGlobalizer typeGlobalizer, string indentString, string? selfNamespace, string? referencedSheetNamespace)
     {
         Definition = sheetDefinition;
         GameData = gameData;
+        AssemblyName = assemblyName;
         TypeGlobalizer = typeGlobalizer;
         IndentString = indentString;
 
         GameSheet = GameData.Excel.GetSheetRaw(Definition.Name) ?? throw new InvalidOperationException($"Sheet {Definition.Name} not found in game data");
+
+        Namespace = selfNamespace;
 
         if (string.IsNullOrEmpty(referencedSheetNamespace))
             ReferencedSheetNamespace = null;
@@ -49,7 +54,7 @@ public class SchemaSourceConverter
 
         var orderedColumns = GameSheet.Columns.GroupBy(c => c.Offset).OrderBy(c => c.Key).SelectMany(g => g.OrderBy(c => c.Type)).ToArray();
 
-        Code = ParseFields(new(Definition.Fields, ProcessRelations(Definition.Fields, Definition.Relations), orderedColumns, new OffsetExpression().Add("offset"), true, 'i'), out var cols);
+        Code = ParseFields(new(Definition.Fields, ProcessRelations(Definition.Fields, Definition.Relations), [], orderedColumns, new OffsetExpression().Add("offset"), true), out var cols);
 
         if (!cols.IsEmpty)
             throw new InvalidOperationException($"Expected {orderedColumns.Length} columns, but only parsed {orderedColumns.Length - cols.Length}");
@@ -92,6 +97,15 @@ public class SchemaSourceConverter
 
         nextColumns = currentColumns;
 
+        if (parentInfo.CollectionMethods.Count != 0)
+        {
+            IsUnsafe = true;
+            code.AppendLine();
+        }
+
+        foreach (var method in parentInfo.CollectionMethods)
+            code.AppendLine(method.GetParseCode(TypeGlobalizer));
+
         foreach (var def in structDefs)
         {
             code.AppendLine();
@@ -102,19 +116,25 @@ public class SchemaSourceConverter
         return code.ToString();
     }
 
+    private readonly record struct CollectionMethod(string Name, string Code, string ReturnTypeName)
+    {
+        public readonly string GetParseCode(TypeGlobalizer globalizer) =>
+            $"private static {ReturnTypeName} {Name}({globalizer.GlobalizeType("Lumina.Excel.ExcelPage")} page, uint parentOffset, uint offset, uint i) => {Code};";
+    }
+
     private class RelationInfo(string name, List<Field> relations)
     {
         public string Name => name;
         public string StructTypeName => GeneratorUtils.ConvertNameToStruct(Name);
         public int ArrayLength => ArraySize ?? throw new InvalidOperationException("Array length is unknown");
 
-        private char? IterIdx { get; set; }
         private int? ArraySize { get; set; }
         private List<string> StructDefs { get; } = [];
         private HashSet<Field> IncompleteFields { get; } = [.. relations];
         private List<(Field Field, string Code, string FieldTypeName)> Fields { get; } = [];
+        private List<CollectionMethod> CollectionMethods { get; } = [];
 
-        public bool AddRelation(Field field, string code, List<string> structDefs, string fieldTypeName, int arraySize, char iterIdx)
+        public bool AddRelation(Field field, string code, List<string> structDefs, string fieldTypeName, int arraySize)
         {
             if (!IncompleteFields.Contains(field))
                 return false;
@@ -124,22 +144,24 @@ public class SchemaSourceConverter
             if (!ArraySize.HasValue)
                 ArraySize = arraySize;
 
-            if (IterIdx.HasValue && IterIdx != iterIdx)
-                throw new ArgumentOutOfRangeException(nameof(iterIdx), iterIdx, "Relation iteration variable mismatch. The parent must be the same.");
-            if (!IterIdx.HasValue)
-                IterIdx = iterIdx;
-
             IncompleteFields.Remove(field);
             Fields.Add((field, code, fieldTypeName));
             StructDefs.AddRange(structDefs);
             return true;
         }
 
+        public void AddCollectionMethod(CollectionMethod method)
+        {
+            CollectionMethods.Add(method);
+        }
+
         public (string Code, string FieldTypeName) GetParseCode(TypeGlobalizer globalizer, in ParentInfo parentInfo)
         {
             var fieldTypeName = $"{globalizer.GlobalizeType("Lumina.Excel.Collection")}<{StructTypeName}>";
 
-            var code = $"new(page, {(parentInfo.IsRoot ? "offset" : "parentOffset")}, offset, static (page, parentOffset, offset, {parentInfo.IterIdx}) => new(page, parentOffset, {parentInfo.Offset}, {parentInfo.IterIdx}), {ArrayLength})";
+            var methodName = parentInfo.AddCollectionMethod(Name, $"new(page, parentOffset, {parentInfo.Offset}, i)", StructTypeName);
+
+            var code = $"new(page, {(parentInfo.IsRoot ? "offset" : "parentOffset")}, offset, &{methodName}, {ArrayLength})";
 
             return (code, fieldTypeName);
         }
@@ -151,7 +173,7 @@ public class SchemaSourceConverter
 
             var code = new IndentedStringBuilder(indentString);
 
-            code.AppendLine($"public readonly struct {StructTypeName}({globalizer.GlobalizeType("Lumina.Excel.ExcelPage")} page, uint parentOffset, uint offset, uint {IterIdx!.Value})");
+            code.AppendLine($"public readonly struct {StructTypeName}({globalizer.GlobalizeType("Lumina.Excel.ExcelPage")} page, uint parentOffset, uint offset, uint i)");
             code.AppendLine("{");
             using (code.IndentScope())
             {
@@ -160,6 +182,14 @@ public class SchemaSourceConverter
                     if (field.Comment is { } comment)
                         code.AppendLine($"/// {GeneratorUtils.CreateDocstring(comment)}");
                     code.AppendLine($"public readonly {fieldTypeName} {field.Name} => {parseCode};");
+                }
+
+                if (CollectionMethods.Count != 0)
+                {
+                    code.AppendLine();
+
+                    foreach (var method in CollectionMethods)
+                        code.AppendLine(method.GetParseCode(globalizer));
                 }
 
                 foreach (var def in StructDefs)
@@ -175,7 +205,21 @@ public class SchemaSourceConverter
         }
     }
 
-    private readonly record struct ParentInfo(List<Field> Fields, List<RelationInfo> Relations, ReadOnlyMemory<ExcelColumnDefinition> Columns, OffsetExpression Offset, bool IsRoot, char IterIdx);
+    private readonly record struct ParentInfo(List<Field> Fields, List<RelationInfo> Relations, List<CollectionMethod> CollectionMethods, ReadOnlyMemory<ExcelColumnDefinition> Columns, OffsetExpression Offset, bool IsRoot)
+    {
+        public string AddCollectionMethod(string name, string code, string returnTypeName)
+        {
+            name = $"{name}Ctor";
+            var methodName = name;
+            var i = 0;
+            // So far, has never happened
+            while (CollectionMethods.Any(c => c.Name.Equals(methodName, StringComparison.Ordinal)))
+                methodName = $"{name}_{++i}";
+
+            CollectionMethods.Add(new CollectionMethod(methodName, code, returnTypeName));
+            return methodName;
+        }
+    }
 
     private (string Code, List<string> StructDefs, string FieldTypeName, int MemberOffset, bool AddedToRelation) GetFieldParseCode(Field field, in ParentInfo parentInfo, ReadOnlyMemory<ExcelColumnDefinition> columns, OffsetExpression currentOffset, out ReadOnlyMemory<ExcelColumnDefinition> nextColumns)
     {
@@ -268,19 +312,17 @@ public class SchemaSourceConverter
             List<string> structDefs;
             if (structIsFlattened)
             {
-                var newParentInfo = parentInfo with { IterIdx = (char)(parentInfo.IterIdx + 1), IsRoot = false };
-                (elementCode, structDefs, structTypeName, _, _) = GetFieldParseCode(structFields[0], in newParentInfo, structColumns, currentOffset.Multiply(parentInfo.IterIdx.ToString(), structSize.ByteSize), out _);
-                arrayCode = $"new(page, {(parentInfo.IsRoot ? "offset" : "parentOffset")}, offset, static (page, parentOffset, offset, {parentInfo.IterIdx}) => {elementCode}, {arrayLength})";
+                var newParentInfo = parentInfo with { IsRoot = false };
+                (elementCode, structDefs, structTypeName, _, _) = GetFieldParseCode(structFields[0] with { Name = structFields[0].Name ?? field.Name }, in newParentInfo, structColumns, currentOffset.Multiply("i", structSize.ByteSize), out _);
             }
             else
             {
                 structTypeName = GeneratorUtils.ConvertNameToStruct(field.Name!);
 
-                var elementOffset = currentOffset.Multiply(parentInfo.IterIdx.ToString(), structSize.ByteSize);
-                var structInfo = new ParentInfo(structFields, ProcessRelations(structFields, field.Relations), structColumns, new OffsetExpression().Add("offset"), false, 'i');
+                var elementOffset = currentOffset.Multiply("i", structSize.ByteSize);
+                var structInfo = new ParentInfo(structFields, ProcessRelations(structFields, field.Relations), [], structColumns, new OffsetExpression().Add("offset"), false);
                 var structCode = ParseFields(in structInfo, out _);
                 elementCode = $"new(page, parentOffset, {elementOffset})";
-                arrayCode = $"new(page, {(parentInfo.IsRoot ? "offset" : "parentOffset")}, offset, static (page, parentOffset, offset, {parentInfo.IterIdx}) => {elementCode}, {arrayLength})";
 
                 var newStructCode = new IndentedStringBuilder(IndentString);
 
@@ -300,12 +342,20 @@ public class SchemaSourceConverter
             var addedToRelation = false;
             foreach (var relation in parentInfo.Relations)
             {
-                if (relation.AddRelation(field, elementCode, structDefs, structTypeName, arrayLength, parentInfo.IterIdx))
+                if (relation.AddRelation(field, elementCode, structDefs, structTypeName, arrayLength))
                 {
                     addedToRelation = true;
                     break;
                 }
             }
+
+            if (!addedToRelation)
+            {
+                var ctorName = parentInfo.AddCollectionMethod(field.Name!, elementCode, structTypeName);
+                arrayCode = $"new(page, {(parentInfo.IsRoot ? "offset" : "parentOffset")}, offset, &{ctorName}, {arrayLength})";
+            }
+            else
+                arrayCode = null!;
 
             return (arrayCode, structDefs, fieldTypeName, memberOffset, addedToRelation);
         }
@@ -332,7 +382,19 @@ public class SchemaSourceConverter
         else
         {
             typeName = Globalize("Lumina.Excel.RowRef");
-            return $"{typeName}.GetFirstValidRowOrUntyped(page.Module, {columnParseCode}, [{string.Join(", ", targets.Select(v => $"typeof({DecorateReferencedType(v)})"))}])";
+            var typeHash = CreateTypeHash(targets);
+            return $"{typeName}.GetFirstValidRowOrUntyped(page.Module, {columnParseCode}, [{string.Join(", ", targets.Select(v => $"typeof({DecorateReferencedType(v)})"))}], {typeHash})";
+        }
+
+        int CreateTypeHash(IEnumerable<string> targets)
+        {
+            var ns = ReferencedSheetNamespace ?? Namespace;
+            if (ns != null)
+                ns = $"{ns}.";
+            var ret = new HashCode();
+            foreach (var target in targets)
+                ret.Add($"{AssemblyName};{ns}{target}");
+            return ret.ToHashCode();
         }
     }
 

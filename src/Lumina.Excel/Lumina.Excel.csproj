@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <Configurations>Debug;Release</Configurations>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
         <Authors>WorkingRobot, NotAdam</Authors>
         <Description>Typed definitions to access excel sheet data in FINAL FANTASY XIV.</Description>

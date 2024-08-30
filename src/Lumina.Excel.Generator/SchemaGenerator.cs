@@ -17,8 +17,12 @@ public class SchemaGenerator : IIncrementalGenerator
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        var options = context.AnalyzerConfigOptionsProvider.Select((provider, _) =>
+        var assemblyName = context.CompilationProvider.Select((provider, _) => provider.Assembly.Identity.GetDisplayName());
+
+        var options = context.AnalyzerConfigOptionsProvider.Combine(assemblyName).Select((opts, _) =>
         {
+            var (provider, assemblyName) = opts;
+
             provider.GlobalOptions.TryGetValue("build_property.SchemaPath", out var schemaPath);
             if (!provider.GlobalOptions.TryGetValue("build_property.GamePath", out var gamePath))
                 throw new InvalidOperationException("GamePath must be set");
@@ -78,10 +82,10 @@ public class SchemaGenerator : IIncrementalGenerator
                 IndentString = indentString,
                 UseUsings = useUsingsBool,
                 UseFileScopedNamespace = useFileScopedNamespaceBool,
-                UseSchemaAttribute = useSchemaAttributeBool
+                UseSchemaAttribute = useSchemaAttributeBool,
+                AssemblyName = assemblyName
             };
         });
-
 
         context.RegisterSourceOutput(options, (ctx, opts) =>
         {
@@ -143,7 +147,7 @@ public class SchemaGenerator : IIncrementalGenerator
 
         try
         {
-            var converter = new SchemaSourceConverter(sheet, options.GameData, new(options.UseUsings), options.IndentString, options.ReferencedNamespace);
+            var converter = new SchemaSourceConverter(sheet, options.GameData, options.AssemblyName, new(options.UseUsings), options.IndentString, options.GeneratedNamespace, options.ReferencedNamespace);
             var source = SourceConstants.CreateSchemaSource(symbol.ContainingNamespace.IsGlobalNamespace ? null : symbol.ContainingNamespace.ToString(), symbol.Name, true, options.UseFileScopedNamespace, converter);
             if (DebugFiles)
                 context.Debug($"{Convert.ToBase64String(Encoding.UTF8.GetBytes(source.ToString()))}");
@@ -177,7 +181,7 @@ public class SchemaGenerator : IIncrementalGenerator
 
             try
             {
-                var converter = new SchemaSourceConverter(sheet, options.GameData, new(options.UseUsings), options.IndentString, null);
+                var converter = new SchemaSourceConverter(sheet, options.GameData, options.AssemblyName, new(options.UseUsings), options.IndentString, options.GeneratedNamespace, null);
                 var source = SourceConstants.CreateSchemaSource(options.GeneratedNamespace, sheet.Name, false, options.UseFileScopedNamespace, converter);
                 if (DebugFiles)
                     context.Debug($"{sheet.Name} -> {Convert.ToBase64String(Encoding.UTF8.GetBytes(source.ToString()))}");
@@ -220,6 +224,7 @@ public sealed record GeneratorOptions
     public required bool UseUsings { get; init; }
     public required bool UseFileScopedNamespace { get; init; }
     public required bool UseSchemaAttribute { get; init; }
+    public required string AssemblyName { get; init; }
 
     private GameData? gameData = null;
     public GameData GameData =>

@@ -43,7 +43,7 @@ using System.CodeDom.Compiler;
         var sb = new IndentedStringBuilder(converter.IndentString);
         sb.AppendLine($@"[{globalize("System.CodeDom.Compiler.GeneratedCode")}({GeneratorUtils.EscapeStringToken(GeneratedCodeToolName)}, {GeneratorUtils.EscapeStringToken(GeneratedCode)})]");
         sb.AppendLine($@"[{globalize("Lumina.Excel.Sheet")}({GeneratorUtils.EscapeStringToken(converter.SheetName)}, 0x{converter.ColumnHash:X8})]");
-        sb.AppendLine($@"readonly {(isPartial ? "partial" : "public")} struct {className}({globalize("Lumina.Excel.ExcelPage")} page, uint offset, uint row{(converter.HasSubrows ? ", ushort subrow" : string.Empty)}) : {rowType}");
+        sb.AppendLine($@"readonly {(isPartial ? "partial" : "public")}{(converter.IsUnsafe ? " unsafe" : string.Empty)} struct {className}({globalize("Lumina.Excel.ExcelPage")} page, uint offset, uint row{(converter.HasSubrows ? ", ushort subrow" : string.Empty)}) : {rowType}");
         sb.AppendLine("{");
         using (sb.IndentScope())
         {

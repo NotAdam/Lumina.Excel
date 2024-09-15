@@ -371,19 +371,19 @@ public class SchemaSourceConverter
 
             typeName = $"{Globalize(isSubrows ? "Lumina.Excel.SubrowRef" : "Lumina.Excel.RowRef")}<{DecorateReferencedType(targets[0])}>";
             if (useGeneric)
-                return $"{Globalize("Lumina.Excel.RowRef")}.{(isSubrows ? "CreateSubrow" : "Create")}<{DecorateReferencedType(targets[0])}>(page.Module, {columnParseCode})";
-            return $"new(page.Module, {columnParseCode})";
+                return $"{Globalize("Lumina.Excel.RowRef")}.{(isSubrows ? "CreateSubrow" : "Create")}<{DecorateReferencedType(targets[0])}>(page.Module, {columnParseCode}, page.Language)";
+            return $"new(page.Module, {columnParseCode}, page.Language)";
         }
         else if (targets.Count == 0)
         {
             typeName = Globalize("Lumina.Excel.RowRef");
-            return $"{typeName}.CreateUntyped({columnParseCode})";
+            return $"{typeName}.CreateUntyped({columnParseCode}, page.Language)";
         }
         else
         {
             typeName = Globalize("Lumina.Excel.RowRef");
             var typeHash = CreateTypeHash(targets);
-            return $"{typeName}.GetFirstValidRowOrUntyped(page.Module, {columnParseCode}, [{string.Join(", ", targets.Select(v => $"typeof({DecorateReferencedType(v)})"))}], {typeHash})";
+            return $"{typeName}.GetFirstValidRowOrUntyped(page.Module, {columnParseCode}, [{string.Join(", ", targets.Select(v => $"typeof({DecorateReferencedType(v)})"))}], {typeHash}, page.Language)";
         }
 
         int CreateTypeHash(IEnumerable<string> targets)

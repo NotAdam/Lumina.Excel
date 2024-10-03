@@ -1,47 +1,63 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+        <TargetFrameworks>net8.0</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Configurations>Debug;Release</Configurations>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Authors>NotAdam</Authors>
-        <PackageProjectUrl>https://github.com/NotAdam/Lumina.Excel</PackageProjectUrl>
-        <PackageLicenseFile>LICENSE</PackageLicenseFile>
-        <RepositoryUrl>https://github.com/NotAdam/Lumina.Excel</RepositoryUrl>
-        <Description>Typed definitions to access excel sheet data in FINAL FANTASY XIV.</Description>
-    </PropertyGroup>
-    
-    <PropertyGroup>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <!-- disable the missign xmldoc warnings because there's zero chance that all of this will ever get documented and its basically just noise -->
-        <NoWarn>1591</NoWarn>
-    </PropertyGroup>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-    <ItemGroup>
-        <None Include="../../LICENSE" Pack="true" PackagePath="" />
-    </ItemGroup>
+        <Authors>WorkingRobot, NotAdam</Authors>
+        <Description>Typed definitions to access excel sheet data in FINAL FANTASY XIV.</Description>
+        <PackageTags>ffxiv;lumina;exd;dalamud;excel</PackageTags>
+        <PackageLicenseExpression>WTFPL</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/NotAdam/Lumina.Excel</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/NotAdam/Lumina.Excel</RepositoryUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
 
     <PropertyGroup>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
+    
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>1701;1702;1591;9113</NoWarn>
+    </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Lumina" Version="3.15.2" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-        <PackageReference Include="MinVer" Version="2.3.1">
+        <None Include="../../README.md" Pack="true" PackagePath="" />
+        <None Include="../../LICENSE" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Lumina.Excel.Generator\Lumina.Excel.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" IncludeAssets="all" />
+        <ProjectReference Include="..\..\deps\Lumina\src\Lumina\Lumina.csproj" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+        <PackageReference Include="MinVer" Version="5.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="RSV\**\*.rsv" />
-        <EmbeddedResource Include="RSV\**\*.rsv" />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="CustomSheets\" />
+        <CompilerVisibleProperty Include="SchemaPath" />
+        <CompilerVisibleProperty Include="GamePath" />
+        <CompilerVisibleProperty Include="GeneratedNamespace" />
+        <CompilerVisibleProperty Include="UseUsings" />
+        <CompilerVisibleProperty Include="UseFileScopedNamespace" />
+        <CompilerVisibleProperty Include="UseSchemaAttribute" />
     </ItemGroup>
 
+    <PropertyGroup>
+        <SchemaPath>$(MSBuildProjectDirectory)\..\..\deps\EXDSchema\Schemas\2024.08.02.0000.0000</SchemaPath>
+        <GamePath>J:\Programs\steam\steamapps\common\FINAL FANTASY XIV Online\game\sqpack</GamePath>
+        <GeneratedNamespace>Lumina.Excel.Sheets</GeneratedNamespace>
+        <UseUsings>true</UseUsings>
+        <UseFileScopedNamespace>true</UseFileScopedNamespace>
+        <UseSchemaAttribute>false</UseSchemaAttribute>
+    </PropertyGroup>
 </Project>

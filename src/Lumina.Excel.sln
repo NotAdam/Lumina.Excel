@@ -1,10 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Excel", "Lumina.Excel\Lumina.Excel.csproj", "{EFE30CC6-A28B-46E7-AD93-8FA9503D2C2C}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Excel", "Lumina.Excel\Lumina.Excel.csproj", "{EFE30CC6-A28B-46E7-AD93-8FA9503D2C2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.SpaghettiGenerator", "Lumina.SpaghettiGenerator\Lumina.SpaghettiGenerator.csproj", "{7750A0E5-9DEF-45B0-91E5-5EE40BDC5CBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.SpaghettiGenerator", "Lumina.SpaghettiGenerator\Lumina.SpaghettiGenerator.csproj", "{7750A0E5-9DEF-45B0-91E5-5EE40BDC5CBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.SpaghettiUpdater", "Lumina.SpaghettiUpdater\Lumina.SpaghettiUpdater.csproj", "{AF6AACEE-AE22-43A1-906F-E79D050DCDB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.SpaghettiUpdater", "Lumina.SpaghettiUpdater\Lumina.SpaghettiUpdater.csproj", "{AF6AACEE-AE22-43A1-906F-E79D050DCDB8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Excel.Generator", "Lumina.Excel.Generator\Lumina.Excel.Generator.csproj", "{805D501E-50DB-4C89-965A-C7440579923E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina-sourcegen", "..\deps\Lumina-sourcegen\src\Lumina\Lumina-sourcegen.csproj", "{FDF50244-CEB0-4408-ABA6-861B31912514}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina", "..\deps\Lumina\src\Lumina\Lumina.csproj", "{4437DC20-4477-49FB-9B6E-54DB41E5D9C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +33,23 @@ Global
 		{AF6AACEE-AE22-43A1-906F-E79D050DCDB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF6AACEE-AE22-43A1-906F-E79D050DCDB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF6AACEE-AE22-43A1-906F-E79D050DCDB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{805D501E-50DB-4C89-965A-C7440579923E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{805D501E-50DB-4C89-965A-C7440579923E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{805D501E-50DB-4C89-965A-C7440579923E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{805D501E-50DB-4C89-965A-C7440579923E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDF50244-CEB0-4408-ABA6-861B31912514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDF50244-CEB0-4408-ABA6-861B31912514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDF50244-CEB0-4408-ABA6-861B31912514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDF50244-CEB0-4408-ABA6-861B31912514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4437DC20-4477-49FB-9B6E-54DB41E5D9C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4437DC20-4477-49FB-9B6E-54DB41E5D9C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4437DC20-4477-49FB-9B6E-54DB41E5D9C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4437DC20-4477-49FB-9B6E-54DB41E5D9C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4C7DE71-8EF9-42A9-BF5D-95E95C75E8B7}
 	EndGlobalSection
 EndGlobal

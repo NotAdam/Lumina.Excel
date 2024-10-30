@@ -409,56 +409,43 @@ public class SchemaSourceConverter
 
     private (int ByteSize, int ColumnCount) GetStructSize(IEnumerable<Field> fields, ReadOnlyMemory<ExcelColumnDefinition> columns)
     {
-        var byteSize = 0;
         var columnCount = 0;
         foreach(var field in fields)
         {
             if (field.Type == FieldType.Array)
             {
                 var s = GetStructSize(field.Fields ?? [new Field() { Type = FieldType.Scalar }], columns[columnCount..]);
-                var fieldCount = field.Count ?? 1;
-                byteSize += s.ByteSize * fieldCount;
-                columnCount += s.ColumnCount * fieldCount;
+                columnCount += s.ColumnCount * (field.Count ?? 1);
             }
             else
-            {
-                byteSize += GetFirstColumnSize(columns.Span[columnCount..]);
                 columnCount++;
-            }
         }
+
+        var byteSize = columns.Span[columnCount].Offset - columns.Span[0].Offset;
         return (byteSize, columnCount);
     }
 
     private int GetMemberOffset(Field field, in ParentInfo parentInfo, out ReadOnlyMemory<ExcelColumnDefinition> memberColumns)
     {
-        var byteOffset = 0;
         var columnOffset = 0;
         foreach (var memberField in parentInfo.Fields)
         {
-            int fieldByteSize;
             int fieldColumnSize;
             if (memberField.Type == FieldType.Array)
             {
                 var s = GetStructSize(memberField.Fields ?? [new Field() { Type = FieldType.Scalar }], parentInfo.Columns[columnOffset..]);
-                var fieldCount = memberField.Count ?? 1;
-                fieldByteSize = s.ByteSize * fieldCount;
-                fieldColumnSize = s.ColumnCount * fieldCount;
+                fieldColumnSize = s.ColumnCount * (memberField.Count ?? 1);
             }
             else
-            {
-                fieldByteSize = GetFirstColumnSize(parentInfo.Columns.Span[columnOffset..]);
                 fieldColumnSize = 1;
-            }
 
             if (memberField != field)
-            {
-                byteOffset += fieldByteSize;
                 columnOffset += fieldColumnSize;
-            }
             else
             {
                 memberColumns = parentInfo.Columns.Slice(columnOffset, fieldColumnSize);
-                return byteOffset;
+                var byteSize = parentInfo.Columns.Span[columnOffset].Offset - parentInfo.Columns.Span[0].Offset;
+                return byteSize;
             }
         }
         throw new ArgumentException("Field not found in fields");
@@ -469,7 +456,23 @@ public class SchemaSourceConverter
         var column = columns[0];
         if (columns.Length > 1)
             return columns[1].Offset - column.Offset;
-        return 0;
+        return column.Type switch
+        {
+            ExcelColumnDataType.String => 4,
+            ExcelColumnDataType.Bool => 1,
+            ExcelColumnDataType.Int8 => 1,
+            ExcelColumnDataType.UInt8 => 1,
+            ExcelColumnDataType.Int16 => 2,
+            ExcelColumnDataType.UInt16 => 2,
+            ExcelColumnDataType.Int32 => 4,
+            ExcelColumnDataType.UInt32 => 4,
+            ExcelColumnDataType.Float32 => 4,
+            ExcelColumnDataType.Int64 => 8,
+            ExcelColumnDataType.UInt64 => 8,
+            ExcelColumnDataType.PackedBool0 => 1,
+            > ExcelColumnDataType.PackedBool0 and <= ExcelColumnDataType.PackedBool7 => 0,
+            var n => throw new InvalidOperationException($"Unknown column type {n}")
+        };
     }
 
     private string Globalize(string typeName) =>

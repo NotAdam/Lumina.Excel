@@ -53,7 +53,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-        <SchemaPath>$(MSBuildProjectDirectory)\..\..\deps\EXDSchema\Schemas\2024.08.02.0000.0000</SchemaPath>
+        <SchemaPath>$(MSBuildProjectDirectory)\..\..\deps\EXDSchema\Schemas\2024.11.06.0000.0000</SchemaPath>
         <GamePath>J:\Programs\steam\steamapps\common\FINAL FANTASY XIV Online\game\sqpack</GamePath>
         <GeneratedNamespace>Lumina.Excel.Sheets</GeneratedNamespace>
         <UseUsings>true</UseUsings>

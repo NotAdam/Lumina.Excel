@@ -291,7 +291,8 @@ public class SchemaSourceConverter
         else if (field.Type is FieldType.Array)
         {
             var structFields = field.Fields ?? [new Field() { Type = FieldType.Scalar }];
-            var structSize = GetStructSize(structFields, columns);
+            var structColumnSize = GetStructColumnSize(structFields, columns);
+            var structByteSize = GetArraySize(columns, structColumnSize, 1);
 
             bool structIsFlattened;
             if (structFields.Count > 1)
@@ -304,8 +305,9 @@ public class SchemaSourceConverter
                 structIsFlattened = string.IsNullOrEmpty(structFields[0].Name);
 
             var arrayLength = field.Count ?? 1;
-            var arrayColumns = columns[..(structSize.ColumnCount * arrayLength)];
-            var structColumns = columns[..structSize.ColumnCount];
+            var arrayByteSize = GetArraySize(columns, structColumnSize, arrayLength);
+            var arrayColumns = columns[..(structColumnSize * arrayLength)];
+            var structColumns = columns[..structColumnSize];
 
             string arrayCode, elementCode;
             string structTypeName;
@@ -313,13 +315,13 @@ public class SchemaSourceConverter
             if (structIsFlattened)
             {
                 var newParentInfo = parentInfo with { IsRoot = false };
-                (elementCode, structDefs, structTypeName, _, _) = GetFieldParseCode(structFields[0] with { Name = structFields[0].Name ?? field.Name }, in newParentInfo, structColumns, currentOffset.Multiply("i", structSize.ByteSize), out _);
+                (elementCode, structDefs, structTypeName, _, _) = GetFieldParseCode(structFields[0] with { Name = structFields[0].Name ?? field.Name }, in newParentInfo, structColumns, currentOffset.Multiply("i", structByteSize), out _);
             }
             else
             {
                 structTypeName = GeneratorUtils.ConvertNameToStruct(field.Name!);
 
-                var elementOffset = currentOffset.Multiply("i", structSize.ByteSize);
+                var elementOffset = currentOffset.Multiply("i", structByteSize);
                 var structInfo = new ParentInfo(structFields, ProcessRelations(structFields, field.Relations), [], structColumns, new OffsetExpression().Add("offset"), false);
                 var structCode = ParseFields(in structInfo, out _);
                 elementCode = $"new(page, parentOffset, {elementOffset})";
@@ -335,8 +337,8 @@ public class SchemaSourceConverter
                 structDefs = [newStructCode.ToString()];
             }
 
-            var memberOffset = structSize.ByteSize * arrayLength;
-            nextColumns = columns[(structSize.ColumnCount * arrayLength)..];
+            var memberOffset = arrayByteSize;
+            nextColumns = columns[(structColumnSize * arrayLength)..];
             var fieldTypeName = $"{Globalize("Lumina.Excel.Collection")}<{structTypeName}>";
 
             var addedToRelation = false;
@@ -356,7 +358,7 @@ public class SchemaSourceConverter
             }
             else
                 arrayCode = null!;
-
+            
             return (arrayCode, structDefs, fieldTypeName, memberOffset, addedToRelation);
         }
         else
@@ -407,22 +409,29 @@ public class SchemaSourceConverter
         )).ToList() ?? [];
     }
 
-    private (int ByteSize, int ColumnCount) GetStructSize(IEnumerable<Field> fields, ReadOnlyMemory<ExcelColumnDefinition> columns)
+    private int GetStructColumnSize(IEnumerable<Field> fields, ReadOnlyMemory<ExcelColumnDefinition> columns)
     {
         var columnCount = 0;
         foreach(var field in fields)
         {
             if (field.Type == FieldType.Array)
             {
-                var s = GetStructSize(field.Fields ?? [new Field() { Type = FieldType.Scalar }], columns[columnCount..]);
-                columnCount += s.ColumnCount * (field.Count ?? 1);
+                var s = GetStructColumnSize(field.Fields ?? [new Field() { Type = FieldType.Scalar }], columns[columnCount..]);
+                columnCount += s * (field.Count ?? 1);
             }
             else
                 columnCount++;
         }
 
-        var byteSize = columns.Span[columnCount].Offset - columns.Span[0].Offset;
-        return (byteSize, columnCount);
+        return columnCount;
+    }
+
+    private int GetArraySize(ReadOnlyMemory<ExcelColumnDefinition> columns, int columnCount, int arrayLength)
+    {
+        columnCount *= arrayLength;
+        if (columnCount == columns.Length)
+            return GetArraySize(columns, columns.Length - 1, 1) + GetFirstColumnSize(columns.Span[^1..]);
+        return columns.Span[columnCount].Offset - columns.Span[0].Offset;
     }
 
     private int GetMemberOffset(Field field, in ParentInfo parentInfo, out ReadOnlyMemory<ExcelColumnDefinition> memberColumns)
@@ -433,8 +442,8 @@ public class SchemaSourceConverter
             int fieldColumnSize;
             if (memberField.Type == FieldType.Array)
             {
-                var s = GetStructSize(memberField.Fields ?? [new Field() { Type = FieldType.Scalar }], parentInfo.Columns[columnOffset..]);
-                fieldColumnSize = s.ColumnCount * (memberField.Count ?? 1);
+                var s = GetStructColumnSize(memberField.Fields ?? [new Field() { Type = FieldType.Scalar }], parentInfo.Columns[columnOffset..]);
+                fieldColumnSize = s * (memberField.Count ?? 1);
             }
             else
                 fieldColumnSize = 1;

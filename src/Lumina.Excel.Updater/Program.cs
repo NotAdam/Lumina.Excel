@@ -12,6 +12,9 @@ internal static class Program
             case "compare_sheets":
                 CompareSheets.Main(args[1..]);
                 break;
+            case "export_sheet":
+                ExportCsv.Main(args[1..]);
+                break;
             default:
                 Console.WriteLine("Unknown args");
                 break;

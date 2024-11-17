@@ -125,7 +125,9 @@ internal static class CompareSheets
                 var unusedColumns = new HashSet<int>(Enumerable.Range(0, oldHashes.Length));
                 for (var i = 0; i < newHashes.Length; ++i)
                 {
-                    var (oldCol, score) = newHashes[i].FindBest(oldHashes, 0.7f, usedColumns);
+                    var (oldCol, score) = newHashes[i].FindBest(oldHashes, 0.8f, usedColumns);
+                    //if (i == 79)
+                    //    oldCol = [];
                     var isMixed = oldCol.Count > 1;
                     if (isMixed)
                     {
@@ -255,7 +257,7 @@ internal static class CompareSheets
                 return 1;
 
             var totalSimilarity = fields.Zip(other.fields).Count((v) => v.First == v.Second) / (double)fields.Count;
-            var sampleSimilarity = sim.Jaccard(other.sim);
+            var sampleSimilarity = Math.Max(sim.Jaccard(other.sim), totalSimilarity);
             return (totalSimilarity + sampleSimilarity) / 2;
         }
 

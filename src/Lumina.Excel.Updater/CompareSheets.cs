@@ -1,7 +1,7 @@
 using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
 using MinHashSharp;
-using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace Lumina.Excel.Updater;
 
@@ -12,6 +12,15 @@ internal static class CompareSheets
         var gamePathOld = args[0];
         var gamePathNew = args[1];
         var schemaPath = (args.Length > 2) ? args[2] : null;
+        var sheetNameFilter = (args.Length > 3) ? args[3] : null;
+        var forceNewColumnsString = (args.Length > 4) ? args[4] : null;
+
+        HashSet<int> forceNewColumns = [];
+        if (forceNewColumnsString != null)
+        {
+            foreach (var s in forceNewColumnsString.Split(','))
+                forceNewColumns.Add(int.Parse(s));
+        }
 
         using var dataOld = new GameData(gamePathOld);
         using var dataNew = new GameData(gamePathNew);
@@ -39,6 +48,12 @@ internal static class CompareSheets
         var modifiedSheets = sheetsNew.Intersect(sheetsOld).Order();
         foreach (var sheet in modifiedSheets)
         {
+            if (sheetNameFilter != null)
+            {
+                if (!Regex.IsMatch(sheet, sheetNameFilter, RegexOptions.IgnoreCase))
+                    continue;
+            }
+
             try
             {
                 var headerOld = dataOld.GetFile<ExcelHeaderFile>($"exd/{sheet}.exh")!;
@@ -125,9 +140,7 @@ internal static class CompareSheets
                 var unusedColumns = new HashSet<int>(Enumerable.Range(0, oldHashes.Length));
                 for (var i = 0; i < newHashes.Length; ++i)
                 {
-                    var (oldCol, score) = newHashes[i].FindBest(oldHashes, 0.8f, usedColumns);
-                    //if (i == 79)
-                    //    oldCol = [];
+                    var (oldCol, score) = forceNewColumns.Contains(i) ? ([], 0) : newHashes[i].FindBest(oldHashes, 0.8f, usedColumns);
                     var isMixed = oldCol.Count > 1;
                     if (isMixed)
                     {
@@ -265,7 +278,7 @@ internal static class CompareSheets
         {
             List<int> bestColumn = [];
             var bestScore = 0.0;
-            for (var i = 0; i < columns.Length; i++)
+            for (var i = columns.Length - 1; i >= 0; i--)
             {
                 if (matchedColumns?.Contains(i) ?? false)
                     continue;

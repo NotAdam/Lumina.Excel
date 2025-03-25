@@ -40,7 +40,6 @@ jobs:
         with:
           output-path: exd-data
           regex: '^sqpack\/ffxiv\/0a0000\..+$'
-          version: 2025.02.27.0000.0000
 
       - name: Restore
         run: |

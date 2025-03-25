@@ -32,7 +32,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/exd-data
-          key: exd-data
+          key: exd-cache
 
       - name: Download EXD files
         uses: WorkingRobot/ffxiv-downloader@v3

@@ -35,11 +35,12 @@ jobs:
           key: exd-data
 
       - name: Download EXD files
-        uses: WorkingRobot/ffxiv-downloader@v1
+        uses: WorkingRobot/ffxiv-downloader@v3
         id: downloader
         with:
-          output-path: /github/workspace/exd-data
+          output-path: exd-data
           file-regex: '^sqpack\/ffxiv\/0a0000\..+$'
+          version: 2025.02.27.0000.0000
 
       - name: Restore
         run: |

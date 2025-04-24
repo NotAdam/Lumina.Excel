@@ -50,6 +50,7 @@
         <CompilerVisibleProperty Include="UseUsings" />
         <CompilerVisibleProperty Include="UseFileScopedNamespace" />
         <CompilerVisibleProperty Include="UseSchemaAttribute" />
+        <CompilerVisibleProperty Include="GeneratePendingFields" />
     </ItemGroup>
 
     <PropertyGroup>
@@ -59,5 +60,6 @@
         <UseUsings>true</UseUsings>
         <UseFileScopedNamespace>true</UseFileScopedNamespace>
         <UseSchemaAttribute>false</UseSchemaAttribute>
+        <GeneratePendingFields>true</GeneratePendingFields>
     </PropertyGroup>
 </Project>

@@ -33,6 +33,7 @@ public class SchemaGenerator : IIncrementalGenerator
             provider.GlobalOptions.TryGetValue("build_property.UseFileScopedNamespace", out var useFileScopedNamespace);
             provider.GlobalOptions.TryGetValue("build_property.UseThis", out var useThis);
             provider.GlobalOptions.TryGetValue("build_property.UseSchemaAttribute", out var useSchemaAttribute);
+            provider.GlobalOptions.TryGetValue("build_property.GeneratePendingFields", out var generatePendingFields);
 
             if (schemaPath != null)
             {
@@ -73,6 +74,10 @@ public class SchemaGenerator : IIncrementalGenerator
             if (useSchemaAttribute != null)
                 useSchemaAttributeBool = useSchemaAttribute.Equals("true", StringComparison.InvariantCultureIgnoreCase) || useSchemaAttribute == "1";
 
+            var generatePendingFieldsBool = true;
+            if (generatePendingFields != null)
+                generatePendingFieldsBool = generatePendingFields.Equals("true", StringComparison.InvariantCultureIgnoreCase) || generatePendingFields == "1";
+
             return new GeneratorOptions
             {
                 SchemaPath = schemaPath,
@@ -83,6 +88,7 @@ public class SchemaGenerator : IIncrementalGenerator
                 UseUsings = useUsingsBool,
                 UseFileScopedNamespace = useFileScopedNamespaceBool,
                 UseSchemaAttribute = useSchemaAttributeBool,
+                GeneratePendingFields = generatePendingFieldsBool,
                 AssemblyName = assemblyName
             };
         });
@@ -103,7 +109,13 @@ public class SchemaGenerator : IIncrementalGenerator
             return (schemaPath, data, (INamedTypeSymbol)ctx.TargetSymbol);
         });
 
-        context.RegisterSourceOutput(options, GenerateSchemas);
+        context.RegisterSourceOutput(options, (ctx, opts) => {
+            if (string.IsNullOrEmpty(opts.GeneratedNamespace))
+                return;
+            GenerateSchemas(ctx, opts, false, opts.GeneratedNamespace!);
+            if (opts.GeneratePendingFields)
+                GenerateSchemas(ctx, opts, true, $"{opts.GeneratedNamespace!}.Experimental");
+        });
         context.RegisterSourceOutput(attributeMetadata.Combine(options), GenerateSchema);
     }
 
@@ -144,11 +156,10 @@ public class SchemaGenerator : IIncrementalGenerator
         var deserializer = new DeserializerBuilder().WithNamingConvention(CamelCaseNamingConvention.Instance).Build();
         var sheet = deserializer.Deserialize<Sheet>(reader);
 
-
         try
         {
-            var converter = new SchemaSourceConverter(sheet, options.GameData, options.AssemblyName, new(options.UseUsings), options.IndentString, options.GeneratedNamespace, options.ReferencedNamespace);
-            var source = SourceConstants.CreateSchemaSource(symbol.ContainingNamespace.IsGlobalNamespace ? null : symbol.ContainingNamespace.ToString(), symbol.Name, true, options.UseFileScopedNamespace, converter);
+            var converter = new SchemaSourceConverter(sheet, options.GameData, true, options.AssemblyName, new(options.UseUsings), options.IndentString, options.GeneratedNamespace, options.ReferencedNamespace);
+            var source = SourceConstants.CreateSchemaSource(symbol.ContainingNamespace.IsGlobalNamespace ? null : symbol.ContainingNamespace.ToString(), symbol.Name, true, options.UseFileScopedNamespace, false, converter);
             if (DebugFiles)
                 context.Debug($"{Convert.ToBase64String(Encoding.UTF8.GetBytes(source.ToString()))}");
             context.AddSource($"{symbol.Name}.g.cs", source);
@@ -159,8 +170,11 @@ public class SchemaGenerator : IIncrementalGenerator
         }
     }
 
-    private void GenerateSchemas(SourceProductionContext context, GeneratorOptions options)
+    private void GenerateSchemas(SourceProductionContext context, GeneratorOptions options, bool usePendingFields, string generatedNamespace)
     {
+        if (string.IsNullOrEmpty(options.SchemaPath))
+            throw new ArgumentException("SchemaPath must be set", nameof(options.SchemaPath));
+
         foreach (var file in GetFiles(options.SchemaPath!, "*.yml"))
         {
             var schemaFile = TryOpenFile(file);
@@ -181,11 +195,12 @@ public class SchemaGenerator : IIncrementalGenerator
 
             try
             {
-                var converter = new SchemaSourceConverter(sheet, options.GameData, options.AssemblyName, new(options.UseUsings), options.IndentString, options.GeneratedNamespace, null);
-                var source = SourceConstants.CreateSchemaSource(options.GeneratedNamespace, sheet.Name, false, options.UseFileScopedNamespace, converter);
+                var converter = new SchemaSourceConverter(sheet, options.GameData, usePendingFields, options.AssemblyName, new(options.UseUsings), options.IndentString, generatedNamespace, null);
+                var source = SourceConstants.CreateSchemaSource(generatedNamespace, sheet.Name, false, options.UseFileScopedNamespace, usePendingFields, converter);
+                var name = usePendingFields ? $"{sheet.Name}Experimental" : sheet.Name;
                 if (DebugFiles)
-                    context.Debug($"{sheet.Name} -> {Convert.ToBase64String(Encoding.UTF8.GetBytes(source.ToString()))}");
-                context.AddSource($"{sheet.Name}.g.cs", source);
+                    context.Debug($"{name} -> {Convert.ToBase64String(Encoding.UTF8.GetBytes(source.ToString()))}");
+                context.AddSource($"{name}.g.cs", source);
             }
             catch (Exception e)
             {
@@ -224,6 +239,7 @@ public sealed record GeneratorOptions
     public required bool UseUsings { get; init; }
     public required bool UseFileScopedNamespace { get; init; }
     public required bool UseSchemaAttribute { get; init; }
+    public required bool GeneratePendingFields { get; init; }
     public required string AssemblyName { get; init; }
 
     private GameData? gameData = null;

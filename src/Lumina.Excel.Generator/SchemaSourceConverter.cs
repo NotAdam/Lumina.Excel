@@ -27,7 +27,7 @@ public class SchemaSourceConverter
 
     public bool IsUnsafe { get; set; }
 
-    public SchemaSourceConverter(Sheet sheetDefinition, GameData gameData, string assemblyName, TypeGlobalizer typeGlobalizer, string indentString, string? selfNamespace, string? referencedSheetNamespace)
+    public SchemaSourceConverter(Sheet sheetDefinition, GameData gameData, bool usePendingFields, string assemblyName, TypeGlobalizer typeGlobalizer, string indentString, string? selfNamespace, string? referencedSheetNamespace)
     {
         Definition = sheetDefinition;
         GameData = gameData;
@@ -53,8 +53,9 @@ public class SchemaSourceConverter
         HasSubrows = GameSheet.Header.Variant == ExcelVariant.Subrows;
 
         var orderedColumns = GameSheet.Columns.GroupBy(c => c.Offset).OrderBy(c => c.Key).SelectMany(g => g.OrderBy(c => c.Type)).ToArray();
+        var fields = !usePendingFields ? Definition.Fields : Definition.PendingFields ?? Definition.Fields;
 
-        Code = ParseFields(new(Definition.Fields, ProcessRelations(Definition.Fields, Definition.Relations), [], orderedColumns, new OffsetExpression().Add("offset"), true), out var cols);
+        Code = ParseFields(new(fields, ProcessRelations(fields, Definition.Relations), [], orderedColumns, new OffsetExpression().Add("offset"), true), out var cols);
 
         if (!cols.IsEmpty)
             throw new InvalidOperationException($"Expected {orderedColumns.Length} columns, but only parsed {orderedColumns.Length - cols.Length}");
@@ -74,9 +75,8 @@ public class SchemaSourceConverter
 
             if (!fieldRelationed)
             {
-                if (field.Comment is { } comment)
-                    code.AppendLine($"/// {GeneratorUtils.CreateDocstring(comment)}");
-                code.AppendLine($"public readonly {fieldTypeName} {field.Name} => {fieldCode};");
+                WriteField(code, TypeGlobalizer, field, fieldCode, fieldTypeName);
+
                 structDefs.AddRange(fieldStructDefs);
             }
 
@@ -178,11 +178,7 @@ public class SchemaSourceConverter
             using (code.IndentScope())
             {
                 foreach (var (field, parseCode, fieldTypeName) in Fields)
-                {
-                    if (field.Comment is { } comment)
-                        code.AppendLine($"/// {GeneratorUtils.CreateDocstring(comment)}");
-                    code.AppendLine($"public readonly {fieldTypeName} {field.Name} => {parseCode};");
-                }
+                    WriteField(code, globalizer, field, parseCode, fieldTypeName);
 
                 if (CollectionMethods.Count != 0)
                 {
@@ -315,7 +311,7 @@ public class SchemaSourceConverter
             if (structIsFlattened)
             {
                 var newParentInfo = parentInfo with { IsRoot = false };
-                (elementCode, structDefs, structTypeName, _, _) = GetFieldParseCode(structFields[0] with { Name = structFields[0].Name ?? field.Name }, in newParentInfo, structColumns, currentOffset.Multiply("i", structByteSize), out _);
+                (elementCode, structDefs, structTypeName, _, _) = GetFieldParseCode(structFields[0] with { Name = structFields[0].Name ?? field.Name, PendingName = structFields[0].PendingName ?? field.PendingName }, in newParentInfo, structColumns, currentOffset.Multiply("i", structByteSize), out _);
             }
             else
             {
@@ -407,6 +403,22 @@ public class SchemaSourceConverter
                 f => fields.First(field => f.Equals(field.Name, StringComparison.Ordinal))
             ).ToList()
         )).ToList() ?? [];
+    }
+
+    private static void WriteField(IndentedStringBuilder code, TypeGlobalizer globalizer, Field field, string parseCode, string fieldTypeName)
+    {
+        if (field.PendingName != null)
+        {
+            if (field.Comment != null)
+                code.AppendLine($"/// {GeneratorUtils.CreateDocstring(field.Comment)}");
+            code.AppendLine($"public readonly {fieldTypeName} {field.PendingName} => {parseCode};");
+        }
+
+        if (field.Comment is { } comment)
+            code.AppendLine($"/// {GeneratorUtils.CreateDocstring(comment)}");
+        if (field.PendingName != null)
+            code.AppendLine($@"[{globalizer.GlobalizeType("System.Obsolete")}({GeneratorUtils.EscapeStringToken($"Use {field.PendingName} instead.")})]");
+        code.AppendLine($"public readonly {fieldTypeName} {field.Name} => {parseCode};");
     }
 
     private int GetStructColumnSize(IEnumerable<Field> fields, ReadOnlyMemory<ExcelColumnDefinition> columns)

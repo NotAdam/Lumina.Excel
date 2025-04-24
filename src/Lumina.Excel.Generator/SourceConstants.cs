@@ -34,7 +34,7 @@ using System.CodeDom.Compiler;
         return SourceText.From(ret.Trim(), Encoding.UTF8);
     }
 
-    public static SourceText CreateSchemaSource(string? targetNamespace, string className, bool isPartial, bool useFileScopedNamespace, SchemaSourceConverter converter)
+    public static SourceText CreateSchemaSource(string? targetNamespace, string className, bool isPartial, bool useFileScopedNamespace, bool markExperimental, SchemaSourceConverter converter)
     {
         var globalize = converter.TypeGlobalizer.GlobalizeType;
 
@@ -42,6 +42,8 @@ using System.CodeDom.Compiler;
 
         var sb = new IndentedStringBuilder(converter.IndentString);
         sb.AppendLine($@"[{globalize("System.CodeDom.Compiler.GeneratedCode")}({GeneratorUtils.EscapeStringToken(GeneratedCodeToolName)}, {GeneratorUtils.EscapeStringToken(GeneratedCode)})]");
+        if (markExperimental)
+            sb.AppendLine($@"[{globalize("System.Diagnostics.CodeAnalysis.Experimental")}({GeneratorUtils.EscapeStringToken("PendingExcelSchema")})]");
         sb.AppendLine($@"[{globalize("Lumina.Excel.Sheet")}({GeneratorUtils.EscapeStringToken(converter.SheetName)}, 0x{converter.ColumnHash:X8})]");
         sb.AppendLine($@"readonly {(isPartial ? "partial" : "public")}{(converter.IsUnsafe ? " unsafe" : string.Empty)} struct {className}({globalize("Lumina.Excel.ExcelPage")} page, uint offset, uint row{(converter.HasSubrows ? ", ushort subrow" : string.Empty)}) : {rowType}");
         sb.AppendLine("{");

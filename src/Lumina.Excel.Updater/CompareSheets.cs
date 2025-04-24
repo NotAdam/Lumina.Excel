@@ -45,8 +45,9 @@ internal static class CompareSheets
                 Console.WriteLine($"    {sheet}");
         }
 
-        var modifiedSheets = sheetsNew.Intersect(sheetsOld).Order();
-        foreach (var sheet in modifiedSheets)
+        var existingSheets = sheetsNew.Intersect(sheetsOld).Order();
+        List<string> modifiedSheets = [];
+        foreach (var sheet in existingSheets)
         {
             if (sheetNameFilter != null)
             {
@@ -60,6 +61,7 @@ internal static class CompareSheets
                 var headerNew = dataNew.GetFile<ExcelHeaderFile>($"exd/{sheet}.exh")!;
                 if (headerOld.GetColumnsHash() == headerNew.GetColumnsHash())
                     continue;
+                modifiedSheets.Add(sheet);
 
                 Console.WriteLine();
                 Console.WriteLine("Modified sheet: " + sheet);
@@ -185,6 +187,11 @@ internal static class CompareSheets
                 Console.WriteLine($"Exception caught for {sheet}. {value}");
             }
         }
+
+        Console.WriteLine($"Added: {addedSheets.Count()}");
+        Console.WriteLine($"Deleted: {deletedSheets.Count()}");
+        Console.WriteLine($"Modified: {modifiedSheets.Count}");
+        Console.WriteLine($"Unmodified: {existingSheets.Count() - modifiedSheets.Count}");
     }
 
     internal static void AppendHashCode(this RawRow row, SimilarColumn code, ExcelColumnDefinition column)

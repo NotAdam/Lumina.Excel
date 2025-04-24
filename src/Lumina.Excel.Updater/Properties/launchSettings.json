@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Lumina.Excel.Updater": {
+      "commandName": "Project",
+      "commandLineArgs": "compare_sheets \"J:\\Programs\\Steam\\steamapps\\common\\FINAL FANTASY XIV Online\\game\\sqpack\" \"J:\\Code\\Projects\\ffxiv-downloader\\bin\\Release\\net8.0\\data\\game\\sqpack\\ffxiv\\7.1\\sqpack\" \"J:\\Code\\Projects\\EXDSchema\\Schemas\\2024.11.06.0000.0000\""
+    }
+  }
+}

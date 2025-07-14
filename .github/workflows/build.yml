@@ -31,12 +31,13 @@ jobs:
         id: retrieve-cache
         uses: actions/cache@v4
         with:
-          path: ${{ github.workspace }}/exd-data
-          key: exd-cache
+          path: exd-data
+          key: exd-cache-${{hashFiles('exd-data/.cachemeta.json')}}
+          restore-keys: |
+            exd-cache-
 
       - name: Download EXD files
-        uses: WorkingRobot/ffxiv-downloader@v3
-        id: downloader
+        uses: WorkingRobot/ffxiv-downloader@v5
         with:
           output-path: exd-data
           regex: '^sqpack\/ffxiv\/0a0000\..+$'

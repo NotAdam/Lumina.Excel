@@ -1,6 +1,4 @@
 using Lumina.Excel.Generator.Schema;
-using Lumina.Data.Structs.Excel;
-using Lumina.Text.ReadOnly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -494,7 +492,7 @@ public class SchemaSourceConverter
     private string LookupTypeName(ExcelColumnDataType type) =>
         type switch
         {
-            ExcelColumnDataType.String => Globalize<ReadOnlySeString>(),
+            ExcelColumnDataType.String => Globalize("Lumina.Text.ReadOnly.ReadOnlySeString"),
             ExcelColumnDataType.Bool => "bool",
             ExcelColumnDataType.Int8 => "sbyte",
             ExcelColumnDataType.UInt8 => "byte",

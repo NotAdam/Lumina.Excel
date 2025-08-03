@@ -4,9 +4,6 @@ using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using Lumina.Data.Files.Excel;
-using Lumina.Data.Structs.Excel;
-using Lumina.Misc;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -18,16 +15,6 @@ public class ColumnDefinitions(ImmutableSortedDictionary<string, ExcelColumnDefi
 {
     private ImmutableSortedDictionary<string, ExcelColumnDefinition[]> Sheets { get; } = dict;
     private ImmutableSortedSet<string> SubrowSheets { get; } = subrows;
-
-    public static ColumnDefinitions FromInputs(string? gamePath, string? file)
-    {
-        if (gamePath != null)
-            return FromGameData(gamePath);
-
-        if (file == null)
-            throw new ArgumentNullException(nameof(file), "Either gamePath or file must be provided.");
-        return FromColumnFile(file);
-    }
 
     public static ColumnDefinitions FromColumnFile(string file)
     {
@@ -53,24 +40,6 @@ public class ColumnDefinitions(ImmutableSortedDictionary<string, ExcelColumnDefi
         }
 
         return new(sheets.ToImmutableSortedDictionary(), subrowSheets);
-    }
-
-    public static ColumnDefinitions FromGameData(string gamePath)
-    {
-        using var gameData = new GameData(gamePath, new LuminaOptions()
-        {
-            CacheFileResources = false,
-            LoadMultithreaded = true
-        });
-
-        var files = gameData.Excel.GetSheetNames()
-            .Where(p => !p.Contains('/'))
-            .Select(sheetName => (sheetName, gameData.GetFile<ExcelHeaderFile>($"exd/{sheetName}.exh")!));
-
-        return new(
-            files.ToImmutableSortedDictionary(pair => pair.sheetName, pair => pair.Item2.ColumnDefinitions),
-            [.. files.Where(pair => pair.Item2.Header.Variant == ExcelVariant.Subrows).Select(pair => pair.sheetName)]
-        );
     }
 
     public bool Contains(string sheetName) =>

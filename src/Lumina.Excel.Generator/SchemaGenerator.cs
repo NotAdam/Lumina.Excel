@@ -24,7 +24,6 @@ public class SchemaGenerator : IIncrementalGenerator
             provider.GlobalOptions.TryGetValue("build_property.SchemaPath", out var schemaPath);
             provider.GlobalOptions.TryGetValue("build_property.ExperimentalSchemaPath", out var experimentalSchemaPath);
             provider.GlobalOptions.TryGetValue("build_property.ColumnsPath", out var columnsPath);
-            provider.GlobalOptions.TryGetValue("build_property.GamePath", out var gamePath);
             provider.GlobalOptions.TryGetValue("build_property.GeneratedNamespace", out var generatedNamespace);
             provider.GlobalOptions.TryGetValue("build_property.ReferencedNamespace", out var referencedNamespace);
             provider.GlobalOptions.TryGetValue("build_property.IndentSize", out var indentSize);
@@ -53,13 +52,6 @@ public class SchemaGenerator : IIncrementalGenerator
                 var columnsFile = new FileInfo(columnsPath);
                 if (!columnsFile.Exists)
                     throw new InvalidOperationException($"ColumnsPath {columnsFile.FullName} does not exist");
-            }
-
-            if (gamePath != null)
-            {
-                var gameDir = new DirectoryInfo(gamePath);
-                if (!gameDir.Exists)
-                    throw new InvalidOperationException($"GamePath {gameDir.FullName} does not exist");
             }
 
             var indentString = "    ";
@@ -99,7 +91,6 @@ public class SchemaGenerator : IIncrementalGenerator
                 SchemaPath = schemaPath,
                 ExperimentalSchemaPath = experimentalSchemaPath,
                 ColumnsPath = columnsPath,
-                GamePath = gamePath,
                 GeneratedNamespace = generatedNamespace,
                 ReferencedNamespace = referencedNamespace ?? generatedNamespace ?? throw new InvalidOperationException("ReferencedNamespace must be set"),
                 IndentString = indentString,
@@ -243,7 +234,6 @@ public sealed record GeneratorOptions
     public required string? SchemaPath { get; init; }
     public required string? ExperimentalSchemaPath { get; init; }
     public required string? ColumnsPath { get; init; }
-    public required string? GamePath { get; init; }
     public required string? GeneratedNamespace { get; init; }
     public required string ReferencedNamespace { get; init; }
     public required string IndentString { get; init; }
@@ -255,5 +245,5 @@ public sealed record GeneratorOptions
 
     private ColumnDefinitions? columnDefinitions = null;
     public ColumnDefinitions ColumnDefinitions =>
-        columnDefinitions ?? ColumnDefinitions.FromInputs(GamePath, ColumnsPath ?? Path.Combine(SchemaPath, ".github", "columns.yml"));
+        columnDefinitions ?? ColumnDefinitions.FromColumnFile(ColumnsPath ?? Path.Combine(SchemaPath, ".github", "columns.yml"));
 }

@@ -15,9 +15,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\deps\Lumina-sourcegen\src\Lumina\Lumina-sourcegen.csproj" PrivateAssets="all" />
         <PackageReference Include="YamlDotNet" Version="15.1.2" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="System.Text.Encodings.Web" Version="8.0.0" GeneratePathProperty="true" PrivateAssets="all" />
+
+
+        <PackageReference Include="Polyfill" Version="5.2.1" />
+        <PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1" />
     </ItemGroup>
 
     <PropertyGroup>
@@ -27,7 +30,6 @@
 
     <Target Name="GetDependencyTargetPaths">
         <ItemGroup>
-            <TargetPathWithTargetPlatformMoniker Include="..\..\deps\Lumina-sourcegen\src\Lumina\bin\$(Configuration)\netstandard2.0\*.dll" IncludeRuntimeDependency="false" />
             <TargetPathWithTargetPlatformMoniker Include="$(PKGYamlDotNet)\lib\netstandard2.0\YamlDotNet.dll" IncludeRuntimeDependency="false" />
             <TargetPathWithTargetPlatformMoniker Include="$(PKGSystem_Text_Encodings_Web)\lib\netstandard2.0\System.Text.Encodings.Web.dll" IncludeRuntimeDependency="false" />
         </ItemGroup>

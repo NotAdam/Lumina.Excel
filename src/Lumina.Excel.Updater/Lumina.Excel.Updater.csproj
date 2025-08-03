@@ -12,6 +12,7 @@
     <PackageReference Include="CsvHelper" Version="33.0.1" />
     <PackageReference Include="MinHashSharp" Version="1.1.1" />
     <PackageReference Include="YamlDotNet" Version="16.2.0" />
+    <PackageReference Include="Lumina" Version="6.3.0" />
   </ItemGroup>
 
   <ItemGroup>

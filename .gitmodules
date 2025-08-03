@@ -6,7 +6,3 @@
 	path = deps/EXDSchema-experimental
 	url = https://github.com/xivdev/EXDSchema.git
 	branch = latest
-[submodule "Lumina-sourcegen"]
-	path = deps/Lumina-sourcegen
-	url = https://github.com/WorkingRobot/Lumina.git
-	branch = exd-generator

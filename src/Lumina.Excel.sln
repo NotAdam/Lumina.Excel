@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Excel", "Lumina.Exce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Excel.Generator", "Lumina.Excel.Generator\Lumina.Excel.Generator.csproj", "{805D501E-50DB-4C89-965A-C7440579923E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina-sourcegen", "..\deps\Lumina-sourcegen\src\Lumina\Lumina-sourcegen.csproj", "{FDF50244-CEB0-4408-ABA6-861B31912514}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina", "..\deps\Lumina\src\Lumina\Lumina.csproj", "{4437DC20-4477-49FB-9B6E-54DB41E5D9C7}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Excel.Updater", "Lumina.Excel.Updater\Lumina.Excel.Updater.csproj", "{94A04143-F59B-4997-B4AB-42B01A0944A1}"
 EndProject
 Global
@@ -27,14 +23,6 @@ Global
 		{805D501E-50DB-4C89-965A-C7440579923E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{805D501E-50DB-4C89-965A-C7440579923E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{805D501E-50DB-4C89-965A-C7440579923E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FDF50244-CEB0-4408-ABA6-861B31912514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDF50244-CEB0-4408-ABA6-861B31912514}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDF50244-CEB0-4408-ABA6-861B31912514}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDF50244-CEB0-4408-ABA6-861B31912514}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4437DC20-4477-49FB-9B6E-54DB41E5D9C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4437DC20-4477-49FB-9B6E-54DB41E5D9C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4437DC20-4477-49FB-9B6E-54DB41E5D9C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4437DC20-4477-49FB-9B6E-54DB41E5D9C7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{94A04143-F59B-4997-B4AB-42B01A0944A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94A04143-F59B-4997-B4AB-42B01A0944A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94A04143-F59B-4997-B4AB-42B01A0944A1}.Release|Any CPU.ActiveCfg = Release|Any CPU

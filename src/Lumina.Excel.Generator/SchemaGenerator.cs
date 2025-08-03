@@ -245,5 +245,5 @@ public sealed record GeneratorOptions
 
     private ColumnDefinitions? columnDefinitions = null;
     public ColumnDefinitions ColumnDefinitions =>
-        columnDefinitions ?? ColumnDefinitions.FromColumnFile(ColumnsPath ?? Path.Combine(SchemaPath, ".github", "columns.yml"));
+        columnDefinitions ??= ColumnDefinitions.FromColumnFile(ColumnsPath ?? Path.Combine(SchemaPath, ".github", "columns.yml"));
 }

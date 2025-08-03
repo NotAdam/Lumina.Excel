@@ -27,28 +27,13 @@ jobs:
         with:
           dotnet-version: '9.0'
 
-      - name: Retrieve cache
-        id: retrieve-cache
-        uses: actions/cache@v4
-        with:
-          path: exd-data
-          key: exd-cache-${{hashFiles('exd-data/.cachemeta.json')}}
-          restore-keys: |
-            exd-cache-
-
-      - name: Download EXD files
-        uses: WorkingRobot/ffxiv-downloader@v7
-        with:
-          output-path: exd-data
-          regex: '^sqpack\/ffxiv\/0a0000\..+$'
-
       - name: Restore
         run: |
           dotnet restore src/Lumina.Excel.sln
 
       - name: Build
         run: |
-          dotnet build -c Release --no-restore --property:GamePath=${{ github.workspace }}/exd-data/sqpack /p:ContinuousIntegrationBuild=true src/Lumina.Excel.sln
+          dotnet build -c Release --no-restore /p:ContinuousIntegrationBuild=true src/Lumina.Excel.sln
 
       - name: Pack
         run: |

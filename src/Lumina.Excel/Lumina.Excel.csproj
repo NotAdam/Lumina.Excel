@@ -46,7 +46,6 @@
     <ItemGroup>
         <CompilerVisibleProperty Include="SchemaPath" />
         <CompilerVisibleProperty Include="ExperimentalSchemaPath" />
-        <CompilerVisibleProperty Include="GamePath" />
         <CompilerVisibleProperty Include="GeneratedNamespace" />
         <CompilerVisibleProperty Include="UseUsings" />
         <CompilerVisibleProperty Include="UseFileScopedNamespace" />
@@ -56,7 +55,6 @@
     <PropertyGroup>
         <SchemaPath>$(MSBuildProjectDirectory)\..\..\deps\EXDSchema</SchemaPath>
         <ExperimentalSchemaPath>$(MSBuildProjectDirectory)\..\..\deps\EXDSchema-experimental</ExperimentalSchemaPath>
-        <GamePath>/home/asriel/.xlcore/ffxiv/game/sqpack</GamePath>
         <GeneratedNamespace>Lumina.Excel.Sheets</GeneratedNamespace>
         <UseUsings>true</UseUsings>
         <UseFileScopedNamespace>true</UseFileScopedNamespace>

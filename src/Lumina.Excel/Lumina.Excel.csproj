@@ -35,7 +35,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Lumina.Excel.Generator\Lumina.Excel.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" IncludeAssets="all" />
-        <ProjectReference Include="..\..\deps\Lumina\src\Lumina\Lumina.csproj" />
+        <PackageReference Include="Lumina" Version="6.3.0" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
         <PackageReference Include="MinVer" Version="5.0.0">
             <PrivateAssets>all</PrivateAssets>

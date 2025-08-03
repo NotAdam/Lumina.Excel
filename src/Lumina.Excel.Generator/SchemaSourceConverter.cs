@@ -1,5 +1,4 @@
 using Lumina.Excel.Generator.Schema;
-using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
 using Lumina.Text.ReadOnly;
 using System;
@@ -11,11 +10,10 @@ namespace Lumina.Excel.Generator;
 public class SchemaSourceConverter
 {
     public Sheet Definition { get; }
-    public GameData GameData { get; }
+    public ColumnDefinitions ColumnDefinitions { get; }
     public string AssemblyName { get; }
     public TypeGlobalizer TypeGlobalizer { get; }
     public string IndentString { get; }
-    private RawExcelSheet GameSheet { get; }
     private string? Namespace { get; }
     private string? ReferencedSheetNamespace { get; }
 
@@ -27,15 +25,18 @@ public class SchemaSourceConverter
 
     public bool IsUnsafe { get; set; }
 
-    public SchemaSourceConverter(Sheet sheetDefinition, GameData gameData, string assemblyName, TypeGlobalizer typeGlobalizer, string indentString, string? selfNamespace, string? referencedSheetNamespace)
+    public SchemaSourceConverter(Sheet sheetDefinition, ColumnDefinitions defs, string assemblyName, TypeGlobalizer typeGlobalizer, string indentString, string? selfNamespace, string? referencedSheetNamespace)
     {
         Definition = sheetDefinition;
-        GameData = gameData;
+        ColumnDefinitions = defs;
         AssemblyName = assemblyName;
         TypeGlobalizer = typeGlobalizer;
         IndentString = indentString;
 
-        GameSheet = GameData.Excel.GetSheetRaw(Definition.Name) ?? throw new InvalidOperationException($"Sheet {Definition.Name} not found in game data");
+        SheetName = Definition.Name;
+        ColumnHash = defs.GetColumnsHash(Definition.Name);
+        HasSubrows = defs.HasSubrows(Definition.Name);
+        var columns = defs[Definition.Name];
 
         Namespace = selfNamespace;
 
@@ -48,11 +49,7 @@ public class SchemaSourceConverter
             ReferencedSheetNamespace = referencedSheetNamespace;
         }
 
-        SheetName = GameSheet.Name;
-        ColumnHash = GameSheet.HeaderFile.GetColumnsHash();
-        HasSubrows = GameSheet.Header.Variant == ExcelVariant.Subrows;
-
-        var orderedColumns = GameSheet.Columns.GroupBy(c => c.Offset).OrderBy(c => c.Key).SelectMany(g => g.OrderBy(c => c.Type)).ToArray();
+        var orderedColumns = columns.GroupBy(c => c.Offset).OrderBy(c => c.Key).SelectMany(g => g.OrderBy(c => c.Type)).ToArray();
         Code = ParseFields(new(Definition.Fields, ProcessRelations(Definition.Fields, Definition.Relations), [], orderedColumns, new OffsetExpression().Add("offset"), true), out var cols);
 
         if (!cols.IsEmpty)
@@ -363,7 +360,7 @@ public class SchemaSourceConverter
     {
         if (targets.Count == 1)
         {
-            var isSubrows = IsSheetSubrows(targets[0]);
+            var isSubrows = ColumnDefinitions.HasSubrows(targets[0]);
 
             typeName = $"{Globalize(isSubrows ? "Lumina.Excel.SubrowRef" : "Lumina.Excel.RowRef")}<{DecorateReferencedType(targets[0])}>";
             if (useGeneric)
@@ -529,7 +526,4 @@ public class SchemaSourceConverter
             >= ExcelColumnDataType.PackedBool0 and <= ExcelColumnDataType.PackedBool7 => (d, _) => $"page.ReadPackedBool({d}, {(byte)(type - ExcelColumnDataType.PackedBool0)})",
             var n => throw new InvalidOperationException($"Unknown column type {n}")
         };
-
-    private bool IsSheetSubrows(string sheetName) =>
-        GameData.GetFile<ExcelHeaderFile>(ExcelModule.BuildExcelHeaderPath(sheetName))!.Header.Variant == ExcelVariant.Subrows;
 }

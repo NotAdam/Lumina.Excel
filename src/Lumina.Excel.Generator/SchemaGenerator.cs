@@ -23,8 +23,8 @@ public class SchemaGenerator : IIncrementalGenerator
 
             provider.GlobalOptions.TryGetValue("build_property.SchemaPath", out var schemaPath);
             provider.GlobalOptions.TryGetValue("build_property.ExperimentalSchemaPath", out var experimentalSchemaPath);
-            if (!provider.GlobalOptions.TryGetValue("build_property.GamePath", out var gamePath))
-                throw new InvalidOperationException("GamePath must be set");
+            provider.GlobalOptions.TryGetValue("build_property.ColumnsPath", out var columnsPath);
+            provider.GlobalOptions.TryGetValue("build_property.GamePath", out var gamePath);
             provider.GlobalOptions.TryGetValue("build_property.GeneratedNamespace", out var generatedNamespace);
             provider.GlobalOptions.TryGetValue("build_property.ReferencedNamespace", out var referencedNamespace);
             provider.GlobalOptions.TryGetValue("build_property.IndentSize", out var indentSize);
@@ -48,9 +48,19 @@ public class SchemaGenerator : IIncrementalGenerator
                     throw new InvalidOperationException($"ExperimentalSchemaPath {schemaDir.FullName} does not exist");
             }
 
-            var gameDir = new DirectoryInfo(gamePath);
-            if (!gameDir.Exists)
-                throw new InvalidOperationException($"GamePath {gameDir.FullName} does not exist");
+            if (columnsPath != null)
+            {
+                var columnsFile = new FileInfo(columnsPath);
+                if (!columnsFile.Exists)
+                    throw new InvalidOperationException($"ColumnsPath {columnsFile.FullName} does not exist");
+            }
+
+            if (gamePath != null)
+            {
+                var gameDir = new DirectoryInfo(gamePath);
+                if (!gameDir.Exists)
+                    throw new InvalidOperationException($"GamePath {gameDir.FullName} does not exist");
+            }
 
             var indentString = "    ";
             if (!string.IsNullOrWhiteSpace(indentSize))
@@ -88,6 +98,7 @@ public class SchemaGenerator : IIncrementalGenerator
             {
                 SchemaPath = schemaPath,
                 ExperimentalSchemaPath = experimentalSchemaPath,
+                ColumnsPath = columnsPath,
                 GamePath = gamePath,
                 GeneratedNamespace = generatedNamespace,
                 ReferencedNamespace = referencedNamespace ?? generatedNamespace ?? throw new InvalidOperationException("ReferencedNamespace must be set"),
@@ -142,14 +153,14 @@ public class SchemaGenerator : IIncrementalGenerator
         {
             var fileSchemaPath = Path.GetFullPath(Path.Combine(filePath, "..", schemaPath));
             attemptedFilePaths.Add(fileSchemaPath);
-            resolvedSchemaFile = TryOpenFile(fileSchemaPath);
+            resolvedSchemaFile = FileIO.TryOpenFile(fileSchemaPath);
         }
 
         if (resolvedSchemaFile == null && options.SchemaPath != null)
         {
             var fileSchemaPath = Path.GetFullPath(Path.Combine(options.SchemaPath, schemaPath));
             attemptedFilePaths.Add(fileSchemaPath);
-            resolvedSchemaFile = TryOpenFile(fileSchemaPath);
+            resolvedSchemaFile = FileIO.TryOpenFile(fileSchemaPath);
         }
 
         if (resolvedSchemaFile == null)
@@ -169,7 +180,7 @@ public class SchemaGenerator : IIncrementalGenerator
             var sheet = deserializer.Deserialize<Sheet>(reader);
             sheetName = sheet.Name;
 
-            var converter = new SchemaSourceConverter(sheet, options.GameData, options.AssemblyName, new(options.UseUsings), options.IndentString, options.GeneratedNamespace, options.ReferencedNamespace);
+            var converter = new SchemaSourceConverter(sheet, options.ColumnDefinitions, options.AssemblyName, new(options.UseUsings), options.IndentString, options.GeneratedNamespace, options.ReferencedNamespace);
             var source = SourceConstants.CreateSchemaSource(symbol.ContainingNamespace.IsGlobalNamespace ? null : symbol.ContainingNamespace.ToString(), symbol.Name, true, options.UseFileScopedNamespace, false, converter);
             if (options.DebugFiles)
                 context.Debug($"{Convert.ToBase64String(Encoding.UTF8.GetBytes(source.ToString()))}");
@@ -189,9 +200,9 @@ public class SchemaGenerator : IIncrementalGenerator
         if (schemaPath == null)
             throw new ArgumentException("schemaPath must be set", nameof(schemaPath));
 
-        foreach (var file in GetFiles(schemaPath, "*.yml"))
+        foreach (var file in FileIO.GetFiles(schemaPath, "*.yml"))
         {
-            var schemaFile = TryOpenFile(file);
+            var schemaFile = FileIO.TryOpenFile(file);
             if (schemaFile == null)
                 throw new InvalidOperationException($"Failed to open schema file {file}");
 
@@ -206,13 +217,13 @@ public class SchemaGenerator : IIncrementalGenerator
                 var sheet = deserializer.Deserialize<Sheet>(reader);
                 sheetName = sheet.Name;
 
-                if (options.GameData.Excel.GetSheetRaw(sheet.Name) == null)
+                if (!options.ColumnDefinitions.Contains(sheet.Name))
                 {
                     context.ReportDiagnostic(Diagnostic.Create(Diagnostics.SheetNotFound, Location.None, DiagnosticSeverity.Error, null, null, sheet.Name));
                     continue;
                 }
 
-                var converter = new SchemaSourceConverter(sheet, options.GameData, options.AssemblyName, new(options.UseUsings), options.IndentString, generatedNamespace, null);
+                var converter = new SchemaSourceConverter(sheet, options.ColumnDefinitions, options.AssemblyName, new(options.UseUsings), options.IndentString, generatedNamespace, null);
                 var source = SourceConstants.CreateSchemaSource(generatedNamespace, sheet.Name, false, options.UseFileScopedNamespace, useExperimentalSchema, converter);
                 var name = useExperimentalSchema ? $"{sheet.Name}.Experimental" : sheet.Name;
                 if (options.DebugFiles)
@@ -225,32 +236,14 @@ public class SchemaGenerator : IIncrementalGenerator
             }
         }
     }
-
-    private static Stream? TryOpenFile(string path)
-    {
-        try
-        {
-            return new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
-        }
-        catch (Exception)
-        {
-            return null;
-        }
-    }
-
-    private static string[] GetFiles(string folder, string pattern)
-    {
-        var type = Type.GetType("System.IO.Directory");
-        var getFiles = type.GetMethod("GetFiles", [typeof(string), typeof(string)]);
-        return (string[])getFiles.Invoke(null, [folder, pattern]);
-    }
 }
 
 public sealed record GeneratorOptions
 {
     public required string? SchemaPath { get; init; }
     public required string? ExperimentalSchemaPath { get; init; }
-    public required string GamePath { get; init; }
+    public required string? ColumnsPath { get; init; }
+    public required string? GamePath { get; init; }
     public required string? GeneratedNamespace { get; init; }
     public required string ReferencedNamespace { get; init; }
     public required string IndentString { get; init; }
@@ -260,7 +253,7 @@ public sealed record GeneratorOptions
     public required bool DebugFiles { get; init; }
     public required string AssemblyName { get; init; }
 
-    private GameData? gameData = null;
-    public GameData GameData =>
-        gameData ??= new GameData(GamePath, new() { LoadMultithreaded = true });
+    private ColumnDefinitions? columnDefinitions = null;
+    public ColumnDefinitions ColumnDefinitions =>
+        columnDefinitions ?? ColumnDefinitions.FromInputs(GamePath, ColumnsPath ?? Path.Combine(SchemaPath, ".github", "columns.yml"));
 }

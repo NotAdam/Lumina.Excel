@@ -29,7 +29,6 @@ public class SchemaGenerator : IIncrementalGenerator
             provider.GlobalOptions.TryGetValue("build_property.IndentSize", out var indentSize);
             provider.GlobalOptions.TryGetValue("build_property.UseUsings", out var useUsings);
             provider.GlobalOptions.TryGetValue("build_property.UseFileScopedNamespace", out var useFileScopedNamespace);
-            provider.GlobalOptions.TryGetValue("build_property.UseThis", out var useThis);
             provider.GlobalOptions.TryGetValue("build_property.UseSchemaAttribute", out var useSchemaAttribute);
             provider.GlobalOptions.TryGetValue("build_property.Debug", out var debugFiles);
 
@@ -73,10 +72,6 @@ public class SchemaGenerator : IIncrementalGenerator
             var useFileScopedNamespaceBool = false;
             if (useFileScopedNamespace != null)
                 useFileScopedNamespaceBool = useFileScopedNamespace.Equals("true", StringComparison.InvariantCultureIgnoreCase) || useFileScopedNamespace == "1";
-
-            var useThisBool = true;
-            if (useThis != null)
-                useThisBool = useThis.Equals("true", StringComparison.InvariantCultureIgnoreCase) || useThis == "1";
 
             var useSchemaAttributeBool = true;
             if (useSchemaAttribute != null)

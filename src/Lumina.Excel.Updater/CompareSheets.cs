@@ -106,7 +106,8 @@ internal static class CompareSheets
                         headerOld.Header.Variant switch
                         {
                             ExcelVariant.Default => ((ExcelSheet<RawRow>)sheet).GetRowAt(i).RowId,
-                            ExcelVariant.Subrows => ((SubrowExcelSheet<RawSubrow>)sheet).GetRowAt(i).RowId
+                            ExcelVariant.Subrows => ((SubrowExcelSheet<RawSubrow>)sheet).GetRowAt(i).RowId,
+                            _ => throw new InvalidDataException("Invalid variant"),
                         };
 
                     var sheetType = headerOld.Header.Variant switch

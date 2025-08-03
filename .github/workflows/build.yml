@@ -37,7 +37,7 @@ jobs:
             exd-cache-
 
       - name: Download EXD files
-        uses: WorkingRobot/ffxiv-downloader@v5
+        uses: WorkingRobot/ffxiv-downloader@v7
         with:
           output-path: exd-data
           regex: '^sqpack\/ffxiv\/0a0000\..+$'

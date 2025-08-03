@@ -27,7 +27,7 @@ public class SchemaSourceConverter
 
     public bool IsUnsafe { get; set; }
 
-    public SchemaSourceConverter(Sheet sheetDefinition, GameData gameData, bool usePendingFields, string assemblyName, TypeGlobalizer typeGlobalizer, string indentString, string? selfNamespace, string? referencedSheetNamespace)
+    public SchemaSourceConverter(Sheet sheetDefinition, GameData gameData, string assemblyName, TypeGlobalizer typeGlobalizer, string indentString, string? selfNamespace, string? referencedSheetNamespace)
     {
         Definition = sheetDefinition;
         GameData = gameData;
@@ -53,9 +53,7 @@ public class SchemaSourceConverter
         HasSubrows = GameSheet.Header.Variant == ExcelVariant.Subrows;
 
         var orderedColumns = GameSheet.Columns.GroupBy(c => c.Offset).OrderBy(c => c.Key).SelectMany(g => g.OrderBy(c => c.Type)).ToArray();
-        var fields = !usePendingFields ? Definition.Fields : Definition.PendingFields ?? Definition.Fields;
-
-        Code = ParseFields(new(fields, ProcessRelations(fields, Definition.Relations), [], orderedColumns, new OffsetExpression().Add("offset"), true), out var cols);
+        Code = ParseFields(new(Definition.Fields, ProcessRelations(Definition.Fields, Definition.Relations), [], orderedColumns, new OffsetExpression().Add("offset"), true), out var cols);
 
         if (!cols.IsEmpty)
             throw new InvalidOperationException($"Expected {orderedColumns.Length} columns, but only parsed {orderedColumns.Length - cols.Length}");
@@ -311,7 +309,7 @@ public class SchemaSourceConverter
             if (structIsFlattened)
             {
                 var newParentInfo = parentInfo with { IsRoot = false };
-                (elementCode, structDefs, structTypeName, _, _) = GetFieldParseCode(structFields[0] with { Name = structFields[0].Name ?? field.Name, PendingName = structFields[0].PendingName ?? field.PendingName }, in newParentInfo, structColumns, currentOffset.Multiply("i", structByteSize), out _);
+                (elementCode, structDefs, structTypeName, _, _) = GetFieldParseCode(structFields[0] with { Name = structFields[0].Name ?? field.Name }, in newParentInfo, structColumns, currentOffset.Multiply("i", structByteSize), out _);
             }
             else
             {
@@ -354,7 +352,7 @@ public class SchemaSourceConverter
             }
             else
                 arrayCode = null!;
-            
+
             return (arrayCode, structDefs, fieldTypeName, memberOffset, addedToRelation);
         }
         else
@@ -399,32 +397,23 @@ public class SchemaSourceConverter
     private List<RelationInfo> ProcessRelations(List<Field> fields, Dictionary<string, List<string>>? schemaRelations)
     {
         return schemaRelations?.Select(
-            kv => new RelationInfo(kv.Key, kv.Value.Select(
+            kv => new RelationInfo(kv.Key, [.. kv.Value.Select(
                 f => fields.First(field => f.Equals(field.Name, StringComparison.Ordinal))
-            ).ToList()
+            )]
         )).ToList() ?? [];
     }
 
     private static void WriteField(IndentedStringBuilder code, TypeGlobalizer globalizer, Field field, string parseCode, string fieldTypeName)
     {
-        if (field.PendingName != null)
-        {
-            if (field.Comment != null)
-                code.AppendLine($"/// {GeneratorUtils.CreateDocstring(field.Comment)}");
-            code.AppendLine($"public readonly {fieldTypeName} {field.PendingName} => {parseCode};");
-        }
-
         if (field.Comment is { } comment)
             code.AppendLine($"/// {GeneratorUtils.CreateDocstring(comment)}");
-        if (field.PendingName != null)
-            code.AppendLine($@"[{globalizer.GlobalizeType("System.Obsolete")}({GeneratorUtils.EscapeStringToken($"Use {field.PendingName} instead.")})]");
         code.AppendLine($"public readonly {fieldTypeName} {field.Name} => {parseCode};");
     }
 
     private int GetStructColumnSize(IEnumerable<Field> fields, ReadOnlyMemory<ExcelColumnDefinition> columns)
     {
         var columnCount = 0;
-        foreach(var field in fields)
+        foreach (var field in fields)
         {
             if (field.Type == FieldType.Array)
             {
@@ -507,39 +496,39 @@ public class SchemaSourceConverter
 
     private string LookupTypeName(ExcelColumnDataType type) =>
         type switch
-    {
-        ExcelColumnDataType.String => Globalize<ReadOnlySeString>(),
-        ExcelColumnDataType.Bool => "bool",
-        ExcelColumnDataType.Int8 => "sbyte",
-        ExcelColumnDataType.UInt8 => "byte",
-        ExcelColumnDataType.Int16 => "short",
-        ExcelColumnDataType.UInt16 => "ushort",
-        ExcelColumnDataType.Int32 => "int",
-        ExcelColumnDataType.UInt32 => "uint",
-        ExcelColumnDataType.Float32 => "float",
-        ExcelColumnDataType.Int64 => "long",
-        ExcelColumnDataType.UInt64 => "ulong",
-        >= ExcelColumnDataType.PackedBool0 and <= ExcelColumnDataType.PackedBool7 => "bool",
-        var n => throw new InvalidOperationException($"Unknown column type {n}")
-    };
+        {
+            ExcelColumnDataType.String => Globalize<ReadOnlySeString>(),
+            ExcelColumnDataType.Bool => "bool",
+            ExcelColumnDataType.Int8 => "sbyte",
+            ExcelColumnDataType.UInt8 => "byte",
+            ExcelColumnDataType.Int16 => "short",
+            ExcelColumnDataType.UInt16 => "ushort",
+            ExcelColumnDataType.Int32 => "int",
+            ExcelColumnDataType.UInt32 => "uint",
+            ExcelColumnDataType.Float32 => "float",
+            ExcelColumnDataType.Int64 => "long",
+            ExcelColumnDataType.UInt64 => "ulong",
+            >= ExcelColumnDataType.PackedBool0 and <= ExcelColumnDataType.PackedBool7 => "bool",
+            var n => throw new InvalidOperationException($"Unknown column type {n}")
+        };
 
     private Func<string, string, string> LookupReadFunc(ExcelColumnDataType type) =>
         type switch
-    {
-        ExcelColumnDataType.Bool or
-        ExcelColumnDataType.Int8 or
-        ExcelColumnDataType.UInt8 or
-        ExcelColumnDataType.Int16 or
-        ExcelColumnDataType.UInt16 or
-        ExcelColumnDataType.Int32 or
-        ExcelColumnDataType.UInt32 or
-        ExcelColumnDataType.Float32 or
-        ExcelColumnDataType.Int64 or
-        ExcelColumnDataType.UInt64 => (d, _) => $"page.Read{type}({d})",
-        ExcelColumnDataType.String => (d, o) => $"page.ReadString({d}, {o})",
-        >= ExcelColumnDataType.PackedBool0 and <= ExcelColumnDataType.PackedBool7 => (d, _) => $"page.ReadPackedBool({d}, {(byte)(type - ExcelColumnDataType.PackedBool0)})",
-        var n => throw new InvalidOperationException($"Unknown column type {n}")
-    };
+        {
+            ExcelColumnDataType.Bool or
+            ExcelColumnDataType.Int8 or
+            ExcelColumnDataType.UInt8 or
+            ExcelColumnDataType.Int16 or
+            ExcelColumnDataType.UInt16 or
+            ExcelColumnDataType.Int32 or
+            ExcelColumnDataType.UInt32 or
+            ExcelColumnDataType.Float32 or
+            ExcelColumnDataType.Int64 or
+            ExcelColumnDataType.UInt64 => (d, _) => $"page.Read{type}({d})",
+            ExcelColumnDataType.String => (d, o) => $"page.ReadString({d}, {o})",
+            >= ExcelColumnDataType.PackedBool0 and <= ExcelColumnDataType.PackedBool7 => (d, _) => $"page.ReadPackedBool({d}, {(byte)(type - ExcelColumnDataType.PackedBool0)})",
+            var n => throw new InvalidOperationException($"Unknown column type {n}")
+        };
 
     private bool IsSheetSubrows(string sheetName) =>
         GameData.GetFile<ExcelHeaderFile>(ExcelModule.BuildExcelHeaderPath(sheetName))!.Header.Variant == ExcelVariant.Subrows;

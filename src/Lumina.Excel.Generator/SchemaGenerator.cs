@@ -13,8 +13,6 @@ namespace Lumina.Excel.Generator;
 [Generator]
 public class SchemaGenerator : IIncrementalGenerator
 {
-    private const bool DebugFiles = false;
-
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
         var assemblyName = context.CompilationProvider.Select((provider, _) => provider.Assembly.Identity.GetDisplayName());
@@ -24,6 +22,7 @@ public class SchemaGenerator : IIncrementalGenerator
             var (provider, assemblyName) = opts;
 
             provider.GlobalOptions.TryGetValue("build_property.SchemaPath", out var schemaPath);
+            provider.GlobalOptions.TryGetValue("build_property.ExperimentalSchemaPath", out var experimentalSchemaPath);
             if (!provider.GlobalOptions.TryGetValue("build_property.GamePath", out var gamePath))
                 throw new InvalidOperationException("GamePath must be set");
             provider.GlobalOptions.TryGetValue("build_property.GeneratedNamespace", out var generatedNamespace);
@@ -33,13 +32,20 @@ public class SchemaGenerator : IIncrementalGenerator
             provider.GlobalOptions.TryGetValue("build_property.UseFileScopedNamespace", out var useFileScopedNamespace);
             provider.GlobalOptions.TryGetValue("build_property.UseThis", out var useThis);
             provider.GlobalOptions.TryGetValue("build_property.UseSchemaAttribute", out var useSchemaAttribute);
-            provider.GlobalOptions.TryGetValue("build_property.GeneratePendingFields", out var generatePendingFields);
+            provider.GlobalOptions.TryGetValue("build_property.Debug", out var debugFiles);
 
             if (schemaPath != null)
             {
                 var schemaDir = new DirectoryInfo(schemaPath);
                 if (!schemaDir.Exists)
                     throw new InvalidOperationException($"SchemaPath {schemaDir.FullName} does not exist");
+            }
+
+            if (experimentalSchemaPath != null)
+            {
+                var schemaDir = new DirectoryInfo(experimentalSchemaPath);
+                if (!schemaDir.Exists)
+                    throw new InvalidOperationException($"ExperimentalSchemaPath {schemaDir.FullName} does not exist");
             }
 
             var gameDir = new DirectoryInfo(gamePath);
@@ -55,7 +61,7 @@ public class SchemaGenerator : IIncrementalGenerator
                     indentString = "\t";
                 else
                     throw new InvalidOperationException("IndentSize must be a number or 'tab'");
-                    
+
             }
 
             var useUsingsBool = false;
@@ -74,13 +80,14 @@ public class SchemaGenerator : IIncrementalGenerator
             if (useSchemaAttribute != null)
                 useSchemaAttributeBool = useSchemaAttribute.Equals("true", StringComparison.InvariantCultureIgnoreCase) || useSchemaAttribute == "1";
 
-            var generatePendingFieldsBool = true;
-            if (generatePendingFields != null)
-                generatePendingFieldsBool = generatePendingFields.Equals("true", StringComparison.InvariantCultureIgnoreCase) || generatePendingFields == "1";
+            var debugFilesBool = false;
+            if (debugFiles != null)
+                debugFilesBool = debugFiles.Equals("true", StringComparison.InvariantCultureIgnoreCase) || debugFiles == "1";
 
             return new GeneratorOptions
             {
                 SchemaPath = schemaPath,
+                ExperimentalSchemaPath = experimentalSchemaPath,
                 GamePath = gamePath,
                 GeneratedNamespace = generatedNamespace,
                 ReferencedNamespace = referencedNamespace ?? generatedNamespace ?? throw new InvalidOperationException("ReferencedNamespace must be set"),
@@ -88,7 +95,7 @@ public class SchemaGenerator : IIncrementalGenerator
                 UseUsings = useUsingsBool,
                 UseFileScopedNamespace = useFileScopedNamespaceBool,
                 UseSchemaAttribute = useSchemaAttributeBool,
-                GeneratePendingFields = generatePendingFieldsBool,
+                DebugFiles = debugFilesBool,
                 AssemblyName = assemblyName
             };
         });
@@ -109,12 +116,13 @@ public class SchemaGenerator : IIncrementalGenerator
             return (schemaPath, data, (INamedTypeSymbol)ctx.TargetSymbol);
         });
 
-        context.RegisterSourceOutput(options, (ctx, opts) => {
+        context.RegisterSourceOutput(options, (ctx, opts) =>
+        {
             if (string.IsNullOrEmpty(opts.GeneratedNamespace))
                 return;
-            GenerateSchemas(ctx, opts, false, opts.GeneratedNamespace!);
-            if (opts.GeneratePendingFields)
-                GenerateSchemas(ctx, opts, true, $"{opts.GeneratedNamespace!}.Experimental");
+            GenerateSchemas(ctx, opts, false);
+            if (!string.IsNullOrEmpty(opts.ExperimentalSchemaPath))
+                GenerateSchemas(ctx, opts, true);
         });
         context.RegisterSourceOutput(attributeMetadata.Combine(options), GenerateSchema);
     }
@@ -154,28 +162,34 @@ public class SchemaGenerator : IIncrementalGenerator
         using var reader = new StreamReader(schema);
 
         var deserializer = new DeserializerBuilder().WithNamingConvention(CamelCaseNamingConvention.Instance).Build();
-        var sheet = deserializer.Deserialize<Sheet>(reader);
+        var sheetName = Path.GetFileNameWithoutExtension(schemaPath);
 
         try
         {
-            var converter = new SchemaSourceConverter(sheet, options.GameData, true, options.AssemblyName, new(options.UseUsings), options.IndentString, options.GeneratedNamespace, options.ReferencedNamespace);
+            var sheet = deserializer.Deserialize<Sheet>(reader);
+            sheetName = sheet.Name;
+
+            var converter = new SchemaSourceConverter(sheet, options.GameData, options.AssemblyName, new(options.UseUsings), options.IndentString, options.GeneratedNamespace, options.ReferencedNamespace);
             var source = SourceConstants.CreateSchemaSource(symbol.ContainingNamespace.IsGlobalNamespace ? null : symbol.ContainingNamespace.ToString(), symbol.Name, true, options.UseFileScopedNamespace, false, converter);
-            if (DebugFiles)
+            if (options.DebugFiles)
                 context.Debug($"{Convert.ToBase64String(Encoding.UTF8.GetBytes(source.ToString()))}");
             context.AddSource($"{symbol.Name}.g.cs", source);
         }
         catch (Exception e)
         {
-            context.ReportDiagnostic(Diagnostic.Create(Diagnostics.SheetFailedGeneration, Location.None, DiagnosticSeverity.Error, null, null, sheet.Name, e.Message));
+            context.ReportDiagnostic(Diagnostic.Create(Diagnostics.SheetFailedGeneration, Location.None, DiagnosticSeverity.Error, null, null, sheetName, e.Message));
         }
     }
 
-    private void GenerateSchemas(SourceProductionContext context, GeneratorOptions options, bool usePendingFields, string generatedNamespace)
+    private void GenerateSchemas(SourceProductionContext context, GeneratorOptions options, bool useExperimentalSchema)
     {
-        if (string.IsNullOrEmpty(options.SchemaPath))
-            throw new ArgumentException("SchemaPath must be set", nameof(options.SchemaPath));
+        var schemaPath = useExperimentalSchema ? options.ExperimentalSchemaPath : options.SchemaPath;
+        var generatedNamespace = useExperimentalSchema ? $"{options.GeneratedNamespace}.Experimental" : options.GeneratedNamespace;
 
-        foreach (var file in GetFiles(options.SchemaPath!, "*.yml"))
+        if (schemaPath == null)
+            throw new ArgumentException("schemaPath must be set", nameof(schemaPath));
+
+        foreach (var file in GetFiles(schemaPath, "*.yml"))
         {
             var schemaFile = TryOpenFile(file);
             if (schemaFile == null)
@@ -185,26 +199,29 @@ public class SchemaGenerator : IIncrementalGenerator
             using var reader = new StreamReader(schema);
 
             var deserializer = new DeserializerBuilder().WithNamingConvention(CamelCaseNamingConvention.Instance).Build();
-            var sheet = deserializer.Deserialize<Sheet>(reader);
-
-            if (options.GameData.Excel.GetSheetRaw(sheet.Name) == null)
-            {
-                context.ReportDiagnostic(Diagnostic.Create(Diagnostics.SheetNotFound, Location.None, DiagnosticSeverity.Error, null, null, sheet.Name));
-                continue;
-            }
+            var sheetName = Path.GetFileNameWithoutExtension(schemaPath);
 
             try
             {
-                var converter = new SchemaSourceConverter(sheet, options.GameData, usePendingFields, options.AssemblyName, new(options.UseUsings), options.IndentString, generatedNamespace, null);
-                var source = SourceConstants.CreateSchemaSource(generatedNamespace, sheet.Name, false, options.UseFileScopedNamespace, usePendingFields, converter);
-                var name = usePendingFields ? $"{sheet.Name}Experimental" : sheet.Name;
-                if (DebugFiles)
+                var sheet = deserializer.Deserialize<Sheet>(reader);
+                sheetName = sheet.Name;
+
+                if (options.GameData.Excel.GetSheetRaw(sheet.Name) == null)
+                {
+                    context.ReportDiagnostic(Diagnostic.Create(Diagnostics.SheetNotFound, Location.None, DiagnosticSeverity.Error, null, null, sheet.Name));
+                    continue;
+                }
+
+                var converter = new SchemaSourceConverter(sheet, options.GameData, options.AssemblyName, new(options.UseUsings), options.IndentString, generatedNamespace, null);
+                var source = SourceConstants.CreateSchemaSource(generatedNamespace, sheet.Name, false, options.UseFileScopedNamespace, useExperimentalSchema, converter);
+                var name = useExperimentalSchema ? $"{sheet.Name}.Experimental" : sheet.Name;
+                if (options.DebugFiles)
                     context.Debug($"{name} -> {Convert.ToBase64String(Encoding.UTF8.GetBytes(source.ToString()))}");
                 context.AddSource($"{name}.g.cs", source);
             }
             catch (Exception e)
             {
-                context.ReportDiagnostic(Diagnostic.Create(Diagnostics.SheetFailedGeneration, Location.None, DiagnosticSeverity.Error, null, null, sheet.Name, e.Message));
+                context.ReportDiagnostic(Diagnostic.Create(Diagnostics.SheetFailedGeneration, Location.None, DiagnosticSeverity.Error, null, null, sheetName, e.Message));
             }
         }
     }
@@ -232,6 +249,7 @@ public class SchemaGenerator : IIncrementalGenerator
 public sealed record GeneratorOptions
 {
     public required string? SchemaPath { get; init; }
+    public required string? ExperimentalSchemaPath { get; init; }
     public required string GamePath { get; init; }
     public required string? GeneratedNamespace { get; init; }
     public required string ReferencedNamespace { get; init; }
@@ -239,7 +257,7 @@ public sealed record GeneratorOptions
     public required bool UseUsings { get; init; }
     public required bool UseFileScopedNamespace { get; init; }
     public required bool UseSchemaAttribute { get; init; }
-    public required bool GeneratePendingFields { get; init; }
+    public required bool DebugFiles { get; init; }
     public required string AssemblyName { get; init; }
 
     private GameData? gameData = null;

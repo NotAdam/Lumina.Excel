@@ -45,21 +45,21 @@
 
     <ItemGroup>
         <CompilerVisibleProperty Include="SchemaPath" />
+        <CompilerVisibleProperty Include="ExperimentalSchemaPath" />
         <CompilerVisibleProperty Include="GamePath" />
         <CompilerVisibleProperty Include="GeneratedNamespace" />
         <CompilerVisibleProperty Include="UseUsings" />
         <CompilerVisibleProperty Include="UseFileScopedNamespace" />
         <CompilerVisibleProperty Include="UseSchemaAttribute" />
-        <CompilerVisibleProperty Include="GeneratePendingFields" />
     </ItemGroup>
 
     <PropertyGroup>
         <SchemaPath>$(MSBuildProjectDirectory)\..\..\deps\EXDSchema</SchemaPath>
-        <GamePath>J:\Programs\steam\steamapps\common\FINAL FANTASY XIV Online\game\sqpack</GamePath>
+        <ExperimentalSchemaPath>$(MSBuildProjectDirectory)\..\..\deps\EXDSchema-experimental</ExperimentalSchemaPath>
+        <GamePath>/home/asriel/.xlcore/ffxiv/game/sqpack</GamePath>
         <GeneratedNamespace>Lumina.Excel.Sheets</GeneratedNamespace>
         <UseUsings>true</UseUsings>
         <UseFileScopedNamespace>true</UseFileScopedNamespace>
         <UseSchemaAttribute>false</UseSchemaAttribute>
-        <GeneratePendingFields>true</GeneratePendingFields>
     </PropertyGroup>
 </Project>

@@ -11,16 +11,12 @@ public record Sheet
 
     public required List<Field> Fields { get; set; }
 
-    public List<Field>? PendingFields { get; set; }
-
     public Dictionary<string, List<string>>? Relations { get; set; }
 }
 
 public record Field
 {
     public string? Name { get; set; }
-
-    public string? PendingName { get; set; }
 
     public int? Count { get; set; }
 

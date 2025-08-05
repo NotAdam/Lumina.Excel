@@ -1,7 +1,7 @@
 [submodule "EXDSchema"]
 	path = deps/EXDSchema
 	url = https://github.com/xivdev/EXDSchema.git
-	branch = ver/2025.06.28.0000.0000
+	branch = ver/2025.07.30.0000.0000
 [submodule "EXDSchema-experimental"]
 	path = deps/EXDSchema-experimental
 	url = https://github.com/xivdev/EXDSchema.git

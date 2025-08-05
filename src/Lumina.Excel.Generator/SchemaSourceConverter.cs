@@ -33,7 +33,7 @@ public class SchemaSourceConverter
 
         SheetName = Definition.Name;
         ColumnHash = defs.GetColumnsHash(Definition.Name);
-        HasSubrows = defs.HasSubrows(Definition.Name);
+        HasSubrows = defs.SubrowSheets.Contains(Definition.Name);
         var columns = defs[Definition.Name];
 
         Namespace = selfNamespace;
@@ -358,7 +358,7 @@ public class SchemaSourceConverter
     {
         if (targets.Count == 1)
         {
-            var isSubrows = ColumnDefinitions.HasSubrows(targets[0]);
+            var isSubrows = ColumnDefinitions.SubrowSheets.Contains(targets[0]);
 
             typeName = $"{Globalize(isSubrows ? "Lumina.Excel.SubrowRef" : "Lumina.Excel.RowRef")}<{DecorateReferencedType(targets[0])}>";
             if (useGeneric)

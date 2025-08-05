@@ -1,4 +1,5 @@
 using System;
+using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
@@ -10,11 +11,11 @@ using YamlDotNet.Serialization.NamingConventions;
 namespace Lumina.Excel.Generator;
 
 // Adapted from: https://github.com/xivdev/EXDTools/blob/main/ColDefReader.cs
-public class ColumnDefinitions(ImmutableSortedDictionary<string, ExcelColumnDefinition[]> dict,
+public sealed class ColumnDefinitions(ImmutableSortedDictionary<string, ExcelColumnDefinition[]> dict,
     ImmutableSortedSet<string> subrows)
 {
-    private ImmutableSortedDictionary<string, ExcelColumnDefinition[]> Sheets { get; } = dict;
-    private ImmutableSortedSet<string> SubrowSheets { get; } = subrows;
+    public ImmutableSortedDictionary<string, ExcelColumnDefinition[]> Sheets { get; } = dict;
+    public ImmutableSortedSet<string> SubrowSheets { get; } = subrows;
 
     public static ColumnDefinitions FromColumnFile(string file)
     {
@@ -42,16 +43,36 @@ public class ColumnDefinitions(ImmutableSortedDictionary<string, ExcelColumnDefi
         return new(sheets.ToImmutableSortedDictionary(), subrowSheets);
     }
 
-    public bool Contains(string sheetName) =>
-        Sheets.ContainsKey(sheetName);
-
     public ExcelColumnDefinition[] this[string sheetName] => Sheets[sheetName];
 
-    public uint GetColumnsHash(string sheetName) =>
-        Crc32.Get(MemoryMarshal.AsBytes(Sheets[sheetName].AsSpan()));
+    public uint GetColumnsHash(string sheetName)
+    {
+        var data = MemoryMarshal.Cast<ExcelColumnDefinition, ushort>(Sheets[sheetName].AsSpan());
 
-    public bool HasSubrows(string sheetName) =>
-        SubrowSheets.Contains(sheetName);
+        // Column hashes are based on the file data, so we need to ensure the endianness matches
+        if (BitConverter.IsLittleEndian)
+        {
+            var temp = data.ToArray();
+            foreach (ref var el in temp.AsSpan())
+                el = BinaryPrimitives.ReverseEndianness(el);
+            data = temp.AsSpan();
+        }
+
+        return Crc32.Get(MemoryMarshal.Cast<ushort, byte>(data));
+    }
+
+    public void WriteTo(TextWriter writer)
+    {
+        var schemaSerializer = new SerializerBuilder()
+            .DisableAliases()
+            .WithNamingConvention(CamelCaseNamingConvention.Instance)
+            .WithEnumNamingConvention(LowerCaseNamingConvention.Instance)
+            .WithIndentedSequences()
+            .EnsureRoundtrip()
+            .Build();
+
+        schemaSerializer.Serialize(writer, Sheets.ToImmutableSortedDictionary(pair => $"{pair.Key}{(SubrowSheets.Contains(pair.Key) ? "@Subrow" : string.Empty)}", pair => pair.Value));
+    }
 
     private static readonly ImmutableSortedSet<string> DefaultSubrowSheets =
     [

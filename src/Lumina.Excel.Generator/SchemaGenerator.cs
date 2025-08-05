@@ -203,7 +203,7 @@ public class SchemaGenerator : IIncrementalGenerator
                 var sheet = deserializer.Deserialize<Sheet>(reader);
                 sheetName = sheet.Name;
 
-                if (!options.ColumnDefinitions.Contains(sheet.Name))
+                if (!options.ColumnDefinitions.Sheets.ContainsKey(sheet.Name))
                 {
                     context.ReportDiagnostic(Diagnostic.Create(Diagnostics.SheetNotFound, Location.None, DiagnosticSeverity.Error, null, null, sheet.Name));
                     continue;

@@ -2,7 +2,7 @@ name: Update Submodules
 on:
   workflow_dispatch:
   schedule:
-    - cron: '45 23,11,17 * * *'
+    - cron: '55 23,5,11,17 * * *'
 
 concurrency:
   group: ${{github.workflow}}

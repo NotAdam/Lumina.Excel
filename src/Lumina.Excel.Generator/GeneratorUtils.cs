@@ -1,4 +1,5 @@
 using Microsoft.CodeAnalysis;
+using System;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Xml;
@@ -18,10 +19,25 @@ internal static class GeneratorUtils
     public static string CreateDocstring(string text)
     {
         var sb = new StringBuilder();
-        using (var writer = XmlWriter.Create(sb, new XmlWriterSettings() { OmitXmlDeclaration = true, NewLineChars = " " })) 
+        using (var writer = XmlWriter.Create(sb, new XmlWriterSettings() { OmitXmlDeclaration = true })) 
         {
             writer.WriteStartElement("summary");
-            writer.WriteString(text);
+            writer.WriteWhitespace("\n");
+            writer.WriteString("/// ");
+            var lines = text.Split(["\r\n", "\n"], StringSplitOptions.RemoveEmptyEntries);
+            for (var i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                if (i > 0)
+                {
+                    writer.WriteElementString("br", string.Empty);
+                    writer.WriteWhitespace("\n");
+                    writer.WriteString("/// ");
+                }
+                writer.WriteString(line.Trim());
+            }
+            writer.WriteWhitespace("\n");
+            writer.WriteString("/// ");
             writer.WriteEndElement();
         }
         return sb.ToString();

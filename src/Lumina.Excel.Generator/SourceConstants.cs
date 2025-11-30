@@ -49,6 +49,8 @@ using System.CodeDom.Compiler;
         sb.AppendLine("{");
         using (sb.IndentScope())
         {
+            sb.AppendLine($"public {globalize("Lumina.Excel.ExcelPage")} ExcelPage => page;");
+            sb.AppendLine($"public uint RowOffset => offset;");
             sb.AppendLine("public uint RowId => row;");
             if (converter.HasSubrows)
                 sb.AppendLine("public ushort SubrowId => subrow;");

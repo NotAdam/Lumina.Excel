@@ -16,10 +16,10 @@ jobs:
     permissions:
       actions: write
       contents: write
-      
+
     steps:
       - name: Checkout Main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: master
           fetch-depth: 0
@@ -36,7 +36,7 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add --all
           git diff --cached --quiet || git commit -m "Update Submodules"
-    
+
       - name: Push Changes
         run: |
           git push

@@ -78,7 +78,7 @@ using System.CodeDom.Compiler;
         if (!string.IsNullOrEmpty(targetNamespace))
             ret = ScopeNamespace(useFileScopedNamespace, converter.IndentString, targetNamespace!, ret);
 
-        ret = $"{converter.TypeGlobalizer.GetUsings()}\n{ret}";
+        ret = $"#pragma warning disable CS9113\n{converter.TypeGlobalizer.GetUsings()}\n{ret}";
 
         return SourceText.From(ret.Trim(), Encoding.UTF8);
     }

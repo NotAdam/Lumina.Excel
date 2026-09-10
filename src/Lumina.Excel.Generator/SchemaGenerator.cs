@@ -39,7 +39,7 @@ public class SchemaGenerator : IIncrementalGenerator
                     throw new InvalidOperationException($"SchemaPath {schemaDir.FullName} does not exist");
             }
 
-            if (experimentalSchemaPath != null)
+            if (!string.IsNullOrWhiteSpace(experimentalSchemaPath))
             {
                 var schemaDir = new DirectoryInfo(experimentalSchemaPath);
                 if (!schemaDir.Exists)
@@ -100,7 +100,7 @@ public class SchemaGenerator : IIncrementalGenerator
         context.RegisterSourceOutput(options, (ctx, opts) =>
         {
             if (opts.UseSchemaAttribute)
-                ctx.AddSource("SheetSchemaAttribute.g.cs", SourceConstants.CreateAttributeSource("SheetSchema", false));
+                ctx.AddSource("SheetSchemaAttribute.generated.cs", SourceConstants.CreateAttributeSource("SheetSchema", false));
         });
 
         var fqmn = $"{SourceConstants.GeneratedNamespace}.SheetSchemaAttribute";
@@ -170,7 +170,7 @@ public class SchemaGenerator : IIncrementalGenerator
             var source = SourceConstants.CreateSchemaSource(symbol.ContainingNamespace.IsGlobalNamespace ? null : symbol.ContainingNamespace.ToString(), symbol.Name, true, options.UseFileScopedNamespace, false, converter);
             if (options.DebugFiles)
                 context.Debug($"{Convert.ToBase64String(Encoding.UTF8.GetBytes(source.ToString()))}");
-            context.AddSource($"{symbol.Name}.g.cs", source);
+            context.AddSource($"{symbol.Name}.generated.cs", source);
         }
         catch (Exception e)
         {
@@ -214,7 +214,7 @@ public class SchemaGenerator : IIncrementalGenerator
                 var name = useExperimentalSchema ? $"{sheet.Name}.Experimental" : sheet.Name;
                 if (options.DebugFiles)
                     context.Debug($"{name} -> {Convert.ToBase64String(Encoding.UTF8.GetBytes(source.ToString()))}");
-                context.AddSource($"{name}.g.cs", source);
+                context.AddSource($"{name}.generated.cs", source);
             }
             catch (Exception e)
             {

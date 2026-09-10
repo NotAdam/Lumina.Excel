@@ -39,7 +39,7 @@ public class SchemaGenerator : IIncrementalGenerator
                     throw new InvalidOperationException($"SchemaPath {schemaDir.FullName} does not exist");
             }
 
-            if (experimentalSchemaPath != null)
+            if (!string.IsNullOrWhiteSpace(experimentalSchemaPath))
             {
                 var schemaDir = new DirectoryInfo(experimentalSchemaPath);
                 if (!schemaDir.Exists)

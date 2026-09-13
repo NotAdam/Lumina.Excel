@@ -14,6 +14,7 @@ Contains generated definitions for relational Excel data used in FINAL FANTASY X
       * `SchemaPath` - path to the schema definitions, relative to the project root
       * `ExperimentalSchemaPath` - path to the experimental schema definitions, relative to the project root. If omitted, the generator will not generate the experimental namespace
       * `ColumnsPath` - path to the column definitions, relative to the project root. Defaults to `SchemaPath/.github/columns.yml`
+      * `ExperimentalColumnsPath` - path to the experimental column definitions, relative to the project root. Defaults to `ExperimentalSchemaPath/.github/columns.yml`
       * `GeneratedNamespace` - namespace to put all the generated classes in
       * `ReferencedNamespace` - namespace with all the referenced classes; this is primarily used for those using this generator in their own projects, so they can test their own schema changes
       * `IndentSize` - number of spaces to use for indentation in generated code. Also accepts "tab" for using tabs. Defaults to `4`

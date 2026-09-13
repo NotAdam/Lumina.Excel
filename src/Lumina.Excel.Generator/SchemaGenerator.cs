@@ -24,6 +24,7 @@ public class SchemaGenerator : IIncrementalGenerator
             provider.GlobalOptions.TryGetValue("build_property.SchemaPath", out var schemaPath);
             provider.GlobalOptions.TryGetValue("build_property.ExperimentalSchemaPath", out var experimentalSchemaPath);
             provider.GlobalOptions.TryGetValue("build_property.ColumnsPath", out var columnsPath);
+            provider.GlobalOptions.TryGetValue("build_property.ExperimentalColumnsPath", out var experimentalColumnsPath);
             provider.GlobalOptions.TryGetValue("build_property.GeneratedNamespace", out var generatedNamespace);
             provider.GlobalOptions.TryGetValue("build_property.ReferencedNamespace", out var referencedNamespace);
             provider.GlobalOptions.TryGetValue("build_property.IndentSize", out var indentSize);
@@ -39,7 +40,7 @@ public class SchemaGenerator : IIncrementalGenerator
                     throw new InvalidOperationException($"SchemaPath {schemaDir.FullName} does not exist");
             }
 
-            if (experimentalSchemaPath != null)
+            if (!string.IsNullOrWhiteSpace(experimentalSchemaPath))
             {
                 var schemaDir = new DirectoryInfo(experimentalSchemaPath);
                 if (!schemaDir.Exists)
@@ -51,6 +52,13 @@ public class SchemaGenerator : IIncrementalGenerator
                 var columnsFile = new FileInfo(columnsPath);
                 if (!columnsFile.Exists)
                     throw new InvalidOperationException($"ColumnsPath {columnsFile.FullName} does not exist");
+            }
+
+            if (experimentalColumnsPath != null)
+            {
+                var columnsFile = new FileInfo(experimentalColumnsPath);
+                if (!columnsFile.Exists)
+                    throw new InvalidOperationException($"ExperimentalColumnsPath {columnsFile.FullName} does not exist");
             }
 
             var indentString = "    ";
@@ -86,6 +94,7 @@ public class SchemaGenerator : IIncrementalGenerator
                 SchemaPath = schemaPath,
                 ExperimentalSchemaPath = experimentalSchemaPath,
                 ColumnsPath = columnsPath,
+                ExperimentalColumnsPath = experimentalColumnsPath,
                 GeneratedNamespace = generatedNamespace,
                 ReferencedNamespace = referencedNamespace ?? generatedNamespace ?? throw new InvalidOperationException("ReferencedNamespace must be set"),
                 IndentString = indentString,
@@ -100,7 +109,7 @@ public class SchemaGenerator : IIncrementalGenerator
         context.RegisterSourceOutput(options, (ctx, opts) =>
         {
             if (opts.UseSchemaAttribute)
-                ctx.AddSource("SheetSchemaAttribute.g.cs", SourceConstants.CreateAttributeSource("SheetSchema", false));
+                ctx.AddSource("SheetSchemaAttribute.generated.cs", SourceConstants.CreateAttributeSource("SheetSchema", false));
         });
 
         var fqmn = $"{SourceConstants.GeneratedNamespace}.SheetSchemaAttribute";
@@ -170,7 +179,7 @@ public class SchemaGenerator : IIncrementalGenerator
             var source = SourceConstants.CreateSchemaSource(symbol.ContainingNamespace.IsGlobalNamespace ? null : symbol.ContainingNamespace.ToString(), symbol.Name, true, options.UseFileScopedNamespace, false, converter);
             if (options.DebugFiles)
                 context.Debug($"{Convert.ToBase64String(Encoding.UTF8.GetBytes(source.ToString()))}");
-            context.AddSource($"{symbol.Name}.g.cs", source);
+            context.AddSource($"{symbol.Name}.generated.cs", source);
         }
         catch (Exception e)
         {
@@ -182,6 +191,7 @@ public class SchemaGenerator : IIncrementalGenerator
     {
         var schemaPath = useExperimentalSchema ? options.ExperimentalSchemaPath : options.SchemaPath;
         var generatedNamespace = useExperimentalSchema ? $"{options.GeneratedNamespace}.Experimental" : options.GeneratedNamespace;
+        var columnDefinitions = useExperimentalSchema ? options.ExperimentalColumnDefinitions : options.ColumnDefinitions;
 
         if (schemaPath == null)
             throw new ArgumentException("schemaPath must be set", nameof(schemaPath));
@@ -203,18 +213,18 @@ public class SchemaGenerator : IIncrementalGenerator
                 var sheet = deserializer.Deserialize<Sheet>(reader);
                 sheetName = sheet.Name;
 
-                if (!options.ColumnDefinitions.Sheets.ContainsKey(sheet.Name))
+                if (!columnDefinitions.Sheets.ContainsKey(sheet.Name))
                 {
                     context.ReportDiagnostic(Diagnostic.Create(Diagnostics.SheetNotFound, Location.None, DiagnosticSeverity.Error, null, null, sheet.Name));
                     continue;
                 }
 
-                var converter = new SchemaSourceConverter(sheet, options.ColumnDefinitions, options.AssemblyName, new(options.UseUsings), options.IndentString, generatedNamespace, null);
+                var converter = new SchemaSourceConverter(sheet, columnDefinitions, options.AssemblyName, new(options.UseUsings), options.IndentString, generatedNamespace, null);
                 var source = SourceConstants.CreateSchemaSource(generatedNamespace, sheet.Name, false, options.UseFileScopedNamespace, useExperimentalSchema, converter);
                 var name = useExperimentalSchema ? $"{sheet.Name}.Experimental" : sheet.Name;
                 if (options.DebugFiles)
                     context.Debug($"{name} -> {Convert.ToBase64String(Encoding.UTF8.GetBytes(source.ToString()))}");
-                context.AddSource($"{name}.g.cs", source);
+                context.AddSource($"{name}.generated.cs", source);
             }
             catch (Exception e)
             {
@@ -229,6 +239,7 @@ public sealed record GeneratorOptions
     public required string? SchemaPath { get; init; }
     public required string? ExperimentalSchemaPath { get; init; }
     public required string? ColumnsPath { get; init; }
+    public required string? ExperimentalColumnsPath { get; init; }
     public required string? GeneratedNamespace { get; init; }
     public required string ReferencedNamespace { get; init; }
     public required string IndentString { get; init; }
@@ -241,4 +252,8 @@ public sealed record GeneratorOptions
     private ColumnDefinitions? columnDefinitions = null;
     public ColumnDefinitions ColumnDefinitions =>
         columnDefinitions ??= ColumnDefinitions.FromColumnFile(ColumnsPath ?? Path.Combine(SchemaPath, ".github", "columns.yml"));
+
+    private ColumnDefinitions? experimentalColumnDefinitions = null;
+    public ColumnDefinitions ExperimentalColumnDefinitions =>
+        experimentalColumnDefinitions ??= ColumnDefinitions.FromColumnFile(ExperimentalColumnsPath ?? Path.Combine(ExperimentalSchemaPath, ".github", "columns.yml"));
 }
